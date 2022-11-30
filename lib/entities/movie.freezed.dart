@@ -24,7 +24,7 @@ mixin _$Movie {
   @JsonKey(name: "poster_url")
   String get posterUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "vote_average")
-  double? get rating => throw _privateConstructorUsedError;
+  String get rating => throw _privateConstructorUsedError;
   @JsonKey(name: "tmdb_id")
   String get tmdbId => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $MovieCopyWith<$Res> {
   $Res call(
       {String title,
       @JsonKey(name: "poster_url") String posterUrl,
-      @JsonKey(name: "vote_average") double? rating,
+      @JsonKey(name: "vote_average") String rating,
       @JsonKey(name: "tmdb_id") String tmdbId});
 }
 
@@ -60,7 +60,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
   $Res call({
     Object? title = null,
     Object? posterUrl = null,
-    Object? rating = freezed,
+    Object? rating = null,
     Object? tmdbId = null,
   }) {
     return _then(_value.copyWith(
@@ -72,10 +72,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.posterUrl
           : posterUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      rating: freezed == rating
+      rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String,
       tmdbId: null == tmdbId
           ? _value.tmdbId
           : tmdbId // ignore: cast_nullable_to_non_nullable
@@ -93,7 +93,7 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   $Res call(
       {String title,
       @JsonKey(name: "poster_url") String posterUrl,
-      @JsonKey(name: "vote_average") double? rating,
+      @JsonKey(name: "vote_average") String rating,
       @JsonKey(name: "tmdb_id") String tmdbId});
 }
 
@@ -108,7 +108,7 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
   $Res call({
     Object? title = null,
     Object? posterUrl = null,
-    Object? rating = freezed,
+    Object? rating = null,
     Object? tmdbId = null,
   }) {
     return _then(_$_Movie(
@@ -120,10 +120,10 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
           ? _value.posterUrl
           : posterUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      rating: freezed == rating
+      rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String,
       tmdbId: null == tmdbId
           ? _value.tmdbId
           : tmdbId // ignore: cast_nullable_to_non_nullable
@@ -138,7 +138,7 @@ class _$_Movie implements _Movie {
   const _$_Movie(
       {required this.title,
       @JsonKey(name: "poster_url") required this.posterUrl,
-      @JsonKey(name: "vote_average") this.rating,
+      @JsonKey(name: "vote_average") required this.rating,
       @JsonKey(name: "tmdb_id") required this.tmdbId});
 
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
@@ -151,7 +151,7 @@ class _$_Movie implements _Movie {
   final String posterUrl;
   @override
   @JsonKey(name: "vote_average")
-  final double? rating;
+  final String rating;
   @override
   @JsonKey(name: "tmdb_id")
   final String tmdbId;
@@ -196,7 +196,7 @@ abstract class _Movie implements Movie {
   const factory _Movie(
       {required final String title,
       @JsonKey(name: "poster_url") required final String posterUrl,
-      @JsonKey(name: "vote_average") final double? rating,
+      @JsonKey(name: "vote_average") required final String rating,
       @JsonKey(name: "tmdb_id") required final String tmdbId}) = _$_Movie;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
@@ -208,7 +208,7 @@ abstract class _Movie implements Movie {
   String get posterUrl;
   @override
   @JsonKey(name: "vote_average")
-  double? get rating;
+  String get rating;
   @override
   @JsonKey(name: "tmdb_id")
   String get tmdbId;

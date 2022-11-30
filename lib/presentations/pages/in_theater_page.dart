@@ -29,19 +29,27 @@ class _InTheaterPageState extends State<InTheaterPage> {
                 // return Text(movies.toString());
                 if (movies != null) {
                   return Container(
+                    // margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     // color: Colors.black,
                     child: CarouselSlider.builder(
                         itemCount: movies.length,
                         itemBuilder: (context, int index, idx) {
-                          return InTheaterPoster(
-                            movie: movies.elementAt(index),
+                          return Transform.scale(
+                            scale: index == _current ? 1 : 0.9,
+                            child: InTheaterPoster(
+                              movie: movies.elementAt(index),
+                              isActive: index == _current ? true : false,
+                            ),
                           );
                         },
                         options: CarouselOptions(
-                            height: MediaQuery.of(context).size.height * 0.7,
+                            height: MediaQuery.of(context).size.height * 0.75,
                             enlargeCenterPage: true,
                             enableInfiniteScroll: false,
                             // autoPlay: true,
+                            // viewportFraction: 0.9,
+                            aspectRatio: 5.0,
+                            padEnds: false,
                             initialPage: _current,
                             onPageChanged: ((index, reason) {
                               setState(() {

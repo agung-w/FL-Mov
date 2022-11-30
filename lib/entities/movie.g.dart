@@ -9,7 +9,7 @@ part of 'movie.dart';
 _$_Movie _$$_MovieFromJson(Map<String, dynamic> json) => _$_Movie(
       title: json['title'] as String,
       posterUrl: json['poster_url'] as String,
-      rating: (json['vote_average'] as num?)?.toDouble(),
+      rating: json['vote_average'] as String,
       tmdbId: json['tmdb_id'] as String,
     );
 
