@@ -23,8 +23,6 @@ class _InTheaterPageState extends State<InTheaterPage> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(children: [
-        ElevatedButton(
-            onPressed: () => MovieServices().getInTheater(), child: Text("t")),
         BlocBuilder<MovieBloc, MovieState>(
           builder: (context, state) => state.when(
               loaded: (movies) {
@@ -60,16 +58,11 @@ class _InTheaterPageState extends State<InTheaterPage> {
                             }))),
                   );
                 } else {
-                  return Text("no data");
+                  return const Text("no data");
                 }
               },
-              loading: () => Text("loading")),
+              loading: () => const Text("loading")),
         ),
-        ElevatedButton(
-            onPressed: () {
-              context.read<MovieBloc>().add(const MovieEvent.getInTheater());
-            },
-            child: Text("tes"))
       ]),
     );
   }

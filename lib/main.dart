@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MovieBloc(),
+      create: (context) => MovieBloc()..add(const MovieEvent.getInTheater()),
       // child: BlocListener<UserBloc, UserState>(
       //   listener: (context, state) {
       //     state.when(
