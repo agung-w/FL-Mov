@@ -9,7 +9,9 @@ import 'package:movie_app/services/movie_services.dart';
 import '../../bloc/movie_bloc.dart';
 
 class InTheaterPage extends StatefulWidget {
-  const InTheaterPage({super.key});
+  final onPush;
+
+  const InTheaterPage({super.key, this.onPush});
 
   @override
   State<InTheaterPage> createState() => _InTheaterPageState();
@@ -68,27 +70,6 @@ class _InTheaterPageState extends State<InTheaterPage> {
               context.read<MovieBloc>().add(const MovieEvent.getInTheater());
             },
             child: Text("tes"))
-        // FutureBuilder(
-        //     future: MovieServices().getInTheater(),
-        //     builder: ((context, snapshot) {
-        //       if (snapshot.hasData) {
-        //         return CarouselSlider(
-        //             items: (snapshot.data ?? [])
-        //                 // .map((e) => Transform.scale(
-        //                 //     scale: 1 == _current ? 1 : 0.8,
-        //                 //     child: InTheaterPoster(movie: e)))
-        //                 // .toList(),
-        //                 .map((e) => Builder(builder: (BuildContext context) {
-        //                       return Transform.scale(
-        //                           scale: 1 == _current ? 1 : 0.8,
-        //                           child: InTheaterPoster(movie: e));
-        //                     }))
-        //                 .toList(),
-        //             options: );
-        //       } else {
-        //         return const SizedBox();
-        //       }
-        //     })),
       ]),
     );
   }

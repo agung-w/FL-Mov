@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:movie_app/presentations/helper/tab_item.dart';
 import 'package:movie_app/presentations/pages/edit_profile_page.dart';
+import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 import 'package:movie_app/presentations/pages/in_theater_page.dart';
 import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/profile_page.dart';
+import 'package:movie_app/presentations/pages/bottom_navigation.dart';
+
+import '../routes/tab_navigator.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,54 +18,57 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    InTheaterPage(),
-    EditProfilePage(),
-    LoginPage(),
-  ];
-  void _onItemTapped(int index) {
+  var _selectedIndex = TabItem.inTheater;
+  final navigatorKeys = {
+    TabItem.inTheater: GlobalKey<NavigatorState>(),
+    TabItem.discover: GlobalKey<NavigatorState>(),
+    TabItem.ticket: GlobalKey<NavigatorState>(),
+    TabItem.profile: GlobalKey<NavigatorState>(),
+  };
+  void _onItemTapped(TabItem tabItem) {
     setState(() {
-      _selectedIndex = index;
+      _selectedIndex = tabItem;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+    return WillPopScope(
+      onWillPop: () async =>
+          !await navigatorKeys[_selectedIndex]!.currentState!.maybePop(),
+      child: Scaffold(
+        body: Center(
+            child: Stack(children: <Widget>[
+          _buildOffstageNavigator(TabItem.inTheater),
+          _buildOffstageNavigator(TabItem.discover),
+          _buildOffstageNavigator(TabItem.ticket),
+          _buildOffstageNavigator(TabItem.profile),
+        ])),
+        bottomNavigationBar: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: BottomNavigation(
+              selectedTab: _selectedIndex,
+              onSelectTab: _onItemTapped,
+            )),
       ),
-      bottomNavigationBar: Container(
-        // color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: GNav(
-              gap: 20,
-              onTabChange: (index) {
-                _onItemTapped(index);
-              },
-              selectedIndex: _selectedIndex,
-              // backgroundColor: Colors.black,
-              // color: Colors.white,
-              // activeColor: Colors.white,
-              tabs: const [
-                GButton(
-                  icon: Icons.home,
-                  text: "Home",
-                ),
-                GButton(
-                  icon: Icons.explore,
-                  text: "Discover",
-                ),
-                GButton(
-                  icon: Icons.person,
-                  text: "Profile",
-                )
-              ]),
-        ),
+    );
+  }
+
+  void _push() {
+    Navigator.of(context).push(MaterialPageRoute(
+      // we'll look at ColorDetailPage later
+      builder: (context) => const InTheaterDetailPage(
+        image: '',
+      ),
+    ));
+  }
+
+  Widget _buildOffstageNavigator(TabItem tabItem) {
+    return Offstage(
+      offstage: _selectedIndex != tabItem,
+      child: TabNavigator(
+        navigatorKey: navigatorKeys[tabItem],
+        tabItem: tabItem,
       ),
     );
   }
