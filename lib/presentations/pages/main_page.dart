@@ -18,8 +18,8 @@ class _MainPageState extends State<MainPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     InTheaterPage(),
-    ProfilePage(),
-    EditProfilePage()
+    EditProfilePage(),
+    LoginPage(),
   ];
   void _onItemTapped(int index) {
     setState(() {

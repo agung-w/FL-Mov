@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../entities/movie.dart';
 
@@ -23,9 +24,11 @@ class InTheaterPoster extends StatelessWidget {
                   'https://image.tmdb.org/t/p/w500/${movie.posterUrl}'),
             ),
           ),
-          Text(
-            movie.title,
-          )
+          Text(movie.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold, fontSize: 22))
         ],
       ),
     );
