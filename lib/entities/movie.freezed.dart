@@ -23,6 +23,8 @@ mixin _$Movie {
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: "poster_url")
   String get posterUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "vote_average")
+  double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: "tmdb_id")
   String get tmdbId => throw _privateConstructorUsedError;
 
@@ -39,6 +41,7 @@ abstract class $MovieCopyWith<$Res> {
   $Res call(
       {String title,
       @JsonKey(name: "poster_url") String posterUrl,
+      @JsonKey(name: "vote_average") double? rating,
       @JsonKey(name: "tmdb_id") String tmdbId});
 }
 
@@ -57,6 +60,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
   $Res call({
     Object? title = null,
     Object? posterUrl = null,
+    Object? rating = freezed,
     Object? tmdbId = null,
   }) {
     return _then(_value.copyWith(
@@ -68,6 +72,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.posterUrl
           : posterUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double?,
       tmdbId: null == tmdbId
           ? _value.tmdbId
           : tmdbId // ignore: cast_nullable_to_non_nullable
@@ -85,6 +93,7 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   $Res call(
       {String title,
       @JsonKey(name: "poster_url") String posterUrl,
+      @JsonKey(name: "vote_average") double? rating,
       @JsonKey(name: "tmdb_id") String tmdbId});
 }
 
@@ -99,6 +108,7 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
   $Res call({
     Object? title = null,
     Object? posterUrl = null,
+    Object? rating = freezed,
     Object? tmdbId = null,
   }) {
     return _then(_$_Movie(
@@ -110,6 +120,10 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
           ? _value.posterUrl
           : posterUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double?,
       tmdbId: null == tmdbId
           ? _value.tmdbId
           : tmdbId // ignore: cast_nullable_to_non_nullable
@@ -124,6 +138,7 @@ class _$_Movie implements _Movie {
   const _$_Movie(
       {required this.title,
       @JsonKey(name: "poster_url") required this.posterUrl,
+      @JsonKey(name: "vote_average") this.rating,
       @JsonKey(name: "tmdb_id") required this.tmdbId});
 
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
@@ -135,12 +150,15 @@ class _$_Movie implements _Movie {
   @JsonKey(name: "poster_url")
   final String posterUrl;
   @override
+  @JsonKey(name: "vote_average")
+  final double? rating;
+  @override
   @JsonKey(name: "tmdb_id")
   final String tmdbId;
 
   @override
   String toString() {
-    return 'Movie(title: $title, posterUrl: $posterUrl, tmdbId: $tmdbId)';
+    return 'Movie(title: $title, posterUrl: $posterUrl, rating: $rating, tmdbId: $tmdbId)';
   }
 
   @override
@@ -151,12 +169,14 @@ class _$_Movie implements _Movie {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.posterUrl, posterUrl) ||
                 other.posterUrl == posterUrl) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.tmdbId, tmdbId) || other.tmdbId == tmdbId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, posterUrl, tmdbId);
+  int get hashCode =>
+      Object.hash(runtimeType, title, posterUrl, rating, tmdbId);
 
   @JsonKey(ignore: true)
   @override
@@ -176,6 +196,7 @@ abstract class _Movie implements Movie {
   const factory _Movie(
       {required final String title,
       @JsonKey(name: "poster_url") required final String posterUrl,
+      @JsonKey(name: "vote_average") final double? rating,
       @JsonKey(name: "tmdb_id") required final String tmdbId}) = _$_Movie;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
@@ -185,6 +206,9 @@ abstract class _Movie implements Movie {
   @override
   @JsonKey(name: "poster_url")
   String get posterUrl;
+  @override
+  @JsonKey(name: "vote_average")
+  double? get rating;
   @override
   @JsonKey(name: "tmdb_id")
   String get tmdbId;

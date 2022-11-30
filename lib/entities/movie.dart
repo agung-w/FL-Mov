@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'movie.freezed.dart';
@@ -8,6 +10,7 @@ class Movie with _$Movie {
   const factory Movie(
       {required String title,
       @JsonKey(name: "poster_url") required String posterUrl,
+      @JsonKey(name: "vote_average") double? rating,
       @JsonKey(name: "tmdb_id") required String tmdbId}) = _Movie;
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 }
