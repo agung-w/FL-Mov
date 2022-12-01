@@ -54,15 +54,6 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  void _push() {
-    Navigator.of(context).push(MaterialPageRoute(
-      // we'll look at ColorDetailPage later
-      builder: (context) => const InTheaterDetailPage(
-        image: '',
-      ),
-    ));
-  }
-
   Widget _buildOffstageNavigator(TabItem tabItem) {
     return Offstage(
       offstage: _selectedIndex != tabItem,

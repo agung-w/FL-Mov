@@ -1,36 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentations/pages/discover_page.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 import 'package:movie_app/presentations/pages/in_theater_page.dart';
 import 'package:movie_app/presentations/pages/login_page.dart';
+import 'package:movie_app/presentations/pages/not_found_page.dart';
+import 'package:movie_app/presentations/pages/profile_page.dart';
+import 'package:movie_app/presentations/pages/ticket_page.dart';
 
 import '../helper/tab_item.dart';
 
 class TabNavigatorRoutes {
   static const String root = '/';
-  static const String detail = '/detail';
+  // static const String detail = '/detail';
 }
 
 // 2
 class TabNavigator extends StatelessWidget {
-  TabNavigator({required this.navigatorKey, required this.tabItem});
+  const TabNavigator(
+      {super.key, required this.navigatorKey, required this.tabItem});
   final GlobalKey<NavigatorState>? navigatorKey;
   final TabItem tabItem;
 
   // 3
-  Map<String, WidgetBuilder> _routeBuilders(BuildContext context,
-      {int materialIndex: 500}) {
+  Map<String, WidgetBuilder> _routeBuilders(
+    BuildContext context,
+  ) {
     return {
       TabNavigatorRoutes.root: (context) {
         if (tabItem.index == 0) {
-          return InTheaterPage(
-            onPush: (materialIndex) => _push(context),
-          );
-        } else
-          return LoginPage();
+          return const InTheaterPage();
+        } else if (tabItem.index == 1) {
+          return const DiscoverPage();
+        } else if (tabItem.index == 2) {
+          return const TicketPage();
+        } else if (tabItem.index == 3) {
+          return const ProfilePage();
+        } else {
+          return const NotFoundPage();
+        }
       },
-      TabNavigatorRoutes.detail: (context) => const InTheaterDetailPage(
-            image: "tes",
-          ),
     };
   }
 
@@ -49,16 +57,16 @@ class TabNavigator extends StatelessWidget {
     );
   }
 
-  // 5
-  void _push(BuildContext context, {int materialIndex: 500}) {
-    var routeBuilders = _routeBuilders(context, materialIndex: materialIndex);
+  // // 5
+  // void _push(BuildContext context) {
+  //   var routeBuilders = _routeBuilders(context);
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) =>
-            routeBuilders[TabNavigatorRoutes.detail]!(context),
-      ),
-    );
-  }
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) =>
+  //           routeBuilders[TabNavigatorRoutes.detail]!(context),
+  //     ),
+  //   );
+  // }
 }

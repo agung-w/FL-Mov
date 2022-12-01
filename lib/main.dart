@@ -47,8 +47,7 @@ class MyApp extends StatelessWidget {
   // ], initialLocation: '/login', debugLogDiagnostics: true, routerNeglect: true);
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MovieBloc()..add(const MovieEvent.getInTheater()),
+    return MultiBlocProvider(
       // child: BlocListener<UserBloc, UserState>(
       //   listener: (context, state) {
       //     state.when(
@@ -61,6 +60,12 @@ class MyApp extends StatelessWidget {
       //   routeInformationProvider: router.routeInformationProvider,
       //   debugShowCheckedModeBanner: false,
       // ),
+      providers: [
+        BlocProvider(
+            create: (context) =>
+                MovieBloc()..add(const MovieEvent.getInTheater())),
+        BlocProvider(create: (context) => UserBloc())
+      ],
       child: const MaterialApp(
         home: MainPage(),
       ),

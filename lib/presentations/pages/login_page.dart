@@ -13,37 +13,42 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(children: [
-        LargeButton(
-            function: () {
-              context.read<UserBloc>().add(const UserEvent.signIn(
-                  email: "agung@gmail.com", password: "123"));
-            },
-            title: "Login"),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: ElevatedButton(
-              onPressed: () async {
-                AuthServices.instance.login();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
+      body: Center(
+        child: Column(children: [
+          LargeButton(
+              function: () {
+                context.read<UserBloc>().add(const UserEvent.signIn(
+                    email: "agung@gmail.com", password: "123"));
               },
-              style: ElevatedButton.styleFrom(
-                  side: const BorderSide(color: Colors.black, width: 0.5),
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.white,
-                  textStyle: const TextStyle(fontWeight: FontWeight.normal)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Image(
-                      width: 30,
-                      height: 30,
-                      image: AssetImage('assets/google.png')),
-                  Text("Google Sign In"),
-                ],
-              )),
-        ),
-      ]),
+              title: "Login"),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: ElevatedButton(
+                onPressed: () async {
+                  AuthServices.instance.login();
+                },
+                style: ElevatedButton.styleFrom(
+                    side: const BorderSide(color: Colors.black, width: 0.5),
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.normal)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Image(
+                        width: 30,
+                        height: 30,
+                        image: AssetImage('assets/google.png')),
+                    Text("Google Sign In"),
+                  ],
+                )),
+          ),
+        ]),
+      ),
     );
   }
 }

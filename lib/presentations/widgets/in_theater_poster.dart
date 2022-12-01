@@ -14,9 +14,10 @@ class InTheaterPoster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      margin: const EdgeInsets.fromLTRB(16, 0, 0, 0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment:
+            isActive == true ? MainAxisAlignment.end : MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
@@ -32,8 +33,8 @@ class InTheaterPoster extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image(
-                fit: BoxFit.fitHeight,
-                height: MediaQuery.of(context).size.height * 0.6,
+                fit: BoxFit.fill,
+                height: MediaQuery.of(context).size.height * 0.65,
                 image: NetworkImage(
                     'https://image.tmdb.org/t/p/w500/${movie.posterUrl}'),
               ),
