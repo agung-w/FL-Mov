@@ -64,7 +64,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 MovieBloc()..add(const MovieEvent.getInTheater())),
-        BlocProvider(create: (context) => UserBloc())
+        BlocProvider(
+            create: (context) =>
+                UserBloc()..add(const UserEvent.checkSignInStatus()))
       ],
       child: const MaterialApp(
         home: MainPage(),

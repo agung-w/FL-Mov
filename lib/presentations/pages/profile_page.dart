@@ -12,42 +12,107 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double _imageSize = 60;
     return Center(
       child: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                    color: Colors.blueGrey.shade100, shape: BoxShape.circle),
-                child: const Icon(Icons.person_sharp),
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                      color: Colors.lightBlue,
+                      width: MediaQuery.of(context).size.width,
+                      height: 180,
+                      padding: const EdgeInsets.all(16),
+                      child: state.when(signedOut: () {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context, rootNavigator: true).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => const LoginPage(),
+                                  ),
+                                );
+                              },
+                              child: const Text('Login'),
+                            ),
+                            ElevatedButton(
+                                onPressed: () {
+                                  context
+                                      .read<UserBloc>()
+                                      .add(const UserEvent.signOut());
+                                },
+                                child: const Text("Register"))
+                          ],
+                        );
+                      }, signedIn: ((user) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 60 * 1.2,
+                              height: 60 * 1.2,
+                              decoration: BoxDecoration(
+                                  color: Colors.blueGrey.shade100,
+                                  shape: BoxShape.circle),
+                              child: const Icon(
+                                Icons.person_sharp,
+                                size: 60,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  "Agung Wijaya Al Halim",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Agung Wijaya Al Halim",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            )
+                          ],
+                        );
+                      }))),
+                  Positioned(
+                      top: 130,
+                      left: 16,
+                      right: 16,
+                      child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black, width: 0.1),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16)),
+                      ))
+                ],
               ),
               const SizedBox(
-                height: 20,
+                height: 55,
               ),
-              Text(state.when(
-                  signedOut: () => '-', signedIn: ((user) => user.name))),
-              SizedBox(
-                width: 150,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context, rootNavigator: true).push(
-                      MaterialPageRoute(
-                        builder: (_) => const LoginPage(),
-                      ),
-                    );
-                  },
-                  child: const Text('Edit Profile'),
-                ),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    context.read<UserBloc>().add(const UserEvent.signOut());
-                  },
-                  child: const Text("Logout"))
             ],
           );
         },
