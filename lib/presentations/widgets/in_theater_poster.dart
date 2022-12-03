@@ -1,6 +1,6 @@
+import 'package:drop_shadow/drop_shadow.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 
@@ -13,40 +13,49 @@ class InTheaterPoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-      child: Column(
-        mainAxisAlignment:
-            isActive == true ? MainAxisAlignment.end : MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => InTheaterDetailPage(
-                        image:
-                            'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')),
-              );
-            },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image(
-                fit: BoxFit.fill,
-                height: MediaQuery.of(context).size.height * 0.65,
-                image: NetworkImage(
-                    'https://image.tmdb.org/t/p/w500/${movie.posterUrl}'),
+    return Column(
+      mainAxisAlignment:
+          isActive == true ? MainAxisAlignment.center : MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => InTheaterDetailPage(
+                        movie: movie,
+                      )),
+            );
+          },
+          child: Column(
+            children: [
+              DropShadow(
+                blurRadius: 8,
+                offset: const Offset(0, 15),
+                borderRadius: 10,
+                child: Image(
+                  fit: BoxFit.fill,
+                  height: MediaQuery.of(context).size.height * 0.67,
+                  image: NetworkImage(
+                      'https://image.tmdb.org/t/p/w500/${movie.posterUrl}'),
+                ),
               ),
-            ),
+            ],
           ),
-          if (isActive == true) ...[
-            Text(movie.title,
+        ),
+        if (isActive == true) ...[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+            child: Text(movie.title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold, fontSize: 22)),
-            Row(
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+            child: Row(
               children: [
                 Image.asset(
                   'assets/tmdb.png',
@@ -55,31 +64,31 @@ class InTheaterPoster extends StatelessWidget {
                 ),
                 Text(movie.rating.toString())
               ],
-            )
-          ]
-        ],
-      ),
+            ),
+          )
+        ]
+      ],
     );
   }
 }
 
-Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) =>
-        InTheaterDetailPage(
-      image: "tes",
-    ),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0);
-      const end = Offset.zero;
-      const curve = Curves.ease;
+// Route _createRoute() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) =>
+//         InTheaterDetailPage(
+//       movie:movie,
+//     ),
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       const begin = Offset(0.0, 1.0);
+//       const end = Offset.zero;
+//       const curve = Curves.ease;
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+//       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
-}
+//       return SlideTransition(
+//         position: animation.drive(tween),
+//         child: child,
+//       );
+//     },
+//   );
+// }

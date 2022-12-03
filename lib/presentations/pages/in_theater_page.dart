@@ -38,34 +38,38 @@ class _InTheaterPageState extends State<InTheaterPage> {
                 loaded: (movies) {
                   // return Text(movies.toString());
                   if (movies != null) {
-                    return CarouselSlider.builder(
-                        itemCount: movies.length,
-                        itemBuilder: (context, int index, idx) {
-                          return Transform.scale(
-                            alignment: Alignment.centerLeft,
-                            scale: index == _current ? 1 : 0.85,
-                            child: InTheaterPoster(
-                              movie: movies.elementAt(index),
-                              isActive: index == _current ? true : false,
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                            height: MediaQuery.of(context).size.height * 0.76,
-                            // enlargeCenterPage: true,
-                            enableInfiniteScroll: false,
-                            // autoPlay: true,
-                            disableCenter: true,
-                            viewportFraction: 0.85,
-                            aspectRatio: 2.0,
-                            padEnds: false,
-                            initialPage: _current,
-                            // clipBehavior: Clip.none,
-                            onPageChanged: ((index, reason) {
-                              setState(() {
-                                _current = index;
-                              });
-                            })));
+                    return Stack(
+                      children: [
+                        CarouselSlider.builder(
+                            itemCount: movies.length,
+                            itemBuilder: (context, int index, idx) {
+                              return Transform.scale(
+                                alignment: Alignment.centerLeft,
+                                scale: index == _current ? 1 : 0.85,
+                                child: InTheaterPoster(
+                                  movie: movies.elementAt(index),
+                                  isActive: index == _current ? true : false,
+                                ),
+                              );
+                            },
+                            options: CarouselOptions(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.82,
+                                // enlargeCenterPage: true,
+                                enableInfiniteScroll: false,
+                                // autoPlay: true,
+                                disableCenter: true,
+                                viewportFraction: 0.89,
+                                padEnds: false,
+                                initialPage: _current,
+                                clipBehavior: Clip.none,
+                                onPageChanged: ((index, reason) {
+                                  setState(() {
+                                    _current = index;
+                                  });
+                                }))),
+                      ],
+                    );
                   } else {
                     return const Text("no data");
                   }

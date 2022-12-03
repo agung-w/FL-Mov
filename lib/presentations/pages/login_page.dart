@@ -56,12 +56,23 @@ class LoginPage extends StatelessWidget {
                   )),
             ]),
           ),
-          LargeButton(
-              function: () {
+          ElevatedButton(
+              onPressed: () async {
                 context.read<UserBloc>().add(const UserEvent.signIn(
                     email: "agung@gmail.com", password: "123"));
               },
-              title: "Login"),
+              style: ElevatedButton.styleFrom(
+                  side: const BorderSide(color: Colors.black, width: 0.5),
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  textStyle: const TextStyle(fontWeight: FontWeight.normal)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text("login"),
+                ],
+              )),
+          // LargeButton(function: () {}, title: "Login"),
           SizedBox(
             height: 50,
             child: Column(
@@ -121,27 +132,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-// class MainPage extends StatelessWidget {
-//   const MainPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Column(
-//         children: [
-//           ElevatedButton(
-//               onPressed: () {
-//                 context.goNamed('profile');
-//               },
-//               child: const Text("Profile")),
-//           ElevatedButton(
-//               onPressed: () {
-//                 context.read<UserBloc>().add(const UserEvent.signOut());
-//               },
-//               child: const Text("Logout"))
-//         ],
-//       ),
-//     );
-//   }
-// }

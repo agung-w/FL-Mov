@@ -30,7 +30,6 @@ class AuthServices {
         issuer: GOOGLE_ISSUER,
         scopes: ['email', 'profile'],
       );
-      print("1");
       // Requesting the auth token and waiting for the response
       final AuthorizationTokenResponse? result =
           await _appAuth.authorizeAndExchangeCode(

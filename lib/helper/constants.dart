@@ -7,9 +7,9 @@ const GOOGLE_CLIENT_ID_IOS = '<IOS-CLIENT-ID>';
 const GOOGLE_REDIRECT_URI_IOS =
     'com.googleusercontent.apps.<IOS-CLIENT-ID>:/oauthredirect';
 const GOOGLE_CLIENT_ID_ANDROID =
-    '873683966939-kh786hfccp21l99nff2ma1s9mfa4s3if';
+    '873683966939-kh786hfccp21l99nff2ma1s9mfa4s3if.apps.googleusercontent.com';
 const GOOGLE_REDIRECT_URI_ANDROID =
-    'com.googleusercontent.apps.873683966939-kh786hfccp21l99nff2ma1s9mfa4s3if:/oauthredirect';
+    'com.googleusercontent.apps.873683966939-kh786hfccp21l99nff2ma1s9mfa4s3if.apps.googleusercontent.com:/oauthredirect';
 
 String clientID() {
   if (Platform.isAndroid) {

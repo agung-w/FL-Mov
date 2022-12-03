@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'movie.dart';
 
@@ -215,5 +215,352 @@ abstract class _Movie implements Movie {
   @override
   @JsonKey(ignore: true)
   _$$_MovieCopyWith<_$_Movie> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MovieDetail _$MovieDetailFromJson(Map<String, dynamic> json) {
+  return _MovieDetail.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MovieDetail {
+  List<Genre> get genres => throw _privateConstructorUsedError;
+  String get overview => throw _privateConstructorUsedError;
+  int get runtime => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MovieDetailCopyWith<MovieDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MovieDetailCopyWith<$Res> {
+  factory $MovieDetailCopyWith(
+          MovieDetail value, $Res Function(MovieDetail) then) =
+      _$MovieDetailCopyWithImpl<$Res, MovieDetail>;
+  @useResult
+  $Res call({List<Genre> genres, String overview, int runtime, String status});
+}
+
+/// @nodoc
+class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
+    implements $MovieDetailCopyWith<$Res> {
+  _$MovieDetailCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? genres = null,
+    Object? overview = null,
+    Object? runtime = null,
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      genres: null == genres
+          ? _value.genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
+      runtime: null == runtime
+          ? _value.runtime
+          : runtime // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MovieDetailCopyWith<$Res>
+    implements $MovieDetailCopyWith<$Res> {
+  factory _$$_MovieDetailCopyWith(
+          _$_MovieDetail value, $Res Function(_$_MovieDetail) then) =
+      __$$_MovieDetailCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Genre> genres, String overview, int runtime, String status});
+}
+
+/// @nodoc
+class __$$_MovieDetailCopyWithImpl<$Res>
+    extends _$MovieDetailCopyWithImpl<$Res, _$_MovieDetail>
+    implements _$$_MovieDetailCopyWith<$Res> {
+  __$$_MovieDetailCopyWithImpl(
+      _$_MovieDetail _value, $Res Function(_$_MovieDetail) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? genres = null,
+    Object? overview = null,
+    Object? runtime = null,
+    Object? status = null,
+  }) {
+    return _then(_$_MovieDetail(
+      genres: null == genres
+          ? _value._genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
+      runtime: null == runtime
+          ? _value.runtime
+          : runtime // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_MovieDetail implements _MovieDetail {
+  const _$_MovieDetail(
+      {required final List<Genre> genres,
+      required this.overview,
+      required this.runtime,
+      required this.status})
+      : _genres = genres;
+
+  factory _$_MovieDetail.fromJson(Map<String, dynamic> json) =>
+      _$$_MovieDetailFromJson(json);
+
+  final List<Genre> _genres;
+  @override
+  List<Genre> get genres {
+    if (_genres is EqualUnmodifiableListView) return _genres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genres);
+  }
+
+  @override
+  final String overview;
+  @override
+  final int runtime;
+  @override
+  final String status;
+
+  @override
+  String toString() {
+    return 'MovieDetail(genres: $genres, overview: $overview, runtime: $runtime, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MovieDetail &&
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
+            (identical(other.overview, overview) ||
+                other.overview == overview) &&
+            (identical(other.runtime, runtime) || other.runtime == runtime) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_genres), overview, runtime, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MovieDetailCopyWith<_$_MovieDetail> get copyWith =>
+      __$$_MovieDetailCopyWithImpl<_$_MovieDetail>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MovieDetailToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MovieDetail implements MovieDetail {
+  const factory _MovieDetail(
+      {required final List<Genre> genres,
+      required final String overview,
+      required final int runtime,
+      required final String status}) = _$_MovieDetail;
+
+  factory _MovieDetail.fromJson(Map<String, dynamic> json) =
+      _$_MovieDetail.fromJson;
+
+  @override
+  List<Genre> get genres;
+  @override
+  String get overview;
+  @override
+  int get runtime;
+  @override
+  String get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MovieDetailCopyWith<_$_MovieDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Genre _$GenreFromJson(Map<String, dynamic> json) {
+  return _Genre.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Genre {
+  String get name => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GenreCopyWith<Genre> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GenreCopyWith<$Res> {
+  factory $GenreCopyWith(Genre value, $Res Function(Genre) then) =
+      _$GenreCopyWithImpl<$Res, Genre>;
+  @useResult
+  $Res call({String name, int id});
+}
+
+/// @nodoc
+class _$GenreCopyWithImpl<$Res, $Val extends Genre>
+    implements $GenreCopyWith<$Res> {
+  _$GenreCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_GenreCopyWith<$Res> implements $GenreCopyWith<$Res> {
+  factory _$$_GenreCopyWith(_$_Genre value, $Res Function(_$_Genre) then) =
+      __$$_GenreCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, int id});
+}
+
+/// @nodoc
+class __$$_GenreCopyWithImpl<$Res> extends _$GenreCopyWithImpl<$Res, _$_Genre>
+    implements _$$_GenreCopyWith<$Res> {
+  __$$_GenreCopyWithImpl(_$_Genre _value, $Res Function(_$_Genre) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? id = null,
+  }) {
+    return _then(_$_Genre(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Genre implements _Genre {
+  const _$_Genre({required this.name, required this.id});
+
+  factory _$_Genre.fromJson(Map<String, dynamic> json) =>
+      _$$_GenreFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'Genre(name: $name, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Genre &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GenreCopyWith<_$_Genre> get copyWith =>
+      __$$_GenreCopyWithImpl<_$_Genre>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GenreToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Genre implements Genre {
+  const factory _Genre({required final String name, required final int id}) =
+      _$_Genre;
+
+  factory _Genre.fromJson(Map<String, dynamic> json) = _$_Genre.fromJson;
+
+  @override
+  String get name;
+  @override
+  int get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$_GenreCopyWith<_$_Genre> get copyWith =>
       throw _privateConstructorUsedError;
 }

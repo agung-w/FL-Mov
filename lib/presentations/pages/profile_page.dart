@@ -12,7 +12,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _imageSize = 60;
     return Center(
       child: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
@@ -54,6 +53,13 @@ class ProfilePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  context
+                                      .read<UserBloc>()
+                                      .add(const UserEvent.signOut());
+                                },
+                                child: const Text("Register")),
                             Container(
                               width: 60 * 1.2,
                               height: 60 * 1.2,
