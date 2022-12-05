@@ -47,7 +47,6 @@ class _MainPageState extends State<MainPage> {
         bottomNavigationBar: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: BottomNavigation(
-              selectedTab: _selectedIndex,
               onSelectTab: _onItemTapped,
             )),
       ),

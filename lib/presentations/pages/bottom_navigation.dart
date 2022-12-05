@@ -4,10 +4,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../helper/tab_item.dart';
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation(
-      {super.key, required this.selectedTab, required this.onSelectTab});
+  const BottomNavigation({super.key, required this.onSelectTab});
   final ValueChanged<TabItem> onSelectTab;
-  final selectedTab;
 
   @override
   Widget build(BuildContext context) {
