@@ -1,8 +1,8 @@
 import 'package:drop_shadow/drop_shadow.dart';
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../entities/movie.dart';
 
@@ -39,6 +39,17 @@ class InTheaterPoster extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.67,
                   image: NetworkImage(
                       'https://image.tmdb.org/t/p/w500/${movie.posterUrl}'),
+                  loadingBuilder: (context, child, loadingProgress) {
+                    return loadingProgress == null
+                        ? child
+                        : Shimmer.fromColors(
+                            baseColor: Colors.grey.shade400,
+                            highlightColor: Colors.white,
+                            child: Container(
+                                color: Colors.grey,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.67));
+                  },
                 ),
               ),
             ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:go_router/go_router.dart';
 import 'package:movie_app/bloc/movie_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/pages/edit_profile_page.dart';
