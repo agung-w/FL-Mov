@@ -8,17 +8,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/pages/register_page.dart';
 import 'package:movie_app/presentations/widgets/large_input_with_icon.dart';
+import 'package:movie_app/presentations/widgets/phone_input_form.dart';
 import 'package:movie_app/presentations/widgets/secret_input_form.dart';
 import 'package:movie_app/presentations/widgets/text_input_form.dart';
 import 'package:movie_app/services/auth_services.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController phone = TextEditingController();
+  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController email = TextEditingController();
-    TextEditingController password = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -33,10 +40,22 @@ class LoginPage extends StatelessWidget {
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Column(children: [
-            TextInputForm(
-              hint: "Email",
-              controller: email,
-              prefix: const Text("data"),
+            PhoneInputForm(
+              hint: "Password",
+              controller: phone,
+              prefix: Row(
+                children: [
+                  const Text(
+                    "+62 ",
+                    style: TextStyle(color: Colors.black54, fontSize: 18),
+                  ),
+                  Container(
+                    height: 16,
+                    width: 1,
+                    color: Colors.black54,
+                  )
+                ],
+              ),
             ),
             SecretInputForm(
               hint: "Password",
@@ -56,8 +75,9 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  context.read<UserBloc>().add(const UserEvent.signIn(
-                      email: "agung@gmail.com", password: "123"));
+                  AuthServices()
+                      .login(int.parse(phone.text).toString(), password.text);
+                  // _print;
                 },
                 style: ElevatedButton.styleFrom(
                     side: const BorderSide(color: Colors.black, width: 0.5),
@@ -67,7 +87,7 @@ class LoginPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Text("login"),
+                    Text("Login"),
                   ],
                 )),
             // LargeButton(function: () {}, title: "Login"),
@@ -77,7 +97,7 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    "OR",
+                    "Don't have an account ?",
                     style: TextStyle(color: Colors.black54),
                   )
                 ],
@@ -85,7 +105,8 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  AuthServices().login("8122018185", "agungwijaya");
+                  // print(phone.text);
+                  // AuthServices().login(phone.text, "agungwijaya");
                 },
                 style: ElevatedButton.styleFrom(
                     side: const BorderSide(color: Colors.black, width: 0.5),
@@ -95,11 +116,7 @@ class LoginPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Image(
-                        width: 30,
-                        height: 30,
-                        image: AssetImage('assets/google.png')),
-                    Text("Google Sign In"),
+                    Text("Register"),
                   ],
                 )),
             Expanded(
