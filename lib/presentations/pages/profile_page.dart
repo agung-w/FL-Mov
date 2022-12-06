@@ -128,18 +128,21 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(
                   height: 55,
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          context
-                              .read<UserBloc>()
-                              .add(const UserEvent.signOut());
-                        },
-                        child: const Text("Log out")),
-                  ),
-                ),
+                state.whenOrNull(signedIn: (value) {
+                      return Expanded(
+                        child: Align(
+                          alignment: FractionalOffset.bottomCenter,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                context
+                                    .read<UserBloc>()
+                                    .add(const UserEvent.signOut());
+                              },
+                              child: const Text("Log out")),
+                        ),
+                      );
+                    }) ??
+                    const Text("")
               ],
             );
           },

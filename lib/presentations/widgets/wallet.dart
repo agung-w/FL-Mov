@@ -3,8 +3,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
 import 'package:movie_app/presentations/pages/top_up_page.dart';
+import 'package:movie_app/presentations/pages/transaction_history.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
@@ -60,6 +62,27 @@ class Wallet extends StatelessWidget {
                               ],
                             ),
                           ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                context
+                                    .read<TransactionBloc>()
+                                    .add(const TransactionEvent.get());
+
+                                Navigator.of(context, rootNavigator: true).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => const TransactionHistory(),
+                                  ),
+                                );
+                              },
+                              style: const ButtonStyle(),
+                              child: const Icon(Icons.add),
+                            ),
+                            const Text("History")
+                          ],
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
