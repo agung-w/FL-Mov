@@ -45,7 +45,7 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
         ApiResult<String> wallet = await WalletServices()
             .topUp(token: token, amount: event.amount, method: event.method);
         emit(_Loaded(wallet));
-        wallet.map(
+        wallet.mapOrNull(
             success: (result) => Navigator.pop(event.context),
             failed: (result) => ScaffoldMessenger.of(event.context)
                 .showSnackBar(SnackBar(content: Text(result.message))));
