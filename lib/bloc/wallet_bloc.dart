@@ -24,5 +24,17 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
         emit(const _Initial());
       }
     });
+    on<_Activate>((event, emit) async {
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      emit(const _Loading());
+      String? token = pref.getString('token');
+      if (token != null) {
+        ApiResult<String> wallet =
+            await WalletServices().activateWallet(token: token);
+        emit(_Loaded(wallet));
+      } else {
+        emit(const _Initial());
+      }
+    });
   }
 }

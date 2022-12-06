@@ -23,4 +23,22 @@ class WalletServices {
           : "Connection timeout");
     }
   }
+
+  Future<ApiResult<String>> activateWallet({required String token}) async {
+    try {
+      Response result = await _dio.post(
+        "${dotenv.env['local_api_url']}/wallet/activate",
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
+        }),
+      );
+      // log(result.data);
+      return ApiResult.success(result.data['data']['wallet']['balance']);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message']
+          : "Connection timeout");
+    }
+  }
 }

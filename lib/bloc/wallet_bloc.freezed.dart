@@ -19,32 +19,38 @@ mixin _$WalletEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getBalance,
+    required TResult Function() activate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getBalance,
+    TResult? Function()? activate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getBalance,
+    TResult Function()? activate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBalance value) getBalance,
+    required TResult Function(_Activate value) activate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBalance value)? getBalance,
+    TResult? Function(_Activate value)? activate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBalance value)? getBalance,
+    TResult Function(_Activate value)? activate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$_GetBalance implements _GetBalance {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getBalance,
+    required TResult Function() activate,
   }) {
     return getBalance();
   }
@@ -115,6 +122,7 @@ class _$_GetBalance implements _GetBalance {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getBalance,
+    TResult? Function()? activate,
   }) {
     return getBalance?.call();
   }
@@ -123,6 +131,7 @@ class _$_GetBalance implements _GetBalance {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getBalance,
+    TResult Function()? activate,
     required TResult orElse(),
   }) {
     if (getBalance != null) {
@@ -135,6 +144,7 @@ class _$_GetBalance implements _GetBalance {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBalance value) getBalance,
+    required TResult Function(_Activate value) activate,
   }) {
     return getBalance(this);
   }
@@ -143,6 +153,7 @@ class _$_GetBalance implements _GetBalance {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBalance value)? getBalance,
+    TResult? Function(_Activate value)? activate,
   }) {
     return getBalance?.call(this);
   }
@@ -151,6 +162,7 @@ class _$_GetBalance implements _GetBalance {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBalance value)? getBalance,
+    TResult Function(_Activate value)? activate,
     required TResult orElse(),
   }) {
     if (getBalance != null) {
@@ -162,6 +174,108 @@ class _$_GetBalance implements _GetBalance {
 
 abstract class _GetBalance implements WalletEvent {
   const factory _GetBalance() = _$_GetBalance;
+}
+
+/// @nodoc
+abstract class _$$_ActivateCopyWith<$Res> {
+  factory _$$_ActivateCopyWith(
+          _$_Activate value, $Res Function(_$_Activate) then) =
+      __$$_ActivateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ActivateCopyWithImpl<$Res>
+    extends _$WalletEventCopyWithImpl<$Res, _$_Activate>
+    implements _$$_ActivateCopyWith<$Res> {
+  __$$_ActivateCopyWithImpl(
+      _$_Activate _value, $Res Function(_$_Activate) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Activate implements _Activate {
+  const _$_Activate();
+
+  @override
+  String toString() {
+    return 'WalletEvent.activate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Activate);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getBalance,
+    required TResult Function() activate,
+  }) {
+    return activate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getBalance,
+    TResult? Function()? activate,
+  }) {
+    return activate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getBalance,
+    TResult Function()? activate,
+    required TResult orElse(),
+  }) {
+    if (activate != null) {
+      return activate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetBalance value) getBalance,
+    required TResult Function(_Activate value) activate,
+  }) {
+    return activate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetBalance value)? getBalance,
+    TResult? Function(_Activate value)? activate,
+  }) {
+    return activate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetBalance value)? getBalance,
+    TResult Function(_Activate value)? activate,
+    required TResult orElse(),
+  }) {
+    if (activate != null) {
+      return activate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Activate implements WalletEvent {
+  const factory _Activate() = _$_Activate;
 }
 
 /// @nodoc
