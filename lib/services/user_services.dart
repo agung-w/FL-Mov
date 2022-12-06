@@ -7,7 +7,7 @@ import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/entities/user.dart';
 
 class UserServices {
-  final Dio _dio = Dio();
+  final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
   Future<ApiResult<User>> getUserDetail({required String token}) async {
     try {
       Response result = await _dio.get(
@@ -21,7 +21,9 @@ class UserServices {
       // log(result.data);
       return ApiResult.success(user);
     } on DioError catch (e) {
-      return ApiResult.failed(e.response.toString());
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message']
+          : "Connection timeout");
     }
   }
 }

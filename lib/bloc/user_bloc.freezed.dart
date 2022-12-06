@@ -447,21 +447,21 @@ abstract class _CheckSignInStatus implements UserEvent {
 mixin _$UserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signedOut,
+    required TResult Function(String? message) signedOut,
     required TResult Function(User user) signedIn,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signedOut,
+    TResult? Function(String? message)? signedOut,
     TResult? Function(User user)? signedIn,
     TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signedOut,
+    TResult Function(String? message)? signedOut,
     TResult Function(User user)? signedIn,
     TResult Function()? loading,
     required TResult orElse(),
@@ -513,6 +513,8 @@ abstract class _$$_SignedOutCopyWith<$Res> {
   factory _$$_SignedOutCopyWith(
           _$_SignedOut value, $Res Function(_$_SignedOut) then) =
       __$$_SignedOutCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -522,57 +524,81 @@ class __$$_SignedOutCopyWithImpl<$Res>
   __$$_SignedOutCopyWithImpl(
       _$_SignedOut _value, $Res Function(_$_SignedOut) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_SignedOut(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_SignedOut implements _SignedOut {
-  const _$_SignedOut();
+  const _$_SignedOut(this.message);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'UserState.signedOut()';
+    return 'UserState.signedOut(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SignedOut);
+        (other.runtimeType == runtimeType &&
+            other is _$_SignedOut &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SignedOutCopyWith<_$_SignedOut> get copyWith =>
+      __$$_SignedOutCopyWithImpl<_$_SignedOut>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signedOut,
+    required TResult Function(String? message) signedOut,
     required TResult Function(User user) signedIn,
     required TResult Function() loading,
   }) {
-    return signedOut();
+    return signedOut(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signedOut,
+    TResult? Function(String? message)? signedOut,
     TResult? Function(User user)? signedIn,
     TResult? Function()? loading,
   }) {
-    return signedOut?.call();
+    return signedOut?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signedOut,
+    TResult Function(String? message)? signedOut,
     TResult Function(User user)? signedIn,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (signedOut != null) {
-      return signedOut();
+      return signedOut(message);
     }
     return orElse();
   }
@@ -613,7 +639,12 @@ class _$_SignedOut implements _SignedOut {
 }
 
 abstract class _SignedOut implements UserState {
-  const factory _SignedOut() = _$_SignedOut;
+  const factory _SignedOut(final String? message) = _$_SignedOut;
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$$_SignedOutCopyWith<_$_SignedOut> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -690,7 +721,7 @@ class _$_SignedIn implements _SignedIn {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signedOut,
+    required TResult Function(String? message) signedOut,
     required TResult Function(User user) signedIn,
     required TResult Function() loading,
   }) {
@@ -700,7 +731,7 @@ class _$_SignedIn implements _SignedIn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signedOut,
+    TResult? Function(String? message)? signedOut,
     TResult? Function(User user)? signedIn,
     TResult? Function()? loading,
   }) {
@@ -710,7 +741,7 @@ class _$_SignedIn implements _SignedIn {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signedOut,
+    TResult Function(String? message)? signedOut,
     TResult Function(User user)? signedIn,
     TResult Function()? loading,
     required TResult orElse(),
@@ -802,7 +833,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signedOut,
+    required TResult Function(String? message) signedOut,
     required TResult Function(User user) signedIn,
     required TResult Function() loading,
   }) {
@@ -812,7 +843,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signedOut,
+    TResult? Function(String? message)? signedOut,
     TResult? Function(User user)? signedIn,
     TResult? Function()? loading,
   }) {
@@ -822,7 +853,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signedOut,
+    TResult Function(String? message)? signedOut,
     TResult Function(User user)? signedIn,
     TResult Function()? loading,
     required TResult orElse(),

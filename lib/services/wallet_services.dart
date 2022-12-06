@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/entities/api_result.dart';
 
 class WalletServices {
-  final Dio _dio = Dio();
+  final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
   Future<ApiResult<String>> getBalance({required String token}) async {
     try {
       Response result = await _dio.get(
@@ -18,7 +18,9 @@ class WalletServices {
       // log(result.data);
       return ApiResult.success(result.data['data']['wallet']['balance']);
     } on DioError catch (e) {
-      return ApiResult.failed(e.response.toString());
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message']
+          : "Connection timeout");
     }
   }
 }

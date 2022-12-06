@@ -21,7 +21,7 @@ class EditProfilePage extends StatelessWidget {
                   child: TextField(
                     controller: TextEditingController(
                         text: state.when(
-                            signedOut: () => '',
+                            signedOut: (message) => '',
                             signedIn: ((user) => user.name),
                             loading: () {})),
                     decoration: const InputDecoration(

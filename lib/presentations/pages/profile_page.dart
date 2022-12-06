@@ -16,7 +16,7 @@ class ProfilePage extends StatelessWidget {
           state.whenOrNull(
             signedIn: (user) =>
                 context.read<WalletBloc>().add(const WalletEvent.getBalance()),
-            signedOut: () =>
+            signedOut: (message) =>
                 context.read<WalletBloc>().add(const WalletEvent.getBalance()),
           );
         },
@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
                         height: 180,
                         padding: const EdgeInsets.all(16),
                         child: state.when(
-                            signedOut: () {
+                            signedOut: (message) {
                               return Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

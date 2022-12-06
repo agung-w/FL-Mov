@@ -32,11 +32,7 @@ class _LoginPageState extends State<LoginPage> {
             signedIn: (user) {
               Navigator.pop(context);
             },
-            loading: () {},
-            signedOut: (message) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text("$message")));
-            });
+            loading: () {});
       },
       child: Scaffold(
         appBar: AppBar(

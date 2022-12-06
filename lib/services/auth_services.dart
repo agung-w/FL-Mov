@@ -10,7 +10,7 @@ import 'package:movie_app/entities/user.dart';
 import 'package:movie_app/helper/constants.dart';
 
 class AuthServices {
-  final Dio _dio = Dio();
+  final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
   Future<ApiResult<String>> login(
       {required String phone, required String password}) async {
     var data = {
@@ -27,7 +27,9 @@ class AuthServices {
       return ApiResult.success(result.data['data']['token']);
       // return result.data;
     } on DioError catch (e) {
-      return ApiResult.failed(e.response.toString());
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message']
+          : "Connection timeout");
     }
   }
 }

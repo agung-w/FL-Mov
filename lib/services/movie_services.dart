@@ -6,7 +6,7 @@ import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/entities/movie.dart';
 
 class MovieServices {
-  final Dio _dio = Dio();
+  final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
   Future<ApiResult<List<Movie>>> getInTheater() async {
     try {
       Response result = await _dio.get("${dotenv.env['local_api_url']}/movies");
@@ -27,7 +27,9 @@ class MovieServices {
       MovieDetail movie = MovieDetail.fromJson(result.data);
       return ApiResult.success(movie);
     } on DioError catch (e) {
-      return ApiResult.failed(e.response.toString());
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message']
+          : "Connection timeout");
     }
   }
 }
