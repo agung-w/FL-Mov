@@ -1,9 +1,11 @@
 import 'package:drop_shadow/drop_shadow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../bloc/movie_bloc.dart';
 import '../../entities/movie.dart';
 
 class InTheaterPoster extends StatelessWidget {
@@ -20,6 +22,9 @@ class InTheaterPoster extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
+            context
+                .read<MovieBloc>()
+                .add(MovieEvent.getMovieDetail(int.parse(movie.tmdbId)));
             Navigator.push(
               context,
               MaterialPageRoute(

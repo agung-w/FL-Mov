@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movie_app/bloc/movie_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/services/movie_services.dart';
 
@@ -54,27 +56,15 @@ class InTheaterDetailPage extends StatelessWidget {
                 Text(movie.rating)
               ],
             ),
-            FutureBuilder(
-                future: MovieServices().getMovieDetail(int.parse(movie.tmdbId)),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Column(
-                      children: [
-                        Row(
-                          children: (snapshot.data?.genres ?? [])
-                              .map((e) => Text(
-                                    "${e.name} ",
-                                    style: const TextStyle(fontSize: 15),
-                                  ))
-                              .toList(),
-                        ),
-                        Text(snapshot.data!.overview)
-                      ],
-                    );
-                  } else {
-                    return const SizedBox();
-                  }
-                }),
+            BlocBuilder<MovieBloc, MovieState>(
+                builder: (context, state) =>
+                    state.whenOrNull(
+                        loadedDetail: (movie) => movie.map(success: (result) {
+                              return Text(result.value.overview);
+                            }, failed: (result) {
+                              return Text(result.message);
+                            })) ??
+                    const Text("Cant Fetch Movie detail ")),
           ]),
     );
   }

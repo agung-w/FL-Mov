@@ -129,7 +129,9 @@ class ProfilePage extends StatelessWidget {
                               return Text(
                                 state.when(
                                   initial: () => "Login to use wallet",
-                                  loaded: (balance) => balance,
+                                  loaded: (balance) => balance.map(
+                                      success: (result) => result.value,
+                                      failed: (result) => result.message),
                                   loading: () => "Loading",
                                 ),
                               );

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/services/auth_services.dart';
 import 'package:movie_app/services/user_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,25 +16,22 @@ part 'user_bloc.freezed.dart';
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(const _SignedOut()) {
     on<_SignIn>((event, emit) async {
+      SharedPreferences pref = await SharedPreferences.getInstance();
       if (state is _SignedOut) {
         emit(const _Loading());
-        String? token = await AuthServices()
+        ApiResult<String> token = await AuthServices()
             .login(phone: event.phone, password: event.password);
-        if (token != null) {
-          User? user = await UserServices().getUserDetail(token: token);
-          if (user != null) {
-            SharedPreferences pref = await SharedPreferences.getInstance();
-            pref.setString('phone_number', event.phone);
-            pref.setString('token', token);
-            emit(_SignedIn(user));
-          } else {
-            emit(const _SignedOut());
-          }
-        } else {
-          emit(const _SignedOut());
+        token.map(
+            success: (result) => pref.setString('token', result.value),
+            failed: (message) => {});
+        if (pref.getString('token') != null) {
+          ApiResult<User> user = await UserServices().getUserDetail(
+              token: token.map(
+                  success: (result) => result.value, failed: (result) => ''));
+          user.map(
+              success: (result) => emit(_SignedIn(result.value)),
+              failed: (result) => emit(const _SignedOut()));
         }
-      } else {
-        emit(const _SignedOut());
       }
     });
     on<_SignOut>((event, emit) async {
@@ -46,13 +44,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
     on<_CheckSignInStatus>((event, emit) async {
       SharedPreferences pref = await SharedPreferences.getInstance();
-      String? email = pref.getString('phone_number');
       String? token = pref.getString('token');
-      if (email != null && token != null) {
-        User? user = await UserServices().getUserDetail(token: token);
-        if (user != null) {
-          emit(_SignedIn(user));
-        }
+      if (token != null) {
+        ApiResult<User> user = await UserServices().getUserDetail(token: token);
+        user.map(
+            success: (result) => emit(_SignedIn(result.value)),
+            failed: (result) => emit(const _SignedOut()));
       }
     });
   }

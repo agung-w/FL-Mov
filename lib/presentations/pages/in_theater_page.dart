@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -34,47 +36,53 @@ class _InTheaterPageState extends State<InTheaterPage> {
             ),
           ),
           BlocBuilder<MovieBloc, MovieState>(
-            builder: (context, state) => state.when(
-                loaded: (movies) {
-                  // return Text(movies.toString());
-                  if (movies != null) {
-                    return Stack(
-                      children: [
-                        CarouselSlider.builder(
-                            itemCount: movies.length,
-                            itemBuilder: (context, int index, idx) {
-                              return Transform.scale(
-                                alignment: Alignment.centerLeft,
-                                scale: index == _current ? 1 : 0.85,
-                                child: InTheaterPoster(
-                                  movie: movies.elementAt(index),
-                                  isActive: index == _current ? true : false,
-                                ),
-                              );
-                            },
-                            options: CarouselOptions(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.82,
-                                // enlargeCenterPage: true,
-                                enableInfiniteScroll: false,
-                                // autoPlay: true,
-                                disableCenter: true,
-                                viewportFraction: 0.89,
-                                padEnds: false,
-                                initialPage: _current,
-                                clipBehavior: Clip.none,
-                                onPageChanged: ((index, reason) {
-                                  setState(() {
-                                    _current = index;
-                                  });
-                                }))),
-                      ],
-                    );
-                  } else {
-                    return const Text("no data");
-                  }
-                },
-                loading: () => const Text("loading")),
+            builder: (context, state) =>
+                state.whenOrNull(
+                    loaded: (movies) {
+                      return movies.map(
+                          success: (result) => Stack(
+                                children: [
+                                  CarouselSlider.builder(
+                                      itemCount: result.value.length,
+                                      itemBuilder: (context, int index, idx) {
+                                        return Transform.scale(
+                                          alignment: Alignment.centerLeft,
+                                          scale: index == _current ? 1 : 0.85,
+                                          child: InTheaterPoster(
+                                            movie:
+                                                result.value.elementAt(index),
+                                            isActive: index == _current
+                                                ? true
+                                                : false,
+                                          ),
+                                        );
+                                      },
+                                      options: CarouselOptions(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.82,
+                                          // enlargeCenterPage: true,
+                                          enableInfiniteScroll: false,
+                                          // autoPlay: true,
+                                          disableCenter: true,
+                                          viewportFraction: 0.89,
+                                          padEnds: false,
+                                          initialPage: _current,
+                                          clipBehavior: Clip.none,
+                                          onPageChanged: ((index, reason) {
+                                            setState(() {
+                                              _current = index;
+                                            });
+                                          }))),
+                                ],
+                              ),
+                          failed: (result) => Text(result.message));
+                      // return Text(movies.toString());
+                    },
+                    loading: () => const Text("loading"),
+                    initial: () => const Text("init")) ??
+                const Text("Cant Fetch Movies Right Now"),
           ),
         ]);
   }

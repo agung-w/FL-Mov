@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tresult.dart';
+part of 'api_result.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TResult<T> {
+mixin _$ApiResult<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T value) success,
@@ -57,15 +57,16 @@ mixin _$TResult<T> {
 }
 
 /// @nodoc
-abstract class $TResultCopyWith<T, $Res> {
-  factory $TResultCopyWith(TResult<T> value, $Res Function(TResult<T>) then) =
-      _$TResultCopyWithImpl<T, $Res, TResult<T>>;
+abstract class $ApiResultCopyWith<T, $Res> {
+  factory $ApiResultCopyWith(
+          ApiResult<T> value, $Res Function(ApiResult<T>) then) =
+      _$ApiResultCopyWithImpl<T, $Res, ApiResult<T>>;
 }
 
 /// @nodoc
-class _$TResultCopyWithImpl<T, $Res, $Val extends TResult<T>>
-    implements $TResultCopyWith<T, $Res> {
-  _$TResultCopyWithImpl(this._value, this._then);
+class _$ApiResultCopyWithImpl<T, $Res, $Val extends ApiResult<T>>
+    implements $ApiResultCopyWith<T, $Res> {
+  _$ApiResultCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -84,7 +85,7 @@ abstract class _$$SuccessCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$SuccessCopyWithImpl<T, $Res>
-    extends _$TResultCopyWithImpl<T, $Res, _$Success<T>>
+    extends _$ApiResultCopyWithImpl<T, $Res, _$Success<T>>
     implements _$$SuccessCopyWith<T, $Res> {
   __$$SuccessCopyWithImpl(
       _$Success<T> _value, $Res Function(_$Success<T>) _then)
@@ -114,7 +115,7 @@ class _$Success<T> implements Success<T> {
 
   @override
   String toString() {
-    return 'TResult<$T>.success(value: $value)';
+    return 'ApiResult<$T>.success(value: $value)';
   }
 
   @override
@@ -198,7 +199,7 @@ class _$Success<T> implements Success<T> {
   }
 }
 
-abstract class Success<T> implements TResult<T> {
+abstract class Success<T> implements ApiResult<T> {
   const factory Success(final T value) = _$Success<T>;
 
   T get value;
@@ -218,7 +219,7 @@ abstract class _$$FailedCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$FailedCopyWithImpl<T, $Res>
-    extends _$TResultCopyWithImpl<T, $Res, _$Failed<T>>
+    extends _$ApiResultCopyWithImpl<T, $Res, _$Failed<T>>
     implements _$$FailedCopyWith<T, $Res> {
   __$$FailedCopyWithImpl(_$Failed<T> _value, $Res Function(_$Failed<T>) _then)
       : super(_value, _then);
@@ -247,7 +248,7 @@ class _$Failed<T> implements Failed<T> {
 
   @override
   String toString() {
-    return 'TResult<$T>.failed(message: $message)';
+    return 'ApiResult<$T>.failed(message: $message)';
   }
 
   @override
@@ -330,7 +331,7 @@ class _$Failed<T> implements Failed<T> {
   }
 }
 
-abstract class Failed<T> implements TResult<T> {
+abstract class Failed<T> implements ApiResult<T> {
   const factory Failed(final String message) = _$Failed<T>;
 
   String get message;

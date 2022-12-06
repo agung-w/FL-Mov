@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_app/entities/tresult.dart';
+import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/services/wallet_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,11 +17,9 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
       emit(const _Loading());
       String? token = pref.getString('token');
       if (token != null) {
-        TResult<String> wallet =
+        ApiResult<String> wallet =
             await WalletServices().getBalance(token: token);
-        emit(_Loaded(wallet.map(
-            success: (result) => result.value,
-            failed: (result) => result.message)));
+        emit(_Loaded(wallet));
       } else {
         emit(const _Initial());
       }

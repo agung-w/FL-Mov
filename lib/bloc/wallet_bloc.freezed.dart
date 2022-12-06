@@ -169,21 +169,21 @@ mixin _$WalletState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String result) loaded,
+    required TResult Function(ApiResult<String> result) loaded,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String result)? loaded,
+    TResult? Function(ApiResult<String> result)? loaded,
     TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String result)? loaded,
+    TResult Function(ApiResult<String> result)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) =>
@@ -268,7 +268,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String result) loaded,
+    required TResult Function(ApiResult<String> result) loaded,
     required TResult Function() loading,
   }) {
     return initial();
@@ -278,7 +278,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String result)? loaded,
+    TResult? Function(ApiResult<String> result)? loaded,
     TResult? Function()? loading,
   }) {
     return initial?.call();
@@ -288,7 +288,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String result)? loaded,
+    TResult Function(ApiResult<String> result)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -342,7 +342,9 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String result});
+  $Res call({ApiResult<String> result});
+
+  $ApiResultCopyWith<String, $Res> get result;
 }
 
 /// @nodoc
@@ -361,8 +363,16 @@ class __$$_LoadedCopyWithImpl<$Res>
       null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ApiResult<String>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ApiResultCopyWith<String, $Res> get result {
+    return $ApiResultCopyWith<String, $Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
@@ -372,7 +382,7 @@ class _$_Loaded implements _Loaded {
   const _$_Loaded(this.result);
 
   @override
-  final String result;
+  final ApiResult<String> result;
 
   @override
   String toString() {
@@ -400,7 +410,7 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String result) loaded,
+    required TResult Function(ApiResult<String> result) loaded,
     required TResult Function() loading,
   }) {
     return loaded(result);
@@ -410,7 +420,7 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String result)? loaded,
+    TResult? Function(ApiResult<String> result)? loaded,
     TResult? Function()? loading,
   }) {
     return loaded?.call(result);
@@ -420,7 +430,7 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String result)? loaded,
+    TResult Function(ApiResult<String> result)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -466,9 +476,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements WalletState {
-  const factory _Loaded(final String result) = _$_Loaded;
+  const factory _Loaded(final ApiResult<String> result) = _$_Loaded;
 
-  String get result;
+  ApiResult<String> get result;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -512,7 +522,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String result) loaded,
+    required TResult Function(ApiResult<String> result) loaded,
     required TResult Function() loading,
   }) {
     return loading();
@@ -522,7 +532,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String result)? loaded,
+    TResult? Function(ApiResult<String> result)? loaded,
     TResult? Function()? loading,
   }) {
     return loading?.call();
@@ -532,7 +542,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String result)? loaded,
+    TResult Function(ApiResult<String> result)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
