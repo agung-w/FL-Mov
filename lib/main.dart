@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/bloc/movie_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
+import 'package:movie_app/bloc/wallet_bloc.dart';
 import 'package:movie_app/presentations/pages/edit_profile_page.dart';
 import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/main_page.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
                 MovieBloc()..add(const MovieEvent.getInTheater())),
         BlocProvider(
             create: (context) =>
-                UserBloc()..add(const UserEvent.checkSignInStatus()))
+                UserBloc()..add(const UserEvent.checkSignInStatus())),
+        BlocProvider(create: (context) => WalletBloc())
       ],
       child: const MaterialApp(
         home: MainPage(),

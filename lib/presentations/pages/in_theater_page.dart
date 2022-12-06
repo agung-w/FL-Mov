@@ -25,7 +25,7 @@ class _InTheaterPageState extends State<InTheaterPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
             child: Text(
               "Now In Theater",
               textAlign: TextAlign.start,
