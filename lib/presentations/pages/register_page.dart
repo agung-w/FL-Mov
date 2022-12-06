@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentations/pages/profile_page.dart';
+import 'package:movie_app/presentations/widgets/phone_input_form.dart';
 import 'package:movie_app/presentations/widgets/secret_input_form.dart';
 import 'package:movie_app/presentations/widgets/text_input_form.dart';
 
@@ -16,7 +17,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController name = TextEditingController();
-    TextEditingController email = TextEditingController();
+    TextEditingController phone = TextEditingController();
     TextEditingController password = TextEditingController();
     TextEditingController passwordConfirmation = TextEditingController();
 
@@ -38,9 +39,8 @@ class RegisterPage extends StatelessWidget {
               hint: "Name",
               controller: name,
             ),
-            TextInputForm(
-              hint: "Email",
-              controller: email,
+            PhoneInputForm(
+              controller: phone,
             ),
             SecretInputForm(
               hint: "Password",

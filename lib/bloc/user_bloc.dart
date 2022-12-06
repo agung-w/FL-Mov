@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movie_app/services/auth_services.dart';
 import 'package:movie_app/services/user_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,40 +15,43 @@ part 'user_bloc.freezed.dart';
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(const _SignedOut()) {
     on<_SignIn>((event, emit) async {
-      log("tes123");
       if (state is _SignedOut) {
-        String? token =
-            UserServices.getToken(email: event.email, password: event.password);
+        emit(const _Loading());
+        String? token = await AuthServices()
+            .login(phone: event.phone, password: event.password);
         if (token != null) {
-          User? user = UserServices.getUser(email: event.email, token: token);
+          User? user = await UserServices().getUserDetail(token: token);
           if (user != null) {
             SharedPreferences pref = await SharedPreferences.getInstance();
-            pref.setString('email', event.email);
+            pref.setString('phone_number', event.phone);
             pref.setString('token', token);
             emit(_SignedIn(user));
+          } else {
+            emit(const _SignedOut());
           }
+        } else {
+          emit(const _SignedOut());
         }
+      } else {
+        emit(const _SignedOut());
       }
     });
     on<_SignOut>((event, emit) async {
       if (state is _$_SignedIn) {
         SharedPreferences pref = await SharedPreferences.getInstance();
-        pref.remove('email');
+        pref.remove('phone_number');
         pref.remove('token');
         emit(const _SignedOut());
       }
     });
     on<_CheckSignInStatus>((event, emit) async {
       SharedPreferences pref = await SharedPreferences.getInstance();
-      String? email = pref.getString('token');
-      String? token = pref.getString('email');
+      String? email = pref.getString('phone_number');
+      String? token = pref.getString('token');
       if (email != null && token != null) {
-        bool tokenValid = UserServices.isTokenValid(token);
-        if (tokenValid) {
-          User? user = UserServices.getUser(email: email, token: token);
-          if (user != null) {
-            emit(_SignedIn(user));
-          }
+        User? user = await UserServices().getUserDetail(token: token);
+        if (user != null) {
+          emit(_SignedIn(user));
         }
       }
     });

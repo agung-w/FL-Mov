@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) signIn,
+    required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? signIn,
+    TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? signIn,
+    TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     required TResult orElse(),
@@ -84,7 +84,7 @@ abstract class _$$_SignInCopyWith<$Res> {
   factory _$$_SignInCopyWith(_$_SignIn value, $Res Function(_$_SignIn) then) =
       __$$_SignInCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String phone, String password});
 }
 
 /// @nodoc
@@ -97,13 +97,13 @@ class __$$_SignInCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? phone = null,
     Object? password = null,
   }) {
     return _then(_$_SignIn(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -116,16 +116,16 @@ class __$$_SignInCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SignIn implements _SignIn {
-  const _$_SignIn({required this.email, required this.password});
+  const _$_SignIn({required this.phone, required this.password});
 
   @override
-  final String email;
+  final String phone;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'UserEvent.signIn(email: $email, password: $password)';
+    return 'UserEvent.signIn(phone: $phone, password: $password)';
   }
 
   @override
@@ -133,13 +133,13 @@ class _$_SignIn implements _SignIn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignIn &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, phone, password);
 
   @JsonKey(ignore: true)
   @override
@@ -150,33 +150,33 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) signIn,
+    required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
   }) {
-    return signIn(email, password);
+    return signIn(phone, password);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? signIn,
+    TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
   }) {
-    return signIn?.call(email, password);
+    return signIn?.call(phone, password);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? signIn,
+    TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     required TResult orElse(),
   }) {
     if (signIn != null) {
-      return signIn(email, password);
+      return signIn(phone, password);
     }
     return orElse();
   }
@@ -218,10 +218,10 @@ class _$_SignIn implements _SignIn {
 
 abstract class _SignIn implements UserEvent {
   const factory _SignIn(
-      {required final String email,
+      {required final String phone,
       required final String password}) = _$_SignIn;
 
-  String get email;
+  String get phone;
   String get password;
   @JsonKey(ignore: true)
   _$$_SignInCopyWith<_$_SignIn> get copyWith =>
@@ -265,7 +265,7 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) signIn,
+    required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
   }) {
@@ -275,7 +275,7 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? signIn,
+    TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
   }) {
@@ -285,7 +285,7 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? signIn,
+    TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     required TResult orElse(),
@@ -373,7 +373,7 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) signIn,
+    required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
   }) {
@@ -383,7 +383,7 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? signIn,
+    TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
   }) {
@@ -393,7 +393,7 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? signIn,
+    TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     required TResult orElse(),
@@ -449,18 +449,21 @@ mixin _$UserState {
   TResult when<TResult extends Object?>({
     required TResult Function() signedOut,
     required TResult Function(User user) signedIn,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signedOut,
     TResult? Function(User user)? signedIn,
+    TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signedOut,
     TResult Function(User user)? signedIn,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -468,18 +471,21 @@ mixin _$UserState {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_SignedIn value) signedIn,
+    required TResult Function(_Loading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_SignedIn value)? signedIn,
+    TResult? Function(_Loading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_SignedIn value)? signedIn,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -542,6 +548,7 @@ class _$_SignedOut implements _SignedOut {
   TResult when<TResult extends Object?>({
     required TResult Function() signedOut,
     required TResult Function(User user) signedIn,
+    required TResult Function() loading,
   }) {
     return signedOut();
   }
@@ -551,6 +558,7 @@ class _$_SignedOut implements _SignedOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signedOut,
     TResult? Function(User user)? signedIn,
+    TResult? Function()? loading,
   }) {
     return signedOut?.call();
   }
@@ -560,6 +568,7 @@ class _$_SignedOut implements _SignedOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signedOut,
     TResult Function(User user)? signedIn,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (signedOut != null) {
@@ -573,6 +582,7 @@ class _$_SignedOut implements _SignedOut {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_SignedIn value) signedIn,
+    required TResult Function(_Loading value) loading,
   }) {
     return signedOut(this);
   }
@@ -582,6 +592,7 @@ class _$_SignedOut implements _SignedOut {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_SignedIn value)? signedIn,
+    TResult? Function(_Loading value)? loading,
   }) {
     return signedOut?.call(this);
   }
@@ -591,6 +602,7 @@ class _$_SignedOut implements _SignedOut {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_SignedIn value)? signedIn,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (signedOut != null) {
@@ -680,6 +692,7 @@ class _$_SignedIn implements _SignedIn {
   TResult when<TResult extends Object?>({
     required TResult Function() signedOut,
     required TResult Function(User user) signedIn,
+    required TResult Function() loading,
   }) {
     return signedIn(user);
   }
@@ -689,6 +702,7 @@ class _$_SignedIn implements _SignedIn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signedOut,
     TResult? Function(User user)? signedIn,
+    TResult? Function()? loading,
   }) {
     return signedIn?.call(user);
   }
@@ -698,6 +712,7 @@ class _$_SignedIn implements _SignedIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signedOut,
     TResult Function(User user)? signedIn,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (signedIn != null) {
@@ -711,6 +726,7 @@ class _$_SignedIn implements _SignedIn {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_SignedIn value) signedIn,
+    required TResult Function(_Loading value) loading,
   }) {
     return signedIn(this);
   }
@@ -720,6 +736,7 @@ class _$_SignedIn implements _SignedIn {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_SignedIn value)? signedIn,
+    TResult? Function(_Loading value)? loading,
   }) {
     return signedIn?.call(this);
   }
@@ -729,6 +746,7 @@ class _$_SignedIn implements _SignedIn {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_SignedIn value)? signedIn,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (signedIn != null) {
@@ -745,4 +763,111 @@ abstract class _SignedIn implements UserState {
   @JsonKey(ignore: true)
   _$$_SignedInCopyWith<_$_SignedIn> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$_Loading>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Loading implements _Loading {
+  const _$_Loading();
+
+  @override
+  String toString() {
+    return 'UserState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signedOut,
+    required TResult Function(User user) signedIn,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signedOut,
+    TResult? Function(User user)? signedIn,
+    TResult? Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signedOut,
+    TResult Function(User user)? signedIn,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignedOut value) signedOut,
+    required TResult Function(_SignedIn value) signedIn,
+    required TResult Function(_Loading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignedOut value)? signedOut,
+    TResult? Function(_SignedIn value)? signedIn,
+    TResult? Function(_Loading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignedOut value)? signedOut,
+    TResult Function(_SignedIn value)? signedIn,
+    TResult Function(_Loading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements UserState {
+  const factory _Loading() = _$_Loading;
 }

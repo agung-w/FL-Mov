@@ -20,11 +20,10 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: "phone_number")
+  String get phone => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
-  String? get token => throw _privateConstructorUsedError;
-  String? get phone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,11 +36,9 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String email,
+      {@JsonKey(name: "phone_number") String phone,
       String name,
-      String? photoUrl,
-      String? token,
-      String? phone});
+      String? photoUrl});
 }
 
 /// @nodoc
@@ -57,16 +54,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? phone = null,
     Object? name = null,
     Object? photoUrl = freezed,
-    Object? token = freezed,
-    Object? phone = freezed,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -75,14 +70,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -95,11 +82,9 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String email,
+      {@JsonKey(name: "phone_number") String phone,
       String name,
-      String? photoUrl,
-      String? token,
-      String? phone});
+      String? photoUrl});
 }
 
 /// @nodoc
@@ -111,16 +96,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? phone = null,
     Object? name = null,
     Object? photoUrl = freezed,
-    Object? token = freezed,
-    Object? phone = freezed,
   }) {
     return _then(_$_User(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -130,44 +113,32 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_User implements _User {
+class _$_User extends _User {
   const _$_User(
-      {required this.email,
+      {@JsonKey(name: "phone_number") required this.phone,
       required this.name,
-      this.photoUrl,
-      this.token,
-      this.phone});
+      this.photoUrl})
+      : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
-  final String email;
+  @JsonKey(name: "phone_number")
+  final String phone;
   @override
   final String name;
   @override
   final String? photoUrl;
-  @override
-  final String? token;
-  @override
-  final String? phone;
 
   @override
   String toString() {
-    return 'User(email: $email, name: $name, photoUrl: $photoUrl, token: $token, phone: $phone)';
+    return 'User(phone: $phone, name: $name, photoUrl: $photoUrl)';
   }
 
   @override
@@ -175,18 +146,15 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.phone, phone) || other.phone == phone));
+                other.photoUrl == photoUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, name, photoUrl, token, phone);
+  int get hashCode => Object.hash(runtimeType, phone, name, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -202,26 +170,22 @@ class _$_User implements _User {
   }
 }
 
-abstract class _User implements User {
+abstract class _User extends User {
   const factory _User(
-      {required final String email,
+      {@JsonKey(name: "phone_number") required final String phone,
       required final String name,
-      final String? photoUrl,
-      final String? token,
-      final String? phone}) = _$_User;
+      final String? photoUrl}) = _$_User;
+  const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  String get email;
+  @JsonKey(name: "phone_number")
+  String get phone;
   @override
   String get name;
   @override
   String? get photoUrl;
-  @override
-  String? get token;
-  @override
-  String? get phone;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

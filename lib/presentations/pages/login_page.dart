@@ -26,126 +26,128 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        centerTitle: true,
-        title: Text(
-          "Login",
-          style: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+    return BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        state.whenOrNull(
+            signedIn: (user) {
+              Navigator.pop(context);
+            },
+            loading: () {});
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          centerTitle: true,
+          title: Text(
+            "Login",
+            style: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          ),
         ),
-      ),
-      body: Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: Column(children: [
-            PhoneInputForm(
-              hint: "Password",
-              controller: phone,
-              prefix: Row(
-                children: [
-                  const Text(
-                    "+62 ",
-                    style: TextStyle(color: Colors.black54, fontSize: 18),
-                  ),
-                  Container(
-                    height: 16,
-                    width: 1,
-                    color: Colors.black54,
-                  )
-                ],
+        body: Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Column(children: [
+              PhoneInputForm(
+                controller: phone,
               ),
-            ),
-            SecretInputForm(
-              hint: "Password",
-              controller: password,
-            ),
-            SizedBox(
-              height: 40,
-              child: Row(children: [
-                const Text("Forgot password?"),
-                GestureDetector(
-                    onTap: () {},
-                    child: const Text(
-                      " reset",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
-              ]),
-            ),
-            ElevatedButton(
-                onPressed: () async {
-                  AuthServices()
-                      .login(int.parse(phone.text).toString(), password.text);
-                  // _print;
-                },
-                style: ElevatedButton.styleFrom(
-                    side: const BorderSide(color: Colors.black, width: 0.5),
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    textStyle: const TextStyle(fontWeight: FontWeight.normal)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("Login"),
-                  ],
-                )),
-            // LargeButton(function: () {}, title: "Login"),
-            SizedBox(
-              height: 50,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Don't have an account ?",
-                    style: TextStyle(color: Colors.black54),
-                  )
-                ],
+              SecretInputForm(
+                hint: "Password",
+                controller: password,
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  // print(phone.text);
-                  // AuthServices().login(phone.text, "agungwijaya");
-                },
-                style: ElevatedButton.styleFrom(
-                    side: const BorderSide(color: Colors.black, width: 0.5),
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    textStyle: const TextStyle(fontWeight: FontWeight.normal)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("Register"),
-                  ],
-                )),
-            Expanded(
-              child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: SizedBox(
-                  height: 50,
+              SizedBox(
+                height: 40,
+                child: Row(children: [
+                  const Text("Forgot password?"),
+                  GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        " reset",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                ]),
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    if (phone.text.length > 1) {
+                      context.read<UserBloc>().add(UserEvent.signIn(
+                          phone: int.parse(phone.text).toString(),
+                          password: password.text));
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      side: const BorderSide(color: Colors.black, width: 0.5),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      textStyle:
+                          const TextStyle(fontWeight: FontWeight.normal)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account?"),
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.of(context, rootNavigator: true).push(
-                              MaterialPageRoute(
-                                builder: (_) => const RegisterPage(),
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            " Register",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          )),
+                    children: const [
+                      Text("Login"),
                     ],
+                  )),
+              // LargeButton(function: () {}, title: "Login"),
+              SizedBox(
+                height: 50,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Don't have an account yet ?",
+                      style: TextStyle(color: Colors.black54),
+                    )
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const RegisterPage(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                      side: const BorderSide(color: Colors.black, width: 0.5),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      textStyle:
+                          const TextStyle(fontWeight: FontWeight.normal)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text("Register"),
+                    ],
+                  )),
+              Expanded(
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: SizedBox(
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account?"),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.of(context, rootNavigator: true).push(
+                                MaterialPageRoute(
+                                  builder: (_) => const RegisterPage(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              " Register",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
       ),
     );

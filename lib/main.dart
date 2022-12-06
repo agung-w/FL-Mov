@@ -7,10 +7,11 @@ import 'package:movie_app/presentations/pages/edit_profile_page.dart';
 import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/main_page.dart';
 import 'package:movie_app/presentations/pages/profile_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
-
+  SharedPreferences pref = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 

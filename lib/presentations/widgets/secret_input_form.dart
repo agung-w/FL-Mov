@@ -23,13 +23,12 @@ class _SecretInputFormState extends State<SecretInputForm> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        style: GoogleFonts.nunito(),
+        style: GoogleFonts.nunito(fontSize: 18),
         controller: widget.controller,
-        cursorHeight: 20,
         autocorrect: false,
-        obscureText: _visible,
+        obscureText: !_visible,
         decoration: InputDecoration(
-            labelText: widget.hint,
+            hintText: widget.hint,
             suffixIcon: IconButton(
               icon: Icon(_visible ? Icons.visibility : Icons.visibility_off),
               onPressed: () {

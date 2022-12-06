@@ -22,13 +22,12 @@ class _TextInputFormState extends State<TextInputForm> {
   Widget build(BuildContext context) {
     return TextFormField(
         textAlignVertical: TextAlignVertical.bottom,
-        style: GoogleFonts.nunito(),
-        cursorHeight: 20,
+        style: GoogleFonts.nunito(fontSize: 18),
         autocorrect: false,
         onChanged: (value) => setState(() {}),
         controller: widget.controller,
         decoration: InputDecoration(
-          prefixIcon: widget.prefix,
+          hintText: widget.hint,
           prefixIconConstraints: const BoxConstraints(),
           // prefixStyle:
         ));

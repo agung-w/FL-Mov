@@ -8,11 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PhoneInputForm extends StatefulWidget {
   final TextEditingController controller;
-  final String hint;
-  final Widget? prefix;
 
-  const PhoneInputForm(
-      {super.key, required this.hint, required this.controller, this.prefix});
+  const PhoneInputForm({super.key, required this.controller});
 
   @override
   State<PhoneInputForm> createState() => _PhoneInputFormState();
@@ -28,9 +25,21 @@ class _PhoneInputFormState extends State<PhoneInputForm> {
       controller: widget.controller,
       onChanged: (value) => setState(() {}),
       decoration: InputDecoration(
-        prefixIcon: widget.prefix,
+        hintText: "Phone number",
+        prefixIcon: Row(
+          children: [
+            const Text(
+              "+62 ",
+              style: TextStyle(color: Colors.black54, fontSize: 18),
+            ),
+            Container(
+              height: 16,
+              width: 1,
+              color: Colors.black54,
+            )
+          ],
+        ),
         prefixIconConstraints: const BoxConstraints(maxWidth: 45),
-        // prefixStyle:
       ),
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
