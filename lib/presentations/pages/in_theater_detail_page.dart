@@ -3,9 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/bloc/movie_bloc.dart';
+import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
-import 'package:movie_app/services/movie_services.dart';
 
 class InTheaterDetailPage extends StatelessWidget {
   final Movie movie;
@@ -56,15 +55,19 @@ class InTheaterDetailPage extends StatelessWidget {
                 Text(movie.rating)
               ],
             ),
-            BlocBuilder<MovieBloc, MovieState>(
+            // FutureBuilder(builder: (context,snapshot){
+            //   return Text("tes");
+
+            // })
+            BlocBuilder<MovieDetailBloc, MovieDetailState>(
                 builder: (context, state) =>
                     state.whenOrNull(
-                        loadedDetail: (movie) => movie.map(success: (result) {
+                        loaded: (movie) => movie.map(success: (result) {
                               return Text(result.value.overview);
                             }, failed: (result) {
                               return Text(result.message);
                             })) ??
-                    const Text("Cant Fetch Movie detail ")),
+                    Text(state.toString())),
           ]),
     );
   }

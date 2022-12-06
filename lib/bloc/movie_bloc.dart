@@ -16,10 +16,5 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       final movies = await MovieServices().getInTheater();
       emit(MovieState.loaded(movies));
     });
-    on<_GetMovieDetail>((event, emit) async {
-      emit(const MovieState.loadingDetail());
-      final movie = await MovieServices().getMovieDetail(event.id);
-      emit(MovieState.loadedDetail(movie));
-    });
   }
 }
