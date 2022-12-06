@@ -20,18 +20,24 @@ mixin _$WalletEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getBalance,
     required TResult Function() activate,
+    required TResult Function(
+            String amount, String method, BuildContext context)
+        topUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getBalance,
     TResult? Function()? activate,
+    TResult? Function(String amount, String method, BuildContext context)?
+        topUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getBalance,
     TResult Function()? activate,
+    TResult Function(String amount, String method, BuildContext context)? topUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,21 @@ mixin _$WalletEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBalance value) getBalance,
     required TResult Function(_Activate value) activate,
+    required TResult Function(_TopUp value) topUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBalance value)? getBalance,
     TResult? Function(_Activate value)? activate,
+    TResult? Function(_TopUp value)? topUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBalance value)? getBalance,
     TResult Function(_Activate value)? activate,
+    TResult Function(_TopUp value)? topUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +123,9 @@ class _$_GetBalance implements _GetBalance {
   TResult when<TResult extends Object?>({
     required TResult Function() getBalance,
     required TResult Function() activate,
+    required TResult Function(
+            String amount, String method, BuildContext context)
+        topUp,
   }) {
     return getBalance();
   }
@@ -123,6 +135,8 @@ class _$_GetBalance implements _GetBalance {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getBalance,
     TResult? Function()? activate,
+    TResult? Function(String amount, String method, BuildContext context)?
+        topUp,
   }) {
     return getBalance?.call();
   }
@@ -132,6 +146,7 @@ class _$_GetBalance implements _GetBalance {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getBalance,
     TResult Function()? activate,
+    TResult Function(String amount, String method, BuildContext context)? topUp,
     required TResult orElse(),
   }) {
     if (getBalance != null) {
@@ -145,6 +160,7 @@ class _$_GetBalance implements _GetBalance {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBalance value) getBalance,
     required TResult Function(_Activate value) activate,
+    required TResult Function(_TopUp value) topUp,
   }) {
     return getBalance(this);
   }
@@ -154,6 +170,7 @@ class _$_GetBalance implements _GetBalance {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBalance value)? getBalance,
     TResult? Function(_Activate value)? activate,
+    TResult? Function(_TopUp value)? topUp,
   }) {
     return getBalance?.call(this);
   }
@@ -163,6 +180,7 @@ class _$_GetBalance implements _GetBalance {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBalance value)? getBalance,
     TResult Function(_Activate value)? activate,
+    TResult Function(_TopUp value)? topUp,
     required TResult orElse(),
   }) {
     if (getBalance != null) {
@@ -216,6 +234,9 @@ class _$_Activate implements _Activate {
   TResult when<TResult extends Object?>({
     required TResult Function() getBalance,
     required TResult Function() activate,
+    required TResult Function(
+            String amount, String method, BuildContext context)
+        topUp,
   }) {
     return activate();
   }
@@ -225,6 +246,8 @@ class _$_Activate implements _Activate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getBalance,
     TResult? Function()? activate,
+    TResult? Function(String amount, String method, BuildContext context)?
+        topUp,
   }) {
     return activate?.call();
   }
@@ -234,6 +257,7 @@ class _$_Activate implements _Activate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getBalance,
     TResult Function()? activate,
+    TResult Function(String amount, String method, BuildContext context)? topUp,
     required TResult orElse(),
   }) {
     if (activate != null) {
@@ -247,6 +271,7 @@ class _$_Activate implements _Activate {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBalance value) getBalance,
     required TResult Function(_Activate value) activate,
+    required TResult Function(_TopUp value) topUp,
   }) {
     return activate(this);
   }
@@ -256,6 +281,7 @@ class _$_Activate implements _Activate {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBalance value)? getBalance,
     TResult? Function(_Activate value)? activate,
+    TResult? Function(_TopUp value)? topUp,
   }) {
     return activate?.call(this);
   }
@@ -265,6 +291,7 @@ class _$_Activate implements _Activate {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBalance value)? getBalance,
     TResult Function(_Activate value)? activate,
+    TResult Function(_TopUp value)? topUp,
     required TResult orElse(),
   }) {
     if (activate != null) {
@@ -276,6 +303,165 @@ class _$_Activate implements _Activate {
 
 abstract class _Activate implements WalletEvent {
   const factory _Activate() = _$_Activate;
+}
+
+/// @nodoc
+abstract class _$$_TopUpCopyWith<$Res> {
+  factory _$$_TopUpCopyWith(_$_TopUp value, $Res Function(_$_TopUp) then) =
+      __$$_TopUpCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String amount, String method, BuildContext context});
+}
+
+/// @nodoc
+class __$$_TopUpCopyWithImpl<$Res>
+    extends _$WalletEventCopyWithImpl<$Res, _$_TopUp>
+    implements _$$_TopUpCopyWith<$Res> {
+  __$$_TopUpCopyWithImpl(_$_TopUp _value, $Res Function(_$_TopUp) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amount = null,
+    Object? method = null,
+    Object? context = null,
+  }) {
+    return _then(_$_TopUp(
+      null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TopUp implements _TopUp {
+  const _$_TopUp(this.amount, this.method, this.context);
+
+  @override
+  final String amount;
+  @override
+  final String method;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'WalletEvent.topUp(amount: $amount, method: $method, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TopUp &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, amount, method, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TopUpCopyWith<_$_TopUp> get copyWith =>
+      __$$_TopUpCopyWithImpl<_$_TopUp>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getBalance,
+    required TResult Function() activate,
+    required TResult Function(
+            String amount, String method, BuildContext context)
+        topUp,
+  }) {
+    return topUp(amount, method, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getBalance,
+    TResult? Function()? activate,
+    TResult? Function(String amount, String method, BuildContext context)?
+        topUp,
+  }) {
+    return topUp?.call(amount, method, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getBalance,
+    TResult Function()? activate,
+    TResult Function(String amount, String method, BuildContext context)? topUp,
+    required TResult orElse(),
+  }) {
+    if (topUp != null) {
+      return topUp(amount, method, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetBalance value) getBalance,
+    required TResult Function(_Activate value) activate,
+    required TResult Function(_TopUp value) topUp,
+  }) {
+    return topUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetBalance value)? getBalance,
+    TResult? Function(_Activate value)? activate,
+    TResult? Function(_TopUp value)? topUp,
+  }) {
+    return topUp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetBalance value)? getBalance,
+    TResult Function(_Activate value)? activate,
+    TResult Function(_TopUp value)? topUp,
+    required TResult orElse(),
+  }) {
+    if (topUp != null) {
+      return topUp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TopUp implements WalletEvent {
+  const factory _TopUp(final String amount, final String method,
+      final BuildContext context) = _$_TopUp;
+
+  String get amount;
+  String get method;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_TopUpCopyWith<_$_TopUp> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

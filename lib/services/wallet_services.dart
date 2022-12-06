@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -33,6 +34,30 @@ class WalletServices {
           "Authorization": "Bearer $token",
         }),
       );
+      // log(result.data);
+      return ApiResult.success(result.data['data']['wallet']['balance']);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message']
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<String>> topUp(
+      {required String token,
+      required String amount,
+      required String method}) async {
+    var data = {
+      "wallet": {"amount": amount, "method": method}
+    };
+    try {
+      Response result =
+          await _dio.put("${dotenv.env['local_api_url']}/wallet/top_up",
+              options: Options(headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer $token",
+              }),
+              data: jsonEncode(data));
       // log(result.data);
       return ApiResult.success(result.data['data']['wallet']['balance']);
     } on DioError catch (e) {
