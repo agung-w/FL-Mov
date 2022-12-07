@@ -47,7 +47,7 @@ class _InTheaterPageState extends State<InTheaterPage> {
                                       itemBuilder: (context, int index, idx) {
                                         return Transform.scale(
                                           alignment: Alignment.centerLeft,
-                                          scale: index == _current ? 1 : 0.85,
+                                          scale: index == _current ? 1 : 0.87,
                                           child: InTheaterPoster(
                                             movie:
                                                 result.value.elementAt(index),

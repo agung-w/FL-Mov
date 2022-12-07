@@ -38,7 +38,7 @@ class InTheaterPoster extends StatelessWidget {
             children: [
               DropShadow(
                 blurRadius: 8,
-                offset: const Offset(0, 15),
+                offset: const Offset(0, 16),
                 borderRadius: 10,
                 child: Image(
                   fit: BoxFit.fill,
