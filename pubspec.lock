@@ -523,11 +523,12 @@ packages:
   pinput:
     dependency: "direct main"
     description:
-      name: pinput
-      sha256: d49de46107b5ea4bd01833cafa6f440d805da9c5377150016bc3d36797202be2
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.16"
+      path: "."
+      ref: dev
+      resolved-ref: "2c198e46e1fa18a15d4667aa2d939bcbb04c7c39"
+      url: "https://github.com/Tkko/Flutter_Pinput"
+    source: git
+    version: "2.2.12"
   platform:
     dependency: transitive
     description:

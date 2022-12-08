@@ -20,7 +20,7 @@ class WalletServices {
       return ApiResult.success(result.data['data']['wallet']['balance']);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
-          ? e.response!.data['error']['message']
+          ? e.response!.data['error']['message'].toString()
           : "Connection timeout");
     }
   }
@@ -38,7 +38,7 @@ class WalletServices {
       return ApiResult.success(result.data['data']['wallet']['balance']);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
-          ? e.response!.data['error']['message']
+          ? e.response!.data['error']['message'].toString()
           : "Connection timeout");
     }
   }
@@ -62,7 +62,7 @@ class WalletServices {
       return ApiResult.success(result.data['data']['wallet']['balance']);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
-          ? e.response!.data['error']['message']
+          ? e.response!.data['error']['message'].toString()
           : "Connection timeout");
     }
   }

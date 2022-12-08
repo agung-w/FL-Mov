@@ -21,6 +21,13 @@ mixin _$UserEvent {
     required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +35,13 @@ mixin _$UserEvent {
     TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +49,13 @@ mixin _$UserEvent {
     TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +64,9 @@ mixin _$UserEvent {
     required TResult Function(_SignIn value) signIn,
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +74,9 @@ mixin _$UserEvent {
     TResult? Function(_SignIn value)? signIn,
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +84,9 @@ mixin _$UserEvent {
     TResult Function(_SignIn value)? signIn,
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,6 +183,13 @@ class _$_SignIn implements _SignIn {
     required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
   }) {
     return signIn(phone, password);
   }
@@ -163,6 +200,13 @@ class _$_SignIn implements _SignIn {
     TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
   }) {
     return signIn?.call(phone, password);
   }
@@ -173,6 +217,13 @@ class _$_SignIn implements _SignIn {
     TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -187,6 +238,9 @@ class _$_SignIn implements _SignIn {
     required TResult Function(_SignIn value) signIn,
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
     return signIn(this);
   }
@@ -197,6 +251,9 @@ class _$_SignIn implements _SignIn {
     TResult? Function(_SignIn value)? signIn,
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
     return signIn?.call(this);
   }
@@ -207,6 +264,9 @@ class _$_SignIn implements _SignIn {
     TResult Function(_SignIn value)? signIn,
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -268,6 +328,13 @@ class _$_SignOut implements _SignOut {
     required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
   }) {
     return signOut();
   }
@@ -278,6 +345,13 @@ class _$_SignOut implements _SignOut {
     TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
   }) {
     return signOut?.call();
   }
@@ -288,6 +362,13 @@ class _$_SignOut implements _SignOut {
     TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -302,6 +383,9 @@ class _$_SignOut implements _SignOut {
     required TResult Function(_SignIn value) signIn,
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
     return signOut(this);
   }
@@ -312,6 +396,9 @@ class _$_SignOut implements _SignOut {
     TResult? Function(_SignIn value)? signIn,
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
     return signOut?.call(this);
   }
@@ -322,6 +409,9 @@ class _$_SignOut implements _SignOut {
     TResult Function(_SignIn value)? signIn,
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -376,6 +466,13 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     required TResult Function(String phone, String password) signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
   }) {
     return checkSignInStatus();
   }
@@ -386,6 +483,13 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult? Function(String phone, String password)? signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
   }) {
     return checkSignInStatus?.call();
   }
@@ -396,6 +500,13 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult Function(String phone, String password)? signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
     required TResult orElse(),
   }) {
     if (checkSignInStatus != null) {
@@ -410,6 +521,9 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     required TResult Function(_SignIn value) signIn,
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
     return checkSignInStatus(this);
   }
@@ -420,6 +534,9 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult? Function(_SignIn value)? signIn,
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
     return checkSignInStatus?.call(this);
   }
@@ -430,6 +547,9 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult Function(_SignIn value)? signIn,
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
   }) {
     if (checkSignInStatus != null) {
@@ -441,6 +561,593 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
 
 abstract class _CheckSignInStatus implements UserEvent {
   const factory _CheckSignInStatus() = _$_CheckSignInStatus;
+}
+
+/// @nodoc
+abstract class _$$_RegisterInitCopyWith<$Res> {
+  factory _$$_RegisterInitCopyWith(
+          _$_RegisterInit value, $Res Function(_$_RegisterInit) then) =
+      __$$_RegisterInitCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, String name, BuildContext context});
+}
+
+/// @nodoc
+class __$$_RegisterInitCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_RegisterInit>
+    implements _$$_RegisterInitCopyWith<$Res> {
+  __$$_RegisterInitCopyWithImpl(
+      _$_RegisterInit _value, $Res Function(_$_RegisterInit) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? name = null,
+    Object? context = null,
+  }) {
+    return _then(_$_RegisterInit(
+      null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RegisterInit implements _RegisterInit {
+  const _$_RegisterInit(this.phone, this.name, this.context);
+
+  @override
+  final String phone;
+  @override
+  final String name;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.registerInit(phone: $phone, name: $name, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RegisterInit &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, name, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RegisterInitCopyWith<_$_RegisterInit> get copyWith =>
+      __$$_RegisterInitCopyWithImpl<_$_RegisterInit>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone, String password) signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+  }) {
+    return registerInit(phone, name, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password)? signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+  }) {
+    return registerInit?.call(phone, name, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password)? signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (registerInit != null) {
+      return registerInit(phone, name, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+  }) {
+    return registerInit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+  }) {
+    return registerInit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (registerInit != null) {
+      return registerInit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterInit implements UserEvent {
+  const factory _RegisterInit(
+          final String phone, final String name, final BuildContext context) =
+      _$_RegisterInit;
+
+  String get phone;
+  String get name;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_RegisterInitCopyWith<_$_RegisterInit> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RegisterVerifCopyWith<$Res> {
+  factory _$$_RegisterVerifCopyWith(
+          _$_RegisterVerif value, $Res Function(_$_RegisterVerif) then) =
+      __$$_RegisterVerifCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, String code, BuildContext context});
+}
+
+/// @nodoc
+class __$$_RegisterVerifCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_RegisterVerif>
+    implements _$$_RegisterVerifCopyWith<$Res> {
+  __$$_RegisterVerifCopyWithImpl(
+      _$_RegisterVerif _value, $Res Function(_$_RegisterVerif) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? code = null,
+    Object? context = null,
+  }) {
+    return _then(_$_RegisterVerif(
+      null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RegisterVerif implements _RegisterVerif {
+  const _$_RegisterVerif(this.phone, this.code, this.context);
+
+  @override
+  final String phone;
+  @override
+  final String code;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.registerVerif(phone: $phone, code: $code, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RegisterVerif &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, code, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RegisterVerifCopyWith<_$_RegisterVerif> get copyWith =>
+      __$$_RegisterVerifCopyWithImpl<_$_RegisterVerif>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone, String password) signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+  }) {
+    return registerVerif(phone, code, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password)? signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+  }) {
+    return registerVerif?.call(phone, code, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password)? signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (registerVerif != null) {
+      return registerVerif(phone, code, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+  }) {
+    return registerVerif(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+  }) {
+    return registerVerif?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (registerVerif != null) {
+      return registerVerif(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterVerif implements UserEvent {
+  const factory _RegisterVerif(
+          final String phone, final String code, final BuildContext context) =
+      _$_RegisterVerif;
+
+  String get phone;
+  String get code;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_RegisterVerifCopyWith<_$_RegisterVerif> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RegisterConfirmCopyWith<$Res> {
+  factory _$$_RegisterConfirmCopyWith(
+          _$_RegisterConfirm value, $Res Function(_$_RegisterConfirm) then) =
+      __$$_RegisterConfirmCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String phone,
+      String password,
+      String passwordConfirmation,
+      BuildContext context});
+}
+
+/// @nodoc
+class __$$_RegisterConfirmCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_RegisterConfirm>
+    implements _$$_RegisterConfirmCopyWith<$Res> {
+  __$$_RegisterConfirmCopyWithImpl(
+      _$_RegisterConfirm _value, $Res Function(_$_RegisterConfirm) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
+    Object? context = null,
+  }) {
+    return _then(_$_RegisterConfirm(
+      null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == passwordConfirmation
+          ? _value.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RegisterConfirm implements _RegisterConfirm {
+  const _$_RegisterConfirm(
+      this.phone, this.password, this.passwordConfirmation, this.context);
+
+  @override
+  final String phone;
+  @override
+  final String password;
+  @override
+  final String passwordConfirmation;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.registerConfirm(phone: $phone, password: $password, passwordConfirmation: $passwordConfirmation, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RegisterConfirm &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, phone, password, passwordConfirmation, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RegisterConfirmCopyWith<_$_RegisterConfirm> get copyWith =>
+      __$$_RegisterConfirmCopyWithImpl<_$_RegisterConfirm>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone, String password) signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+  }) {
+    return registerConfirm(phone, password, passwordConfirmation, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password)? signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+  }) {
+    return registerConfirm?.call(
+        phone, password, passwordConfirmation, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password)? signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (registerConfirm != null) {
+      return registerConfirm(phone, password, passwordConfirmation, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+  }) {
+    return registerConfirm(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+  }) {
+    return registerConfirm?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (registerConfirm != null) {
+      return registerConfirm(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterConfirm implements UserEvent {
+  const factory _RegisterConfirm(
+      final String phone,
+      final String password,
+      final String passwordConfirmation,
+      final BuildContext context) = _$_RegisterConfirm;
+
+  String get phone;
+  String get password;
+  String get passwordConfirmation;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_RegisterConfirmCopyWith<_$_RegisterConfirm> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

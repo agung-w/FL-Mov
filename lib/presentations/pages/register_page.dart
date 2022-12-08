@@ -3,23 +3,24 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/presentations/pages/profile_page.dart';
+import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/widgets/phone_input_form.dart';
-import 'package:movie_app/presentations/widgets/secret_input_form.dart';
 import 'package:movie_app/presentations/widgets/text_input_form.dart';
 
-import '../../bloc/user_bloc.dart';
-import '../../services/auth_services.dart';
-import '../widgets/large_input_with_icon.dart';
-
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController name = TextEditingController();
-    TextEditingController phone = TextEditingController();
-    TextEditingController password = TextEditingController();
-    TextEditingController passwordConfirmation = TextEditingController();
+    // TextEditingController password = TextEditingController();
+    // TextEditingController passwordConfirmation = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -42,14 +43,6 @@ class RegisterPage extends StatelessWidget {
             PhoneInputForm(
               controller: phone,
             ),
-            SecretInputForm(
-              hint: "Password",
-              controller: password,
-            ),
-            SecretInputForm(
-              hint: "Re-type Password",
-              controller: passwordConfirmation,
-            ),
 
             SizedBox(
               height: 40,
@@ -66,13 +59,8 @@ class RegisterPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  if (password.text != passwordConfirmation.text) {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(const SnackBar(content: Text("tes")));
-                  } else {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/', ModalRoute.withName("/"));
-                  }
+                  context.read<UserBloc>().add(UserEvent.registerInit(
+                      int.parse(phone.text).toString(), name.text, context));
                 },
                 style: ElevatedButton.styleFrom(
                     side: const BorderSide(color: Colors.black, width: 0.5),

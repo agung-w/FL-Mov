@@ -122,7 +122,7 @@ class ProfilePage extends StatelessWidget {
                                     Border.all(color: Colors.black, width: 0.1),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(16)),
-                            child: Wallet()))
+                            child: const Wallet()))
                   ],
                 ),
                 const SizedBox(

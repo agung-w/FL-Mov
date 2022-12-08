@@ -27,7 +27,7 @@ class TransactionServices {
       return ApiResult.success(transactions);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
-          ? e.response!.data['error']['message']
+          ? e.response!.data['error']['message'].toString()
           : "Connection timeout");
     }
   }

@@ -28,7 +28,7 @@ class MovieServices {
       return ApiResult.success(movie);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
-          ? e.response!.data['error']['message']
+          ? e.response!.data['error']['message'].toString()
           : "Connection timeout");
     }
   }
