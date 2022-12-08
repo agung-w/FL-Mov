@@ -27,15 +27,22 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         token.map(
             success: (result) => pref.setString('token', result.value),
             failed: (result) {
-              emit(_SignedOut(result.message));
+              emit(const _SignedOut(null));
+              ScaffoldMessenger.of(event.context)
+                  .showSnackBar(SnackBar(content: Text(result.message)));
             });
         if (pref.getString('token') != null) {
           ApiResult<User> user = await UserServices().getUserDetail(
               token: token.map(
                   success: (result) => result.value, failed: (result) => ''));
-          user.map(
-              success: (result) => emit(_SignedIn(result.value)),
-              failed: (result) => emit(const _SignedOut(null)));
+          user.map(success: (result) {
+            emit(_SignedIn(result.value));
+            Navigator.popUntil(event.context, (route) => route.isFirst);
+          }, failed: (result) {
+            emit(const _SignedOut(null));
+            ScaffoldMessenger.of(event.context)
+                .showSnackBar(SnackBar(content: Text(result.message)));
+          });
         }
       }
     });

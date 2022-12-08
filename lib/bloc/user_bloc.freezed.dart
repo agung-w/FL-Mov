@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -32,7 +34,8 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -46,7 +49,8 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
@@ -114,7 +118,7 @@ abstract class _$$_SignInCopyWith<$Res> {
   factory _$$_SignInCopyWith(_$_SignIn value, $Res Function(_$_SignIn) then) =
       __$$_SignInCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phone, String password});
+  $Res call({String phone, String password, BuildContext context});
 }
 
 /// @nodoc
@@ -129,6 +133,7 @@ class __$$_SignInCopyWithImpl<$Res>
   $Res call({
     Object? phone = null,
     Object? password = null,
+    Object? context = null,
   }) {
     return _then(_$_SignIn(
       phone: null == phone
@@ -139,6 +144,10 @@ class __$$_SignInCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
@@ -146,16 +155,19 @@ class __$$_SignInCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SignIn implements _SignIn {
-  const _$_SignIn({required this.phone, required this.password});
+  const _$_SignIn(
+      {required this.phone, required this.password, required this.context});
 
   @override
   final String phone;
   @override
   final String password;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'UserEvent.signIn(phone: $phone, password: $password)';
+    return 'UserEvent.signIn(phone: $phone, password: $password, context: $context)';
   }
 
   @override
@@ -165,11 +177,12 @@ class _$_SignIn implements _SignIn {
             other is _$_SignIn &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone, password);
+  int get hashCode => Object.hash(runtimeType, phone, password, context);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +193,9 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -191,13 +206,14 @@ class _$_SignIn implements _SignIn {
             String passwordConfirmation, BuildContext context)
         registerConfirm,
   }) {
-    return signIn(phone, password);
+    return signIn(phone, password, context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -208,13 +224,14 @@ class _$_SignIn implements _SignIn {
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
   }) {
-    return signIn?.call(phone, password);
+    return signIn?.call(phone, password, context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
@@ -227,7 +244,7 @@ class _$_SignIn implements _SignIn {
     required TResult orElse(),
   }) {
     if (signIn != null) {
-      return signIn(phone, password);
+      return signIn(phone, password, context);
     }
     return orElse();
   }
@@ -279,10 +296,12 @@ class _$_SignIn implements _SignIn {
 abstract class _SignIn implements UserEvent {
   const factory _SignIn(
       {required final String phone,
-      required final String password}) = _$_SignIn;
+      required final String password,
+      required final BuildContext context}) = _$_SignIn;
 
   String get phone;
   String get password;
+  BuildContext get context;
   @JsonKey(ignore: true)
   _$$_SignInCopyWith<_$_SignIn> get copyWith =>
       throw _privateConstructorUsedError;
@@ -325,7 +344,9 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -342,7 +363,8 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -359,7 +381,8 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
@@ -463,7 +486,9 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -480,7 +505,8 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -497,7 +523,8 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
@@ -643,7 +670,9 @@ class _$_RegisterInit implements _RegisterInit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -660,7 +689,8 @@ class _$_RegisterInit implements _RegisterInit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -677,7 +707,8 @@ class _$_RegisterInit implements _RegisterInit {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
@@ -832,7 +863,9 @@ class _$_RegisterVerif implements _RegisterVerif {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -849,7 +882,8 @@ class _$_RegisterVerif implements _RegisterVerif {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -866,7 +900,8 @@ class _$_RegisterVerif implements _RegisterVerif {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
@@ -1037,7 +1072,9 @@ class _$_RegisterConfirm implements _RegisterConfirm {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) signIn,
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
     required TResult Function() signOut,
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
@@ -1054,7 +1091,8 @@ class _$_RegisterConfirm implements _RegisterConfirm {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? signIn,
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult? Function()? signOut,
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
@@ -1072,7 +1110,8 @@ class _$_RegisterConfirm implements _RegisterConfirm {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? signIn,
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
     TResult Function()? signOut,
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
