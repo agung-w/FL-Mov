@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -40,42 +39,29 @@ class _InTheaterPageState extends State<InTheaterPage> {
                 state.whenOrNull(
                     loaded: (movies) {
                       return movies.map(
-                          success: (result) => Stack(
-                                children: [
-                                  CarouselSlider.builder(
-                                      itemCount: result.value.length,
-                                      itemBuilder: (context, int index, idx) {
-                                        return Transform.scale(
-                                          alignment: Alignment.centerLeft,
-                                          scale: index == _current ? 1 : 0.87,
-                                          child: InTheaterPoster(
-                                            movie:
-                                                result.value.elementAt(index),
-                                            isActive: index == _current
-                                                ? true
-                                                : false,
-                                          ),
-                                        );
-                                      },
-                                      options: CarouselOptions(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.82,
-                                          // enlargeCenterPage: true,
-                                          enableInfiniteScroll: false,
-                                          // autoPlay: true,
-                                          disableCenter: true,
-                                          viewportFraction: 0.89,
-                                          padEnds: false,
-                                          initialPage: _current,
-                                          clipBehavior: Clip.none,
-                                          onPageChanged: ((index, reason) {
-                                            setState(() {
-                                              _current = index;
-                                            });
-                                          }))),
-                                ],
+                          success: (result) => Expanded(
+                                child: PageView.builder(
+                                  itemCount: result.value.length,
+                                  itemBuilder: (context, int index) {
+                                    return Transform.scale(
+                                      alignment: Alignment.centerLeft,
+                                      scale: index == _current ? 1 : 0.9,
+                                      child: InTheaterPoster(
+                                        movie: result.value.elementAt(index),
+                                        isActive:
+                                            index == _current ? true : false,
+                                      ),
+                                    );
+                                  },
+                                  onPageChanged: (value) {
+                                    setState(() {
+                                      _current = value;
+                                    });
+                                  },
+                                  padEnds: false,
+                                  controller:
+                                      PageController(viewportFraction: 0.9),
+                                ),
                               ),
                           failed: (result) => Text(result.message));
                       // return Text(movies.toString());

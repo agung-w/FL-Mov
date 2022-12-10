@@ -1,4 +1,5 @@
-import 'package:drop_shadow/drop_shadow.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,26 +37,75 @@ class InTheaterPoster extends StatelessWidget {
           },
           child: Column(
             children: [
-              DropShadow(
-                blurRadius: 8,
-                offset: const Offset(0, 16),
-                borderRadius: 10,
-                child: Image(
-                  fit: BoxFit.fill,
-                  height: MediaQuery.of(context).size.height * 0.67,
-                  image: NetworkImage(
-                      'https://image.tmdb.org/t/p/w500/${movie.posterUrl}'),
-                  loadingBuilder: (context, child, loadingProgress) {
-                    return loadingProgress == null
-                        ? child
-                        : Shimmer.fromColors(
-                            baseColor: Colors.grey.shade400,
-                            highlightColor: Colors.white,
-                            child: Container(
-                                color: Colors.grey,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.67));
-                  },
+              ClipRRect(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Stack(children: [
+                    Transform.translate(
+                      offset:
+                          Offset(10, MediaQuery.of(context).size.height * 0.7),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Opacity(
+                            opacity: 0.5,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image(
+                                  fit: BoxFit.fill,
+                                  image: Image.network(
+                                          'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')
+                                      .image,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.75,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    return loadingProgress == null
+                                        ? child
+                                        : Shimmer.fromColors(
+                                            baseColor: Colors.grey.shade400,
+                                            highlightColor: Colors.white,
+                                            child: Container(
+                                                color: Colors.grey,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.67));
+                                  }),
+                            )),
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 0, sigmaY: 12),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(color: Colors.transparent)),
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image(
+                          fit: BoxFit.fill,
+                          image: Image.network(
+                                  'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')
+                              .image,
+                          height: MediaQuery.of(context).size.height * 0.75,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            return loadingProgress == null
+                                ? child
+                                : Shimmer.fromColors(
+                                    baseColor: Colors.grey.shade400,
+                                    highlightColor: Colors.white,
+                                    child: Container(
+                                        color: Colors.grey,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.67));
+                          }),
+                    )
+                  ]),
                 ),
               ),
             ],
