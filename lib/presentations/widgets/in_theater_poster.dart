@@ -39,15 +39,14 @@ class InTheaterPoster extends StatelessWidget {
             children: [
               ClipRRect(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 0, 30),
                   child: Stack(children: [
                     Transform.translate(
-                      offset:
-                          Offset(10, MediaQuery.of(context).size.height * 0.7),
+                      offset: Offset(10, 5),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Opacity(
-                            opacity: 0.5,
+                            opacity: 1,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image(
@@ -58,7 +57,7 @@ class InTheaterPoster extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height * 0.75,
                                   width:
-                                      MediaQuery.of(context).size.width * 0.8,
+                                      MediaQuery.of(context).size.width * 0.81,
                                   loadingBuilder:
                                       (context, child, loadingProgress) {
                                     return loadingProgress == null
@@ -71,7 +70,7 @@ class InTheaterPoster extends StatelessWidget {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .height *
-                                                    0.67));
+                                                    0.75));
                                   }),
                             )),
                       ),
@@ -102,7 +101,7 @@ class InTheaterPoster extends StatelessWidget {
                                         color: Colors.grey,
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                0.67));
+                                                0.75));
                           }),
                     )
                   ]),

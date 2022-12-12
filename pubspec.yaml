@@ -40,9 +40,9 @@ dependencies:
   google_fonts: ^3.0.1
   google_nav_bar: ^5.0.6
   pinput:
-   git:
-    url: https://github.com/Tkko/Flutter_Pinput
-    ref: dev 
+    git:
+      url: https://github.com/Tkko/Flutter_Pinput
+      ref: dev
   shared_preferences: ^2.0.15
   shimmer: ^2.0.0
 
