@@ -24,7 +24,12 @@ class MovieServices {
       Response result = await _dio.get(
         "${dotenv.env['tmdb_api_url']}/movie/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US",
       );
+      Response casts = await _dio.get(
+        "${dotenv.env['tmdb_api_url']}/movie/$id/credits?api_key=${dotenv.env['tmdb_api_key']}&language=en-US",
+      );
       MovieDetail movie = MovieDetail.fromJson(result.data);
+      movie.casts =
+          (casts.data['cast'] as List).map((e) => Cast.fromJson(e)).toList();
       return ApiResult.success(movie);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
