@@ -70,9 +70,8 @@ class TransactionHistoryCard extends StatelessWidget {
     }
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-      padding: const EdgeInsets.all(10),
-      color: Colors.green,
+      margin: const EdgeInsets.fromLTRB(0, 4, 0, 0),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       width: double.infinity,
       height: 70,
       child: Row(
