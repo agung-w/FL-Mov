@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/movie_detail_bloc.dart';
+import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/widgets/in_theater_tab.dart';
 
@@ -119,7 +120,10 @@ class InTheaterDetailPage extends StatelessWidget {
           top: 25,
           right: 20,
           child: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              context.read<OrderBloc>().add(const OrderEvent.cancel());
+              Navigator.pop(context);
+            },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),

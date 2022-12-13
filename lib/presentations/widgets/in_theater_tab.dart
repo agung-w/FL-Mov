@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/movie_detail_bloc.dart';
+import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 class InTheaterTab extends StatefulWidget {
@@ -20,6 +21,7 @@ class _InTheaterTabState extends State<InTheaterTab>
   late TabController _tabController;
   late List<DateTime> dates;
   int selected = 0;
+
   @override
   void initState() {
     dates =
@@ -41,6 +43,8 @@ class _InTheaterTabState extends State<InTheaterTab>
         Tab(icon: Text("Showtimes")),
       ],
     );
+    context.read<OrderBloc>().add(OrderEvent.selectDate(
+        date: DateFormat("yyyy-MM-dd").format(dates[selected])));
     double dateCardWidth = 50;
     return Scaffold(
       appBar: PreferredSize(
@@ -57,9 +61,9 @@ class _InTheaterTabState extends State<InTheaterTab>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.fromLTRB(32, 0, 0, 16),
+                padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
                 child: Text(
-                  "Date",
+                  "Select Date",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
                 ),
               ),
@@ -73,9 +77,11 @@ class _InTheaterTabState extends State<InTheaterTab>
                       itemCount: dates.length,
                       itemBuilder: (_, index) => GestureDetector(
                         onTap: () {
+                          context.read<OrderBloc>().add(OrderEvent.selectDate(
+                              date: DateFormat("yyyy-mm-dd")
+                                  .format(dates[selected])));
                           setState(() {
                             selected = index;
-                            log(dates[selected].day.toString());
                           });
                         },
                         child: Container(
@@ -110,7 +116,121 @@ class _InTheaterTabState extends State<InTheaterTab>
                   ),
                 ),
               ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(16, 16, 0, 16),
+                child: Text(
+                  "Cinema",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                ),
+              ),
+              const CinemaSchedule(),
             ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class CinemaSchedule extends StatelessWidget {
+  const CinemaSchedule({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<String> schedule = [
+      "10:00",
+      "12:00",
+      "14:00",
+      "16:00",
+      "18:00",
+      "20:00",
+      "22:00"
+    ];
+    return Container(
+      margin: const EdgeInsets.only(left: 16, right: 16),
+      child: ExpansionTile(
+        tilePadding: const EdgeInsets.all(0),
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Card(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(3.0),
+                  child: Image.asset(
+                    'assets/cgv.png',
+                    width: 35,
+                    height: 35,
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 8, right: 8),
+              child: Text(
+                'BEC Mall',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+        children: [
+          Container(
+            width: double.infinity,
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.black12,
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "REGULAR 2D",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        ),
+                        Text("Rp 40.000",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500))
+                      ],
+                    ),
+                  ),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
+                    childAspectRatio: 3.5,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    padding: const EdgeInsets.only(left: 16, right: 10),
+                    children: schedule
+                        .map((e) => GestureDetector(
+                              onTap: () {
+                                context.read<OrderBloc>().add(
+                                    OrderEvent.selectTime(
+                                        time: e,
+                                        studioId: 3,
+                                        cinemaId: 1,
+                                        studioName: "REGULAR 2D",
+                                        cinemaName: "BEC Mall",
+                                        context: context));
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(child: Text(e))),
+                            ))
+                        .toList(),
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),
