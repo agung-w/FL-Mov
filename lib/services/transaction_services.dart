@@ -18,7 +18,6 @@ class TransactionServices {
           "Authorization": "Bearer $token",
         }),
       );
-      log(result.toString());
       List<Transaction> transactions =
           (result.data['data']['transactions'] as List)
               .map((e) => Transaction.fromJson(e))

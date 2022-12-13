@@ -180,7 +180,7 @@ class __$$_TransactionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Transaction implements _Transaction {
+class _$_Transaction extends _Transaction {
   const _$_Transaction(
       {required this.id,
       @JsonKey(name: "order_id") this.orderId,
@@ -188,7 +188,8 @@ class _$_Transaction implements _Transaction {
       @JsonKey(name: "transaction_method") this.transactionMethod,
       required this.total,
       required this.status,
-      @JsonKey(name: "created_at") required this.date});
+      @JsonKey(name: "created_at") required this.date})
+      : super._();
 
   factory _$_Transaction.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionFromJson(json);
@@ -252,7 +253,7 @@ class _$_Transaction implements _Transaction {
   }
 }
 
-abstract class _Transaction implements Transaction {
+abstract class _Transaction extends Transaction {
   const factory _Transaction(
           {required final int id,
           @JsonKey(name: "order_id") final int? orderId,
@@ -262,6 +263,7 @@ abstract class _Transaction implements Transaction {
           required final String status,
           @JsonKey(name: "created_at") required final String date}) =
       _$_Transaction;
+  const _Transaction._() : super._();
 
   factory _Transaction.fromJson(Map<String, dynamic> json) =
       _$_Transaction.fromJson;
