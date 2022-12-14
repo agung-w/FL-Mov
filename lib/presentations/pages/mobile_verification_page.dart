@@ -19,7 +19,11 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: AppBar(title: const Text("Mobile Verification")),
+      appBar: AppBar(
+        title: const Text("Mobile Verification"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(24, 64, 24, 24),
         child: Column(
