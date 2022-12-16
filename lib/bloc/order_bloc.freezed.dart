@@ -21,8 +21,8 @@ mixin _$OrderEvent {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -36,8 +36,8 @@ mixin _$OrderEvent {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -51,8 +51,8 @@ mixin _$OrderEvent {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -162,8 +162,8 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -180,8 +180,8 @@ class _$_Started implements _Started {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -198,8 +198,8 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -348,8 +348,8 @@ class _$_SelectMovie implements _SelectMovie {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -366,8 +366,8 @@ class _$_SelectMovie implements _SelectMovie {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -384,8 +384,8 @@ class _$_SelectMovie implements _SelectMovie {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -529,8 +529,8 @@ class _$_SelectDate implements _SelectDate {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -547,8 +547,8 @@ class _$_SelectDate implements _SelectDate {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -565,8 +565,8 @@ class _$_SelectDate implements _SelectDate {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -649,13 +649,10 @@ abstract class _$$_SelectTimeCopyWith<$Res> {
           _$_SelectTime value, $Res Function(_$_SelectTime) then) =
       __$$_SelectTimeCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String time,
-      int studioId,
-      String studioName,
-      int cinemaId,
-      String cinemaName,
-      BuildContext context});
+  $Res call({String time, Cinema cinema, Studio studio, BuildContext context});
+
+  $CinemaCopyWith<$Res> get cinema;
+  $StudioCopyWith<$Res> get studio;
 }
 
 /// @nodoc
@@ -670,10 +667,8 @@ class __$$_SelectTimeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? time = null,
-    Object? studioId = null,
-    Object? studioName = null,
-    Object? cinemaId = null,
-    Object? cinemaName = null,
+    Object? cinema = null,
+    Object? studio = null,
     Object? context = null,
   }) {
     return _then(_$_SelectTime(
@@ -681,27 +676,35 @@ class __$$_SelectTimeCopyWithImpl<$Res>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String,
-      studioId: null == studioId
-          ? _value.studioId
-          : studioId // ignore: cast_nullable_to_non_nullable
-              as int,
-      studioName: null == studioName
-          ? _value.studioName
-          : studioName // ignore: cast_nullable_to_non_nullable
-              as String,
-      cinemaId: null == cinemaId
-          ? _value.cinemaId
-          : cinemaId // ignore: cast_nullable_to_non_nullable
-              as int,
-      cinemaName: null == cinemaName
-          ? _value.cinemaName
-          : cinemaName // ignore: cast_nullable_to_non_nullable
-              as String,
+      cinema: null == cinema
+          ? _value.cinema
+          : cinema // ignore: cast_nullable_to_non_nullable
+              as Cinema,
+      studio: null == studio
+          ? _value.studio
+          : studio // ignore: cast_nullable_to_non_nullable
+              as Studio,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CinemaCopyWith<$Res> get cinema {
+    return $CinemaCopyWith<$Res>(_value.cinema, (value) {
+      return _then(_value.copyWith(cinema: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StudioCopyWith<$Res> get studio {
+    return $StudioCopyWith<$Res>(_value.studio, (value) {
+      return _then(_value.copyWith(studio: value));
+    });
   }
 }
 
@@ -710,28 +713,22 @@ class __$$_SelectTimeCopyWithImpl<$Res>
 class _$_SelectTime implements _SelectTime {
   const _$_SelectTime(
       {required this.time,
-      required this.studioId,
-      required this.studioName,
-      required this.cinemaId,
-      required this.cinemaName,
+      required this.cinema,
+      required this.studio,
       required this.context});
 
   @override
   final String time;
   @override
-  final int studioId;
+  final Cinema cinema;
   @override
-  final String studioName;
-  @override
-  final int cinemaId;
-  @override
-  final String cinemaName;
+  final Studio studio;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'OrderEvent.selectTime(time: $time, studioId: $studioId, studioName: $studioName, cinemaId: $cinemaId, cinemaName: $cinemaName, context: $context)';
+    return 'OrderEvent.selectTime(time: $time, cinema: $cinema, studio: $studio, context: $context)';
   }
 
   @override
@@ -740,20 +737,13 @@ class _$_SelectTime implements _SelectTime {
         (other.runtimeType == runtimeType &&
             other is _$_SelectTime &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.studioId, studioId) ||
-                other.studioId == studioId) &&
-            (identical(other.studioName, studioName) ||
-                other.studioName == studioName) &&
-            (identical(other.cinemaId, cinemaId) ||
-                other.cinemaId == cinemaId) &&
-            (identical(other.cinemaName, cinemaName) ||
-                other.cinemaName == cinemaName) &&
+            (identical(other.cinema, cinema) || other.cinema == cinema) &&
+            (identical(other.studio, studio) || other.studio == studio) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, time, studioId, studioName, cinemaId, cinemaName, context);
+  int get hashCode => Object.hash(runtimeType, time, cinema, studio, context);
 
   @JsonKey(ignore: true)
   @override
@@ -767,8 +757,8 @@ class _$_SelectTime implements _SelectTime {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -776,8 +766,7 @@ class _$_SelectTime implements _SelectTime {
     required TResult Function() cancelTime,
     required TResult Function() cancelOrderPay,
   }) {
-    return selectTime(
-        time, studioId, studioName, cinemaId, cinemaName, context);
+    return selectTime(time, cinema, studio, context);
   }
 
   @override
@@ -786,8 +775,8 @@ class _$_SelectTime implements _SelectTime {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -795,8 +784,7 @@ class _$_SelectTime implements _SelectTime {
     TResult? Function()? cancelTime,
     TResult? Function()? cancelOrderPay,
   }) {
-    return selectTime?.call(
-        time, studioId, studioName, cinemaId, cinemaName, context);
+    return selectTime?.call(time, cinema, studio, context);
   }
 
   @override
@@ -805,8 +793,8 @@ class _$_SelectTime implements _SelectTime {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -816,8 +804,7 @@ class _$_SelectTime implements _SelectTime {
     required TResult orElse(),
   }) {
     if (selectTime != null) {
-      return selectTime(
-          time, studioId, studioName, cinemaId, cinemaName, context);
+      return selectTime(time, cinema, studio, context);
     }
     return orElse();
   }
@@ -878,17 +865,13 @@ class _$_SelectTime implements _SelectTime {
 abstract class _SelectTime implements OrderEvent {
   const factory _SelectTime(
       {required final String time,
-      required final int studioId,
-      required final String studioName,
-      required final int cinemaId,
-      required final String cinemaName,
+      required final Cinema cinema,
+      required final Studio studio,
       required final BuildContext context}) = _$_SelectTime;
 
   String get time;
-  int get studioId;
-  String get studioName;
-  int get cinemaId;
-  String get cinemaName;
+  Cinema get cinema;
+  Studio get studio;
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$_SelectTimeCopyWith<_$_SelectTime> get copyWith =>
@@ -934,8 +917,8 @@ class _$_Order implements _Order {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -952,8 +935,8 @@ class _$_Order implements _Order {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -970,8 +953,8 @@ class _$_Order implements _Order {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -1110,8 +1093,8 @@ class _$_PayOrder implements _PayOrder {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -1128,8 +1111,8 @@ class _$_PayOrder implements _PayOrder {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -1146,8 +1129,8 @@ class _$_PayOrder implements _PayOrder {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -1263,8 +1246,8 @@ class _$_Cancel implements _Cancel {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -1281,8 +1264,8 @@ class _$_Cancel implements _Cancel {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -1299,8 +1282,8 @@ class _$_Cancel implements _Cancel {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -1413,8 +1396,8 @@ class _$_CancelTime implements _CancelTime {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -1431,8 +1414,8 @@ class _$_CancelTime implements _CancelTime {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -1449,8 +1432,8 @@ class _$_CancelTime implements _CancelTime {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -1563,8 +1546,8 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     required TResult Function() started,
     required TResult Function(Movie movie) selectMovie,
     required TResult Function(String date) selectDate,
-    required TResult Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
     required TResult Function() order,
     required TResult Function(int orderId) payOrder,
@@ -1581,8 +1564,8 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     TResult? Function()? started,
     TResult? Function(Movie movie)? selectMovie,
     TResult? Function(String date)? selectDate,
-    TResult? Function(String time, int studioId, String studioName,
-            int cinemaId, String cinemaName, BuildContext context)?
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult? Function()? order,
     TResult? Function(int orderId)? payOrder,
@@ -1599,8 +1582,8 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     TResult Function()? started,
     TResult Function(Movie movie)? selectMovie,
     TResult Function(String date)? selectDate,
-    TResult Function(String time, int studioId, String studioName, int cinemaId,
-            String cinemaName, BuildContext context)?
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
     TResult Function()? order,
     TResult Function(int orderId)? payOrder,
@@ -1679,8 +1662,8 @@ mixin _$OrderState {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(Movie movie, String date, String time,
-            int studioId, int cinemaId, String cinemaName, String studioName)
+    required TResult Function(
+            Movie movie, String date, String time, Cinema cinema, Studio studio)
         selectedTime,
   }) =>
       throw _privateConstructorUsedError;
@@ -1689,8 +1672,8 @@ mixin _$OrderState {
     TResult? Function()? initial,
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
-    TResult? Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
   }) =>
       throw _privateConstructorUsedError;
@@ -1699,8 +1682,8 @@ mixin _$OrderState {
     TResult Function()? initial,
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
-    TResult Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
     required TResult orElse(),
   }) =>
@@ -1790,8 +1773,8 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(Movie movie, String date, String time,
-            int studioId, int cinemaId, String cinemaName, String studioName)
+    required TResult Function(
+            Movie movie, String date, String time, Cinema cinema, Studio studio)
         selectedTime,
   }) {
     return initial();
@@ -1803,8 +1786,8 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
-    TResult? Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
   }) {
     return initial?.call();
@@ -1816,8 +1799,8 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
-    TResult Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
     required TResult orElse(),
   }) {
@@ -1946,8 +1929,8 @@ class _$_SelectedMovie implements _SelectedMovie {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(Movie movie, String date, String time,
-            int studioId, int cinemaId, String cinemaName, String studioName)
+    required TResult Function(
+            Movie movie, String date, String time, Cinema cinema, Studio studio)
         selectedTime,
   }) {
     return selectedMovie(movie);
@@ -1959,8 +1942,8 @@ class _$_SelectedMovie implements _SelectedMovie {
     TResult? Function()? initial,
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
-    TResult? Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
   }) {
     return selectedMovie?.call(movie);
@@ -1972,8 +1955,8 @@ class _$_SelectedMovie implements _SelectedMovie {
     TResult Function()? initial,
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
-    TResult Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
     required TResult orElse(),
   }) {
@@ -2115,8 +2098,8 @@ class _$_SelectedDate implements _SelectedDate {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(Movie movie, String date, String time,
-            int studioId, int cinemaId, String cinemaName, String studioName)
+    required TResult Function(
+            Movie movie, String date, String time, Cinema cinema, Studio studio)
         selectedTime,
   }) {
     return selectedDate(movie, date);
@@ -2128,8 +2111,8 @@ class _$_SelectedDate implements _SelectedDate {
     TResult? Function()? initial,
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
-    TResult? Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
   }) {
     return selectedDate?.call(movie, date);
@@ -2141,8 +2124,8 @@ class _$_SelectedDate implements _SelectedDate {
     TResult Function()? initial,
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
-    TResult Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
     required TResult orElse(),
   }) {
@@ -2209,15 +2192,11 @@ abstract class _$$_SelectedTimeCopyWith<$Res> {
       __$$_SelectedTimeCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Movie movie,
-      String date,
-      String time,
-      int studioId,
-      int cinemaId,
-      String cinemaName,
-      String studioName});
+      {Movie movie, String date, String time, Cinema cinema, Studio studio});
 
   $MovieCopyWith<$Res> get movie;
+  $CinemaCopyWith<$Res> get cinema;
+  $StudioCopyWith<$Res> get studio;
 }
 
 /// @nodoc
@@ -2234,10 +2213,8 @@ class __$$_SelectedTimeCopyWithImpl<$Res>
     Object? movie = null,
     Object? date = null,
     Object? time = null,
-    Object? studioId = null,
-    Object? cinemaId = null,
-    Object? cinemaName = null,
-    Object? studioName = null,
+    Object? cinema = null,
+    Object? studio = null,
   }) {
     return _then(_$_SelectedTime(
       movie: null == movie
@@ -2252,22 +2229,14 @@ class __$$_SelectedTimeCopyWithImpl<$Res>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String,
-      studioId: null == studioId
-          ? _value.studioId
-          : studioId // ignore: cast_nullable_to_non_nullable
-              as int,
-      cinemaId: null == cinemaId
-          ? _value.cinemaId
-          : cinemaId // ignore: cast_nullable_to_non_nullable
-              as int,
-      cinemaName: null == cinemaName
-          ? _value.cinemaName
-          : cinemaName // ignore: cast_nullable_to_non_nullable
-              as String,
-      studioName: null == studioName
-          ? _value.studioName
-          : studioName // ignore: cast_nullable_to_non_nullable
-              as String,
+      cinema: null == cinema
+          ? _value.cinema
+          : cinema // ignore: cast_nullable_to_non_nullable
+              as Cinema,
+      studio: null == studio
+          ? _value.studio
+          : studio // ignore: cast_nullable_to_non_nullable
+              as Studio,
     ));
   }
 
@@ -2276,6 +2245,22 @@ class __$$_SelectedTimeCopyWithImpl<$Res>
   $MovieCopyWith<$Res> get movie {
     return $MovieCopyWith<$Res>(_value.movie, (value) {
       return _then(_value.copyWith(movie: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CinemaCopyWith<$Res> get cinema {
+    return $CinemaCopyWith<$Res>(_value.cinema, (value) {
+      return _then(_value.copyWith(cinema: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StudioCopyWith<$Res> get studio {
+    return $StudioCopyWith<$Res>(_value.studio, (value) {
+      return _then(_value.copyWith(studio: value));
     });
   }
 }
@@ -2287,10 +2272,8 @@ class _$_SelectedTime implements _SelectedTime {
       {required this.movie,
       required this.date,
       required this.time,
-      required this.studioId,
-      required this.cinemaId,
-      required this.cinemaName,
-      required this.studioName});
+      required this.cinema,
+      required this.studio});
 
   @override
   final Movie movie;
@@ -2299,17 +2282,13 @@ class _$_SelectedTime implements _SelectedTime {
   @override
   final String time;
   @override
-  final int studioId;
+  final Cinema cinema;
   @override
-  final int cinemaId;
-  @override
-  final String cinemaName;
-  @override
-  final String studioName;
+  final Studio studio;
 
   @override
   String toString() {
-    return 'OrderState.selectedTime(movie: $movie, date: $date, time: $time, studioId: $studioId, cinemaId: $cinemaId, cinemaName: $cinemaName, studioName: $studioName)';
+    return 'OrderState.selectedTime(movie: $movie, date: $date, time: $time, cinema: $cinema, studio: $studio)';
   }
 
   @override
@@ -2320,19 +2299,13 @@ class _$_SelectedTime implements _SelectedTime {
             (identical(other.movie, movie) || other.movie == movie) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.studioId, studioId) ||
-                other.studioId == studioId) &&
-            (identical(other.cinemaId, cinemaId) ||
-                other.cinemaId == cinemaId) &&
-            (identical(other.cinemaName, cinemaName) ||
-                other.cinemaName == cinemaName) &&
-            (identical(other.studioName, studioName) ||
-                other.studioName == studioName));
+            (identical(other.cinema, cinema) || other.cinema == cinema) &&
+            (identical(other.studio, studio) || other.studio == studio));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, movie, date, time, studioId,
-      cinemaId, cinemaName, studioName);
+  int get hashCode =>
+      Object.hash(runtimeType, movie, date, time, cinema, studio);
 
   @JsonKey(ignore: true)
   @override
@@ -2346,12 +2319,11 @@ class _$_SelectedTime implements _SelectedTime {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(Movie movie, String date, String time,
-            int studioId, int cinemaId, String cinemaName, String studioName)
+    required TResult Function(
+            Movie movie, String date, String time, Cinema cinema, Studio studio)
         selectedTime,
   }) {
-    return selectedTime(
-        movie, date, time, studioId, cinemaId, cinemaName, studioName);
+    return selectedTime(movie, date, time, cinema, studio);
   }
 
   @override
@@ -2360,12 +2332,11 @@ class _$_SelectedTime implements _SelectedTime {
     TResult? Function()? initial,
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
-    TResult? Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
   }) {
-    return selectedTime?.call(
-        movie, date, time, studioId, cinemaId, cinemaName, studioName);
+    return selectedTime?.call(movie, date, time, cinema, studio);
   }
 
   @override
@@ -2374,14 +2345,13 @@ class _$_SelectedTime implements _SelectedTime {
     TResult Function()? initial,
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
-    TResult Function(Movie movie, String date, String time, int studioId,
-            int cinemaId, String cinemaName, String studioName)?
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio)?
         selectedTime,
     required TResult orElse(),
   }) {
     if (selectedTime != null) {
-      return selectedTime(
-          movie, date, time, studioId, cinemaId, cinemaName, studioName);
+      return selectedTime(movie, date, time, cinema, studio);
     }
     return orElse();
   }
@@ -2429,18 +2399,14 @@ abstract class _SelectedTime implements OrderState {
       {required final Movie movie,
       required final String date,
       required final String time,
-      required final int studioId,
-      required final int cinemaId,
-      required final String cinemaName,
-      required final String studioName}) = _$_SelectedTime;
+      required final Cinema cinema,
+      required final Studio studio}) = _$_SelectedTime;
 
   Movie get movie;
   String get date;
   String get time;
-  int get studioId;
-  int get cinemaId;
-  String get cinemaName;
-  String get studioName;
+  Cinema get cinema;
+  Studio get studio;
   @JsonKey(ignore: true)
   _$$_SelectedTimeCopyWith<_$_SelectedTime> get copyWith =>
       throw _privateConstructorUsedError;

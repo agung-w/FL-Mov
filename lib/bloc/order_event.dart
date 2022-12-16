@@ -9,10 +9,8 @@ class OrderEvent with _$OrderEvent {
   }) = _SelectDate;
   const factory OrderEvent.selectTime(
       {required String time,
-      required int studioId,
-      required String studioName,
-      required int cinemaId,
-      required String cinemaName,
+      required Cinema cinema,
+      required Studio studio,
       required BuildContext context}) = _SelectTime;
   const factory OrderEvent.order() = _Order;
   const factory OrderEvent.payOrder({required int orderId}) = _PayOrder;

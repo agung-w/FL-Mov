@@ -8,12 +8,11 @@ class OrderState with _$OrderState {
   }) = _SelectedMovie;
   const factory OrderState.selectedDate(
       {required Movie movie, required String date}) = _SelectedDate;
-  const factory OrderState.selectedTime(
-      {required Movie movie,
-      required String date,
-      required String time,
-      required int studioId,
-      required int cinemaId,
-      required String cinemaName,
-      required String studioName}) = _SelectedTime;
+  const factory OrderState.selectedTime({
+    required Movie movie,
+    required String date,
+    required String time,
+    required Cinema cinema,
+    required Studio studio,
+  }) = _SelectedTime;
 }

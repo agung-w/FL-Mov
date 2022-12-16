@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movie_app/entities/cinema.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/pages/select_seat_page.dart';
 
@@ -43,10 +44,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           emit(_SelectedTime(
               date: date,
               movie: value.movie,
-              studioId: event.studioId,
-              cinemaId: event.cinemaId,
-              cinemaName: event.cinemaName,
-              studioName: event.studioName,
+              cinema: event.cinema,
+              studio: event.studio,
               time: "${event.time}:00"));
           Navigator.of(event.context, rootNavigator: true)
               .push(MaterialPageRoute(
@@ -63,10 +62,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     on<_CancelTime>(
       (event, emit) {
         state.whenOrNull(
-          selectedTime:
-              (movie, date, time, studioId, cinemaId, cinemaName, studioName) {
-            emit(_SelectedDate(movie: movie, date: date));
-          },
+          selectedTime: (movie, date, time, cinema, studio) =>
+              emit(_SelectedDate(movie: movie, date: date)),
         );
       },
     );
