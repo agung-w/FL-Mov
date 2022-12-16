@@ -1,10 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/presentations/pages/create_password_page.dart';
-import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/mobile_verification_page.dart';
 import 'package:movie_app/services/auth_services.dart';
 import 'package:movie_app/services/user_services.dart';

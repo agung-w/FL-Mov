@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TextInputForm extends StatefulWidget {
   final String hint;
@@ -22,7 +19,7 @@ class _TextInputFormState extends State<TextInputForm> {
   Widget build(BuildContext context) {
     return TextFormField(
         textAlignVertical: TextAlignVertical.bottom,
-        style: GoogleFonts.nunito(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
         autocorrect: false,
         onChanged: (value) => setState(() {}),
         controller: widget.controller,

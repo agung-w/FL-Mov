@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/widgets/secret_input_form.dart';
 
@@ -22,12 +19,10 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Create Password",
-          style: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          style: TextStyle(fontWeight: FontWeight.w400),
         ),
       ),
       body: Center(

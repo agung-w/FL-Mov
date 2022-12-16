@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:movie_app/presentations/helper/tab_item.dart';
-import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
-import 'package:movie_app/presentations/pages/in_theater_page.dart';
-import 'package:movie_app/presentations/pages/login_page.dart';
-import 'package:movie_app/presentations/pages/profile_page.dart';
 import 'package:movie_app/presentations/pages/bottom_navigation.dart';
 
 import '../routes/tab_navigator.dart';

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentations/pages/discover_page.dart';
-import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 import 'package:movie_app/presentations/pages/in_theater_page.dart';
-import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/not_found_page.dart';
 import 'package:movie_app/presentations/pages/profile_page.dart';
 import 'package:movie_app/presentations/pages/ticket_page.dart';

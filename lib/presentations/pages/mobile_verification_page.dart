@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentations/widgets/filled_otp_input.dart';
 
 class MobileVerificationPage extends StatefulWidget {
@@ -31,28 +29,28 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   'Verification',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
-                    color: const Color.fromRGBO(30, 60, 87, 1),
+                    color: Color.fromRGBO(30, 60, 87, 1),
                   ),
                 ),
                 const SizedBox(height: 24),
-                Text(
+                const Text(
                   'Enter the code sent to the number',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                     fontSize: 16,
-                    color: const Color.fromRGBO(133, 153, 170, 1),
+                    color: Color.fromRGBO(133, 153, 170, 1),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   '+62 ${widget.phoneNumber}',
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
                     fontSize: 16,
-                    color: const Color.fromRGBO(30, 60, 87, 1),
+                    color: Color.fromRGBO(30, 60, 87, 1),
                   ),
                 ),
                 const SizedBox(height: 64)
@@ -60,21 +58,21 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
             ),
             const SizedBox(height: 100, child: FilledOtpInput()),
             const SizedBox(height: 44),
-            Text(
+            const Text(
               'Didn’t receive code?',
-              style: GoogleFonts.poppins(
+              style: TextStyle(
                 fontSize: 16,
-                color: const Color.fromRGBO(62, 116, 165, 1),
+                color: Color.fromRGBO(62, 116, 165, 1),
               ),
             ),
             GestureDetector(
               onTap: () {},
-              child: Text(
+              child: const Text(
                 'Resend',
-                style: GoogleFonts.poppins(
+                style: TextStyle(
                   fontSize: 16,
                   decoration: TextDecoration.underline,
-                  color: const Color.fromRGBO(62, 116, 165, 1),
+                  color: Color.fromRGBO(62, 116, 165, 1),
                 ),
               ),
             ),

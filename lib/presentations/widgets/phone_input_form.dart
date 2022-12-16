@@ -1,10 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PhoneInputForm extends StatefulWidget {
   final TextEditingController controller;
@@ -20,7 +15,7 @@ class _PhoneInputFormState extends State<PhoneInputForm> {
   Widget build(BuildContext context) {
     return TextFormField(
       textAlignVertical: TextAlignVertical.bottom,
-      style: GoogleFonts.nunito(fontSize: 18),
+      style: const TextStyle(fontSize: 18),
       autocorrect: false,
       controller: widget.controller,
       onChanged: (value) => setState(() {}),

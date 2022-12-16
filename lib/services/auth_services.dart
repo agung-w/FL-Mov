@@ -1,13 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/entities/api_result.dart';
-import 'package:movie_app/entities/user.dart';
-import 'package:movie_app/helper/constants.dart';
 
 class AuthServices {
   final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));

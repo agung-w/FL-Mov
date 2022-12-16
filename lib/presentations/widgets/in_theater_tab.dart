@@ -1,15 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/presentations/widgets/cinema_card.dart';
 import 'package:movie_app/services/cinema_services.dart';
-import 'package:shimmer/shimmer.dart';
 
 class InTheaterTab extends StatefulWidget {
   const InTheaterTab({super.key});

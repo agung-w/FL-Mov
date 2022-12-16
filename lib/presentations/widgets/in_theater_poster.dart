@@ -2,14 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
+import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../bloc/movie_bloc.dart';
-import '../../entities/movie.dart';
 
 class InTheaterPoster extends StatelessWidget {
   final Movie movie;
@@ -44,7 +41,7 @@ class InTheaterPoster extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(16, 0, 0, 30),
                   child: Stack(children: [
                     Transform.translate(
-                      offset: Offset(10, 5),
+                      offset: const Offset(10, 5),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Opacity(
@@ -118,8 +115,8 @@ class InTheaterPoster extends StatelessWidget {
             child: Text(movie.title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold, fontSize: 22)),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),

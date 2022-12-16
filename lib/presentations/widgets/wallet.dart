@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
 import 'package:movie_app/presentations/pages/top_up_page.dart';

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
-import 'package:movie_app/presentations/widgets/phone_input_form.dart';
 
 class TopUpPage extends StatefulWidget {
   const TopUpPage({super.key});
@@ -33,7 +29,7 @@ class _TopUpPageState extends State<TopUpPage> {
               const Text("Amount"),
               TextFormField(
                 textAlignVertical: TextAlignVertical.bottom,
-                style: GoogleFonts.nunito(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
                 autocorrect: false,
                 controller: amount,
                 onChanged: (value) => setState(() {}),

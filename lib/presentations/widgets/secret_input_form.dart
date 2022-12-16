@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SecretInputForm extends StatefulWidget {
   final String hint;
@@ -23,7 +20,7 @@ class _SecretInputFormState extends State<SecretInputForm> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        style: GoogleFonts.nunito(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
         controller: widget.controller,
         autocorrect: false,
         obscureText: !_visible,

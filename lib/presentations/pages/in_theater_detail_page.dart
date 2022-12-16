@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
@@ -77,7 +76,7 @@ class InTheaterDetailPage extends StatelessWidget {
                           Text(movie.title,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.poppins(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 22)),
                           Row(
                             children: [
@@ -106,7 +105,7 @@ class InTheaterDetailPage extends StatelessWidget {
                                                 .toList()),
                                         failed: (result) =>
                                             Text(result.message)),
-                                    loading: () => Text(""));
+                                    loading: () => const Text(""));
                               },
                             ),
                           )

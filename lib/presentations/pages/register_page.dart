@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/widgets/phone_input_form.dart';
 import 'package:movie_app/presentations/widgets/text_input_form.dart';
@@ -27,9 +24,9 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Register",
-          style: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          style: TextStyle(fontWeight: FontWeight.w400),
         ),
       ),
       body: Center(
@@ -57,22 +54,22 @@ class _RegisterPageState extends State<RegisterPage> {
                     )),
               ]),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  context.read<UserBloc>().add(UserEvent.registerInit(
-                      int.parse(phone.text).toString(), name.text, context));
-                },
-                style: ElevatedButton.styleFrom(
-                    side: const BorderSide(color: Colors.black, width: 0.5),
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    textStyle: const TextStyle(fontWeight: FontWeight.normal)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("Register"),
-                  ],
-                )),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    if (phone.text.isNotEmpty || name.text.isNotEmpty) {
+                      context.read<UserBloc>().add(UserEvent.registerInit(
+                          int.parse(phone.text).toString(),
+                          name.text,
+                          context));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Please fill in the blanks")));
+                    }
+                  },
+                  child: const Text("Register")),
+            )
             // LargeButton(function: () {}, title: "Login"),
           ]),
         ),

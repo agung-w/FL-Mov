@@ -7,10 +7,7 @@ import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
-import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/main_page.dart';
-import 'package:movie_app/presentations/pages/profile_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -36,7 +33,24 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => OrderBloc())
       ],
       child: MaterialApp(
-        theme: ThemeData(dividerColor: Colors.transparent),
+        theme: ThemeData(
+            dividerColor: Colors.transparent,
+            fontFamily: 'OpenSans',
+            appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              titleTextStyle: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400),
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  side: const BorderSide(color: Colors.black, width: 0.5),
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  textStyle: const TextStyle(fontWeight: FontWeight.w600)),
+            )),
         home: const MainPage(),
       ),
     );

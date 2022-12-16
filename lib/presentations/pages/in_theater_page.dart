@@ -1,12 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentations/widgets/in_theater_poster.dart';
-import 'package:movie_app/services/movie_services.dart';
 
 import '../../bloc/movie_bloc.dart';
 
@@ -27,11 +21,10 @@ class _InTheaterPageState extends State<InTheaterPage> {
         children: [
           Container(
             padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-            child: Text(
+            child: const Text(
               "Now In Theater",
               textAlign: TextAlign.start,
-              style:
-                  GoogleFonts.roboto(fontWeight: FontWeight.w800, fontSize: 30),
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
             ),
           ),
           BlocBuilder<MovieBloc, MovieState>(
