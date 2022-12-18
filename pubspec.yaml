@@ -46,6 +46,7 @@ dependencies:
       ref: dev
   shared_preferences: ^2.0.15
   shimmer: ^2.0.0
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.3.2
@@ -70,6 +71,8 @@ flutter:
     - assets/tmdb.png
     - assets/cgv.png
     - assets/xxi.png
+    - assets/bankbca.png
+    - assets/qris.png
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -95,6 +98,5 @@ flutter:
           weight: 700
         - asset: assets/fonts/OpenSans-ExtraBold.ttf
           weight: 800
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

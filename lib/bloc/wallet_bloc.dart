@@ -44,7 +44,8 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
             .topUp(token: token, amount: event.amount, method: event.method);
         emit(_Loaded(wallet));
         wallet.mapOrNull(
-            success: (result) => Navigator.pop(event.context),
+            success: (result) =>
+                Navigator.popUntil(event.context, (route) => route.isFirst),
             failed: (result) => ScaffoldMessenger.of(event.context)
                 .showSnackBar(SnackBar(content: Text(result.message))));
       } else {
