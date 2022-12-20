@@ -21,8 +21,7 @@ Transaction _$TransactionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Transaction {
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
-  int? get orderId => throw _privateConstructorUsedError;
+  TransactionDetail? get detail => throw _privateConstructorUsedError;
   @JsonKey(name: "transaction_type")
   String? get transactionType => throw _privateConstructorUsedError;
   @JsonKey(name: "transaction_method")
@@ -46,12 +45,14 @@ abstract class $TransactionCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: "order_id") int? orderId,
+      TransactionDetail? detail,
       @JsonKey(name: "transaction_type") String? transactionType,
       @JsonKey(name: "transaction_method") String? transactionMethod,
       String total,
       String status,
       @JsonKey(name: "created_at") String date});
+
+  $TransactionDetailCopyWith<$Res>? get detail;
 }
 
 /// @nodoc
@@ -68,7 +69,7 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
   @override
   $Res call({
     Object? id = null,
-    Object? orderId = freezed,
+    Object? detail = freezed,
     Object? transactionType = freezed,
     Object? transactionMethod = freezed,
     Object? total = null,
@@ -80,10 +81,10 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      detail: freezed == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as TransactionDetail?,
       transactionType: freezed == transactionType
           ? _value.transactionType
           : transactionType // ignore: cast_nullable_to_non_nullable
@@ -106,6 +107,18 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
               as String,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TransactionDetailCopyWith<$Res>? get detail {
+    if (_value.detail == null) {
+      return null;
+    }
+
+    return $TransactionDetailCopyWith<$Res>(_value.detail!, (value) {
+      return _then(_value.copyWith(detail: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -118,12 +131,15 @@ abstract class _$$_TransactionCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: "order_id") int? orderId,
+      TransactionDetail? detail,
       @JsonKey(name: "transaction_type") String? transactionType,
       @JsonKey(name: "transaction_method") String? transactionMethod,
       String total,
       String status,
       @JsonKey(name: "created_at") String date});
+
+  @override
+  $TransactionDetailCopyWith<$Res>? get detail;
 }
 
 /// @nodoc
@@ -138,7 +154,7 @@ class __$$_TransactionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? orderId = freezed,
+    Object? detail = freezed,
     Object? transactionType = freezed,
     Object? transactionMethod = freezed,
     Object? total = null,
@@ -150,10 +166,10 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      detail: freezed == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as TransactionDetail?,
       transactionType: freezed == transactionType
           ? _value.transactionType
           : transactionType // ignore: cast_nullable_to_non_nullable
@@ -183,7 +199,7 @@ class __$$_TransactionCopyWithImpl<$Res>
 class _$_Transaction extends _Transaction {
   const _$_Transaction(
       {required this.id,
-      @JsonKey(name: "order_id") this.orderId,
+      this.detail,
       @JsonKey(name: "transaction_type") this.transactionType,
       @JsonKey(name: "transaction_method") this.transactionMethod,
       required this.total,
@@ -197,8 +213,7 @@ class _$_Transaction extends _Transaction {
   @override
   final int id;
   @override
-  @JsonKey(name: "order_id")
-  final int? orderId;
+  final TransactionDetail? detail;
   @override
   @JsonKey(name: "transaction_type")
   final String? transactionType;
@@ -215,7 +230,7 @@ class _$_Transaction extends _Transaction {
 
   @override
   String toString() {
-    return 'Transaction(id: $id, orderId: $orderId, transactionType: $transactionType, transactionMethod: $transactionMethod, total: $total, status: $status, date: $date)';
+    return 'Transaction(id: $id, detail: $detail, transactionType: $transactionType, transactionMethod: $transactionMethod, total: $total, status: $status, date: $date)';
   }
 
   @override
@@ -224,7 +239,7 @@ class _$_Transaction extends _Transaction {
         (other.runtimeType == runtimeType &&
             other is _$_Transaction &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.detail, detail) || other.detail == detail) &&
             (identical(other.transactionType, transactionType) ||
                 other.transactionType == transactionType) &&
             (identical(other.transactionMethod, transactionMethod) ||
@@ -236,7 +251,7 @@ class _$_Transaction extends _Transaction {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, orderId, transactionType,
+  int get hashCode => Object.hash(runtimeType, id, detail, transactionType,
       transactionMethod, total, status, date);
 
   @JsonKey(ignore: true)
@@ -256,7 +271,7 @@ class _$_Transaction extends _Transaction {
 abstract class _Transaction extends Transaction {
   const factory _Transaction(
           {required final int id,
-          @JsonKey(name: "order_id") final int? orderId,
+          final TransactionDetail? detail,
           @JsonKey(name: "transaction_type") final String? transactionType,
           @JsonKey(name: "transaction_method") final String? transactionMethod,
           required final String total,
@@ -271,8 +286,7 @@ abstract class _Transaction extends Transaction {
   @override
   int get id;
   @override
-  @JsonKey(name: "order_id")
-  int? get orderId;
+  TransactionDetail? get detail;
   @override
   @JsonKey(name: "transaction_type")
   String? get transactionType;
@@ -289,5 +303,174 @@ abstract class _Transaction extends Transaction {
   @override
   @JsonKey(ignore: true)
   _$$_TransactionCopyWith<_$_Transaction> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TransactionDetail _$TransactionDetailFromJson(Map<String, dynamic> json) {
+  return _TransactionDetail.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TransactionDetail {
+  Movie get movie => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TransactionDetailCopyWith<TransactionDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TransactionDetailCopyWith<$Res> {
+  factory $TransactionDetailCopyWith(
+          TransactionDetail value, $Res Function(TransactionDetail) then) =
+      _$TransactionDetailCopyWithImpl<$Res, TransactionDetail>;
+  @useResult
+  $Res call({Movie movie, int quantity});
+
+  $MovieCopyWith<$Res> get movie;
+}
+
+/// @nodoc
+class _$TransactionDetailCopyWithImpl<$Res, $Val extends TransactionDetail>
+    implements $TransactionDetailCopyWith<$Res> {
+  _$TransactionDetailCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movie = null,
+    Object? quantity = null,
+  }) {
+    return _then(_value.copyWith(
+      movie: null == movie
+          ? _value.movie
+          : movie // ignore: cast_nullable_to_non_nullable
+              as Movie,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MovieCopyWith<$Res> get movie {
+    return $MovieCopyWith<$Res>(_value.movie, (value) {
+      return _then(_value.copyWith(movie: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_TransactionDetailCopyWith<$Res>
+    implements $TransactionDetailCopyWith<$Res> {
+  factory _$$_TransactionDetailCopyWith(_$_TransactionDetail value,
+          $Res Function(_$_TransactionDetail) then) =
+      __$$_TransactionDetailCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Movie movie, int quantity});
+
+  @override
+  $MovieCopyWith<$Res> get movie;
+}
+
+/// @nodoc
+class __$$_TransactionDetailCopyWithImpl<$Res>
+    extends _$TransactionDetailCopyWithImpl<$Res, _$_TransactionDetail>
+    implements _$$_TransactionDetailCopyWith<$Res> {
+  __$$_TransactionDetailCopyWithImpl(
+      _$_TransactionDetail _value, $Res Function(_$_TransactionDetail) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movie = null,
+    Object? quantity = null,
+  }) {
+    return _then(_$_TransactionDetail(
+      movie: null == movie
+          ? _value.movie
+          : movie // ignore: cast_nullable_to_non_nullable
+              as Movie,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TransactionDetail implements _TransactionDetail {
+  const _$_TransactionDetail({required this.movie, required this.quantity});
+
+  factory _$_TransactionDetail.fromJson(Map<String, dynamic> json) =>
+      _$$_TransactionDetailFromJson(json);
+
+  @override
+  final Movie movie;
+  @override
+  final int quantity;
+
+  @override
+  String toString() {
+    return 'TransactionDetail(movie: $movie, quantity: $quantity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TransactionDetail &&
+            (identical(other.movie, movie) || other.movie == movie) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, movie, quantity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TransactionDetailCopyWith<_$_TransactionDetail> get copyWith =>
+      __$$_TransactionDetailCopyWithImpl<_$_TransactionDetail>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TransactionDetailToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TransactionDetail implements TransactionDetail {
+  const factory _TransactionDetail(
+      {required final Movie movie,
+      required final int quantity}) = _$_TransactionDetail;
+
+  factory _TransactionDetail.fromJson(Map<String, dynamic> json) =
+      _$_TransactionDetail.fromJson;
+
+  @override
+  Movie get movie;
+  @override
+  int get quantity;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TransactionDetailCopyWith<_$_TransactionDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -18,22 +18,26 @@ class TransactionHistoryCard extends StatelessWidget {
     }
 
     detail() {
-      if (transaction.transactionType == "BUY TICKET") {
+      if (transaction.detail != null) {
+        TransactionDetail detail = transaction.detail!;
         return Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 8, right: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Padding(
-                  padding: EdgeInsets.only(bottom: 3),
+                  padding: const EdgeInsets.only(bottom: 3),
                   child: Text(
-                    "Judul Film",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    transaction.detail!.movie.title,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text("Jumlah ticket")
+                detail.quantity == 1
+                    ? Text("${transaction.detail!.quantity} Ticket")
+                    : Text("${transaction.detail!.quantity} Tickets")
               ],
             ),
           ),
