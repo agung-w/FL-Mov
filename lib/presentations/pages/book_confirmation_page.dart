@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
+import 'package:movie_app/bloc/wallet_bloc.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
 import 'package:movie_app/presentations/widgets/draggable_bottom_modal.dart';
 
@@ -17,7 +18,13 @@ class BookConfirmationPage extends StatefulWidget {
 }
 
 class _BookConfirmationPageState extends State<BookConfirmationPage> {
-  final String paymentMethod = "Wallet";
+  String? paymentMethod;
+  @override
+  void initState() {
+    context.read<WalletBloc>().add(const WalletEvent.getBalance());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -263,60 +270,96 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                             ),
                           ]),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: GestureDetector(
-                              onTap: () {
-                                showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20))),
-                                  context: context,
-                                  builder: (context) => DraggableBottomModal(
-                                    content: Column(
-                                      children: [],
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                      padding: const EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      child: const Icon(
-                                        Icons.wallet,
-                                        color: Colors.white,
-                                        size: 22,
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      paymentMethod,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 16),
-                                    ),
-                                  ),
-                                  const Icon(Icons.expand_more)
-                                ],
-                              )),
+                        BlocConsumer<WalletBloc, WalletState>(
+                          listener: (context, state) {
+                            state.mapOrNull(
+                              loaded: (value) => value.result.mapOrNull(
+                                success: (value) {
+                                  if (double.parse(value.value) >
+                                      double.parse(order.total)) {
+                                    setState(
+                                      () => paymentMethod = "Wallet",
+                                    );
+                                  }
+                                  return null;
+                                },
+                              ),
+                            );
+                          },
+                          builder: (context, state) {
+                            return Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(20),
+                                                topRight: Radius.circular(20))),
+                                        context: context,
+                                        builder: (context) =>
+                                            DraggableBottomModal(
+                                              header: Row(children: const [
+                                                Padding(
+                                                  padding:
+                                                      EdgeInsets.only(left: 8),
+                                                  child: Text(
+                                                    "Payment Method",
+                                                    style: TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                )
+                                              ]),
+                                              isScrolable: false,
+                                              body: const Text("tes"),
+                                            ));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          padding: const EdgeInsets.all(3),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: const Icon(
+                                            Icons.wallet,
+                                            color: Colors.white,
+                                            size: 22,
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
+                                        child: Text(
+                                          paymentMethod ??
+                                              "Choose Payment Method",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                      const Icon(Icons.expand_more)
+                                    ],
+                                  )),
+                            );
+                          },
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                                onPressed: () {
-                                  context.read<OrderBloc>().add(
-                                      OrderEvent.makeOrder(
-                                          orderId: order.id, context: context));
-                                },
+                                onPressed: paymentMethod != null
+                                    ? () {
+                                        context.read<OrderBloc>().add(
+                                            OrderEvent.makeOrder(
+                                                orderId: order.id,
+                                                context: context));
+                                      }
+                                    : null,
                                 child: const Text("Order Now")),
                           ),
                         )

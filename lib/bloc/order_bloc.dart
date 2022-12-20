@@ -101,7 +101,9 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               .payOrder(orderId: event.orderId, token: token)
               .then((value) =>
                   Navigator.popUntil(event.context, (route) => route.isFirst))
-              .then((value) => emit(const OrderState.initial()));
+              .then((value) => emit(OrderState.selectedDate(
+                  date: (state as _SelectedSeat).date,
+                  movie: (state as _SelectedSeat).movie)));
         }
       }
     });
