@@ -17,7 +17,9 @@ class Seat extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          onTap();
+          if (!isEnable) {
+            onTap();
+          }
         },
         child: Padding(
           padding: const EdgeInsets.fromLTRB(2, 2, 2, 0),
@@ -26,7 +28,7 @@ class Seat extends StatelessWidget {
             height: 35,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: !isEnable
+              color: isEnable
                   ? Colors.white
                   : isSelected
                       ? Colors.blue

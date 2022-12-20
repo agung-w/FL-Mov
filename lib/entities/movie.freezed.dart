@@ -134,12 +134,13 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Movie implements _Movie {
+class _$_Movie extends _Movie {
   const _$_Movie(
       {required this.title,
       @JsonKey(name: "poster_url") required this.posterUrl,
       @JsonKey(name: "vote_average") required this.rating,
-      @JsonKey(name: "tmdb_id") required this.tmdbId});
+      @JsonKey(name: "tmdb_id") required this.tmdbId})
+      : super._();
 
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
       _$$_MovieFromJson(json);
@@ -192,12 +193,13 @@ class _$_Movie implements _Movie {
   }
 }
 
-abstract class _Movie implements Movie {
+abstract class _Movie extends Movie {
   const factory _Movie(
       {required final String title,
       @JsonKey(name: "poster_url") required final String posterUrl,
       @JsonKey(name: "vote_average") required final String rating,
       @JsonKey(name: "tmdb_id") required final String tmdbId}) = _$_Movie;
+  const _Movie._() : super._();
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
 

@@ -3,34 +3,73 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/entities/api_result.dart';
+import 'package:movie_app/entities/order.dart';
 
 class OrderServices {
   final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
 
-  Future<ApiResult<String>> orderTicket(
+  Future<ApiResult<Order>> orderTicket(
       {required int movieId,
-      required int cinemaID,
       required int studioId,
       required int quantity,
-      required double subTotal,
       required String schedule,
-      required List<String> seats}) async {
+      required List<String> seats,
+      required String token}) async {
     var data = {
       "order": {
         "movie_id": movieId,
-        "cinema_id": cinemaID,
         "studio_id": studioId,
         "quantity": quantity,
-        "sub_total": subTotal,
         "schedule": schedule
       },
       "seats": seats
     };
     try {
       Response result =
-          await _dio.put("${dotenv.env['local_api_url']}/user/createpassword",
+          await _dio.post("${dotenv.env['local_api_url']}/order/ticket",
               options: Options(headers: {
                 "Content-Type": "application/json",
+                "Authorization": "Bearer $token",
+              }),
+              data: jsonEncode(data));
+      Order order = Order.fromJson(result.data['data']['order']);
+      return ApiResult.success(order);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<String>> cancelOrder(
+      {required int orderId, required String token}) async {
+    var data = {"order_id": orderId};
+    try {
+      Response result =
+          await _dio.post("${dotenv.env['local_api_url']}/order/cancel",
+              options: Options(headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer $token",
+              }),
+              data: jsonEncode(data));
+
+      return ApiResult.success(result.data['data']['message']);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<String>> payOrder(
+      {required int orderId, required String token}) async {
+    var data = {"order_id": orderId};
+    try {
+      Response result =
+          await _dio.post("${dotenv.env['local_api_url']}/order/pay",
+              options: Options(headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer $token",
               }),
               data: jsonEncode(data));
 

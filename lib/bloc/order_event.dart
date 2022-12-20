@@ -12,9 +12,12 @@ class OrderEvent with _$OrderEvent {
       required Cinema cinema,
       required Studio studio,
       required BuildContext context}) = _SelectTime;
-  const factory OrderEvent.order() = _Order;
-  const factory OrderEvent.payOrder({required int orderId}) = _PayOrder;
+  const factory OrderEvent.selectSeat(
+      {required List<String> selectedSeats,
+      required BuildContext context}) = _SelectSeat;
+  const factory OrderEvent.makeOrder(
+      {required int orderId, required BuildContext context}) = _MakeOrder;
   const factory OrderEvent.cancel() = _Cancel;
   const factory OrderEvent.cancelTime() = _CancelTime;
-  const factory OrderEvent.cancelOrderPay() = _CancelOrderPay;
+  const factory OrderEvent.cancelSeat(BuildContext context) = _CancelSeat;
 }

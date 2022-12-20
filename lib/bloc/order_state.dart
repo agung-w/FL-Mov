@@ -14,5 +14,13 @@ class OrderState with _$OrderState {
     required String time,
     required Cinema cinema,
     required Studio studio,
+    required List<String>? reservedList,
   }) = _SelectedTime;
+  const factory OrderState.selectedSeat(
+      {required Movie movie,
+      required String date,
+      required String time,
+      required Cinema cinema,
+      required Studio studio,
+      required Order order}) = _SelectedSeat;
 }

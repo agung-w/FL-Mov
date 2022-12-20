@@ -24,11 +24,12 @@ mixin _$OrderEvent {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,11 +40,12 @@ mixin _$OrderEvent {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,11 +56,12 @@ mixin _$OrderEvent {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,11 +71,11 @@ mixin _$OrderEvent {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,11 +84,11 @@ mixin _$OrderEvent {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,11 +97,11 @@ mixin _$OrderEvent {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,11 +168,12 @@ class _$_Started implements _Started {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
     return started();
   }
@@ -183,11 +187,12 @@ class _$_Started implements _Started {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
     return started?.call();
   }
@@ -201,11 +206,12 @@ class _$_Started implements _Started {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -221,11 +227,11 @@ class _$_Started implements _Started {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
     return started(this);
   }
@@ -237,11 +243,11 @@ class _$_Started implements _Started {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
     return started?.call(this);
   }
@@ -253,11 +259,11 @@ class _$_Started implements _Started {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -351,11 +357,12 @@ class _$_SelectMovie implements _SelectMovie {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
     return selectMovie(movie);
   }
@@ -369,11 +376,12 @@ class _$_SelectMovie implements _SelectMovie {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
     return selectMovie?.call(movie);
   }
@@ -387,11 +395,12 @@ class _$_SelectMovie implements _SelectMovie {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (selectMovie != null) {
@@ -407,11 +416,11 @@ class _$_SelectMovie implements _SelectMovie {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
     return selectMovie(this);
   }
@@ -423,11 +432,11 @@ class _$_SelectMovie implements _SelectMovie {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
     return selectMovie?.call(this);
   }
@@ -439,11 +448,11 @@ class _$_SelectMovie implements _SelectMovie {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
     if (selectMovie != null) {
@@ -532,11 +541,12 @@ class _$_SelectDate implements _SelectDate {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
     return selectDate(date);
   }
@@ -550,11 +560,12 @@ class _$_SelectDate implements _SelectDate {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
     return selectDate?.call(date);
   }
@@ -568,11 +579,12 @@ class _$_SelectDate implements _SelectDate {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (selectDate != null) {
@@ -588,11 +600,11 @@ class _$_SelectDate implements _SelectDate {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
     return selectDate(this);
   }
@@ -604,11 +616,11 @@ class _$_SelectDate implements _SelectDate {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
     return selectDate?.call(this);
   }
@@ -620,11 +632,11 @@ class _$_SelectDate implements _SelectDate {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
     if (selectDate != null) {
@@ -760,11 +772,12 @@ class _$_SelectTime implements _SelectTime {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
     return selectTime(time, cinema, studio, context);
   }
@@ -778,11 +791,12 @@ class _$_SelectTime implements _SelectTime {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
     return selectTime?.call(time, cinema, studio, context);
   }
@@ -796,11 +810,12 @@ class _$_SelectTime implements _SelectTime {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (selectTime != null) {
@@ -816,11 +831,11 @@ class _$_SelectTime implements _SelectTime {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
     return selectTime(this);
   }
@@ -832,11 +847,11 @@ class _$_SelectTime implements _SelectTime {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
     return selectTime?.call(this);
   }
@@ -848,11 +863,11 @@ class _$_SelectTime implements _SelectTime {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
     if (selectTime != null) {
@@ -879,213 +894,83 @@ abstract class _SelectTime implements OrderEvent {
 }
 
 /// @nodoc
-abstract class _$$_OrderCopyWith<$Res> {
-  factory _$$_OrderCopyWith(_$_Order value, $Res Function(_$_Order) then) =
-      __$$_OrderCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OrderCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$_Order>
-    implements _$$_OrderCopyWith<$Res> {
-  __$$_OrderCopyWithImpl(_$_Order _value, $Res Function(_$_Order) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Order implements _Order {
-  const _$_Order();
-
-  @override
-  String toString() {
-    return 'OrderEvent.order()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Order);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(Movie movie) selectMovie,
-    required TResult Function(String date) selectDate,
-    required TResult Function(
-            String time, Cinema cinema, Studio studio, BuildContext context)
-        selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
-    required TResult Function() cancel,
-    required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
-  }) {
-    return order();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(Movie movie)? selectMovie,
-    TResult? Function(String date)? selectDate,
-    TResult? Function(
-            String time, Cinema cinema, Studio studio, BuildContext context)?
-        selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
-    TResult? Function()? cancel,
-    TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
-  }) {
-    return order?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(Movie movie)? selectMovie,
-    TResult Function(String date)? selectDate,
-    TResult Function(
-            String time, Cinema cinema, Studio studio, BuildContext context)?
-        selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
-    TResult Function()? cancel,
-    TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
-    required TResult orElse(),
-  }) {
-    if (order != null) {
-      return order();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_SelectMovie value) selectMovie,
-    required TResult Function(_SelectDate value) selectDate,
-    required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
-    required TResult Function(_Cancel value) cancel,
-    required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
-  }) {
-    return order(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_SelectMovie value)? selectMovie,
-    TResult? Function(_SelectDate value)? selectDate,
-    TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
-    TResult? Function(_Cancel value)? cancel,
-    TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
-  }) {
-    return order?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_SelectMovie value)? selectMovie,
-    TResult Function(_SelectDate value)? selectDate,
-    TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
-    TResult Function(_Cancel value)? cancel,
-    TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
-    required TResult orElse(),
-  }) {
-    if (order != null) {
-      return order(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Order implements OrderEvent {
-  const factory _Order() = _$_Order;
-}
-
-/// @nodoc
-abstract class _$$_PayOrderCopyWith<$Res> {
-  factory _$$_PayOrderCopyWith(
-          _$_PayOrder value, $Res Function(_$_PayOrder) then) =
-      __$$_PayOrderCopyWithImpl<$Res>;
+abstract class _$$_SelectSeatCopyWith<$Res> {
+  factory _$$_SelectSeatCopyWith(
+          _$_SelectSeat value, $Res Function(_$_SelectSeat) then) =
+      __$$_SelectSeatCopyWithImpl<$Res>;
   @useResult
-  $Res call({int orderId});
+  $Res call({List<String> selectedSeats, BuildContext context});
 }
 
 /// @nodoc
-class __$$_PayOrderCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$_PayOrder>
-    implements _$$_PayOrderCopyWith<$Res> {
-  __$$_PayOrderCopyWithImpl(
-      _$_PayOrder _value, $Res Function(_$_PayOrder) _then)
+class __$$_SelectSeatCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$_SelectSeat>
+    implements _$$_SelectSeatCopyWith<$Res> {
+  __$$_SelectSeatCopyWithImpl(
+      _$_SelectSeat _value, $Res Function(_$_SelectSeat) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderId = null,
+    Object? selectedSeats = null,
+    Object? context = null,
   }) {
-    return _then(_$_PayOrder(
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$_SelectSeat(
+      selectedSeats: null == selectedSeats
+          ? _value._selectedSeats
+          : selectedSeats // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_PayOrder implements _PayOrder {
-  const _$_PayOrder({required this.orderId});
+class _$_SelectSeat implements _SelectSeat {
+  const _$_SelectSeat(
+      {required final List<String> selectedSeats, required this.context})
+      : _selectedSeats = selectedSeats;
+
+  final List<String> _selectedSeats;
+  @override
+  List<String> get selectedSeats {
+    if (_selectedSeats is EqualUnmodifiableListView) return _selectedSeats;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedSeats);
+  }
 
   @override
-  final int orderId;
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'OrderEvent.payOrder(orderId: $orderId)';
+    return 'OrderEvent.selectSeat(selectedSeats: $selectedSeats, context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PayOrder &&
-            (identical(other.orderId, orderId) || other.orderId == orderId));
+            other is _$_SelectSeat &&
+            const DeepCollectionEquality()
+                .equals(other._selectedSeats, _selectedSeats) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderId);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_selectedSeats), context);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PayOrderCopyWith<_$_PayOrder> get copyWith =>
-      __$$_PayOrderCopyWithImpl<_$_PayOrder>(this, _$identity);
+  _$$_SelectSeatCopyWith<_$_SelectSeat> get copyWith =>
+      __$$_SelectSeatCopyWithImpl<_$_SelectSeat>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1096,13 +981,14 @@ class _$_PayOrder implements _PayOrder {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
-    return payOrder(orderId);
+    return selectSeat(selectedSeats, context);
   }
 
   @override
@@ -1114,13 +1000,14 @@ class _$_PayOrder implements _PayOrder {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
-    return payOrder?.call(orderId);
+    return selectSeat?.call(selectedSeats, context);
   }
 
   @override
@@ -1132,15 +1019,16 @@ class _$_PayOrder implements _PayOrder {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
-    if (payOrder != null) {
-      return payOrder(orderId);
+    if (selectSeat != null) {
+      return selectSeat(selectedSeats, context);
     }
     return orElse();
   }
@@ -1152,13 +1040,13 @@ class _$_PayOrder implements _PayOrder {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
-    return payOrder(this);
+    return selectSeat(this);
   }
 
   @override
@@ -1168,13 +1056,13 @@ class _$_PayOrder implements _PayOrder {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
-    return payOrder?.call(this);
+    return selectSeat?.call(this);
   }
 
   @override
@@ -1184,26 +1072,224 @@ class _$_PayOrder implements _PayOrder {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
-    if (payOrder != null) {
-      return payOrder(this);
+    if (selectSeat != null) {
+      return selectSeat(this);
     }
     return orElse();
   }
 }
 
-abstract class _PayOrder implements OrderEvent {
-  const factory _PayOrder({required final int orderId}) = _$_PayOrder;
+abstract class _SelectSeat implements OrderEvent {
+  const factory _SelectSeat(
+      {required final List<String> selectedSeats,
+      required final BuildContext context}) = _$_SelectSeat;
+
+  List<String> get selectedSeats;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_SelectSeatCopyWith<_$_SelectSeat> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_MakeOrderCopyWith<$Res> {
+  factory _$$_MakeOrderCopyWith(
+          _$_MakeOrder value, $Res Function(_$_MakeOrder) then) =
+      __$$_MakeOrderCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int orderId, BuildContext context});
+}
+
+/// @nodoc
+class __$$_MakeOrderCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$_MakeOrder>
+    implements _$$_MakeOrderCopyWith<$Res> {
+  __$$_MakeOrderCopyWithImpl(
+      _$_MakeOrder _value, $Res Function(_$_MakeOrder) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+    Object? context = null,
+  }) {
+    return _then(_$_MakeOrder(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MakeOrder implements _MakeOrder {
+  const _$_MakeOrder({required this.orderId, required this.context});
+
+  @override
+  final int orderId;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'OrderEvent.makeOrder(orderId: $orderId, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MakeOrder &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MakeOrderCopyWith<_$_MakeOrder> get copyWith =>
+      __$$_MakeOrderCopyWithImpl<_$_MakeOrder>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Movie movie) selectMovie,
+    required TResult Function(String date) selectDate,
+    required TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)
+        selectTime,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function() cancel,
+    required TResult Function() cancelTime,
+    required TResult Function(BuildContext context) cancelSeat,
+  }) {
+    return makeOrder(orderId, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Movie movie)? selectMovie,
+    TResult? Function(String date)? selectDate,
+    TResult? Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
+        selectTime,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function()? cancel,
+    TResult? Function()? cancelTime,
+    TResult? Function(BuildContext context)? cancelSeat,
+  }) {
+    return makeOrder?.call(orderId, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Movie movie)? selectMovie,
+    TResult Function(String date)? selectDate,
+    TResult Function(
+            String time, Cinema cinema, Studio studio, BuildContext context)?
+        selectTime,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function()? cancel,
+    TResult Function()? cancelTime,
+    TResult Function(BuildContext context)? cancelSeat,
+    required TResult orElse(),
+  }) {
+    if (makeOrder != null) {
+      return makeOrder(orderId, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SelectMovie value) selectMovie,
+    required TResult Function(_SelectDate value) selectDate,
+    required TResult Function(_SelectTime value) selectTime,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
+    required TResult Function(_Cancel value) cancel,
+    required TResult Function(_CancelTime value) cancelTime,
+    required TResult Function(_CancelSeat value) cancelSeat,
+  }) {
+    return makeOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SelectMovie value)? selectMovie,
+    TResult? Function(_SelectDate value)? selectDate,
+    TResult? Function(_SelectTime value)? selectTime,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
+    TResult? Function(_Cancel value)? cancel,
+    TResult? Function(_CancelTime value)? cancelTime,
+    TResult? Function(_CancelSeat value)? cancelSeat,
+  }) {
+    return makeOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SelectMovie value)? selectMovie,
+    TResult Function(_SelectDate value)? selectDate,
+    TResult Function(_SelectTime value)? selectTime,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
+    TResult Function(_Cancel value)? cancel,
+    TResult Function(_CancelTime value)? cancelTime,
+    TResult Function(_CancelSeat value)? cancelSeat,
+    required TResult orElse(),
+  }) {
+    if (makeOrder != null) {
+      return makeOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MakeOrder implements OrderEvent {
+  const factory _MakeOrder(
+      {required final int orderId,
+      required final BuildContext context}) = _$_MakeOrder;
 
   int get orderId;
+  BuildContext get context;
   @JsonKey(ignore: true)
-  _$$_PayOrderCopyWith<_$_PayOrder> get copyWith =>
+  _$$_MakeOrderCopyWith<_$_MakeOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1249,11 +1335,12 @@ class _$_Cancel implements _Cancel {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
     return cancel();
   }
@@ -1267,11 +1354,12 @@ class _$_Cancel implements _Cancel {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
     return cancel?.call();
   }
@@ -1285,11 +1373,12 @@ class _$_Cancel implements _Cancel {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (cancel != null) {
@@ -1305,11 +1394,11 @@ class _$_Cancel implements _Cancel {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
     return cancel(this);
   }
@@ -1321,11 +1410,11 @@ class _$_Cancel implements _Cancel {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
     return cancel?.call(this);
   }
@@ -1337,11 +1426,11 @@ class _$_Cancel implements _Cancel {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
     if (cancel != null) {
@@ -1399,11 +1488,12 @@ class _$_CancelTime implements _CancelTime {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
     return cancelTime();
   }
@@ -1417,11 +1507,12 @@ class _$_CancelTime implements _CancelTime {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
     return cancelTime?.call();
   }
@@ -1435,11 +1526,12 @@ class _$_CancelTime implements _CancelTime {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (cancelTime != null) {
@@ -1455,11 +1547,11 @@ class _$_CancelTime implements _CancelTime {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
     return cancelTime(this);
   }
@@ -1471,11 +1563,11 @@ class _$_CancelTime implements _CancelTime {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
     return cancelTime?.call(this);
   }
@@ -1487,11 +1579,11 @@ class _$_CancelTime implements _CancelTime {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
     if (cancelTime != null) {
@@ -1506,39 +1598,65 @@ abstract class _CancelTime implements OrderEvent {
 }
 
 /// @nodoc
-abstract class _$$_CancelOrderPayCopyWith<$Res> {
-  factory _$$_CancelOrderPayCopyWith(
-          _$_CancelOrderPay value, $Res Function(_$_CancelOrderPay) then) =
-      __$$_CancelOrderPayCopyWithImpl<$Res>;
+abstract class _$$_CancelSeatCopyWith<$Res> {
+  factory _$$_CancelSeatCopyWith(
+          _$_CancelSeat value, $Res Function(_$_CancelSeat) then) =
+      __$$_CancelSeatCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
-class __$$_CancelOrderPayCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$_CancelOrderPay>
-    implements _$$_CancelOrderPayCopyWith<$Res> {
-  __$$_CancelOrderPayCopyWithImpl(
-      _$_CancelOrderPay _value, $Res Function(_$_CancelOrderPay) _then)
+class __$$_CancelSeatCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$_CancelSeat>
+    implements _$$_CancelSeatCopyWith<$Res> {
+  __$$_CancelSeatCopyWithImpl(
+      _$_CancelSeat _value, $Res Function(_$_CancelSeat) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_CancelSeat(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_CancelOrderPay implements _CancelOrderPay {
-  const _$_CancelOrderPay();
+class _$_CancelSeat implements _CancelSeat {
+  const _$_CancelSeat(this.context);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'OrderEvent.cancelOrderPay()';
+    return 'OrderEvent.cancelSeat(context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CancelOrderPay);
+        (other.runtimeType == runtimeType &&
+            other is _$_CancelSeat &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CancelSeatCopyWith<_$_CancelSeat> get copyWith =>
+      __$$_CancelSeatCopyWithImpl<_$_CancelSeat>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1549,13 +1667,14 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     required TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)
         selectTime,
-    required TResult Function() order,
-    required TResult Function(int orderId) payOrder,
+    required TResult Function(List<String> selectedSeats, BuildContext context)
+        selectSeat,
+    required TResult Function(int orderId, BuildContext context) makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
-    required TResult Function() cancelOrderPay,
+    required TResult Function(BuildContext context) cancelSeat,
   }) {
-    return cancelOrderPay();
+    return cancelSeat(context);
   }
 
   @override
@@ -1567,13 +1686,14 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     TResult? Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult? Function()? order,
-    TResult? Function(int orderId)? payOrder,
+    TResult? Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult? Function(int orderId, BuildContext context)? makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
-    TResult? Function()? cancelOrderPay,
+    TResult? Function(BuildContext context)? cancelSeat,
   }) {
-    return cancelOrderPay?.call();
+    return cancelSeat?.call(context);
   }
 
   @override
@@ -1585,15 +1705,16 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     TResult Function(
             String time, Cinema cinema, Studio studio, BuildContext context)?
         selectTime,
-    TResult Function()? order,
-    TResult Function(int orderId)? payOrder,
+    TResult Function(List<String> selectedSeats, BuildContext context)?
+        selectSeat,
+    TResult Function(int orderId, BuildContext context)? makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
-    TResult Function()? cancelOrderPay,
+    TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
-    if (cancelOrderPay != null) {
-      return cancelOrderPay();
+    if (cancelSeat != null) {
+      return cancelSeat(context);
     }
     return orElse();
   }
@@ -1605,13 +1726,13 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     required TResult Function(_SelectMovie value) selectMovie,
     required TResult Function(_SelectDate value) selectDate,
     required TResult Function(_SelectTime value) selectTime,
-    required TResult Function(_Order value) order,
-    required TResult Function(_PayOrder value) payOrder,
+    required TResult Function(_SelectSeat value) selectSeat,
+    required TResult Function(_MakeOrder value) makeOrder,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_CancelTime value) cancelTime,
-    required TResult Function(_CancelOrderPay value) cancelOrderPay,
+    required TResult Function(_CancelSeat value) cancelSeat,
   }) {
-    return cancelOrderPay(this);
+    return cancelSeat(this);
   }
 
   @override
@@ -1621,13 +1742,13 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     TResult? Function(_SelectMovie value)? selectMovie,
     TResult? Function(_SelectDate value)? selectDate,
     TResult? Function(_SelectTime value)? selectTime,
-    TResult? Function(_Order value)? order,
-    TResult? Function(_PayOrder value)? payOrder,
+    TResult? Function(_SelectSeat value)? selectSeat,
+    TResult? Function(_MakeOrder value)? makeOrder,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_CancelTime value)? cancelTime,
-    TResult? Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult? Function(_CancelSeat value)? cancelSeat,
   }) {
-    return cancelOrderPay?.call(this);
+    return cancelSeat?.call(this);
   }
 
   @override
@@ -1637,22 +1758,27 @@ class _$_CancelOrderPay implements _CancelOrderPay {
     TResult Function(_SelectMovie value)? selectMovie,
     TResult Function(_SelectDate value)? selectDate,
     TResult Function(_SelectTime value)? selectTime,
-    TResult Function(_Order value)? order,
-    TResult Function(_PayOrder value)? payOrder,
+    TResult Function(_SelectSeat value)? selectSeat,
+    TResult Function(_MakeOrder value)? makeOrder,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_CancelTime value)? cancelTime,
-    TResult Function(_CancelOrderPay value)? cancelOrderPay,
+    TResult Function(_CancelSeat value)? cancelSeat,
     required TResult orElse(),
   }) {
-    if (cancelOrderPay != null) {
-      return cancelOrderPay(this);
+    if (cancelSeat != null) {
+      return cancelSeat(this);
     }
     return orElse();
   }
 }
 
-abstract class _CancelOrderPay implements OrderEvent {
-  const factory _CancelOrderPay() = _$_CancelOrderPay;
+abstract class _CancelSeat implements OrderEvent {
+  const factory _CancelSeat(final BuildContext context) = _$_CancelSeat;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_CancelSeatCopyWith<_$_CancelSeat> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1662,9 +1788,12 @@ mixin _$OrderState {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(
-            Movie movie, String date, String time, Cinema cinema, Studio studio)
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, List<String>? reservedList)
         selectedTime,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, Order order)
+        selectedSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1673,8 +1802,11 @@ mixin _$OrderState {
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
     TResult? Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1683,8 +1815,11 @@ mixin _$OrderState {
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
     TResult Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1694,6 +1829,7 @@ mixin _$OrderState {
     required TResult Function(_SelectedMovie value) selectedMovie,
     required TResult Function(_SelectedDate value) selectedDate,
     required TResult Function(_SelectedTime value) selectedTime,
+    required TResult Function(_SelectedSeat value) selectedSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1702,6 +1838,7 @@ mixin _$OrderState {
     TResult? Function(_SelectedMovie value)? selectedMovie,
     TResult? Function(_SelectedDate value)? selectedDate,
     TResult? Function(_SelectedTime value)? selectedTime,
+    TResult? Function(_SelectedSeat value)? selectedSeat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1710,6 +1847,7 @@ mixin _$OrderState {
     TResult Function(_SelectedMovie value)? selectedMovie,
     TResult Function(_SelectedDate value)? selectedDate,
     TResult Function(_SelectedTime value)? selectedTime,
+    TResult Function(_SelectedSeat value)? selectedSeat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1773,9 +1911,12 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(
-            Movie movie, String date, String time, Cinema cinema, Studio studio)
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, List<String>? reservedList)
         selectedTime,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, Order order)
+        selectedSeat,
   }) {
     return initial();
   }
@@ -1787,8 +1928,11 @@ class _$_Initial implements _Initial {
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
     TResult? Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
   }) {
     return initial?.call();
   }
@@ -1800,8 +1944,11 @@ class _$_Initial implements _Initial {
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
     TResult Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1817,6 +1964,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_SelectedMovie value) selectedMovie,
     required TResult Function(_SelectedDate value) selectedDate,
     required TResult Function(_SelectedTime value) selectedTime,
+    required TResult Function(_SelectedSeat value) selectedSeat,
   }) {
     return initial(this);
   }
@@ -1828,6 +1976,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_SelectedMovie value)? selectedMovie,
     TResult? Function(_SelectedDate value)? selectedDate,
     TResult? Function(_SelectedTime value)? selectedTime,
+    TResult? Function(_SelectedSeat value)? selectedSeat,
   }) {
     return initial?.call(this);
   }
@@ -1839,6 +1988,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SelectedMovie value)? selectedMovie,
     TResult Function(_SelectedDate value)? selectedDate,
     TResult Function(_SelectedTime value)? selectedTime,
+    TResult Function(_SelectedSeat value)? selectedSeat,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1929,9 +2079,12 @@ class _$_SelectedMovie implements _SelectedMovie {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(
-            Movie movie, String date, String time, Cinema cinema, Studio studio)
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, List<String>? reservedList)
         selectedTime,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, Order order)
+        selectedSeat,
   }) {
     return selectedMovie(movie);
   }
@@ -1943,8 +2096,11 @@ class _$_SelectedMovie implements _SelectedMovie {
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
     TResult? Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
   }) {
     return selectedMovie?.call(movie);
   }
@@ -1956,8 +2112,11 @@ class _$_SelectedMovie implements _SelectedMovie {
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
     TResult Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
     required TResult orElse(),
   }) {
     if (selectedMovie != null) {
@@ -1973,6 +2132,7 @@ class _$_SelectedMovie implements _SelectedMovie {
     required TResult Function(_SelectedMovie value) selectedMovie,
     required TResult Function(_SelectedDate value) selectedDate,
     required TResult Function(_SelectedTime value) selectedTime,
+    required TResult Function(_SelectedSeat value) selectedSeat,
   }) {
     return selectedMovie(this);
   }
@@ -1984,6 +2144,7 @@ class _$_SelectedMovie implements _SelectedMovie {
     TResult? Function(_SelectedMovie value)? selectedMovie,
     TResult? Function(_SelectedDate value)? selectedDate,
     TResult? Function(_SelectedTime value)? selectedTime,
+    TResult? Function(_SelectedSeat value)? selectedSeat,
   }) {
     return selectedMovie?.call(this);
   }
@@ -1995,6 +2156,7 @@ class _$_SelectedMovie implements _SelectedMovie {
     TResult Function(_SelectedMovie value)? selectedMovie,
     TResult Function(_SelectedDate value)? selectedDate,
     TResult Function(_SelectedTime value)? selectedTime,
+    TResult Function(_SelectedSeat value)? selectedSeat,
     required TResult orElse(),
   }) {
     if (selectedMovie != null) {
@@ -2098,9 +2260,12 @@ class _$_SelectedDate implements _SelectedDate {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(
-            Movie movie, String date, String time, Cinema cinema, Studio studio)
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, List<String>? reservedList)
         selectedTime,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, Order order)
+        selectedSeat,
   }) {
     return selectedDate(movie, date);
   }
@@ -2112,8 +2277,11 @@ class _$_SelectedDate implements _SelectedDate {
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
     TResult? Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
   }) {
     return selectedDate?.call(movie, date);
   }
@@ -2125,8 +2293,11 @@ class _$_SelectedDate implements _SelectedDate {
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
     TResult Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
     required TResult orElse(),
   }) {
     if (selectedDate != null) {
@@ -2142,6 +2313,7 @@ class _$_SelectedDate implements _SelectedDate {
     required TResult Function(_SelectedMovie value) selectedMovie,
     required TResult Function(_SelectedDate value) selectedDate,
     required TResult Function(_SelectedTime value) selectedTime,
+    required TResult Function(_SelectedSeat value) selectedSeat,
   }) {
     return selectedDate(this);
   }
@@ -2153,6 +2325,7 @@ class _$_SelectedDate implements _SelectedDate {
     TResult? Function(_SelectedMovie value)? selectedMovie,
     TResult? Function(_SelectedDate value)? selectedDate,
     TResult? Function(_SelectedTime value)? selectedTime,
+    TResult? Function(_SelectedSeat value)? selectedSeat,
   }) {
     return selectedDate?.call(this);
   }
@@ -2164,6 +2337,7 @@ class _$_SelectedDate implements _SelectedDate {
     TResult Function(_SelectedMovie value)? selectedMovie,
     TResult Function(_SelectedDate value)? selectedDate,
     TResult Function(_SelectedTime value)? selectedTime,
+    TResult Function(_SelectedSeat value)? selectedSeat,
     required TResult orElse(),
   }) {
     if (selectedDate != null) {
@@ -2192,7 +2366,12 @@ abstract class _$$_SelectedTimeCopyWith<$Res> {
       __$$_SelectedTimeCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Movie movie, String date, String time, Cinema cinema, Studio studio});
+      {Movie movie,
+      String date,
+      String time,
+      Cinema cinema,
+      Studio studio,
+      List<String>? reservedList});
 
   $MovieCopyWith<$Res> get movie;
   $CinemaCopyWith<$Res> get cinema;
@@ -2215,6 +2394,7 @@ class __$$_SelectedTimeCopyWithImpl<$Res>
     Object? time = null,
     Object? cinema = null,
     Object? studio = null,
+    Object? reservedList = freezed,
   }) {
     return _then(_$_SelectedTime(
       movie: null == movie
@@ -2237,6 +2417,10 @@ class __$$_SelectedTimeCopyWithImpl<$Res>
           ? _value.studio
           : studio // ignore: cast_nullable_to_non_nullable
               as Studio,
+      reservedList: freezed == reservedList
+          ? _value._reservedList
+          : reservedList // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 
@@ -2273,7 +2457,9 @@ class _$_SelectedTime implements _SelectedTime {
       required this.date,
       required this.time,
       required this.cinema,
-      required this.studio});
+      required this.studio,
+      required final List<String>? reservedList})
+      : _reservedList = reservedList;
 
   @override
   final Movie movie;
@@ -2285,10 +2471,19 @@ class _$_SelectedTime implements _SelectedTime {
   final Cinema cinema;
   @override
   final Studio studio;
+  final List<String>? _reservedList;
+  @override
+  List<String>? get reservedList {
+    final value = _reservedList;
+    if (value == null) return null;
+    if (_reservedList is EqualUnmodifiableListView) return _reservedList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'OrderState.selectedTime(movie: $movie, date: $date, time: $time, cinema: $cinema, studio: $studio)';
+    return 'OrderState.selectedTime(movie: $movie, date: $date, time: $time, cinema: $cinema, studio: $studio, reservedList: $reservedList)';
   }
 
   @override
@@ -2300,12 +2495,14 @@ class _$_SelectedTime implements _SelectedTime {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.cinema, cinema) || other.cinema == cinema) &&
-            (identical(other.studio, studio) || other.studio == studio));
+            (identical(other.studio, studio) || other.studio == studio) &&
+            const DeepCollectionEquality()
+                .equals(other._reservedList, _reservedList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, movie, date, time, cinema, studio);
+  int get hashCode => Object.hash(runtimeType, movie, date, time, cinema,
+      studio, const DeepCollectionEquality().hash(_reservedList));
 
   @JsonKey(ignore: true)
   @override
@@ -2319,11 +2516,14 @@ class _$_SelectedTime implements _SelectedTime {
     required TResult Function() initial,
     required TResult Function(Movie movie) selectedMovie,
     required TResult Function(Movie movie, String date) selectedDate,
-    required TResult Function(
-            Movie movie, String date, String time, Cinema cinema, Studio studio)
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, List<String>? reservedList)
         selectedTime,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, Order order)
+        selectedSeat,
   }) {
-    return selectedTime(movie, date, time, cinema, studio);
+    return selectedTime(movie, date, time, cinema, studio, reservedList);
   }
 
   @override
@@ -2333,10 +2533,13 @@ class _$_SelectedTime implements _SelectedTime {
     TResult? Function(Movie movie)? selectedMovie,
     TResult? Function(Movie movie, String date)? selectedDate,
     TResult? Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
   }) {
-    return selectedTime?.call(movie, date, time, cinema, studio);
+    return selectedTime?.call(movie, date, time, cinema, studio, reservedList);
   }
 
   @override
@@ -2346,12 +2549,15 @@ class _$_SelectedTime implements _SelectedTime {
     TResult Function(Movie movie)? selectedMovie,
     TResult Function(Movie movie, String date)? selectedDate,
     TResult Function(Movie movie, String date, String time, Cinema cinema,
-            Studio studio)?
+            Studio studio, List<String>? reservedList)?
         selectedTime,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
     required TResult orElse(),
   }) {
     if (selectedTime != null) {
-      return selectedTime(movie, date, time, cinema, studio);
+      return selectedTime(movie, date, time, cinema, studio, reservedList);
     }
     return orElse();
   }
@@ -2363,6 +2569,7 @@ class _$_SelectedTime implements _SelectedTime {
     required TResult Function(_SelectedMovie value) selectedMovie,
     required TResult Function(_SelectedDate value) selectedDate,
     required TResult Function(_SelectedTime value) selectedTime,
+    required TResult Function(_SelectedSeat value) selectedSeat,
   }) {
     return selectedTime(this);
   }
@@ -2374,6 +2581,7 @@ class _$_SelectedTime implements _SelectedTime {
     TResult? Function(_SelectedMovie value)? selectedMovie,
     TResult? Function(_SelectedDate value)? selectedDate,
     TResult? Function(_SelectedTime value)? selectedTime,
+    TResult? Function(_SelectedSeat value)? selectedSeat,
   }) {
     return selectedTime?.call(this);
   }
@@ -2385,6 +2593,7 @@ class _$_SelectedTime implements _SelectedTime {
     TResult Function(_SelectedMovie value)? selectedMovie,
     TResult Function(_SelectedDate value)? selectedDate,
     TResult Function(_SelectedTime value)? selectedTime,
+    TResult Function(_SelectedSeat value)? selectedSeat,
     required TResult orElse(),
   }) {
     if (selectedTime != null) {
@@ -2400,14 +2609,280 @@ abstract class _SelectedTime implements OrderState {
       required final String date,
       required final String time,
       required final Cinema cinema,
-      required final Studio studio}) = _$_SelectedTime;
+      required final Studio studio,
+      required final List<String>? reservedList}) = _$_SelectedTime;
 
   Movie get movie;
   String get date;
   String get time;
   Cinema get cinema;
   Studio get studio;
+  List<String>? get reservedList;
   @JsonKey(ignore: true)
   _$$_SelectedTimeCopyWith<_$_SelectedTime> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SelectedSeatCopyWith<$Res> {
+  factory _$$_SelectedSeatCopyWith(
+          _$_SelectedSeat value, $Res Function(_$_SelectedSeat) then) =
+      __$$_SelectedSeatCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {Movie movie,
+      String date,
+      String time,
+      Cinema cinema,
+      Studio studio,
+      Order order});
+
+  $MovieCopyWith<$Res> get movie;
+  $CinemaCopyWith<$Res> get cinema;
+  $StudioCopyWith<$Res> get studio;
+  $OrderCopyWith<$Res> get order;
+}
+
+/// @nodoc
+class __$$_SelectedSeatCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$_SelectedSeat>
+    implements _$$_SelectedSeatCopyWith<$Res> {
+  __$$_SelectedSeatCopyWithImpl(
+      _$_SelectedSeat _value, $Res Function(_$_SelectedSeat) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movie = null,
+    Object? date = null,
+    Object? time = null,
+    Object? cinema = null,
+    Object? studio = null,
+    Object? order = null,
+  }) {
+    return _then(_$_SelectedSeat(
+      movie: null == movie
+          ? _value.movie
+          : movie // ignore: cast_nullable_to_non_nullable
+              as Movie,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
+      cinema: null == cinema
+          ? _value.cinema
+          : cinema // ignore: cast_nullable_to_non_nullable
+              as Cinema,
+      studio: null == studio
+          ? _value.studio
+          : studio // ignore: cast_nullable_to_non_nullable
+              as Studio,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MovieCopyWith<$Res> get movie {
+    return $MovieCopyWith<$Res>(_value.movie, (value) {
+      return _then(_value.copyWith(movie: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CinemaCopyWith<$Res> get cinema {
+    return $CinemaCopyWith<$Res>(_value.cinema, (value) {
+      return _then(_value.copyWith(cinema: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StudioCopyWith<$Res> get studio {
+    return $StudioCopyWith<$Res>(_value.studio, (value) {
+      return _then(_value.copyWith(studio: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderCopyWith<$Res> get order {
+    return $OrderCopyWith<$Res>(_value.order, (value) {
+      return _then(_value.copyWith(order: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SelectedSeat implements _SelectedSeat {
+  const _$_SelectedSeat(
+      {required this.movie,
+      required this.date,
+      required this.time,
+      required this.cinema,
+      required this.studio,
+      required this.order});
+
+  @override
+  final Movie movie;
+  @override
+  final String date;
+  @override
+  final String time;
+  @override
+  final Cinema cinema;
+  @override
+  final Studio studio;
+  @override
+  final Order order;
+
+  @override
+  String toString() {
+    return 'OrderState.selectedSeat(movie: $movie, date: $date, time: $time, cinema: $cinema, studio: $studio, order: $order)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SelectedSeat &&
+            (identical(other.movie, movie) || other.movie == movie) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.cinema, cinema) || other.cinema == cinema) &&
+            (identical(other.studio, studio) || other.studio == studio) &&
+            (identical(other.order, order) || other.order == order));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, movie, date, time, cinema, studio, order);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SelectedSeatCopyWith<_$_SelectedSeat> get copyWith =>
+      __$$_SelectedSeatCopyWithImpl<_$_SelectedSeat>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Movie movie) selectedMovie,
+    required TResult Function(Movie movie, String date) selectedDate,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, List<String>? reservedList)
+        selectedTime,
+    required TResult Function(Movie movie, String date, String time,
+            Cinema cinema, Studio studio, Order order)
+        selectedSeat,
+  }) {
+    return selectedSeat(movie, date, time, cinema, studio, order);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Movie movie)? selectedMovie,
+    TResult? Function(Movie movie, String date)? selectedDate,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, List<String>? reservedList)?
+        selectedTime,
+    TResult? Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
+  }) {
+    return selectedSeat?.call(movie, date, time, cinema, studio, order);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Movie movie)? selectedMovie,
+    TResult Function(Movie movie, String date)? selectedDate,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, List<String>? reservedList)?
+        selectedTime,
+    TResult Function(Movie movie, String date, String time, Cinema cinema,
+            Studio studio, Order order)?
+        selectedSeat,
+    required TResult orElse(),
+  }) {
+    if (selectedSeat != null) {
+      return selectedSeat(movie, date, time, cinema, studio, order);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SelectedMovie value) selectedMovie,
+    required TResult Function(_SelectedDate value) selectedDate,
+    required TResult Function(_SelectedTime value) selectedTime,
+    required TResult Function(_SelectedSeat value) selectedSeat,
+  }) {
+    return selectedSeat(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SelectedMovie value)? selectedMovie,
+    TResult? Function(_SelectedDate value)? selectedDate,
+    TResult? Function(_SelectedTime value)? selectedTime,
+    TResult? Function(_SelectedSeat value)? selectedSeat,
+  }) {
+    return selectedSeat?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SelectedMovie value)? selectedMovie,
+    TResult Function(_SelectedDate value)? selectedDate,
+    TResult Function(_SelectedTime value)? selectedTime,
+    TResult Function(_SelectedSeat value)? selectedSeat,
+    required TResult orElse(),
+  }) {
+    if (selectedSeat != null) {
+      return selectedSeat(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedSeat implements OrderState {
+  const factory _SelectedSeat(
+      {required final Movie movie,
+      required final String date,
+      required final String time,
+      required final Cinema cinema,
+      required final Studio studio,
+      required final Order order}) = _$_SelectedSeat;
+
+  Movie get movie;
+  String get date;
+  String get time;
+  Cinema get cinema;
+  Studio get studio;
+  Order get order;
+  @JsonKey(ignore: true)
+  _$$_SelectedSeatCopyWith<_$_SelectedSeat> get copyWith =>
       throw _privateConstructorUsedError;
 }
