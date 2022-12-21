@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/entities/order.dart';
+import 'package:movie_app/entities/transaction.dart';
 
 class OrderServices {
   final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
@@ -61,12 +62,20 @@ class OrderServices {
     }
   }
 
-  Future<ApiResult<String>> payOrder(
-      {required int orderId, required String token}) async {
-    var data = {"order_id": orderId};
+  Future<ApiResult<String>> payOrderTicket(
+      {required int orderId,
+      required String token,
+      required PaymentMethod paymentMethod}) async {
+    var data = {
+      "order": {
+        "order_id": orderId,
+        "payment_method": paymentMethod.name.toUpperCase(),
+        "method_fee": paymentMethod.fee
+      }
+    };
     try {
       Response result =
-          await _dio.post("${dotenv.env['local_api_url']}/order/pay",
+          await _dio.post("${dotenv.env['local_api_url']}/pay/ticket",
               options: Options(headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer $token",
@@ -100,4 +109,6 @@ class OrderServices {
           : "Connection timeout");
     }
   }
+
+  payOrder({required int orderId, required String token}) {}
 }

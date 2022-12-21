@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/entities/movie.dart';
-import 'package:movie_app/entities/order.dart';
 
 part 'transaction.freezed.dart';
 part 'transaction.g.dart';
@@ -38,4 +38,30 @@ class TransactionDetail with _$TransactionDetail {
       {required Movie movie, required int quantity}) = _TransactionDetail;
   factory TransactionDetail.fromJson(Map<String, dynamic> json) =>
       _$TransactionDetailFromJson(json);
+}
+
+// @unfreezed
+// class PaymentMethod with _$PaymentMethod {
+//   const PaymentMethod._();
+//   factory PaymentMethod({
+//     required String name,
+//     required String icon,
+//     String? balance,
+//   }) = _PaymentMethod;
+//   String formatCurrency(String string) {
+//     RegExp regex = RegExp(r'([.]*0)(?!.*\d)');
+//     String formatedCurrency = string.replaceAll(regex, '');
+//     return 'Rp $formatedCurrency';
+//   }
+
+//   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
+//       _$PaymentMethodFromJson(json);
+// }
+class PaymentMethod {
+  String name;
+  Widget icon;
+  String? balance;
+  double fee;
+  PaymentMethod(
+      {required this.name, required this.icon, this.balance, this.fee = 0});
 }

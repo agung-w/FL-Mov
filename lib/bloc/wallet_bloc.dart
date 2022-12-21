@@ -40,14 +40,22 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
       emit(const _Loading());
       String? token = pref.getString('token');
       if (token != null) {
-        ApiResult<String> wallet = await WalletServices()
-            .topUp(token: token, amount: event.amount, method: event.method);
-        emit(_Loaded(wallet));
-        wallet.mapOrNull(
-            success: (result) =>
-                Navigator.popUntil(event.context, (route) => route.isFirst),
-            failed: (result) => ScaffoldMessenger.of(event.context)
-                .showSnackBar(SnackBar(content: Text(result.message))));
+        await WalletServices()
+            .topUp(token: token, amount: event.amount, method: event.method)
+            .then(
+          (value) {
+            emit(_Loaded(value));
+            return value;
+          },
+        ).then((value) {
+          value.map(
+              success: (result) => Navigator.pop(event.context),
+              failed: (result) => ScaffoldMessenger.of(event.context)
+                  .showSnackBar(SnackBar(content: Text(result.message))));
+          return value;
+        }).then((value) => value.mapOrNull(
+                  success: (result) => Navigator.pop(event.context),
+                ));
       } else {
         emit(const _Initial());
       }

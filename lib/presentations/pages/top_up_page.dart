@@ -440,12 +440,14 @@ class _TopUpWithPaymentServiceState extends State<_TopUpWithPaymentService> {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {
-                    if (error == null) {
-                      context.read<WalletBloc>().add(WalletEvent.topUp(
-                          recievedBalance.toString(), widget.method, context));
-                    }
-                  },
+                  onPressed: error == null
+                      ? () {
+                          context.read<WalletBloc>().add(WalletEvent.topUp(
+                              recievedBalance.toString(),
+                              widget.method,
+                              context));
+                        }
+                      : null,
                   child: const Text("Top Up Now")),
             ),
           ))

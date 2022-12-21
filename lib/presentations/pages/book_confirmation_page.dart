@@ -1,14 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
+import 'package:movie_app/entities/transaction.dart';
+import 'package:movie_app/presentations/pages/top_up_page.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
-import 'package:movie_app/presentations/widgets/draggable_bottom_modal.dart';
 
 class BookConfirmationPage extends StatefulWidget {
   const BookConfirmationPage({super.key});
@@ -18,10 +15,47 @@ class BookConfirmationPage extends StatefulWidget {
 }
 
 class _BookConfirmationPageState extends State<BookConfirmationPage> {
-  String? paymentMethod;
+  late PaymentMethod paymentMethod;
+  late bool disableWallet;
+  PaymentMethod choose = PaymentMethod(
+      name: "Choose Payment Method",
+      icon: const _PaymentMethodIcon(
+          icon: Icon(
+        Icons.trip_origin,
+        color: Colors.white,
+        size: 22,
+      )));
+  PaymentMethod wallet = PaymentMethod(
+      name: "Wallet",
+      icon: const _PaymentMethodIcon(
+          icon: Icon(
+        Icons.wallet,
+        color: Colors.white,
+        size: 22,
+      )));
+  PaymentMethod bca = PaymentMethod(
+    name: "Bca",
+    icon: Container(
+      width: 28,
+      height: 28,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.black, width: 0.2)),
+      child: Image(
+        image: Image.asset(
+          'assets/bankbca.png',
+        ).image,
+      ),
+    ),
+    fee: 15000,
+  );
+
   @override
   void initState() {
     context.read<WalletBloc>().add(const WalletEvent.getBalance());
+    paymentMethod = choose;
+    disableWallet = true;
+
     super.initState();
   }
 
@@ -237,28 +271,32 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text("Admin fee",
-                                      style: TextStyle(fontSize: 16)),
-                                  Text(
-                                      order.toRupiah(order.adminFee.toString()),
-                                      style: const TextStyle(fontSize: 16))
-                                ],
+                            if (paymentMethod.fee != 0) ...{
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 8, bottom: 8),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text("Admin fee",
+                                        style: TextStyle(fontSize: 16)),
+                                    Text(
+                                        order.toRupiah(
+                                            paymentMethod.fee.toString()),
+                                        style: const TextStyle(fontSize: 16))
+                                  ],
+                                ),
                               ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 8, bottom: 8),
-                              child: Divider(
-                                height: 1,
-                                thickness: 0.2,
-                                color: Colors.black,
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8, bottom: 8),
+                                child: Divider(
+                                  height: 1,
+                                  thickness: 0.2,
+                                  color: Colors.black,
+                                ),
                               ),
-                            ),
+                            },
                             Padding(
                               padding: const EdgeInsets.only(top: 8, bottom: 8),
                               child: Row(
@@ -269,7 +307,11 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700)),
-                                  Text(order.toRupiah(order.total.toString()),
+                                  Text(
+                                      order.toRupiah(
+                                          (double.parse(order.total!) +
+                                                  paymentMethod.fee)
+                                              .toString()),
                                       style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700))
@@ -282,13 +324,15 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                           listener: (context, state) {
                             state.mapOrNull(
                               loaded: (value) => value.result.mapOrNull(
-                                success: (value) {
-                                  if (double.parse(value.value) >
-                                      double.parse(order.total.toString())) {
-                                    setState(
-                                      () => paymentMethod = "Wallet",
-                                    );
-                                  }
+                                success: (balance) {
+                                  setState(() {
+                                    wallet.balance = balance.value;
+                                    if (double.parse(balance.value) >
+                                        double.parse(order.total.toString())) {
+                                      paymentMethod = wallet;
+                                      disableWallet = false;
+                                    }
+                                  });
                                   return null;
                                 },
                               ),
@@ -307,50 +351,10 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                                 topRight: Radius.circular(20))),
                                         context: context,
                                         builder: (context) =>
-                                            DraggableBottomModal(
-                                              header: Row(children: const [
-                                                Padding(
-                                                  padding:
-                                                      EdgeInsets.only(left: 8),
-                                                  child: Text(
-                                                    "Payment Method",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                )
-                                              ]),
-                                              isScrolable: false,
-                                              body: const Text("tes"),
-                                            ));
+                                            selectPaymentMethod());
                                   },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          padding: const EdgeInsets.all(3),
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(20)),
-                                          child: const Icon(
-                                            Icons.wallet,
-                                            color: Colors.white,
-                                            size: 22,
-                                          )),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Text(
-                                          paymentMethod ??
-                                              "Choose Payment Method",
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 16),
-                                        ),
-                                      ),
-                                      const Icon(Icons.expand_more)
-                                    ],
+                                  child: _SelectedPaymentMethodCard(
+                                    paymentMethod: paymentMethod,
                                   )),
                             );
                           },
@@ -360,12 +364,13 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                           child: SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                                onPressed: paymentMethod != null
+                                onPressed: paymentMethod != choose
                                     ? () {
                                         context.read<OrderBloc>().add(
                                             OrderEvent.makeOrder(
                                                 orderId: order.id,
-                                                context: context));
+                                                context: context,
+                                                paymentMethod: paymentMethod));
                                       }
                                     : null,
                                 child: const Text("Order Now")),
@@ -380,5 +385,217 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
         ),
       ),
     );
+  }
+
+  DraggableScrollableSheet selectPaymentMethod() {
+    return DraggableScrollableSheet(
+        expand: false,
+        initialChildSize: 0.9,
+        maxChildSize: 0.9,
+        minChildSize: 0.6,
+        builder: (BuildContext context, ScrollController scrollController) =>
+            Column(
+              children: [
+                Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Positioned(
+                      top: 5,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        height: 5,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.black),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 0, 0),
+                      child: SizedBox(
+                        height: 75,
+                        child: Row(children: const [
+                          Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: Text(
+                              "Payment Method",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ]),
+                      ),
+                    ),
+                  ],
+                ),
+                StatefulBuilder(builder: (context, localSetState) {
+                  return Column(children: [
+                    RadioListTile(
+                      value: wallet,
+                      groupValue: paymentMethod,
+                      autofocus: !disableWallet,
+                      selected: paymentMethod == wallet,
+                      onChanged: !disableWallet
+                          ? (value) => localSetState(() {
+                                setState(() {
+                                  paymentMethod = wallet;
+                                });
+                              })
+                          : null,
+                      title: !disableWallet
+                          ? _PaymentMethodCard(
+                              paymentMethod: wallet,
+                              description: "Balance: ${wallet.balance}",
+                            )
+                          : _DisabledPaymentMethodCard(
+                              ctx: context,
+                              paymentMethod: wallet,
+                              notes: "Low balance: ${wallet.balance}",
+                            ),
+                    ),
+                    RadioListTile(
+                      value: bca,
+                      groupValue: paymentMethod,
+                      selected: paymentMethod == bca,
+                      onChanged: (value) => localSetState(() {
+                        setState(() {
+                          paymentMethod = bca;
+                        });
+                      }),
+                      title: _PaymentMethodCard(
+                        paymentMethod: bca,
+                        description: "Admin fee:${bca.fee}",
+                      ),
+                    )
+                  ]);
+                }),
+              ],
+            ));
+  }
+}
+
+class _PaymentMethodCard extends StatelessWidget {
+  final String? description;
+
+  const _PaymentMethodCard({required this.paymentMethod, this.description});
+  final PaymentMethod paymentMethod;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        paymentMethod.icon,
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                paymentMethod.name,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+              ),
+              Text(description ?? ""),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _DisabledPaymentMethodCard extends StatelessWidget {
+  final String? description;
+
+  final String notes;
+
+  final BuildContext ctx;
+
+  const _DisabledPaymentMethodCard(
+      {required this.paymentMethod,
+      this.description,
+      required this.notes,
+      required this.ctx});
+  final PaymentMethod paymentMethod;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        paymentMethod.icon,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  paymentMethod.name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w700, fontSize: 16),
+                ),
+                Text(
+                  notes,
+                  maxLines: 1,
+                  style: const TextStyle(color: Colors.red, fontSize: 14),
+                ),
+                if (description != null) ...{Text("$description")},
+              ],
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(ctx, rootNavigator: true)
+                .pushReplacement(MaterialPageRoute(
+              builder: (_) => (const TopUpPage()),
+            ));
+          },
+          child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: const Center(
+                  child:
+                      Text("Top Up", style: TextStyle(color: Colors.white)))),
+        )
+      ],
+    );
+  }
+}
+
+class _SelectedPaymentMethodCard extends StatelessWidget {
+  const _SelectedPaymentMethodCard({required this.paymentMethod});
+  final PaymentMethod paymentMethod;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        paymentMethod.icon,
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            paymentMethod.name,
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+          ),
+        ),
+        const Icon(Icons.expand_more)
+      ],
+    );
+  }
+}
+
+class _PaymentMethodIcon extends StatelessWidget {
+  final Widget icon;
+
+  const _PaymentMethodIcon({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+            color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+        child: icon);
   }
 }

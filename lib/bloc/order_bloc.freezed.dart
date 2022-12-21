@@ -26,7 +26,9 @@ mixin _$OrderEvent {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -42,7 +44,9 @@ mixin _$OrderEvent {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -58,7 +62,9 @@ mixin _$OrderEvent {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -170,7 +176,9 @@ class _$_Started implements _Started {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -189,7 +197,9 @@ class _$_Started implements _Started {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -208,7 +218,9 @@ class _$_Started implements _Started {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -359,7 +371,9 @@ class _$_SelectMovie implements _SelectMovie {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -378,7 +392,9 @@ class _$_SelectMovie implements _SelectMovie {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -397,7 +413,9 @@ class _$_SelectMovie implements _SelectMovie {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -543,7 +561,9 @@ class _$_SelectDate implements _SelectDate {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -562,7 +582,9 @@ class _$_SelectDate implements _SelectDate {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -581,7 +603,9 @@ class _$_SelectDate implements _SelectDate {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -774,7 +798,9 @@ class _$_SelectTime implements _SelectTime {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -793,7 +819,9 @@ class _$_SelectTime implements _SelectTime {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -812,7 +840,9 @@ class _$_SelectTime implements _SelectTime {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -983,7 +1013,9 @@ class _$_SelectSeat implements _SelectSeat {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -1002,7 +1034,9 @@ class _$_SelectSeat implements _SelectSeat {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -1021,7 +1055,9 @@ class _$_SelectSeat implements _SelectSeat {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -1104,7 +1140,7 @@ abstract class _$$_MakeOrderCopyWith<$Res> {
           _$_MakeOrder value, $Res Function(_$_MakeOrder) then) =
       __$$_MakeOrderCopyWithImpl<$Res>;
   @useResult
-  $Res call({int orderId, BuildContext context});
+  $Res call({int orderId, BuildContext context, PaymentMethod paymentMethod});
 }
 
 /// @nodoc
@@ -1120,6 +1156,7 @@ class __$$_MakeOrderCopyWithImpl<$Res>
   $Res call({
     Object? orderId = null,
     Object? context = null,
+    Object? paymentMethod = null,
   }) {
     return _then(_$_MakeOrder(
       orderId: null == orderId
@@ -1130,6 +1167,10 @@ class __$$_MakeOrderCopyWithImpl<$Res>
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
     ));
   }
 }
@@ -1137,16 +1178,21 @@ class __$$_MakeOrderCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MakeOrder implements _MakeOrder {
-  const _$_MakeOrder({required this.orderId, required this.context});
+  const _$_MakeOrder(
+      {required this.orderId,
+      required this.context,
+      required this.paymentMethod});
 
   @override
   final int orderId;
   @override
   final BuildContext context;
+  @override
+  final PaymentMethod paymentMethod;
 
   @override
   String toString() {
-    return 'OrderEvent.makeOrder(orderId: $orderId, context: $context)';
+    return 'OrderEvent.makeOrder(orderId: $orderId, context: $context, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -1155,11 +1201,13 @@ class _$_MakeOrder implements _MakeOrder {
         (other.runtimeType == runtimeType &&
             other is _$_MakeOrder &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.context, context) || other.context == context));
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderId, context);
+  int get hashCode => Object.hash(runtimeType, orderId, context, paymentMethod);
 
   @JsonKey(ignore: true)
   @override
@@ -1178,12 +1226,14 @@ class _$_MakeOrder implements _MakeOrder {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
   }) {
-    return makeOrder(orderId, context);
+    return makeOrder(orderId, context, paymentMethod);
   }
 
   @override
@@ -1197,12 +1247,14 @@ class _$_MakeOrder implements _MakeOrder {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
   }) {
-    return makeOrder?.call(orderId, context);
+    return makeOrder?.call(orderId, context, paymentMethod);
   }
 
   @override
@@ -1216,14 +1268,16 @@ class _$_MakeOrder implements _MakeOrder {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
     required TResult orElse(),
   }) {
     if (makeOrder != null) {
-      return makeOrder(orderId, context);
+      return makeOrder(orderId, context, paymentMethod);
     }
     return orElse();
   }
@@ -1284,10 +1338,12 @@ class _$_MakeOrder implements _MakeOrder {
 abstract class _MakeOrder implements OrderEvent {
   const factory _MakeOrder(
       {required final int orderId,
-      required final BuildContext context}) = _$_MakeOrder;
+      required final BuildContext context,
+      required final PaymentMethod paymentMethod}) = _$_MakeOrder;
 
   int get orderId;
   BuildContext get context;
+  PaymentMethod get paymentMethod;
   @JsonKey(ignore: true)
   _$$_MakeOrderCopyWith<_$_MakeOrder> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1337,7 +1393,9 @@ class _$_Cancel implements _Cancel {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -1356,7 +1414,9 @@ class _$_Cancel implements _Cancel {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -1375,7 +1435,9 @@ class _$_Cancel implements _Cancel {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -1490,7 +1552,9 @@ class _$_CancelTime implements _CancelTime {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -1509,7 +1573,9 @@ class _$_CancelTime implements _CancelTime {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -1528,7 +1594,9 @@ class _$_CancelTime implements _CancelTime {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,
@@ -1669,7 +1737,9 @@ class _$_CancelSeat implements _CancelSeat {
         selectTime,
     required TResult Function(List<String> selectedSeats, BuildContext context)
         selectSeat,
-    required TResult Function(int orderId, BuildContext context) makeOrder,
+    required TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)
+        makeOrder,
     required TResult Function() cancel,
     required TResult Function() cancelTime,
     required TResult Function(BuildContext context) cancelSeat,
@@ -1688,7 +1758,9 @@ class _$_CancelSeat implements _CancelSeat {
         selectTime,
     TResult? Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult? Function(int orderId, BuildContext context)? makeOrder,
+    TResult? Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult? Function()? cancel,
     TResult? Function()? cancelTime,
     TResult? Function(BuildContext context)? cancelSeat,
@@ -1707,7 +1779,9 @@ class _$_CancelSeat implements _CancelSeat {
         selectTime,
     TResult Function(List<String> selectedSeats, BuildContext context)?
         selectSeat,
-    TResult Function(int orderId, BuildContext context)? makeOrder,
+    TResult Function(
+            int orderId, BuildContext context, PaymentMethod paymentMethod)?
+        makeOrder,
     TResult Function()? cancel,
     TResult Function()? cancelTime,
     TResult Function(BuildContext context)? cancelSeat,

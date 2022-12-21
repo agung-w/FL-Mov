@@ -5,6 +5,7 @@ import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/entities/cinema.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/entities/order.dart';
+import 'package:movie_app/entities/transaction.dart';
 import 'package:movie_app/presentations/pages/book_confirmation_page.dart';
 import 'package:movie_app/presentations/pages/select_seat_page.dart';
 import 'package:movie_app/services/cinema_services.dart';
@@ -101,7 +102,10 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         String? token = pref.getString('token');
         if (token != null) {
           await OrderServices()
-              .payOrder(orderId: event.orderId, token: token)
+              .payOrderTicket(
+                  orderId: event.orderId,
+                  token: token,
+                  paymentMethod: event.paymentMethod)
               .then((value) =>
                   Navigator.popUntil(event.context, (route) => route.isFirst))
               .then((value) => emit(OrderState.selectedDate(
