@@ -21,23 +21,21 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Order {
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  int get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: "movie_id")
-  int get movieId => throw _privateConstructorUsedError;
-  @JsonKey(name: "studio_id")
-  int get studioId => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: "sub_total")
   String get subTotal => throw _privateConstructorUsedError;
   @JsonKey(name: "platform_fee")
-  String get platformFee => throw _privateConstructorUsedError;
+  String? get platformFee => throw _privateConstructorUsedError;
   @JsonKey(name: "admin_fee")
-  String get adminFee => throw _privateConstructorUsedError;
+  String? get adminFee => throw _privateConstructorUsedError;
+  String get schedule => throw _privateConstructorUsedError;
   int? get discount => throw _privateConstructorUsedError;
-  String get total => throw _privateConstructorUsedError;
+  String? get total => throw _privateConstructorUsedError;
   @JsonKey(name: "tickets")
   List<Seat> get seats => throw _privateConstructorUsedError;
+  Movie get movie => throw _privateConstructorUsedError;
+  Cinema get cinema => throw _privateConstructorUsedError;
+  Studio get studio => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,16 +49,21 @@ abstract class $OrderCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: "user_id") int userId,
-      @JsonKey(name: "movie_id") int movieId,
-      @JsonKey(name: "studio_id") int studioId,
       int quantity,
       @JsonKey(name: "sub_total") String subTotal,
-      @JsonKey(name: "platform_fee") String platformFee,
-      @JsonKey(name: "admin_fee") String adminFee,
+      @JsonKey(name: "platform_fee") String? platformFee,
+      @JsonKey(name: "admin_fee") String? adminFee,
+      String schedule,
       int? discount,
-      String total,
-      @JsonKey(name: "tickets") List<Seat> seats});
+      String? total,
+      @JsonKey(name: "tickets") List<Seat> seats,
+      Movie movie,
+      Cinema cinema,
+      Studio studio});
+
+  $MovieCopyWith<$Res> get movie;
+  $CinemaCopyWith<$Res> get cinema;
+  $StudioCopyWith<$Res> get studio;
 }
 
 /// @nodoc
@@ -77,33 +80,22 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? movieId = null,
-    Object? studioId = null,
     Object? quantity = null,
     Object? subTotal = null,
-    Object? platformFee = null,
-    Object? adminFee = null,
+    Object? platformFee = freezed,
+    Object? adminFee = freezed,
+    Object? schedule = null,
     Object? discount = freezed,
-    Object? total = null,
+    Object? total = freezed,
     Object? seats = null,
+    Object? movie = null,
+    Object? cinema = null,
+    Object? studio = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      movieId: null == movieId
-          ? _value.movieId
-          : movieId // ignore: cast_nullable_to_non_nullable
-              as int,
-      studioId: null == studioId
-          ? _value.studioId
-          : studioId // ignore: cast_nullable_to_non_nullable
               as int,
       quantity: null == quantity
           ? _value.quantity
@@ -113,27 +105,67 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.subTotal
           : subTotal // ignore: cast_nullable_to_non_nullable
               as String,
-      platformFee: null == platformFee
+      platformFee: freezed == platformFee
           ? _value.platformFee
           : platformFee // ignore: cast_nullable_to_non_nullable
-              as String,
-      adminFee: null == adminFee
+              as String?,
+      adminFee: freezed == adminFee
           ? _value.adminFee
           : adminFee // ignore: cast_nullable_to_non_nullable
+              as String?,
+      schedule: null == schedule
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
               as String,
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
               as int?,
-      total: null == total
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       seats: null == seats
           ? _value.seats
           : seats // ignore: cast_nullable_to_non_nullable
               as List<Seat>,
+      movie: null == movie
+          ? _value.movie
+          : movie // ignore: cast_nullable_to_non_nullable
+              as Movie,
+      cinema: null == cinema
+          ? _value.cinema
+          : cinema // ignore: cast_nullable_to_non_nullable
+              as Cinema,
+      studio: null == studio
+          ? _value.studio
+          : studio // ignore: cast_nullable_to_non_nullable
+              as Studio,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MovieCopyWith<$Res> get movie {
+    return $MovieCopyWith<$Res>(_value.movie, (value) {
+      return _then(_value.copyWith(movie: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CinemaCopyWith<$Res> get cinema {
+    return $CinemaCopyWith<$Res>(_value.cinema, (value) {
+      return _then(_value.copyWith(cinema: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StudioCopyWith<$Res> get studio {
+    return $StudioCopyWith<$Res>(_value.studio, (value) {
+      return _then(_value.copyWith(studio: value) as $Val);
+    });
   }
 }
 
@@ -145,16 +177,24 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: "user_id") int userId,
-      @JsonKey(name: "movie_id") int movieId,
-      @JsonKey(name: "studio_id") int studioId,
       int quantity,
       @JsonKey(name: "sub_total") String subTotal,
-      @JsonKey(name: "platform_fee") String platformFee,
-      @JsonKey(name: "admin_fee") String adminFee,
+      @JsonKey(name: "platform_fee") String? platformFee,
+      @JsonKey(name: "admin_fee") String? adminFee,
+      String schedule,
       int? discount,
-      String total,
-      @JsonKey(name: "tickets") List<Seat> seats});
+      String? total,
+      @JsonKey(name: "tickets") List<Seat> seats,
+      Movie movie,
+      Cinema cinema,
+      Studio studio});
+
+  @override
+  $MovieCopyWith<$Res> get movie;
+  @override
+  $CinemaCopyWith<$Res> get cinema;
+  @override
+  $StudioCopyWith<$Res> get studio;
 }
 
 /// @nodoc
@@ -167,33 +207,22 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? movieId = null,
-    Object? studioId = null,
     Object? quantity = null,
     Object? subTotal = null,
-    Object? platformFee = null,
-    Object? adminFee = null,
+    Object? platformFee = freezed,
+    Object? adminFee = freezed,
+    Object? schedule = null,
     Object? discount = freezed,
-    Object? total = null,
+    Object? total = freezed,
     Object? seats = null,
+    Object? movie = null,
+    Object? cinema = null,
+    Object? studio = null,
   }) {
     return _then(_$_Order(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      movieId: null == movieId
-          ? _value.movieId
-          : movieId // ignore: cast_nullable_to_non_nullable
-              as int,
-      studioId: null == studioId
-          ? _value.studioId
-          : studioId // ignore: cast_nullable_to_non_nullable
               as int,
       quantity: null == quantity
           ? _value.quantity
@@ -203,26 +232,42 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
           ? _value.subTotal
           : subTotal // ignore: cast_nullable_to_non_nullable
               as String,
-      platformFee: null == platformFee
+      platformFee: freezed == platformFee
           ? _value.platformFee
           : platformFee // ignore: cast_nullable_to_non_nullable
-              as String,
-      adminFee: null == adminFee
+              as String?,
+      adminFee: freezed == adminFee
           ? _value.adminFee
           : adminFee // ignore: cast_nullable_to_non_nullable
+              as String?,
+      schedule: null == schedule
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
               as String,
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
               as int?,
-      total: null == total
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       seats: null == seats
           ? _value._seats
           : seats // ignore: cast_nullable_to_non_nullable
               as List<Seat>,
+      movie: null == movie
+          ? _value.movie
+          : movie // ignore: cast_nullable_to_non_nullable
+              as Movie,
+      cinema: null == cinema
+          ? _value.cinema
+          : cinema // ignore: cast_nullable_to_non_nullable
+              as Cinema,
+      studio: null == studio
+          ? _value.studio
+          : studio // ignore: cast_nullable_to_non_nullable
+              as Studio,
     ));
   }
 }
@@ -232,16 +277,17 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
 class _$_Order extends _Order {
   const _$_Order(
       {required this.id,
-      @JsonKey(name: "user_id") required this.userId,
-      @JsonKey(name: "movie_id") required this.movieId,
-      @JsonKey(name: "studio_id") required this.studioId,
       required this.quantity,
       @JsonKey(name: "sub_total") required this.subTotal,
       @JsonKey(name: "platform_fee") required this.platformFee,
       @JsonKey(name: "admin_fee") required this.adminFee,
+      required this.schedule,
       this.discount,
       required this.total,
-      @JsonKey(name: "tickets") required final List<Seat> seats})
+      @JsonKey(name: "tickets") required final List<Seat> seats,
+      required this.movie,
+      required this.cinema,
+      required this.studio})
       : _seats = seats,
         super._();
 
@@ -251,29 +297,22 @@ class _$_Order extends _Order {
   @override
   final int id;
   @override
-  @JsonKey(name: "user_id")
-  final int userId;
-  @override
-  @JsonKey(name: "movie_id")
-  final int movieId;
-  @override
-  @JsonKey(name: "studio_id")
-  final int studioId;
-  @override
   final int quantity;
   @override
   @JsonKey(name: "sub_total")
   final String subTotal;
   @override
   @JsonKey(name: "platform_fee")
-  final String platformFee;
+  final String? platformFee;
   @override
   @JsonKey(name: "admin_fee")
-  final String adminFee;
+  final String? adminFee;
+  @override
+  final String schedule;
   @override
   final int? discount;
   @override
-  final String total;
+  final String? total;
   final List<Seat> _seats;
   @override
   @JsonKey(name: "tickets")
@@ -284,8 +323,15 @@ class _$_Order extends _Order {
   }
 
   @override
+  final Movie movie;
+  @override
+  final Cinema cinema;
+  @override
+  final Studio studio;
+
+  @override
   String toString() {
-    return 'Order(id: $id, userId: $userId, movieId: $movieId, studioId: $studioId, quantity: $quantity, subTotal: $subTotal, platformFee: $platformFee, adminFee: $adminFee, discount: $discount, total: $total, seats: $seats)';
+    return 'Order(id: $id, quantity: $quantity, subTotal: $subTotal, platformFee: $platformFee, adminFee: $adminFee, schedule: $schedule, discount: $discount, total: $total, seats: $seats, movie: $movie, cinema: $cinema, studio: $studio)';
   }
 
   @override
@@ -294,10 +340,6 @@ class _$_Order extends _Order {
         (other.runtimeType == runtimeType &&
             other is _$_Order &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.movieId, movieId) || other.movieId == movieId) &&
-            (identical(other.studioId, studioId) ||
-                other.studioId == studioId) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.subTotal, subTotal) ||
@@ -306,10 +348,15 @@ class _$_Order extends _Order {
                 other.platformFee == platformFee) &&
             (identical(other.adminFee, adminFee) ||
                 other.adminFee == adminFee) &&
+            (identical(other.schedule, schedule) ||
+                other.schedule == schedule) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
             (identical(other.total, total) || other.total == total) &&
-            const DeepCollectionEquality().equals(other._seats, _seats));
+            const DeepCollectionEquality().equals(other._seats, _seats) &&
+            (identical(other.movie, movie) || other.movie == movie) &&
+            (identical(other.cinema, cinema) || other.cinema == cinema) &&
+            (identical(other.studio, studio) || other.studio == studio));
   }
 
   @JsonKey(ignore: true)
@@ -317,16 +364,17 @@ class _$_Order extends _Order {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      userId,
-      movieId,
-      studioId,
       quantity,
       subTotal,
       platformFee,
       adminFee,
+      schedule,
       discount,
       total,
-      const DeepCollectionEquality().hash(_seats));
+      const DeepCollectionEquality().hash(_seats),
+      movie,
+      cinema,
+      studio);
 
   @JsonKey(ignore: true)
   @override
@@ -345,16 +393,17 @@ class _$_Order extends _Order {
 abstract class _Order extends Order {
   const factory _Order(
       {required final int id,
-      @JsonKey(name: "user_id") required final int userId,
-      @JsonKey(name: "movie_id") required final int movieId,
-      @JsonKey(name: "studio_id") required final int studioId,
       required final int quantity,
       @JsonKey(name: "sub_total") required final String subTotal,
-      @JsonKey(name: "platform_fee") required final String platformFee,
-      @JsonKey(name: "admin_fee") required final String adminFee,
+      @JsonKey(name: "platform_fee") required final String? platformFee,
+      @JsonKey(name: "admin_fee") required final String? adminFee,
+      required final String schedule,
       final int? discount,
-      required final String total,
-      @JsonKey(name: "tickets") required final List<Seat> seats}) = _$_Order;
+      required final String? total,
+      @JsonKey(name: "tickets") required final List<Seat> seats,
+      required final Movie movie,
+      required final Cinema cinema,
+      required final Studio studio}) = _$_Order;
   const _Order._() : super._();
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
@@ -362,32 +411,31 @@ abstract class _Order extends Order {
   @override
   int get id;
   @override
-  @JsonKey(name: "user_id")
-  int get userId;
-  @override
-  @JsonKey(name: "movie_id")
-  int get movieId;
-  @override
-  @JsonKey(name: "studio_id")
-  int get studioId;
-  @override
   int get quantity;
   @override
   @JsonKey(name: "sub_total")
   String get subTotal;
   @override
   @JsonKey(name: "platform_fee")
-  String get platformFee;
+  String? get platformFee;
   @override
   @JsonKey(name: "admin_fee")
-  String get adminFee;
+  String? get adminFee;
+  @override
+  String get schedule;
   @override
   int? get discount;
   @override
-  String get total;
+  String? get total;
   @override
   @JsonKey(name: "tickets")
   List<Seat> get seats;
+  @override
+  Movie get movie;
+  @override
+  Cinema get cinema;
+  @override
+  Studio get studio;
   @override
   @JsonKey(ignore: true)
   _$$_OrderCopyWith<_$_Order> get copyWith =>

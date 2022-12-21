@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+import 'package:movie_app/entities/cinema.dart';
+import 'package:movie_app/entities/movie.dart';
 
 part 'order.freezed.dart';
 part 'order.g.dart';
@@ -9,16 +11,17 @@ class Order with _$Order {
   const Order._();
   const factory Order({
     required int id,
-    @JsonKey(name: "user_id") required int userId,
-    @JsonKey(name: "movie_id") required int movieId,
-    @JsonKey(name: "studio_id") required int studioId,
     required int quantity,
     @JsonKey(name: "sub_total") required String subTotal,
-    @JsonKey(name: "platform_fee") required String platformFee,
-    @JsonKey(name: "admin_fee") required String adminFee,
+    @JsonKey(name: "platform_fee") required String? platformFee,
+    @JsonKey(name: "admin_fee") required String? adminFee,
+    required String schedule,
     int? discount,
-    required String total,
+    required String? total,
     @JsonKey(name: "tickets") required List<Seat> seats,
+    required Movie movie,
+    required Cinema cinema,
+    required Studio studio,
   }) = _Order;
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
   String toRupiah(String nominal) {

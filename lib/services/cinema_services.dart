@@ -21,15 +21,12 @@ class CinemaServices {
     }
   }
 
-  Future<List<String>?> getReservedList({
-    required String date,
-    required int studioId,
-  }) async {
+  Future<List<String>?> getReservedList(
+      {required String date,
+      required int studioId,
+      required int movieId}) async {
     var data = {
-      "studio": {
-        "id": studioId,
-        "date": date,
-      }
+      "studio": {"id": studioId, "date": date, "movie_id": movieId}
     };
     try {
       Response result =

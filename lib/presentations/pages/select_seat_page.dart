@@ -20,9 +20,10 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
   @override
   Widget build(BuildContext context) {
     void onTap(Studio studio, int row, int column) {
-      String seatNumber = "${String.fromCharCode(row + 65)}${column + 1}";
+      String seatNumber =
+          "${String.fromCharCode(65 + (studio.column - 1 - row))}${column + 1}";
       String seatNumberPair =
-          "${String.fromCharCode(row + 65)}${column += column.isOdd ? 0 : 2}";
+          "${String.fromCharCode(65 + (studio.column - 1 - row))}${column += column.isOdd ? 0 : 2}";
       setState(() {
         if (selectedSeats.length < 6) {
           if (selectedSeats.contains(seatNumber)) {
@@ -121,6 +122,15 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
                               height: 100,
                               color: const Color(0xFF152067),
                               width: double.infinity,
+                              child: const Center(
+                                child: Text(
+                                  "SCREEN",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 28),
+                                ),
+                              ),
                             ),
                             FutureBuilder(
                               builder: (context, snapshot) => Expanded(
@@ -150,17 +160,17 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
                                                     i++) ...{
                                                   Seat(
                                                       seatNumber:
-                                                          "${String.fromCharCode(j + 65)}${i + 1}",
+                                                          "${String.fromCharCode(65 + (value.studio.column - 1 - j))}${i + 1}",
                                                       isEnable: value
                                                                   .reservedList !=
                                                               null
                                                           ? value.reservedList!
                                                               .contains(
-                                                                  "${String.fromCharCode(j + 65)}${i + 1}")
+                                                                  "${String.fromCharCode(65 + (value.studio.column - 1 - j))}${i + 1}")
                                                           : true,
                                                       isSelected: selectedSeats
                                                           .contains(
-                                                              "${String.fromCharCode(j + 65)}${i + 1}"),
+                                                              "${String.fromCharCode(65 + (value.studio.column - 1 - j))}${i + 1}"),
                                                       onTap: () {
                                                         onTap(
                                                             value.studio, j, i);

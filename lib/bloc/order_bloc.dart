@@ -45,7 +45,10 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         String date = (state as _SelectedDate).date;
         await CinemaServices()
             .getReservedList(
-                studioId: event.studio.id, date: "$date ${event.time}:00")
+          studioId: event.studio.id,
+          date: "$date ${event.time}:00",
+          movieId: int.parse((state as _SelectedDate).movie.tmdbId),
+        )
             .then((value) {
           emit(_SelectedTime(
               date: date,
@@ -133,6 +136,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               await CinemaServices()
                   .getReservedList(
                       studioId: (state as _SelectedSeat).studio.id,
+                      movieId: int.parse((state as _SelectedSeat).movie.tmdbId),
                       date:
                           "${(state as _SelectedSeat).date} ${(state as _SelectedSeat).time}")
                   .then((value) {

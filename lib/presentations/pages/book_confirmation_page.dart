@@ -74,11 +74,16 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      movie.title,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
+                                    SizedBox(
+                                      width: 280,
+                                      child: Text(
+                                        movie.title,
+                                        overflow: TextOverflow.clip,
+                                        maxLines: 1,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),
+                                      ),
                                     ),
                                     RichText(
                                         text: TextSpan(
@@ -225,7 +230,9 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                 children: [
                                   const Text("Platform fee",
                                       style: TextStyle(fontSize: 16)),
-                                  Text(order.toRupiah(order.platformFee),
+                                  Text(
+                                      order.toRupiah(
+                                          order.platformFee.toString()),
                                       style: const TextStyle(fontSize: 16))
                                 ],
                               ),
@@ -238,7 +245,8 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                 children: [
                                   const Text("Admin fee",
                                       style: TextStyle(fontSize: 16)),
-                                  Text(order.toRupiah(order.adminFee),
+                                  Text(
+                                      order.toRupiah(order.adminFee.toString()),
                                       style: const TextStyle(fontSize: 16))
                                 ],
                               ),
@@ -261,7 +269,7 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700)),
-                                  Text(order.toRupiah(order.total),
+                                  Text(order.toRupiah(order.total.toString()),
                                       style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700))
@@ -276,7 +284,7 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                               loaded: (value) => value.result.mapOrNull(
                                 success: (value) {
                                   if (double.parse(value.value) >
-                                      double.parse(order.total)) {
+                                      double.parse(order.total.toString())) {
                                     setState(
                                       () => paymentMethod = "Wallet",
                                     );

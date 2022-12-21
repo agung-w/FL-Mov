@@ -80,4 +80,24 @@ class OrderServices {
           : "Connection timeout");
     }
   }
+
+  Future<ApiResult<List<Order>>> getAllTicket({required String token}) async {
+    try {
+      Response result = await _dio.get(
+        "${dotenv.env['local_api_url']}/ticket/all",
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
+        }),
+      );
+      List<Order> orderList = (result.data['data']['tickets'] as List)
+          .map((e) => Order.fromJson(e))
+          .toList();
+      return ApiResult.success(orderList);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
 }
