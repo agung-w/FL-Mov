@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
+import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/entities/transaction.dart';
 import 'package:movie_app/presentations/pages/top_up_page.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
@@ -17,6 +18,7 @@ class BookConfirmationPage extends StatefulWidget {
 class _BookConfirmationPageState extends State<BookConfirmationPage> {
   late PaymentMethod paymentMethod;
   late bool disableWallet;
+  Currency currency = Currency();
   PaymentMethod choose = PaymentMethod(
       name: "Choose Payment Method",
       icon: const _PaymentMethodIcon(
@@ -122,8 +124,8 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                     RichText(
                                         text: TextSpan(
                                             text: order.quantity == 1
-                                                ? "${order.quantity} Ticket X"
-                                                : "${order.quantity} Tickets X",
+                                                ? "${order.quantity} Ticket X "
+                                                : "${order.quantity} Tickets X ",
                                             style: DefaultTextStyle.of(context)
                                                 .style,
                                             children: [
@@ -443,7 +445,8 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                       title: !disableWallet
                           ? _PaymentMethodCard(
                               paymentMethod: wallet,
-                              description: "Balance: ${wallet.balance}",
+                              description:
+                                  "Balance: ${currency.toCurrencyID(wallet.balance)}",
                             )
                           : _DisabledPaymentMethodCard(
                               ctx: context,
@@ -462,7 +465,8 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                       }),
                       title: _PaymentMethodCard(
                         paymentMethod: bca,
-                        description: "Admin fee:${bca.fee}",
+                        description:
+                            "Admin fee: ${currency.toCurrencyID(bca.fee.toString())}",
                       ),
                     )
                   ]);
@@ -503,17 +507,12 @@ class _PaymentMethodCard extends StatelessWidget {
 }
 
 class _DisabledPaymentMethodCard extends StatelessWidget {
-  final String? description;
-
   final String notes;
 
   final BuildContext ctx;
 
   const _DisabledPaymentMethodCard(
-      {required this.paymentMethod,
-      this.description,
-      required this.notes,
-      required this.ctx});
+      {required this.paymentMethod, required this.notes, required this.ctx});
   final PaymentMethod paymentMethod;
 
   @override
@@ -537,7 +536,6 @@ class _DisabledPaymentMethodCard extends StatelessWidget {
                   maxLines: 1,
                   style: const TextStyle(color: Colors.red, fontSize: 14),
                 ),
-                if (description != null) ...{Text("$description")},
               ],
             ),
           ),
