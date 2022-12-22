@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 import 'package:movie_app/entities/cinema.dart';
+import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/entities/movie.dart';
 
 part 'order.freezed.dart';
 part 'order.g.dart';
 
 @freezed
-class Order with _$Order {
+class Order with _$Order, Currency {
   const Order._();
   const factory Order({
     required int id,
@@ -24,12 +24,6 @@ class Order with _$Order {
     required Studio studio,
   }) = _Order;
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
-  String toRupiah(String nominal) {
-    final oCcy = NumberFormat("#,###.0", "id_ID");
-    RegExp regex = RegExp(r'([,]*#)(?!,*\d)');
-    String formated = oCcy.format(double.parse(nominal)).replaceAll(regex, '');
-    return 'Rp $formated';
-  }
 }
 
 @freezed

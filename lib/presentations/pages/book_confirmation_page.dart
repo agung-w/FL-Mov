@@ -128,7 +128,8 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                                 .style,
                                             children: [
                                           TextSpan(
-                                              text: " ${studio.getPrice()}",
+                                              text: studio
+                                                  .toCurrencyID(studio.price),
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.w700))
                                         ]))
@@ -251,7 +252,7 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                 children: [
                                   const Text("Ticket Price",
                                       style: TextStyle(fontSize: 16)),
-                                  Text(order.toRupiah(order.subTotal),
+                                  Text(order.toCurrencyID(order.subTotal),
                                       style: const TextStyle(fontSize: 16))
                                 ],
                               ),
@@ -264,9 +265,7 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                 children: [
                                   const Text("Platform fee",
                                       style: TextStyle(fontSize: 16)),
-                                  Text(
-                                      order.toRupiah(
-                                          order.platformFee.toString()),
+                                  Text(order.toCurrencyID(order.platformFee),
                                       style: const TextStyle(fontSize: 16))
                                 ],
                               ),
@@ -282,7 +281,7 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                     const Text("Admin fee",
                                         style: TextStyle(fontSize: 16)),
                                     Text(
-                                        order.toRupiah(
+                                        order.toCurrencyID(
                                             paymentMethod.fee.toString()),
                                         style: const TextStyle(fontSize: 16))
                                   ],
@@ -308,7 +307,7 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700)),
                                   Text(
-                                      order.toRupiah(
+                                      order.toCurrencyID(
                                           (double.parse(order.total!) +
                                                   paymentMethod.fee)
                                               .toString()),

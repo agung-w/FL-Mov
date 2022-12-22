@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
+import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -384,13 +385,22 @@ class _TopUpWithPaymentService extends StatefulWidget {
 }
 
 class _TopUpWithPaymentServiceState extends State<_TopUpWithPaymentService> {
-  TextEditingController amount = TextEditingController(text: "10000");
+  TextEditingController amount =
+      TextEditingController(text: Currency().toCurrencyID("10000"));
   String? error;
+  late Currency currency;
+  late String recievedBalance;
+  @override
+  void initState() {
+    currency = Currency();
+    recievedBalance =
+        currency.toCurrencyID((10000 - (10000 * 0.007)).toString());
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    int recievedBalance =
-        int.parse(amount.text) - (int.parse(amount.text) * 0.007).toInt();
-
     return Scaffold(
       appBar: AppBar(title: Text("Top Up ${widget.method}")),
       body: Padding(
@@ -411,20 +421,28 @@ class _TopUpWithPaymentServiceState extends State<_TopUpWithPaymentService> {
             style: const TextStyle(fontSize: 18),
             autocorrect: false,
             controller: amount,
-            onChanged: (value) => setState(() {
-              int val = int.parse(value);
-              if (val < 10000) {
-                error = "Minimum top up amount Rp 10.000";
-              } else if (val > 2000000) {
-                error = "Maximum top up amount Rp 2.000.000";
-              } else {
-                error = null;
-                recievedBalance = val - (val * 0.007).toInt();
-              }
-            }),
+            onChanged: (value) {
+              num val = currency.toNum(amount.text);
+              String stringVal = currency.toCurrencyID("$val");
+              setState(() {
+                amount.text = Currency().toCurrencyID(val.toString());
+                if (val < 10000) {
+                  error = "Minimum top up amount Rp 10.000";
+                } else if (val > 2000000) {
+                  error = "Maximum top up amount Rp 2.000.000";
+                } else {
+                  error = null;
+                  recievedBalance =
+                      currency.toCurrencyID((val - (val * 0.007)).toString());
+                }
+              });
+              amount.value = TextEditingValue(
+                  text: stringVal,
+                  selection: TextSelection.collapsed(offset: stringVal.length));
+            },
             maxLines: 1,
             decoration: InputDecoration(
-              helperText: "Wallet balance received Rp $recievedBalance",
+              helperText: "Wallet balance received $recievedBalance",
               labelText: "Amount",
               prefixIconConstraints: const BoxConstraints(maxWidth: 45),
               errorText: error,
@@ -443,7 +461,7 @@ class _TopUpWithPaymentServiceState extends State<_TopUpWithPaymentService> {
                   onPressed: error == null
                       ? () {
                           context.read<WalletBloc>().add(WalletEvent.topUp(
-                              recievedBalance.toString(),
+                              currency.toNum(recievedBalance).toString(),
                               widget.method,
                               context));
                         }

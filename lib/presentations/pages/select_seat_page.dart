@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/entities/cinema.dart';
+import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/presentations/helper/color_pallet.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
 import 'package:movie_app/presentations/widgets/seat.dart';
@@ -317,7 +318,8 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
                                                 )
                                             ]),
                                             Text(
-                                                "Rp ${selectedSeats.length * double.parse(value.studio.price)}",
+                                                Currency().toCurrencyID(
+                                                    "${selectedSeats.length * double.parse(value.studio.price)}"),
                                                 style: const TextStyle(
                                                     fontWeight:
                                                         FontWeight.bold))

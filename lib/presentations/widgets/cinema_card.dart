@@ -75,7 +75,7 @@ class CinemaCard extends StatelessWidget {
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    Text(e.getPrice(),
+                                    Text(e.toCurrencyID(e.price),
                                         style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500))

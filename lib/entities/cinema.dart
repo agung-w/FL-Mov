@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movie_app/entities/currency.dart';
 
 part 'cinema.freezed.dart';
 part 'cinema.g.dart';
@@ -14,7 +15,7 @@ class Cinema with _$Cinema {
 }
 
 @freezed
-class Studio with _$Studio {
+class Studio with _$Studio, Currency {
   const Studio._();
   const factory Studio(
       {required int id,
@@ -24,9 +25,4 @@ class Studio with _$Studio {
       required int column,
       required String price}) = _Studio;
   factory Studio.fromJson(Map<String, dynamic> json) => _$StudioFromJson(json);
-  String getPrice() {
-    RegExp regex = RegExp(r'([.]*0)(?!.*\d)');
-    String formated = price.replaceAll(regex, '');
-    return 'Rp $formated';
-  }
 }

@@ -82,7 +82,7 @@ class TransactionHistoryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(transaction.getTotal()),
+                  Text(transaction.toCurrencyID(transaction.total)),
                   if (transaction.transactionType == "BUY TICKET" &&
                       transaction.transactionMethod != "Wallet") ...{
                     Padding(

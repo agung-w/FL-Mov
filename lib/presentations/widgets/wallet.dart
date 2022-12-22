@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
+import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/presentations/pages/top_up_page.dart';
 import 'package:movie_app/presentations/pages/transaction_history.dart';
 
@@ -25,7 +26,7 @@ class Wallet extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         _WalletBalanceBox(
-                          balance: "Rp ${result.value}",
+                          balance: Currency().toCurrencyID(result.value),
                           hint: const Text(
                             "Tap to refresh",
                             style: TextStyle(fontSize: 12),
@@ -115,7 +116,6 @@ class _HistoryButton extends StatelessWidget {
               ),
             );
           },
-          style: const ButtonStyle(),
           child: const Icon(Icons.receipt_long),
         ),
         const Text("History")

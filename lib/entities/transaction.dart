@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/entities/movie.dart';
+import 'package:movie_app/entities/currency.dart';
 
 part 'transaction.freezed.dart';
 part 'transaction.g.dart';
 
 @freezed
-class Transaction with _$Transaction {
+class Transaction with _$Transaction, Currency {
   const Transaction._();
   const factory Transaction(
       {required int id,
@@ -20,12 +21,6 @@ class Transaction with _$Transaction {
   DateTime getDate() {
     DateFormat dateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     return dateFormat.parseUtc(date).toLocal();
-  }
-
-  String getTotal() {
-    RegExp regex = RegExp(r'([.]*0)(?!.*\d)');
-    String formatedTotal = total.replaceAll(regex, '');
-    return 'Rp $formatedTotal';
   }
 
   factory Transaction.fromJson(Map<String, dynamic> json) =>
