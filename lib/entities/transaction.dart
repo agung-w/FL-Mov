@@ -35,23 +35,6 @@ class TransactionDetail with _$TransactionDetail {
       _$TransactionDetailFromJson(json);
 }
 
-// @unfreezed
-// class PaymentMethod with _$PaymentMethod {
-//   const PaymentMethod._();
-//   factory PaymentMethod({
-//     required String name,
-//     required String icon,
-//     String? balance,
-//   }) = _PaymentMethod;
-//   String formatCurrency(String string) {
-//     RegExp regex = RegExp(r'([.]*0)(?!.*\d)');
-//     String formatedCurrency = string.replaceAll(regex, '');
-//     return 'Rp $formatedCurrency';
-//   }
-
-//   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
-//       _$PaymentMethodFromJson(json);
-// }
 class PaymentMethod {
   String name;
   Widget icon;
