@@ -93,17 +93,10 @@ class _BookConfirmationPageState extends State<BookConfirmationPage> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: SizedBox(
-                                  width: 80,
-                                  height: 110,
-                                  child: Image.network(
-                                    movie.getPosterUrl(),
-                                    errorBuilder:
-                                        (context, error, stackTrace) =>
-                                            Image.network(
-                                      'https://i.pinimg.com/564x/a1/cd/44/a1cd44f6617beebb9794877ef59082a1.jpg',
-                                    ),
-                                  ),
-                                ),
+                                    width: 80,
+                                    height: 110,
+                                    child:
+                                        movie.moviePosterUrl(movie.posterUrl)),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),

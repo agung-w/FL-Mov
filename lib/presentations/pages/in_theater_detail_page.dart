@@ -35,8 +35,8 @@ class InTheaterDetailPage extends StatelessWidget {
                                   opacity: 0.7,
                                   child: Image(
                                     fit: BoxFit.fill,
-                                    image: Image.network(
-                                            'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')
+                                    image: movie
+                                        .moviePosterUrl(movie.posterUrl)
                                         .image,
                                     height: MediaQuery.of(context).size.height *
                                         0.79,
@@ -59,9 +59,8 @@ class InTheaterDetailPage extends StatelessWidget {
                                 bottomRight: Radius.circular(20)),
                             child: Image(
                               fit: BoxFit.fill,
-                              image: Image.network(
-                                      'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')
-                                  .image,
+                              image:
+                                  movie.moviePosterUrl(movie.posterUrl).image,
                               height: MediaQuery.of(context).size.height * 0.78,
                             ),
                           )

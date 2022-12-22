@@ -107,9 +107,10 @@ class TicketPage extends StatelessWidget {
                                                       child: SizedBox(
                                                           width: 80,
                                                           height: 110,
-                                                          child: Image.network(e
-                                                              .movie
-                                                              .getPosterUrl()))),
+                                                          child: e.movie
+                                                              .moviePosterUrl(e
+                                                                  .movie
+                                                                  .posterUrl))),
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(

@@ -50,8 +50,8 @@ class InTheaterPoster extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               child: Image(
                                   fit: BoxFit.fill,
-                                  image: Image.network(
-                                          'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')
+                                  image: movie
+                                      .moviePosterUrl(movie.posterUrl)
                                       .image,
                                   height:
                                       MediaQuery.of(context).size.height * 0.75,
@@ -86,9 +86,7 @@ class InTheaterPoster extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       child: Image(
                           fit: BoxFit.fill,
-                          image: Image.network(
-                                  'https://image.tmdb.org/t/p/w500/${movie.posterUrl}')
-                              .image,
+                          image: movie.moviePosterUrl(movie.posterUrl).image,
                           height: MediaQuery.of(context).size.height * 0.75,
                           loadingBuilder: (context, child, loadingProgress) {
                             return loadingProgress == null
