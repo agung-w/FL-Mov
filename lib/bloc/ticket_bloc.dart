@@ -25,7 +25,7 @@ class TicketBloc extends Bloc<TicketEvent, TicketState> {
       String? token = pref.getString('token');
       if (token != null) {
         await OrderServices()
-            .getAllTicket(token: token)
+            .getActiveTicket(token: token)
             .then((value) => emit(_Loaded(value)));
       }
     });

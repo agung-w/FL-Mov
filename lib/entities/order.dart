@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/entities/cinema.dart';
 import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/entities/movie.dart';
@@ -24,6 +25,10 @@ class Order with _$Order, Currency {
     required Studio studio,
   }) = _Order;
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
+  DateTime getDate() {
+    DateFormat dateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    return dateFormat.parse(schedule);
+  }
 }
 
 @freezed

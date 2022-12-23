@@ -45,6 +45,7 @@ dependencies:
     git:
       url: https://github.com/Tkko/Flutter_Pinput
       ref: dev
+  qr_flutter: ^4.0.0
   shared_preferences: ^2.0.15
   shimmer: ^2.0.0
   timeline_tile: ^2.0.0
@@ -74,6 +75,8 @@ flutter:
     - assets/xxi.png
     - assets/bankbca.png
     - assets/qris.png
+    - assets/cinematix_logo.png
+    - assets/cinematix_icon.png
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
