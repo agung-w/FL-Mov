@@ -15,23 +15,19 @@ class TicketPage extends StatelessWidget {
     context.read<TicketBloc>().add(const TicketEvent.getActiveTicket());
     TabBar tabBar = TabBar(
       unselectedLabelColor: Colors.grey,
+      labelColor: Colors.black,
       indicator: const BoxDecoration(
           border: Border(bottom: BorderSide(color: Colors.blue, width: 2))),
       tabs: const [
         Tab(
           icon: Text(
             "Active",
+            style: TextStyle(),
           ),
         ),
         Tab(icon: Text("All")),
       ],
-      onTap: (index) {
-        if (index == 0) {
-          context.read<TicketBloc>().add(const TicketEvent.getActiveTicket());
-        } else {
-          context.read<TicketBloc>().add(const TicketEvent.getAllTicket());
-        }
-      },
+      onTap: (index) {},
     );
     return DefaultTabController(
       length: 2,
@@ -65,8 +61,15 @@ class TicketPage extends StatelessWidget {
                     .read<TicketBloc>()
                     .add(const TicketEvent.getActiveTicket());
               },
-              child: const _TicketList(
-                  onNullNotes: "You currently don't have an active ticket yet"),
+              child: Builder(builder: (context) {
+                context
+                    .read<TicketBloc>()
+                    .add(const TicketEvent.getActiveTicket());
+
+                return const _TicketList(
+                    onNullNotes:
+                        "You currently don't have an active ticket yet");
+              }),
             ),
           ),
           Tab(
@@ -76,8 +79,14 @@ class TicketPage extends StatelessWidget {
                     .read<TicketBloc>()
                     .add(const TicketEvent.getAllTicket());
               },
-              child: const _TicketList(
-                  onNullNotes: "You've never bought a ticket"),
+              child: Builder(builder: (context) {
+                context
+                    .read<TicketBloc>()
+                    .add(const TicketEvent.getAllTicket());
+
+                return const _TicketList(
+                    onNullNotes: "You've never bought a ticket");
+              }),
             ),
           ),
         ]),
@@ -136,52 +145,76 @@ class _TicketCard extends StatelessWidget {
           context: context,
           builder: (context) => _TicketDetail(ticket: ticket)),
       child: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black12, width: 1),
-              borderRadius: BorderRadius.circular(20)),
+          margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+          height: 120,
+          width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: SizedBox(
-                      width: 80,
-                      height: 110,
-                      child:
-                          ticket.movie.moviePosterUrl(ticket.movie.posterUrl))),
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ClipPath(
+                clipper: TicketLeftClipper(),
+                child: Stack(
                   children: [
-                    Text(ticket.movie.title),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SizedBox(
-                          width: 40,
-                          height: 35,
-                          child:
-                              Image.asset('assets/${ticket.cinema.brand}.png'),
+                    Container(
+                      width: 160,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                          image: ticket.movie
+                              .moviePosterUrl(ticket.movie.posterUrl)
+                              .image,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 5.0),
-                          child: Text(
-                            "${ticket.cinema.name} ${ticket.studio.code}",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16,
-                                color: Colors.blue),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                    Text(DateFormat('EEEE, d MMM yyyy HH:mm')
-                        .format(ticket.getDate()))
+                    Container(
+                      width: 160,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.white.withOpacity(0),
+                            Colors.blue.withOpacity(0.7),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              )
+              ),
+              Expanded(
+                child: ClipPath(
+                  clipper: TicketRightClipper(),
+                  child: Container(
+                    color: Colors.amber,
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          ticket.movie.title,
+                          // ignore: prefer_const_constructors
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "${ticket.cinema.name} ${ticket.studio.code}",
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Text(DateFormat('EEEE, d MMM yyyy HH:mm')
+                            .format(ticket.getDate()))
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           )),
     );
@@ -409,6 +442,50 @@ class TicketBottomClipper extends CustomClipper<Path> {
     path.quadraticBezierTo(size.width - radius, radius, size.width - radius, 0);
     path.lineTo(radius, 0);
     path.quadraticBezierTo(radius, radius, 0, radius);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
+class TicketLeftClipper extends CustomClipper<Path> {
+  double radius = 15;
+
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    // path.moveTo(size.width - radius, 0);
+    path.lineTo(size.width - radius, 0);
+    path.quadraticBezierTo(size.width - radius, radius, size.width, radius);
+    path.lineTo(size.width, size.height - radius);
+    path.quadraticBezierTo(size.width - radius, size.height - radius,
+        size.width - radius, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
+class TicketRightClipper extends CustomClipper<Path> {
+  double radius = 15;
+
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.moveTo(size.width, 0);
+    path.lineTo(radius, 0);
+    // path.lineTo(size.width, radius);
+    path.quadraticBezierTo(radius, radius, 0, radius);
+    path.lineTo(0, size.height - radius);
+    path.quadraticBezierTo(radius, size.height - radius, radius, size.height);
+    path.lineTo(size.width, size.height);
     path.close();
 
     return path;
