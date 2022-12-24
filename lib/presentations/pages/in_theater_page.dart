@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/presentations/widgets/in_theater_poster.dart';
@@ -13,6 +15,32 @@ class InTheaterPage extends StatefulWidget {
 
 class _InTheaterPageState extends State<InTheaterPage> {
   int _current = 0;
+  late Timer _timer;
+  final PageController _pageController = PageController(
+    viewportFraction: 0.9,
+    initialPage: 0,
+  );
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+  //     _current++;
+
+  //     _pageController.animateToPage(
+  //       _current,
+  //       duration: const Duration(milliseconds: 350),
+  //       curve: Curves.easeIn,
+  //     );
+  //   });
+  // }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _timer.cancel();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,13 +62,13 @@ class _InTheaterPageState extends State<InTheaterPage> {
                       return movies.map(
                           success: (result) => Expanded(
                                 child: PageView.builder(
-                                  itemCount: result.value.length,
                                   itemBuilder: (context, int index) {
                                     return Transform.scale(
                                       alignment: Alignment.centerLeft,
                                       scale: index == _current ? 1 : 0.9,
                                       child: InTheaterPoster(
-                                        movie: result.value.elementAt(index),
+                                        movie: result.value.elementAt(
+                                            index % result.value.length),
                                         isActive:
                                             index == _current ? true : false,
                                       ),
@@ -52,8 +80,7 @@ class _InTheaterPageState extends State<InTheaterPage> {
                                     });
                                   },
                                   padEnds: false,
-                                  controller:
-                                      PageController(viewportFraction: 0.9),
+                                  controller: _pageController,
                                 ),
                               ),
                           failed: (result) => Text(result.message));
