@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/ticket_bloc.dart';
 import 'package:movie_app/entities/order.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
+import 'package:movie_app/presentations/widgets/vertical_dashed_divider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class TicketPage extends StatelessWidget {
@@ -148,74 +149,83 @@ class _TicketCard extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
           height: 120,
           width: double.infinity,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipPath(
-                clipper: TicketLeftClipper(),
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 160,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          alignment: Alignment.topCenter,
-                          image: ticket.movie
-                              .moviePosterUrl(ticket.movie.posterUrl)
-                              .image,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipPath(
+                  clipper: TicketLeftClipper(),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 160,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
+                            image: ticket.movie
+                                .moviePosterUrl(ticket.movie.posterUrl)
+                                .image,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 160,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0),
-                            Colors.blue.withOpacity(0.7),
-                          ],
+                      Container(
+                        width: 160,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white.withOpacity(0),
+                              Colors.blue.withOpacity(0.7),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: ClipPath(
-                  clipper: TicketRightClipper(),
-                  child: Container(
-                    color: Colors.amber,
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ticket.movie.title,
-                          // ignore: prefer_const_constructors
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "${ticket.cinema.name} ${ticket.studio.code}",
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        Text(DateFormat('EEEE, d MMM yyyy HH:mm')
-                            .format(ticket.getDate()))
-                      ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  child: VerticalDashedDivider(
+                    width: 2,
+                  ),
+                ),
+                Expanded(
+                  child: ClipPath(
+                    clipper: TicketRightClipper(),
+                    child: Container(
+                      decoration: BoxDecoration(color: Colors.amberAccent),
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ticket.movie.title,
+                            // ignore: prefer_const_constructors
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.blue),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                "${ticket.cinema.name} ${ticket.studio.code}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          Text(DateFormat('EEEE, d MMM yyyy HH:mm')
+                              .format(ticket.getDate()))
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )),
     );
   }
@@ -452,7 +462,7 @@ class TicketBottomClipper extends CustomClipper<Path> {
 }
 
 class TicketLeftClipper extends CustomClipper<Path> {
-  double radius = 15;
+  double radius = 10;
 
   @override
   Path getClip(Size size) {
@@ -474,7 +484,7 @@ class TicketLeftClipper extends CustomClipper<Path> {
 }
 
 class TicketRightClipper extends CustomClipper<Path> {
-  double radius = 15;
+  double radius = 10;
 
   @override
   Path getClip(Size size) {
