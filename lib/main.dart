@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/bloc/movie_bloc.dart';
 import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
+import 'package:movie_app/bloc/search_bloc.dart';
 import 'package:movie_app/bloc/ticket_bloc.dart';
 import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => TransactionBloc()),
         BlocProvider(create: (context) => OrderBloc()),
         BlocProvider(create: (context) => TicketBloc()),
+        BlocProvider(create: (context) => SearchBloc()),
       ],
       child: MaterialApp(
         theme: ThemeData(

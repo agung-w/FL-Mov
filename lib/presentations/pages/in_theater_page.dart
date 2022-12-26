@@ -15,7 +15,7 @@ class InTheaterPage extends StatefulWidget {
 
 class _InTheaterPageState extends State<InTheaterPage> {
   int _current = 0;
-  late Timer _timer;
+  // late Timer _timer;
   final PageController _pageController = PageController(
     viewportFraction: 0.9,
     initialPage: 0,
@@ -52,7 +52,7 @@ class _InTheaterPageState extends State<InTheaterPage> {
             child: const Text(
               "Now In Theater",
               textAlign: TextAlign.start,
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
             ),
           ),
           BlocBuilder<MovieBloc, MovieState>(

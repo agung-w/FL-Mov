@@ -65,3 +65,80 @@ Map<String, dynamic> _$$_CastToJson(_$_Cast instance) => <String, dynamic>{
       'character': instance.character,
       'profile_path': instance.profileUrl,
     };
+
+_$_TMDBSearchResult _$$_TMDBSearchResultFromJson(Map<String, dynamic> json) =>
+    _$_TMDBSearchResult(
+      inTheaterList: (json['inTheaterList'] as List<dynamic>?)
+              ?.map((e) => Movie.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      movieList: (json['movieList'] as List<dynamic>?)
+              ?.map((e) => TMDBMovie.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      tvList: (json['tvList'] as List<dynamic>?)
+              ?.map((e) => TMDBTv.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      personList: (json['personList'] as List<dynamic>?)
+              ?.map((e) => TMDBPerson.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$_TMDBSearchResultToJson(_$_TMDBSearchResult instance) =>
+    <String, dynamic>{
+      'inTheaterList': instance.inTheaterList,
+      'movieList': instance.movieList,
+      'tvList': instance.tvList,
+      'personList': instance.personList,
+    };
+
+_$_TMDBMovie _$$_TMDBMovieFromJson(Map<String, dynamic> json) => _$_TMDBMovie(
+      id: json['id'] as int,
+      title: json['title'] as String,
+      backdropPath: json['backdrop_path'] as String?,
+      posterPath: json['poster_path'] as String?,
+      mediaType: json['mediaType'] as String? ?? "Movie",
+    );
+
+Map<String, dynamic> _$$_TMDBMovieToJson(_$_TMDBMovie instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'backdrop_path': instance.backdropPath,
+      'poster_path': instance.posterPath,
+      'mediaType': instance.mediaType,
+    };
+
+_$_TMDBTv _$$_TMDBTvFromJson(Map<String, dynamic> json) => _$_TMDBTv(
+      id: json['id'] as int,
+      backdropPath: json['backdrop_path'] as String?,
+      posterPath: json['poster_path'] as String?,
+      mediaType: json['mediaType'] as String? ?? "Tv",
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$_TMDBTvToJson(_$_TMDBTv instance) => <String, dynamic>{
+      'id': instance.id,
+      'backdrop_path': instance.backdropPath,
+      'poster_path': instance.posterPath,
+      'mediaType': instance.mediaType,
+      'name': instance.name,
+    };
+
+_$_TMDBPerson _$$_TMDBPersonFromJson(Map<String, dynamic> json) =>
+    _$_TMDBPerson(
+      id: json['id'] as int,
+      profilePath: json['profile_path'] as String?,
+      knownForDepartment: json['known_for_department'] as String? ?? "Person",
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$_TMDBPersonToJson(_$_TMDBPerson instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'profile_path': instance.profilePath,
+      'known_for_department': instance.knownForDepartment,
+      'name': instance.name,
+    };

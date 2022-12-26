@@ -37,20 +37,20 @@ mixin _$TicketEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetActiveTicket value) getAllTicket,
-    required TResult Function(_GetAllTicket value) getActiveTicket,
+    required TResult Function(_GetAllTicket value) getAllTicket,
+    required TResult Function(_GetActiveTicket value) getActiveTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetActiveTicket value)? getAllTicket,
-    TResult? Function(_GetAllTicket value)? getActiveTicket,
+    TResult? Function(_GetAllTicket value)? getAllTicket,
+    TResult? Function(_GetActiveTicket value)? getActiveTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetActiveTicket value)? getAllTicket,
-    TResult Function(_GetAllTicket value)? getActiveTicket,
+    TResult Function(_GetAllTicket value)? getAllTicket,
+    TResult Function(_GetActiveTicket value)? getActiveTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,25 +75,25 @@ class _$TicketEventCopyWithImpl<$Res, $Val extends TicketEvent>
 }
 
 /// @nodoc
-abstract class _$$_GetActiveTicketCopyWith<$Res> {
-  factory _$$_GetActiveTicketCopyWith(
-          _$_GetActiveTicket value, $Res Function(_$_GetActiveTicket) then) =
-      __$$_GetActiveTicketCopyWithImpl<$Res>;
+abstract class _$$_GetAllTicketCopyWith<$Res> {
+  factory _$$_GetAllTicketCopyWith(
+          _$_GetAllTicket value, $Res Function(_$_GetAllTicket) then) =
+      __$$_GetAllTicketCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetActiveTicketCopyWithImpl<$Res>
-    extends _$TicketEventCopyWithImpl<$Res, _$_GetActiveTicket>
-    implements _$$_GetActiveTicketCopyWith<$Res> {
-  __$$_GetActiveTicketCopyWithImpl(
-      _$_GetActiveTicket _value, $Res Function(_$_GetActiveTicket) _then)
+class __$$_GetAllTicketCopyWithImpl<$Res>
+    extends _$TicketEventCopyWithImpl<$Res, _$_GetAllTicket>
+    implements _$$_GetAllTicketCopyWith<$Res> {
+  __$$_GetAllTicketCopyWithImpl(
+      _$_GetAllTicket _value, $Res Function(_$_GetAllTicket) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetActiveTicket implements _GetActiveTicket {
-  const _$_GetActiveTicket();
+class _$_GetAllTicket implements _GetAllTicket {
+  const _$_GetAllTicket();
 
   @override
   String toString() {
@@ -103,7 +103,7 @@ class _$_GetActiveTicket implements _GetActiveTicket {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetActiveTicket);
+        (other.runtimeType == runtimeType && other is _$_GetAllTicket);
   }
 
   @override
@@ -143,8 +143,8 @@ class _$_GetActiveTicket implements _GetActiveTicket {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetActiveTicket value) getAllTicket,
-    required TResult Function(_GetAllTicket value) getActiveTicket,
+    required TResult Function(_GetAllTicket value) getAllTicket,
+    required TResult Function(_GetActiveTicket value) getActiveTicket,
   }) {
     return getAllTicket(this);
   }
@@ -152,8 +152,8 @@ class _$_GetActiveTicket implements _GetActiveTicket {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetActiveTicket value)? getAllTicket,
-    TResult? Function(_GetAllTicket value)? getActiveTicket,
+    TResult? Function(_GetAllTicket value)? getAllTicket,
+    TResult? Function(_GetActiveTicket value)? getActiveTicket,
   }) {
     return getAllTicket?.call(this);
   }
@@ -161,8 +161,8 @@ class _$_GetActiveTicket implements _GetActiveTicket {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetActiveTicket value)? getAllTicket,
-    TResult Function(_GetAllTicket value)? getActiveTicket,
+    TResult Function(_GetAllTicket value)? getAllTicket,
+    TResult Function(_GetActiveTicket value)? getActiveTicket,
     required TResult orElse(),
   }) {
     if (getAllTicket != null) {
@@ -172,30 +172,30 @@ class _$_GetActiveTicket implements _GetActiveTicket {
   }
 }
 
-abstract class _GetActiveTicket implements TicketEvent {
-  const factory _GetActiveTicket() = _$_GetActiveTicket;
+abstract class _GetAllTicket implements TicketEvent {
+  const factory _GetAllTicket() = _$_GetAllTicket;
 }
 
 /// @nodoc
-abstract class _$$_GetAllTicketCopyWith<$Res> {
-  factory _$$_GetAllTicketCopyWith(
-          _$_GetAllTicket value, $Res Function(_$_GetAllTicket) then) =
-      __$$_GetAllTicketCopyWithImpl<$Res>;
+abstract class _$$_GetActiveTicketCopyWith<$Res> {
+  factory _$$_GetActiveTicketCopyWith(
+          _$_GetActiveTicket value, $Res Function(_$_GetActiveTicket) then) =
+      __$$_GetActiveTicketCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetAllTicketCopyWithImpl<$Res>
-    extends _$TicketEventCopyWithImpl<$Res, _$_GetAllTicket>
-    implements _$$_GetAllTicketCopyWith<$Res> {
-  __$$_GetAllTicketCopyWithImpl(
-      _$_GetAllTicket _value, $Res Function(_$_GetAllTicket) _then)
+class __$$_GetActiveTicketCopyWithImpl<$Res>
+    extends _$TicketEventCopyWithImpl<$Res, _$_GetActiveTicket>
+    implements _$$_GetActiveTicketCopyWith<$Res> {
+  __$$_GetActiveTicketCopyWithImpl(
+      _$_GetActiveTicket _value, $Res Function(_$_GetActiveTicket) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetAllTicket implements _GetAllTicket {
-  const _$_GetAllTicket();
+class _$_GetActiveTicket implements _GetActiveTicket {
+  const _$_GetActiveTicket();
 
   @override
   String toString() {
@@ -205,7 +205,7 @@ class _$_GetAllTicket implements _GetAllTicket {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetAllTicket);
+        (other.runtimeType == runtimeType && other is _$_GetActiveTicket);
   }
 
   @override
@@ -245,8 +245,8 @@ class _$_GetAllTicket implements _GetAllTicket {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetActiveTicket value) getAllTicket,
-    required TResult Function(_GetAllTicket value) getActiveTicket,
+    required TResult Function(_GetAllTicket value) getAllTicket,
+    required TResult Function(_GetActiveTicket value) getActiveTicket,
   }) {
     return getActiveTicket(this);
   }
@@ -254,8 +254,8 @@ class _$_GetAllTicket implements _GetAllTicket {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetActiveTicket value)? getAllTicket,
-    TResult? Function(_GetAllTicket value)? getActiveTicket,
+    TResult? Function(_GetAllTicket value)? getAllTicket,
+    TResult? Function(_GetActiveTicket value)? getActiveTicket,
   }) {
     return getActiveTicket?.call(this);
   }
@@ -263,8 +263,8 @@ class _$_GetAllTicket implements _GetAllTicket {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetActiveTicket value)? getAllTicket,
-    TResult Function(_GetAllTicket value)? getActiveTicket,
+    TResult Function(_GetAllTicket value)? getAllTicket,
+    TResult Function(_GetActiveTicket value)? getActiveTicket,
     required TResult orElse(),
   }) {
     if (getActiveTicket != null) {
@@ -274,8 +274,8 @@ class _$_GetAllTicket implements _GetAllTicket {
   }
 }
 
-abstract class _GetAllTicket implements TicketEvent {
-  const factory _GetAllTicket() = _$_GetAllTicket;
+abstract class _GetActiveTicket implements TicketEvent {
+  const factory _GetActiveTicket() = _$_GetActiveTicket;
 }
 
 /// @nodoc

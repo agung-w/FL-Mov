@@ -77,6 +77,16 @@ flutter:
     - assets/qris.png
     - assets/cinematix_logo.png
     - assets/cinematix_icon.png
+    - assets/background/action.jpeg
+    - assets/background/classic.jpeg
+    - assets/background/comedy.jpeg
+    - assets/background/horror.jpeg
+    - assets/background/kdrama.jpeg
+    - assets/background/romance.jpeg
+    - assets/background/sport.jpeg
+    - assets/background/thriller.jpeg
+    - assets/background/drama.jpeg
+    - assets/background/anime.jpeg
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

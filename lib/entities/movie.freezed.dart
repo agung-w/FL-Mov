@@ -21,12 +21,19 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Movie {
   String get title => throw _privateConstructorUsedError;
+  set title(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "poster_url")
   String get posterUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_url")
+  set posterUrl(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "vote_average")
   String get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: "vote_average")
+  set rating(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "tmdb_id")
   String get tmdbId => throw _privateConstructorUsedError;
+  @JsonKey(name: "tmdb_id")
+  set tmdbId(String value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -135,7 +142,7 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
 /// @nodoc
 @JsonSerializable()
 class _$_Movie extends _Movie {
-  const _$_Movie(
+  _$_Movie(
       {required this.title,
       @JsonKey(name: "poster_url") required this.posterUrl,
       @JsonKey(name: "vote_average") required this.rating,
@@ -146,38 +153,21 @@ class _$_Movie extends _Movie {
       _$$_MovieFromJson(json);
 
   @override
-  final String title;
+  String title;
   @override
   @JsonKey(name: "poster_url")
-  final String posterUrl;
+  String posterUrl;
   @override
   @JsonKey(name: "vote_average")
-  final String rating;
+  String rating;
   @override
   @JsonKey(name: "tmdb_id")
-  final String tmdbId;
+  String tmdbId;
 
   @override
   String toString() {
     return 'Movie(title: $title, posterUrl: $posterUrl, rating: $rating, tmdbId: $tmdbId)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Movie &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.posterUrl, posterUrl) ||
-                other.posterUrl == posterUrl) &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.tmdbId, tmdbId) || other.tmdbId == tmdbId));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, posterUrl, rating, tmdbId);
 
   @JsonKey(ignore: true)
   @override
@@ -194,26 +184,33 @@ class _$_Movie extends _Movie {
 }
 
 abstract class _Movie extends Movie {
-  const factory _Movie(
-      {required final String title,
-      @JsonKey(name: "poster_url") required final String posterUrl,
-      @JsonKey(name: "vote_average") required final String rating,
-      @JsonKey(name: "tmdb_id") required final String tmdbId}) = _$_Movie;
-  const _Movie._() : super._();
+  factory _Movie(
+      {required String title,
+      @JsonKey(name: "poster_url") required String posterUrl,
+      @JsonKey(name: "vote_average") required String rating,
+      @JsonKey(name: "tmdb_id") required String tmdbId}) = _$_Movie;
+  _Movie._() : super._();
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
 
   @override
   String get title;
+  set title(String value);
   @override
   @JsonKey(name: "poster_url")
   String get posterUrl;
+  @JsonKey(name: "poster_url")
+  set posterUrl(String value);
   @override
   @JsonKey(name: "vote_average")
   String get rating;
+  @JsonKey(name: "vote_average")
+  set rating(String value);
   @override
   @JsonKey(name: "tmdb_id")
   String get tmdbId;
+  @JsonKey(name: "tmdb_id")
+  set tmdbId(String value);
   @override
   @JsonKey(ignore: true)
   _$$_MovieCopyWith<_$_Movie> get copyWith =>
@@ -776,4 +773,862 @@ abstract class _Cast extends Cast {
   @override
   @JsonKey(ignore: true)
   _$$_CastCopyWith<_$_Cast> get copyWith => throw _privateConstructorUsedError;
+}
+
+TMDBSearchResult _$TMDBSearchResultFromJson(Map<String, dynamic> json) {
+  return _TMDBSearchResult.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TMDBSearchResult {
+  List<Movie> get inTheaterList => throw _privateConstructorUsedError;
+  set inTheaterList(List<Movie> value) => throw _privateConstructorUsedError;
+  List<TMDBMovie> get movieList => throw _privateConstructorUsedError;
+  set movieList(List<TMDBMovie> value) => throw _privateConstructorUsedError;
+  List<TMDBTv> get tvList => throw _privateConstructorUsedError;
+  set tvList(List<TMDBTv> value) => throw _privateConstructorUsedError;
+  List<TMDBPerson> get personList => throw _privateConstructorUsedError;
+  set personList(List<TMDBPerson> value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TMDBSearchResultCopyWith<TMDBSearchResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TMDBSearchResultCopyWith<$Res> {
+  factory $TMDBSearchResultCopyWith(
+          TMDBSearchResult value, $Res Function(TMDBSearchResult) then) =
+      _$TMDBSearchResultCopyWithImpl<$Res, TMDBSearchResult>;
+  @useResult
+  $Res call(
+      {List<Movie> inTheaterList,
+      List<TMDBMovie> movieList,
+      List<TMDBTv> tvList,
+      List<TMDBPerson> personList});
+}
+
+/// @nodoc
+class _$TMDBSearchResultCopyWithImpl<$Res, $Val extends TMDBSearchResult>
+    implements $TMDBSearchResultCopyWith<$Res> {
+  _$TMDBSearchResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? inTheaterList = null,
+    Object? movieList = null,
+    Object? tvList = null,
+    Object? personList = null,
+  }) {
+    return _then(_value.copyWith(
+      inTheaterList: null == inTheaterList
+          ? _value.inTheaterList
+          : inTheaterList // ignore: cast_nullable_to_non_nullable
+              as List<Movie>,
+      movieList: null == movieList
+          ? _value.movieList
+          : movieList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBMovie>,
+      tvList: null == tvList
+          ? _value.tvList
+          : tvList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBTv>,
+      personList: null == personList
+          ? _value.personList
+          : personList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBPerson>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TMDBSearchResultCopyWith<$Res>
+    implements $TMDBSearchResultCopyWith<$Res> {
+  factory _$$_TMDBSearchResultCopyWith(
+          _$_TMDBSearchResult value, $Res Function(_$_TMDBSearchResult) then) =
+      __$$_TMDBSearchResultCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<Movie> inTheaterList,
+      List<TMDBMovie> movieList,
+      List<TMDBTv> tvList,
+      List<TMDBPerson> personList});
+}
+
+/// @nodoc
+class __$$_TMDBSearchResultCopyWithImpl<$Res>
+    extends _$TMDBSearchResultCopyWithImpl<$Res, _$_TMDBSearchResult>
+    implements _$$_TMDBSearchResultCopyWith<$Res> {
+  __$$_TMDBSearchResultCopyWithImpl(
+      _$_TMDBSearchResult _value, $Res Function(_$_TMDBSearchResult) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? inTheaterList = null,
+    Object? movieList = null,
+    Object? tvList = null,
+    Object? personList = null,
+  }) {
+    return _then(_$_TMDBSearchResult(
+      inTheaterList: null == inTheaterList
+          ? _value.inTheaterList
+          : inTheaterList // ignore: cast_nullable_to_non_nullable
+              as List<Movie>,
+      movieList: null == movieList
+          ? _value.movieList
+          : movieList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBMovie>,
+      tvList: null == tvList
+          ? _value.tvList
+          : tvList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBTv>,
+      personList: null == personList
+          ? _value.personList
+          : personList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBPerson>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TMDBSearchResult extends _TMDBSearchResult {
+  _$_TMDBSearchResult(
+      {this.inTheaterList = const [],
+      this.movieList = const [],
+      this.tvList = const [],
+      this.personList = const []})
+      : super._();
+
+  factory _$_TMDBSearchResult.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBSearchResultFromJson(json);
+
+  @override
+  @JsonKey()
+  List<Movie> inTheaterList;
+  @override
+  @JsonKey()
+  List<TMDBMovie> movieList;
+  @override
+  @JsonKey()
+  List<TMDBTv> tvList;
+  @override
+  @JsonKey()
+  List<TMDBPerson> personList;
+
+  @override
+  String toString() {
+    return 'TMDBSearchResult(inTheaterList: $inTheaterList, movieList: $movieList, tvList: $tvList, personList: $personList)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TMDBSearchResultCopyWith<_$_TMDBSearchResult> get copyWith =>
+      __$$_TMDBSearchResultCopyWithImpl<_$_TMDBSearchResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TMDBSearchResultToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TMDBSearchResult extends TMDBSearchResult {
+  factory _TMDBSearchResult(
+      {List<Movie> inTheaterList,
+      List<TMDBMovie> movieList,
+      List<TMDBTv> tvList,
+      List<TMDBPerson> personList}) = _$_TMDBSearchResult;
+  _TMDBSearchResult._() : super._();
+
+  factory _TMDBSearchResult.fromJson(Map<String, dynamic> json) =
+      _$_TMDBSearchResult.fromJson;
+
+  @override
+  List<Movie> get inTheaterList;
+  set inTheaterList(List<Movie> value);
+  @override
+  List<TMDBMovie> get movieList;
+  set movieList(List<TMDBMovie> value);
+  @override
+  List<TMDBTv> get tvList;
+  set tvList(List<TMDBTv> value);
+  @override
+  List<TMDBPerson> get personList;
+  set personList(List<TMDBPerson> value);
+  @override
+  @JsonKey(ignore: true)
+  _$$_TMDBSearchResultCopyWith<_$_TMDBSearchResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TMDBMovie _$TMDBMovieFromJson(Map<String, dynamic> json) {
+  return _TMDBMovie.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TMDBMovie {
+  int get id => throw _privateConstructorUsedError;
+  set id(int value) => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  set title(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  set backdropPath(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  String? get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  set posterPath(String? value) => throw _privateConstructorUsedError;
+  String? get mediaType => throw _privateConstructorUsedError;
+  set mediaType(String? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TMDBMovieCopyWith<TMDBMovie> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TMDBMovieCopyWith<$Res> {
+  factory $TMDBMovieCopyWith(TMDBMovie value, $Res Function(TMDBMovie) then) =
+      _$TMDBMovieCopyWithImpl<$Res, TMDBMovie>;
+  @useResult
+  $Res call(
+      {int id,
+      String title,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      String? mediaType});
+}
+
+/// @nodoc
+class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
+    implements $TMDBMovieCopyWith<$Res> {
+  _$TMDBMovieCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? backdropPath = freezed,
+    Object? posterPath = freezed,
+    Object? mediaType = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaType: freezed == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TMDBMovieCopyWith<$Res> implements $TMDBMovieCopyWith<$Res> {
+  factory _$$_TMDBMovieCopyWith(
+          _$_TMDBMovie value, $Res Function(_$_TMDBMovie) then) =
+      __$$_TMDBMovieCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String title,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      String? mediaType});
+}
+
+/// @nodoc
+class __$$_TMDBMovieCopyWithImpl<$Res>
+    extends _$TMDBMovieCopyWithImpl<$Res, _$_TMDBMovie>
+    implements _$$_TMDBMovieCopyWith<$Res> {
+  __$$_TMDBMovieCopyWithImpl(
+      _$_TMDBMovie _value, $Res Function(_$_TMDBMovie) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? backdropPath = freezed,
+    Object? posterPath = freezed,
+    Object? mediaType = freezed,
+  }) {
+    return _then(_$_TMDBMovie(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaType: freezed == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TMDBMovie extends _TMDBMovie {
+  _$_TMDBMovie(
+      {required this.id,
+      required this.title,
+      @JsonKey(name: "backdrop_path") this.backdropPath,
+      @JsonKey(name: "poster_path") this.posterPath,
+      this.mediaType = "Movie"})
+      : super._();
+
+  factory _$_TMDBMovie.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBMovieFromJson(json);
+
+  @override
+  int id;
+  @override
+  String title;
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? backdropPath;
+  @override
+  @JsonKey(name: "poster_path")
+  String? posterPath;
+  @override
+  @JsonKey()
+  String? mediaType;
+
+  @override
+  String toString() {
+    return 'TMDBMovie(id: $id, title: $title, backdropPath: $backdropPath, posterPath: $posterPath, mediaType: $mediaType)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TMDBMovieCopyWith<_$_TMDBMovie> get copyWith =>
+      __$$_TMDBMovieCopyWithImpl<_$_TMDBMovie>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TMDBMovieToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TMDBMovie extends TMDBMovie {
+  factory _TMDBMovie(
+      {required int id,
+      required String title,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      String? mediaType}) = _$_TMDBMovie;
+  _TMDBMovie._() : super._();
+
+  factory _TMDBMovie.fromJson(Map<String, dynamic> json) =
+      _$_TMDBMovie.fromJson;
+
+  @override
+  int get id;
+  set id(int value);
+  @override
+  String get title;
+  set title(String value);
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath;
+  @JsonKey(name: "backdrop_path")
+  set backdropPath(String? value);
+  @override
+  @JsonKey(name: "poster_path")
+  String? get posterPath;
+  @JsonKey(name: "poster_path")
+  set posterPath(String? value);
+  @override
+  String? get mediaType;
+  set mediaType(String? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$_TMDBMovieCopyWith<_$_TMDBMovie> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TMDBTv _$TMDBTvFromJson(Map<String, dynamic> json) {
+  return _TMDBTv.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TMDBTv {
+  int get id => throw _privateConstructorUsedError;
+  set id(int value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  set backdropPath(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  String? get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  set posterPath(String? value) => throw _privateConstructorUsedError;
+  String? get mediaType => throw _privateConstructorUsedError;
+  set mediaType(String? value) => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TMDBTvCopyWith<TMDBTv> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TMDBTvCopyWith<$Res> {
+  factory $TMDBTvCopyWith(TMDBTv value, $Res Function(TMDBTv) then) =
+      _$TMDBTvCopyWithImpl<$Res, TMDBTv>;
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      String? mediaType,
+      String name});
+}
+
+/// @nodoc
+class _$TMDBTvCopyWithImpl<$Res, $Val extends TMDBTv>
+    implements $TMDBTvCopyWith<$Res> {
+  _$TMDBTvCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? backdropPath = freezed,
+    Object? posterPath = freezed,
+    Object? mediaType = freezed,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaType: freezed == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TMDBTvCopyWith<$Res> implements $TMDBTvCopyWith<$Res> {
+  factory _$$_TMDBTvCopyWith(_$_TMDBTv value, $Res Function(_$_TMDBTv) then) =
+      __$$_TMDBTvCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      String? mediaType,
+      String name});
+}
+
+/// @nodoc
+class __$$_TMDBTvCopyWithImpl<$Res>
+    extends _$TMDBTvCopyWithImpl<$Res, _$_TMDBTv>
+    implements _$$_TMDBTvCopyWith<$Res> {
+  __$$_TMDBTvCopyWithImpl(_$_TMDBTv _value, $Res Function(_$_TMDBTv) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? backdropPath = freezed,
+    Object? posterPath = freezed,
+    Object? mediaType = freezed,
+    Object? name = null,
+  }) {
+    return _then(_$_TMDBTv(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaType: freezed == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TMDBTv extends _TMDBTv {
+  _$_TMDBTv(
+      {required this.id,
+      @JsonKey(name: "backdrop_path") this.backdropPath,
+      @JsonKey(name: "poster_path") this.posterPath,
+      this.mediaType = "Tv",
+      required this.name})
+      : super._();
+
+  factory _$_TMDBTv.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBTvFromJson(json);
+
+  @override
+  int id;
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? backdropPath;
+  @override
+  @JsonKey(name: "poster_path")
+  String? posterPath;
+  @override
+  @JsonKey()
+  String? mediaType;
+  @override
+  String name;
+
+  @override
+  String toString() {
+    return 'TMDBTv(id: $id, backdropPath: $backdropPath, posterPath: $posterPath, mediaType: $mediaType, name: $name)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TMDBTvCopyWith<_$_TMDBTv> get copyWith =>
+      __$$_TMDBTvCopyWithImpl<_$_TMDBTv>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TMDBTvToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TMDBTv extends TMDBTv {
+  factory _TMDBTv(
+      {required int id,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      String? mediaType,
+      required String name}) = _$_TMDBTv;
+  _TMDBTv._() : super._();
+
+  factory _TMDBTv.fromJson(Map<String, dynamic> json) = _$_TMDBTv.fromJson;
+
+  @override
+  int get id;
+  set id(int value);
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath;
+  @JsonKey(name: "backdrop_path")
+  set backdropPath(String? value);
+  @override
+  @JsonKey(name: "poster_path")
+  String? get posterPath;
+  @JsonKey(name: "poster_path")
+  set posterPath(String? value);
+  @override
+  String? get mediaType;
+  set mediaType(String? value);
+  @override
+  String get name;
+  set name(String value);
+  @override
+  @JsonKey(ignore: true)
+  _$$_TMDBTvCopyWith<_$_TMDBTv> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TMDBPerson _$TMDBPersonFromJson(Map<String, dynamic> json) {
+  return _TMDBPerson.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TMDBPerson {
+  int get id => throw _privateConstructorUsedError;
+  set id(int value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "profile_path")
+  String? get profilePath => throw _privateConstructorUsedError;
+  @JsonKey(name: "profile_path")
+  set profilePath(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "known_for_department")
+  String? get knownForDepartment => throw _privateConstructorUsedError;
+  @JsonKey(name: "known_for_department")
+  set knownForDepartment(String? value) =>
+      throw _privateConstructorUsedError; // @JsonKey(name: "known_for")
+//     List<TMDBMovie>? knownFor,
+  String get name =>
+      throw _privateConstructorUsedError; // @JsonKey(name: "known_for")
+//     List<TMDBMovie>? knownFor,
+  set name(String value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TMDBPersonCopyWith<TMDBPerson> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TMDBPersonCopyWith<$Res> {
+  factory $TMDBPersonCopyWith(
+          TMDBPerson value, $Res Function(TMDBPerson) then) =
+      _$TMDBPersonCopyWithImpl<$Res, TMDBPerson>;
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: "profile_path") String? profilePath,
+      @JsonKey(name: "known_for_department") String? knownForDepartment,
+      String name});
+}
+
+/// @nodoc
+class _$TMDBPersonCopyWithImpl<$Res, $Val extends TMDBPerson>
+    implements $TMDBPersonCopyWith<$Res> {
+  _$TMDBPersonCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? profilePath = freezed,
+    Object? knownForDepartment = freezed,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      profilePath: freezed == profilePath
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      knownForDepartment: freezed == knownForDepartment
+          ? _value.knownForDepartment
+          : knownForDepartment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TMDBPersonCopyWith<$Res>
+    implements $TMDBPersonCopyWith<$Res> {
+  factory _$$_TMDBPersonCopyWith(
+          _$_TMDBPerson value, $Res Function(_$_TMDBPerson) then) =
+      __$$_TMDBPersonCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: "profile_path") String? profilePath,
+      @JsonKey(name: "known_for_department") String? knownForDepartment,
+      String name});
+}
+
+/// @nodoc
+class __$$_TMDBPersonCopyWithImpl<$Res>
+    extends _$TMDBPersonCopyWithImpl<$Res, _$_TMDBPerson>
+    implements _$$_TMDBPersonCopyWith<$Res> {
+  __$$_TMDBPersonCopyWithImpl(
+      _$_TMDBPerson _value, $Res Function(_$_TMDBPerson) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? profilePath = freezed,
+    Object? knownForDepartment = freezed,
+    Object? name = null,
+  }) {
+    return _then(_$_TMDBPerson(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      profilePath: freezed == profilePath
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      knownForDepartment: freezed == knownForDepartment
+          ? _value.knownForDepartment
+          : knownForDepartment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TMDBPerson extends _TMDBPerson {
+  _$_TMDBPerson(
+      {required this.id,
+      @JsonKey(name: "profile_path") this.profilePath,
+      @JsonKey(name: "known_for_department") this.knownForDepartment = "Person",
+      required this.name})
+      : super._();
+
+  factory _$_TMDBPerson.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBPersonFromJson(json);
+
+  @override
+  int id;
+  @override
+  @JsonKey(name: "profile_path")
+  String? profilePath;
+  @override
+  @JsonKey(name: "known_for_department")
+  String? knownForDepartment;
+// @JsonKey(name: "known_for")
+//     List<TMDBMovie>? knownFor,
+  @override
+  String name;
+
+  @override
+  String toString() {
+    return 'TMDBPerson(id: $id, profilePath: $profilePath, knownForDepartment: $knownForDepartment, name: $name)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TMDBPersonCopyWith<_$_TMDBPerson> get copyWith =>
+      __$$_TMDBPersonCopyWithImpl<_$_TMDBPerson>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TMDBPersonToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TMDBPerson extends TMDBPerson {
+  factory _TMDBPerson(
+      {required int id,
+      @JsonKey(name: "profile_path") String? profilePath,
+      @JsonKey(name: "known_for_department") String? knownForDepartment,
+      required String name}) = _$_TMDBPerson;
+  _TMDBPerson._() : super._();
+
+  factory _TMDBPerson.fromJson(Map<String, dynamic> json) =
+      _$_TMDBPerson.fromJson;
+
+  @override
+  int get id;
+  set id(int value);
+  @override
+  @JsonKey(name: "profile_path")
+  String? get profilePath;
+  @JsonKey(name: "profile_path")
+  set profilePath(String? value);
+  @override
+  @JsonKey(name: "known_for_department")
+  String? get knownForDepartment;
+  @JsonKey(name: "known_for_department")
+  set knownForDepartment(String? value);
+  @override // @JsonKey(name: "known_for")
+//     List<TMDBMovie>? knownFor,
+  String get name; // @JsonKey(name: "known_for")
+//     List<TMDBMovie>? knownFor,
+  set name(String value);
+  @override
+  @JsonKey(ignore: true)
+  _$$_TMDBPersonCopyWith<_$_TMDBPerson> get copyWith =>
+      throw _privateConstructorUsedError;
 }
