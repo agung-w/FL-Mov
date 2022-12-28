@@ -22,15 +22,24 @@ class MovieServices {
   Future<ApiResult<MovieDetail>> getMovieDetail(int id) async {
     try {
       Response result = await _dio.get(
-        "${dotenv.env['tmdb_api_url']}/movie/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US",
-      );
-      Response casts = await _dio.get(
-        "${dotenv.env['tmdb_api_url']}/movie/$id/credits?api_key=${dotenv.env['tmdb_api_key']}&language=en-US",
+        "${dotenv.env['tmdb_api_url']}/movie/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=credits,videos,reviews,similar",
       );
       MovieDetail movie = MovieDetail.fromJson(result.data);
-      movie.casts =
-          (casts.data['cast'] as List).map((e) => Cast.fromJson(e)).toList();
       return ApiResult.success(movie);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<TvDetail>> getTvDetail(int id) async {
+    try {
+      Response result = await _dio.get(
+        "${dotenv.env['tmdb_api_url']}/tv/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=credits,videos,reviews,similar",
+      );
+      TvDetail tv = TvDetail.fromJson(result.data);
+      return ApiResult.success(tv);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
           ? e.response!.data['error']['message'].toString()

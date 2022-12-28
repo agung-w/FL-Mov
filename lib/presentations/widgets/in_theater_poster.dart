@@ -62,10 +62,11 @@ class InTheaterPoster extends StatelessWidget {
                                     return loadingProgress == null
                                         ? child
                                         : Shimmer.fromColors(
-                                            baseColor: Colors.grey.shade400,
-                                            highlightColor: Colors.white,
+                                            baseColor: const Color(0xFFBDBDBD),
+                                            highlightColor:
+                                                const Color(0xFFFFFFFF),
                                             child: Container(
-                                                color: Colors.grey,
+                                                color: const Color(0xFF9E9E9E),
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .height *

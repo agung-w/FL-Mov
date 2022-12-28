@@ -16,18 +16,86 @@ class Movie with _$Movie, Picture {
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 }
 
-@unfreezed
-class MovieDetail with _$MovieDetail {
-  factory MovieDetail({
+@freezed
+class MovieDetail with _$MovieDetail, Picture {
+  const MovieDetail._();
+  const factory MovieDetail({
+    required int id,
+    required String title,
     required List<Genre> genres,
     required String overview,
     required int runtime,
-    required String status,
-    List<Cast>? casts,
+    @JsonKey(name: "backdrop_path") String? backDropPath,
+    @JsonKey(name: "poster_path") String? posterPath,
+    @JsonKey(name: "original_language") String? originalLanguage,
+    @JsonKey(name: "release_date") String? releaseDate,
+    required Credit credits,
+    required Video videos,
+    required ReviewList reviews,
+    required TMDBMovieList similar,
   }) = _MovieDetail;
 
   factory MovieDetail.fromJson(Map<String, dynamic> json) =>
       _$MovieDetailFromJson(json);
+}
+
+@freezed
+class TvDetail with _$TvDetail, Picture {
+  const TvDetail._();
+  const factory TvDetail({
+    required int id,
+    required String name,
+    required List<Genre> genres,
+    required String overview,
+    required int runtime,
+    @JsonKey(name: "vote_average") double? voteAverage,
+    @JsonKey(name: "original_language") String? originalLanguage,
+    @JsonKey(name: "first_air_date") String? releaseDate,
+    @JsonKey(name: "number_of_episodes") int? numberOfEpisodes,
+    @JsonKey(name: "number_of_seasons") int? numberOfSeasons,
+    @JsonKey(name: "aggregate_credits") Credit? credits,
+    required Video videos,
+    required ReviewList reviews,
+    required TMDBTvList similar,
+  }) = _TvDetail;
+
+  factory TvDetail.fromJson(Map<String, dynamic> json) =>
+      _$TvDetailFromJson(json);
+}
+
+@freezed
+class TMDBTvList with _$TMDBTvList {
+  const factory TMDBTvList(
+      {@JsonKey(name: "results") required List<TMDBTv> tvList}) = _TMDBTvList;
+  factory TMDBTvList.fromJson(Map<String, dynamic> json) =>
+      _$TMDBTvListFromJson(json);
+}
+
+@freezed
+class TMDBMovieList with _$TMDBMovieList {
+  const factory TMDBMovieList(
+          {@JsonKey(name: "results") required List<TMDBMovie> movieList}) =
+      _TMDBMovieList;
+  factory TMDBMovieList.fromJson(Map<String, dynamic> json) =>
+      _$TMDBMovieListFromJson(json);
+}
+
+@freezed
+class ReviewList with _$ReviewList {
+  const factory ReviewList(
+          {@JsonKey(name: "results") required List<Review> reviewList}) =
+      _ReviewList;
+  factory ReviewList.fromJson(Map<String, dynamic> json) =>
+      _$ReviewListFromJson(json);
+}
+
+@freezed
+class Review with _$Review {
+  const factory Review({
+    required String author,
+    required String content,
+  }) = _Review;
+  factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);
 }
 
 @freezed
@@ -40,6 +108,35 @@ class Genre with _$Genre {
 }
 
 @freezed
+class Video with _$Video {
+  const factory Video(
+      {@Default([]) @JsonKey(name: "results") List<Trailer> trailers}) = _Video;
+  factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
+}
+
+@freezed
+class Trailer with _$Trailer {
+  const factory Trailer({
+    required String name,
+    required String key,
+    required String site,
+  }) = _Trailer;
+  factory Trailer.fromJson(Map<String, dynamic> json) =>
+      _$TrailerFromJson(json);
+}
+
+@freezed
+class Credit with _$Credit, Picture {
+  const Credit._();
+  const factory Credit({
+    @Default([]) List<Cast> cast,
+    @Default([]) List<Crew> crew,
+  }) = _Credit;
+
+  factory Credit.fromJson(Map<String, dynamic> json) => _$CreditFromJson(json);
+}
+
+@freezed
 class Cast with _$Cast, Picture {
   const Cast._();
   const factory Cast(
@@ -49,6 +146,18 @@ class Cast with _$Cast, Picture {
       @JsonKey(name: "profile_path") String? profileUrl}) = _Cast;
 
   factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
+}
+
+@freezed
+class Crew with _$Crew, Picture {
+  const Crew._();
+  const factory Crew(
+      {required int id,
+      required String name,
+      String? character,
+      @JsonKey(name: "profile_path") String? profileUrl}) = _Crew;
+
+  factory Crew.fromJson(Map<String, dynamic> json) => _$CrewFromJson(json);
 }
 
 @unfreezed

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/search_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
+import 'package:movie_app/presentations/pages/movie_detail_page.dart';
+import 'package:movie_app/presentations/widgets/image_loading_effect.dart';
 
 class SearchedPage extends StatelessWidget {
   final DiscoverCategory content;
@@ -82,28 +84,11 @@ class SearchedPage extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(16),
-                                  child: GridView.count(
-                                      childAspectRatio: 1.8,
-                                      physics: const ScrollPhysics(),
-                                      shrinkWrap: true,
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 8,
-                                      mainAxisSpacing: 16,
-                                      children: value.results.movieList
-                                          .map((e) => Container(
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    image: DecorationImage(
-                                                        image: e
-                                                            .moviePosterUrl(
-                                                                e.backdropPath ??
-                                                                    e.posterPath)
-                                                            .image,
-                                                        fit: BoxFit.cover)),
-                                              ))
-                                          .toList()),
+                                  child: _PosterGridView(
+                                    children: value.results.movieList
+                                        .map((e) => _GridPosterCard(e: e))
+                                        .toList(),
+                                  ),
                                 )
                               },
                               if (value.results.tvList.isNotEmpty) ...{
@@ -118,28 +103,11 @@ class SearchedPage extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(16),
-                                  child: GridView.count(
-                                      childAspectRatio: 1.8,
-                                      physics: const ScrollPhysics(),
-                                      shrinkWrap: true,
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 8,
-                                      mainAxisSpacing: 16,
-                                      children: value.results.tvList
-                                          .map((e) => Container(
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    image: DecorationImage(
-                                                        image: e
-                                                            .moviePosterUrl(
-                                                                e.backdropPath ??
-                                                                    e.posterPath)
-                                                            .image,
-                                                        fit: BoxFit.cover)),
-                                              ))
-                                          .toList()),
+                                  child: _PosterGridView(
+                                    children: value.results.tvList
+                                        .map((e) => _GridPosterCard(e: e))
+                                        .toList(),
+                                  ),
                                 )
                               }
                             ]),
@@ -153,9 +121,60 @@ class SearchedPage extends StatelessWidget {
   }
 }
 
+class _GridPosterCard extends StatelessWidget {
+  final dynamic e;
+
+  const _GridPosterCard({required this.e});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        if (e is TMDBMovie) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => MovieDetailPage(e: e),
+          ));
+        } else if (e is TMDBTv) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => MovieDetailPage(e: e),
+          ));
+        }
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Image(
+            image: e.moviePosterUrl(e.backdropPath).image,
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              return loadingProgress == null
+                  ? child
+                  : const ImageLoadingEffect();
+            }),
+      ),
+    );
+  }
+}
+
+class _PosterGridView extends StatelessWidget {
+  final List<Widget> children;
+
+  const _PosterGridView({required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+        childAspectRatio: 1.8,
+        physics: const ScrollPhysics(),
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 16,
+        children: children);
+  }
+}
+
 class _PosterHeader extends StatelessWidget {
   const _PosterHeader({
-    super.key,
     required this.content,
   });
 

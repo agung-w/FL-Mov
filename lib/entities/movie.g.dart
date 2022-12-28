@@ -22,24 +22,123 @@ Map<String, dynamic> _$$_MovieToJson(_$_Movie instance) => <String, dynamic>{
 
 _$_MovieDetail _$$_MovieDetailFromJson(Map<String, dynamic> json) =>
     _$_MovieDetail(
+      id: json['id'] as int,
+      title: json['title'] as String,
       genres: (json['genres'] as List<dynamic>)
           .map((e) => Genre.fromJson(e as Map<String, dynamic>))
           .toList(),
       overview: json['overview'] as String,
       runtime: json['runtime'] as int,
-      status: json['status'] as String,
-      casts: (json['casts'] as List<dynamic>?)
-          ?.map((e) => Cast.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      backDropPath: json['backdrop_path'] as String?,
+      posterPath: json['poster_path'] as String?,
+      originalLanguage: json['original_language'] as String?,
+      releaseDate: json['release_date'] as String?,
+      credits: Credit.fromJson(json['credits'] as Map<String, dynamic>),
+      videos: Video.fromJson(json['videos'] as Map<String, dynamic>),
+      reviews: ReviewList.fromJson(json['reviews'] as Map<String, dynamic>),
+      similar: TMDBMovieList.fromJson(json['similar'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_MovieDetailToJson(_$_MovieDetail instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
       'genres': instance.genres,
       'overview': instance.overview,
       'runtime': instance.runtime,
-      'status': instance.status,
-      'casts': instance.casts,
+      'backdrop_path': instance.backDropPath,
+      'poster_path': instance.posterPath,
+      'original_language': instance.originalLanguage,
+      'release_date': instance.releaseDate,
+      'credits': instance.credits,
+      'videos': instance.videos,
+      'reviews': instance.reviews,
+      'similar': instance.similar,
+    };
+
+_$_TvDetail _$$_TvDetailFromJson(Map<String, dynamic> json) => _$_TvDetail(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      genres: (json['genres'] as List<dynamic>)
+          .map((e) => Genre.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      overview: json['overview'] as String,
+      runtime: json['runtime'] as int,
+      voteAverage: (json['vote_average'] as num?)?.toDouble(),
+      originalLanguage: json['original_language'] as String?,
+      releaseDate: json['first_air_date'] as String?,
+      numberOfEpisodes: json['number_of_episodes'] as int?,
+      numberOfSeasons: json['number_of_seasons'] as int?,
+      credits: json['aggregate_credits'] == null
+          ? null
+          : Credit.fromJson(json['aggregate_credits'] as Map<String, dynamic>),
+      videos: Video.fromJson(json['videos'] as Map<String, dynamic>),
+      reviews: ReviewList.fromJson(json['reviews'] as Map<String, dynamic>),
+      similar: TMDBTvList.fromJson(json['similar'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_TvDetailToJson(_$_TvDetail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'genres': instance.genres,
+      'overview': instance.overview,
+      'runtime': instance.runtime,
+      'vote_average': instance.voteAverage,
+      'original_language': instance.originalLanguage,
+      'first_air_date': instance.releaseDate,
+      'number_of_episodes': instance.numberOfEpisodes,
+      'number_of_seasons': instance.numberOfSeasons,
+      'aggregate_credits': instance.credits,
+      'videos': instance.videos,
+      'reviews': instance.reviews,
+      'similar': instance.similar,
+    };
+
+_$_TMDBTvList _$$_TMDBTvListFromJson(Map<String, dynamic> json) =>
+    _$_TMDBTvList(
+      tvList: (json['results'] as List<dynamic>)
+          .map((e) => TMDBTv.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_TMDBTvListToJson(_$_TMDBTvList instance) =>
+    <String, dynamic>{
+      'results': instance.tvList,
+    };
+
+_$_TMDBMovieList _$$_TMDBMovieListFromJson(Map<String, dynamic> json) =>
+    _$_TMDBMovieList(
+      movieList: (json['results'] as List<dynamic>)
+          .map((e) => TMDBMovie.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_TMDBMovieListToJson(_$_TMDBMovieList instance) =>
+    <String, dynamic>{
+      'results': instance.movieList,
+    };
+
+_$_ReviewList _$$_ReviewListFromJson(Map<String, dynamic> json) =>
+    _$_ReviewList(
+      reviewList: (json['results'] as List<dynamic>)
+          .map((e) => Review.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_ReviewListToJson(_$_ReviewList instance) =>
+    <String, dynamic>{
+      'results': instance.reviewList,
+    };
+
+_$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
+      author: json['author'] as String,
+      content: json['content'] as String,
+    );
+
+Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
+      'author': instance.author,
+      'content': instance.content,
     };
 
 _$_Genre _$$_GenreFromJson(Map<String, dynamic> json) => _$_Genre(
@@ -52,6 +151,46 @@ Map<String, dynamic> _$$_GenreToJson(_$_Genre instance) => <String, dynamic>{
       'id': instance.id,
     };
 
+_$_Video _$$_VideoFromJson(Map<String, dynamic> json) => _$_Video(
+      trailers: (json['results'] as List<dynamic>?)
+              ?.map((e) => Trailer.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
+      'results': instance.trailers,
+    };
+
+_$_Trailer _$$_TrailerFromJson(Map<String, dynamic> json) => _$_Trailer(
+      name: json['name'] as String,
+      key: json['key'] as String,
+      site: json['site'] as String,
+    );
+
+Map<String, dynamic> _$$_TrailerToJson(_$_Trailer instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'key': instance.key,
+      'site': instance.site,
+    };
+
+_$_Credit _$$_CreditFromJson(Map<String, dynamic> json) => _$_Credit(
+      cast: (json['cast'] as List<dynamic>?)
+              ?.map((e) => Cast.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      crew: (json['crew'] as List<dynamic>?)
+              ?.map((e) => Crew.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$_CreditToJson(_$_Credit instance) => <String, dynamic>{
+      'cast': instance.cast,
+      'crew': instance.crew,
+    };
+
 _$_Cast _$$_CastFromJson(Map<String, dynamic> json) => _$_Cast(
       id: json['id'] as int,
       name: json['name'] as String,
@@ -60,6 +199,20 @@ _$_Cast _$$_CastFromJson(Map<String, dynamic> json) => _$_Cast(
     );
 
 Map<String, dynamic> _$$_CastToJson(_$_Cast instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'character': instance.character,
+      'profile_path': instance.profileUrl,
+    };
+
+_$_Crew _$$_CrewFromJson(Map<String, dynamic> json) => _$_Crew(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      character: json['character'] as String?,
+      profileUrl: json['profile_path'] as String?,
+    );
+
+Map<String, dynamic> _$$_CrewToJson(_$_Crew instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'character': instance.character,

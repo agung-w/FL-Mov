@@ -223,16 +223,23 @@ MovieDetail _$MovieDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MovieDetail {
+  int get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   List<Genre> get genres => throw _privateConstructorUsedError;
-  set genres(List<Genre> value) => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
-  set overview(String value) => throw _privateConstructorUsedError;
   int get runtime => throw _privateConstructorUsedError;
-  set runtime(int value) => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  set status(String value) => throw _privateConstructorUsedError;
-  List<Cast>? get casts => throw _privateConstructorUsedError;
-  set casts(List<Cast>? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  String? get backDropPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  String? get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "original_language")
+  String? get originalLanguage => throw _privateConstructorUsedError;
+  @JsonKey(name: "release_date")
+  String? get releaseDate => throw _privateConstructorUsedError;
+  Credit get credits => throw _privateConstructorUsedError;
+  Video get videos => throw _privateConstructorUsedError;
+  ReviewList get reviews => throw _privateConstructorUsedError;
+  TMDBMovieList get similar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -247,11 +254,24 @@ abstract class $MovieDetailCopyWith<$Res> {
       _$MovieDetailCopyWithImpl<$Res, MovieDetail>;
   @useResult
   $Res call(
-      {List<Genre> genres,
+      {int id,
+      String title,
+      List<Genre> genres,
       String overview,
       int runtime,
-      String status,
-      List<Cast>? casts});
+      @JsonKey(name: "backdrop_path") String? backDropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "original_language") String? originalLanguage,
+      @JsonKey(name: "release_date") String? releaseDate,
+      Credit credits,
+      Video videos,
+      ReviewList reviews,
+      TMDBMovieList similar});
+
+  $CreditCopyWith<$Res> get credits;
+  $VideoCopyWith<$Res> get videos;
+  $ReviewListCopyWith<$Res> get reviews;
+  $TMDBMovieListCopyWith<$Res> get similar;
 }
 
 /// @nodoc
@@ -267,13 +287,29 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? title = null,
     Object? genres = null,
     Object? overview = null,
     Object? runtime = null,
-    Object? status = null,
-    Object? casts = freezed,
+    Object? backDropPath = freezed,
+    Object? posterPath = freezed,
+    Object? originalLanguage = freezed,
+    Object? releaseDate = freezed,
+    Object? credits = null,
+    Object? videos = null,
+    Object? reviews = null,
+    Object? similar = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       genres: null == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -286,15 +322,71 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      casts: freezed == casts
-          ? _value.casts
-          : casts // ignore: cast_nullable_to_non_nullable
-              as List<Cast>?,
+      backDropPath: freezed == backDropPath
+          ? _value.backDropPath
+          : backDropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      originalLanguage: freezed == originalLanguage
+          ? _value.originalLanguage
+          : originalLanguage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      releaseDate: freezed == releaseDate
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credit,
+      videos: null == videos
+          ? _value.videos
+          : videos // ignore: cast_nullable_to_non_nullable
+              as Video,
+      reviews: null == reviews
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as ReviewList,
+      similar: null == similar
+          ? _value.similar
+          : similar // ignore: cast_nullable_to_non_nullable
+              as TMDBMovieList,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreditCopyWith<$Res> get credits {
+    return $CreditCopyWith<$Res>(_value.credits, (value) {
+      return _then(_value.copyWith(credits: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VideoCopyWith<$Res> get videos {
+    return $VideoCopyWith<$Res>(_value.videos, (value) {
+      return _then(_value.copyWith(videos: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReviewListCopyWith<$Res> get reviews {
+    return $ReviewListCopyWith<$Res>(_value.reviews, (value) {
+      return _then(_value.copyWith(reviews: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TMDBMovieListCopyWith<$Res> get similar {
+    return $TMDBMovieListCopyWith<$Res>(_value.similar, (value) {
+      return _then(_value.copyWith(similar: value) as $Val);
+    });
   }
 }
 
@@ -307,11 +399,28 @@ abstract class _$$_MovieDetailCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Genre> genres,
+      {int id,
+      String title,
+      List<Genre> genres,
       String overview,
       int runtime,
-      String status,
-      List<Cast>? casts});
+      @JsonKey(name: "backdrop_path") String? backDropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "original_language") String? originalLanguage,
+      @JsonKey(name: "release_date") String? releaseDate,
+      Credit credits,
+      Video videos,
+      ReviewList reviews,
+      TMDBMovieList similar});
+
+  @override
+  $CreditCopyWith<$Res> get credits;
+  @override
+  $VideoCopyWith<$Res> get videos;
+  @override
+  $ReviewListCopyWith<$Res> get reviews;
+  @override
+  $TMDBMovieListCopyWith<$Res> get similar;
 }
 
 /// @nodoc
@@ -325,15 +434,31 @@ class __$$_MovieDetailCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? title = null,
     Object? genres = null,
     Object? overview = null,
     Object? runtime = null,
-    Object? status = null,
-    Object? casts = freezed,
+    Object? backDropPath = freezed,
+    Object? posterPath = freezed,
+    Object? originalLanguage = freezed,
+    Object? releaseDate = freezed,
+    Object? credits = null,
+    Object? videos = null,
+    Object? reviews = null,
+    Object? similar = null,
   }) {
     return _then(_$_MovieDetail(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       genres: null == genres
-          ? _value.genres
+          ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<Genre>,
       overview: null == overview
@@ -344,46 +469,149 @@ class __$$_MovieDetailCopyWithImpl<$Res>
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      casts: freezed == casts
-          ? _value.casts
-          : casts // ignore: cast_nullable_to_non_nullable
-              as List<Cast>?,
+      backDropPath: freezed == backDropPath
+          ? _value.backDropPath
+          : backDropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      originalLanguage: freezed == originalLanguage
+          ? _value.originalLanguage
+          : originalLanguage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      releaseDate: freezed == releaseDate
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credit,
+      videos: null == videos
+          ? _value.videos
+          : videos // ignore: cast_nullable_to_non_nullable
+              as Video,
+      reviews: null == reviews
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as ReviewList,
+      similar: null == similar
+          ? _value.similar
+          : similar // ignore: cast_nullable_to_non_nullable
+              as TMDBMovieList,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MovieDetail implements _MovieDetail {
-  _$_MovieDetail(
-      {required this.genres,
+class _$_MovieDetail extends _MovieDetail {
+  const _$_MovieDetail(
+      {required this.id,
+      required this.title,
+      required final List<Genre> genres,
       required this.overview,
       required this.runtime,
-      required this.status,
-      this.casts});
+      @JsonKey(name: "backdrop_path") this.backDropPath,
+      @JsonKey(name: "poster_path") this.posterPath,
+      @JsonKey(name: "original_language") this.originalLanguage,
+      @JsonKey(name: "release_date") this.releaseDate,
+      required this.credits,
+      required this.videos,
+      required this.reviews,
+      required this.similar})
+      : _genres = genres,
+        super._();
 
   factory _$_MovieDetail.fromJson(Map<String, dynamic> json) =>
       _$$_MovieDetailFromJson(json);
 
   @override
-  List<Genre> genres;
+  final int id;
   @override
-  String overview;
+  final String title;
+  final List<Genre> _genres;
   @override
-  int runtime;
+  List<Genre> get genres {
+    if (_genres is EqualUnmodifiableListView) return _genres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genres);
+  }
+
   @override
-  String status;
+  final String overview;
   @override
-  List<Cast>? casts;
+  final int runtime;
+  @override
+  @JsonKey(name: "backdrop_path")
+  final String? backDropPath;
+  @override
+  @JsonKey(name: "poster_path")
+  final String? posterPath;
+  @override
+  @JsonKey(name: "original_language")
+  final String? originalLanguage;
+  @override
+  @JsonKey(name: "release_date")
+  final String? releaseDate;
+  @override
+  final Credit credits;
+  @override
+  final Video videos;
+  @override
+  final ReviewList reviews;
+  @override
+  final TMDBMovieList similar;
 
   @override
   String toString() {
-    return 'MovieDetail(genres: $genres, overview: $overview, runtime: $runtime, status: $status, casts: $casts)';
+    return 'MovieDetail(id: $id, title: $title, genres: $genres, overview: $overview, runtime: $runtime, backDropPath: $backDropPath, posterPath: $posterPath, originalLanguage: $originalLanguage, releaseDate: $releaseDate, credits: $credits, videos: $videos, reviews: $reviews, similar: $similar)';
   }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MovieDetail &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
+            (identical(other.overview, overview) ||
+                other.overview == overview) &&
+            (identical(other.runtime, runtime) || other.runtime == runtime) &&
+            (identical(other.backDropPath, backDropPath) ||
+                other.backDropPath == backDropPath) &&
+            (identical(other.posterPath, posterPath) ||
+                other.posterPath == posterPath) &&
+            (identical(other.originalLanguage, originalLanguage) ||
+                other.originalLanguage == originalLanguage) &&
+            (identical(other.releaseDate, releaseDate) ||
+                other.releaseDate == releaseDate) &&
+            (identical(other.credits, credits) || other.credits == credits) &&
+            (identical(other.videos, videos) || other.videos == videos) &&
+            (identical(other.reviews, reviews) || other.reviews == reviews) &&
+            (identical(other.similar, similar) || other.similar == similar));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      const DeepCollectionEquality().hash(_genres),
+      overview,
+      runtime,
+      backDropPath,
+      posterPath,
+      originalLanguage,
+      releaseDate,
+      credits,
+      videos,
+      reviews,
+      similar);
 
   @JsonKey(ignore: true)
   @override
@@ -399,35 +627,1151 @@ class _$_MovieDetail implements _MovieDetail {
   }
 }
 
-abstract class _MovieDetail implements MovieDetail {
-  factory _MovieDetail(
-      {required List<Genre> genres,
-      required String overview,
-      required int runtime,
-      required String status,
-      List<Cast>? casts}) = _$_MovieDetail;
+abstract class _MovieDetail extends MovieDetail {
+  const factory _MovieDetail(
+      {required final int id,
+      required final String title,
+      required final List<Genre> genres,
+      required final String overview,
+      required final int runtime,
+      @JsonKey(name: "backdrop_path") final String? backDropPath,
+      @JsonKey(name: "poster_path") final String? posterPath,
+      @JsonKey(name: "original_language") final String? originalLanguage,
+      @JsonKey(name: "release_date") final String? releaseDate,
+      required final Credit credits,
+      required final Video videos,
+      required final ReviewList reviews,
+      required final TMDBMovieList similar}) = _$_MovieDetail;
+  const _MovieDetail._() : super._();
 
   factory _MovieDetail.fromJson(Map<String, dynamic> json) =
       _$_MovieDetail.fromJson;
 
   @override
+  int get id;
+  @override
+  String get title;
+  @override
   List<Genre> get genres;
-  set genres(List<Genre> value);
   @override
   String get overview;
-  set overview(String value);
   @override
   int get runtime;
-  set runtime(int value);
   @override
-  String get status;
-  set status(String value);
+  @JsonKey(name: "backdrop_path")
+  String? get backDropPath;
   @override
-  List<Cast>? get casts;
-  set casts(List<Cast>? value);
+  @JsonKey(name: "poster_path")
+  String? get posterPath;
+  @override
+  @JsonKey(name: "original_language")
+  String? get originalLanguage;
+  @override
+  @JsonKey(name: "release_date")
+  String? get releaseDate;
+  @override
+  Credit get credits;
+  @override
+  Video get videos;
+  @override
+  ReviewList get reviews;
+  @override
+  TMDBMovieList get similar;
   @override
   @JsonKey(ignore: true)
   _$$_MovieDetailCopyWith<_$_MovieDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TvDetail _$TvDetailFromJson(Map<String, dynamic> json) {
+  return _TvDetail.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TvDetail {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  List<Genre> get genres => throw _privateConstructorUsedError;
+  String get overview => throw _privateConstructorUsedError;
+  int get runtime => throw _privateConstructorUsedError;
+  @JsonKey(name: "vote_average")
+  double? get voteAverage => throw _privateConstructorUsedError;
+  @JsonKey(name: "original_language")
+  String? get originalLanguage => throw _privateConstructorUsedError;
+  @JsonKey(name: "first_air_date")
+  String? get releaseDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "number_of_episodes")
+  int? get numberOfEpisodes => throw _privateConstructorUsedError;
+  @JsonKey(name: "number_of_seasons")
+  int? get numberOfSeasons => throw _privateConstructorUsedError;
+  @JsonKey(name: "aggregate_credits")
+  Credit? get credits => throw _privateConstructorUsedError;
+  Video get videos => throw _privateConstructorUsedError;
+  ReviewList get reviews => throw _privateConstructorUsedError;
+  TMDBTvList get similar => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TvDetailCopyWith<TvDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TvDetailCopyWith<$Res> {
+  factory $TvDetailCopyWith(TvDetail value, $Res Function(TvDetail) then) =
+      _$TvDetailCopyWithImpl<$Res, TvDetail>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      List<Genre> genres,
+      String overview,
+      int runtime,
+      @JsonKey(name: "vote_average") double? voteAverage,
+      @JsonKey(name: "original_language") String? originalLanguage,
+      @JsonKey(name: "first_air_date") String? releaseDate,
+      @JsonKey(name: "number_of_episodes") int? numberOfEpisodes,
+      @JsonKey(name: "number_of_seasons") int? numberOfSeasons,
+      @JsonKey(name: "aggregate_credits") Credit? credits,
+      Video videos,
+      ReviewList reviews,
+      TMDBTvList similar});
+
+  $CreditCopyWith<$Res>? get credits;
+  $VideoCopyWith<$Res> get videos;
+  $ReviewListCopyWith<$Res> get reviews;
+  $TMDBTvListCopyWith<$Res> get similar;
+}
+
+/// @nodoc
+class _$TvDetailCopyWithImpl<$Res, $Val extends TvDetail>
+    implements $TvDetailCopyWith<$Res> {
+  _$TvDetailCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? genres = null,
+    Object? overview = null,
+    Object? runtime = null,
+    Object? voteAverage = freezed,
+    Object? originalLanguage = freezed,
+    Object? releaseDate = freezed,
+    Object? numberOfEpisodes = freezed,
+    Object? numberOfSeasons = freezed,
+    Object? credits = freezed,
+    Object? videos = null,
+    Object? reviews = null,
+    Object? similar = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      genres: null == genres
+          ? _value.genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
+      runtime: null == runtime
+          ? _value.runtime
+          : runtime // ignore: cast_nullable_to_non_nullable
+              as int,
+      voteAverage: freezed == voteAverage
+          ? _value.voteAverage
+          : voteAverage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      originalLanguage: freezed == originalLanguage
+          ? _value.originalLanguage
+          : originalLanguage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      releaseDate: freezed == releaseDate
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numberOfEpisodes: freezed == numberOfEpisodes
+          ? _value.numberOfEpisodes
+          : numberOfEpisodes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      numberOfSeasons: freezed == numberOfSeasons
+          ? _value.numberOfSeasons
+          : numberOfSeasons // ignore: cast_nullable_to_non_nullable
+              as int?,
+      credits: freezed == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credit?,
+      videos: null == videos
+          ? _value.videos
+          : videos // ignore: cast_nullable_to_non_nullable
+              as Video,
+      reviews: null == reviews
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as ReviewList,
+      similar: null == similar
+          ? _value.similar
+          : similar // ignore: cast_nullable_to_non_nullable
+              as TMDBTvList,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreditCopyWith<$Res>? get credits {
+    if (_value.credits == null) {
+      return null;
+    }
+
+    return $CreditCopyWith<$Res>(_value.credits!, (value) {
+      return _then(_value.copyWith(credits: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VideoCopyWith<$Res> get videos {
+    return $VideoCopyWith<$Res>(_value.videos, (value) {
+      return _then(_value.copyWith(videos: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReviewListCopyWith<$Res> get reviews {
+    return $ReviewListCopyWith<$Res>(_value.reviews, (value) {
+      return _then(_value.copyWith(reviews: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TMDBTvListCopyWith<$Res> get similar {
+    return $TMDBTvListCopyWith<$Res>(_value.similar, (value) {
+      return _then(_value.copyWith(similar: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_TvDetailCopyWith<$Res> implements $TvDetailCopyWith<$Res> {
+  factory _$$_TvDetailCopyWith(
+          _$_TvDetail value, $Res Function(_$_TvDetail) then) =
+      __$$_TvDetailCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      List<Genre> genres,
+      String overview,
+      int runtime,
+      @JsonKey(name: "vote_average") double? voteAverage,
+      @JsonKey(name: "original_language") String? originalLanguage,
+      @JsonKey(name: "first_air_date") String? releaseDate,
+      @JsonKey(name: "number_of_episodes") int? numberOfEpisodes,
+      @JsonKey(name: "number_of_seasons") int? numberOfSeasons,
+      @JsonKey(name: "aggregate_credits") Credit? credits,
+      Video videos,
+      ReviewList reviews,
+      TMDBTvList similar});
+
+  @override
+  $CreditCopyWith<$Res>? get credits;
+  @override
+  $VideoCopyWith<$Res> get videos;
+  @override
+  $ReviewListCopyWith<$Res> get reviews;
+  @override
+  $TMDBTvListCopyWith<$Res> get similar;
+}
+
+/// @nodoc
+class __$$_TvDetailCopyWithImpl<$Res>
+    extends _$TvDetailCopyWithImpl<$Res, _$_TvDetail>
+    implements _$$_TvDetailCopyWith<$Res> {
+  __$$_TvDetailCopyWithImpl(
+      _$_TvDetail _value, $Res Function(_$_TvDetail) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? genres = null,
+    Object? overview = null,
+    Object? runtime = null,
+    Object? voteAverage = freezed,
+    Object? originalLanguage = freezed,
+    Object? releaseDate = freezed,
+    Object? numberOfEpisodes = freezed,
+    Object? numberOfSeasons = freezed,
+    Object? credits = freezed,
+    Object? videos = null,
+    Object? reviews = null,
+    Object? similar = null,
+  }) {
+    return _then(_$_TvDetail(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      genres: null == genres
+          ? _value._genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
+      runtime: null == runtime
+          ? _value.runtime
+          : runtime // ignore: cast_nullable_to_non_nullable
+              as int,
+      voteAverage: freezed == voteAverage
+          ? _value.voteAverage
+          : voteAverage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      originalLanguage: freezed == originalLanguage
+          ? _value.originalLanguage
+          : originalLanguage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      releaseDate: freezed == releaseDate
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numberOfEpisodes: freezed == numberOfEpisodes
+          ? _value.numberOfEpisodes
+          : numberOfEpisodes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      numberOfSeasons: freezed == numberOfSeasons
+          ? _value.numberOfSeasons
+          : numberOfSeasons // ignore: cast_nullable_to_non_nullable
+              as int?,
+      credits: freezed == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credit?,
+      videos: null == videos
+          ? _value.videos
+          : videos // ignore: cast_nullable_to_non_nullable
+              as Video,
+      reviews: null == reviews
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as ReviewList,
+      similar: null == similar
+          ? _value.similar
+          : similar // ignore: cast_nullable_to_non_nullable
+              as TMDBTvList,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TvDetail extends _TvDetail {
+  const _$_TvDetail(
+      {required this.id,
+      required this.name,
+      required final List<Genre> genres,
+      required this.overview,
+      required this.runtime,
+      @JsonKey(name: "vote_average") this.voteAverage,
+      @JsonKey(name: "original_language") this.originalLanguage,
+      @JsonKey(name: "first_air_date") this.releaseDate,
+      @JsonKey(name: "number_of_episodes") this.numberOfEpisodes,
+      @JsonKey(name: "number_of_seasons") this.numberOfSeasons,
+      @JsonKey(name: "aggregate_credits") this.credits,
+      required this.videos,
+      required this.reviews,
+      required this.similar})
+      : _genres = genres,
+        super._();
+
+  factory _$_TvDetail.fromJson(Map<String, dynamic> json) =>
+      _$$_TvDetailFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  final List<Genre> _genres;
+  @override
+  List<Genre> get genres {
+    if (_genres is EqualUnmodifiableListView) return _genres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genres);
+  }
+
+  @override
+  final String overview;
+  @override
+  final int runtime;
+  @override
+  @JsonKey(name: "vote_average")
+  final double? voteAverage;
+  @override
+  @JsonKey(name: "original_language")
+  final String? originalLanguage;
+  @override
+  @JsonKey(name: "first_air_date")
+  final String? releaseDate;
+  @override
+  @JsonKey(name: "number_of_episodes")
+  final int? numberOfEpisodes;
+  @override
+  @JsonKey(name: "number_of_seasons")
+  final int? numberOfSeasons;
+  @override
+  @JsonKey(name: "aggregate_credits")
+  final Credit? credits;
+  @override
+  final Video videos;
+  @override
+  final ReviewList reviews;
+  @override
+  final TMDBTvList similar;
+
+  @override
+  String toString() {
+    return 'TvDetail(id: $id, name: $name, genres: $genres, overview: $overview, runtime: $runtime, voteAverage: $voteAverage, originalLanguage: $originalLanguage, releaseDate: $releaseDate, numberOfEpisodes: $numberOfEpisodes, numberOfSeasons: $numberOfSeasons, credits: $credits, videos: $videos, reviews: $reviews, similar: $similar)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TvDetail &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
+            (identical(other.overview, overview) ||
+                other.overview == overview) &&
+            (identical(other.runtime, runtime) || other.runtime == runtime) &&
+            (identical(other.voteAverage, voteAverage) ||
+                other.voteAverage == voteAverage) &&
+            (identical(other.originalLanguage, originalLanguage) ||
+                other.originalLanguage == originalLanguage) &&
+            (identical(other.releaseDate, releaseDate) ||
+                other.releaseDate == releaseDate) &&
+            (identical(other.numberOfEpisodes, numberOfEpisodes) ||
+                other.numberOfEpisodes == numberOfEpisodes) &&
+            (identical(other.numberOfSeasons, numberOfSeasons) ||
+                other.numberOfSeasons == numberOfSeasons) &&
+            (identical(other.credits, credits) || other.credits == credits) &&
+            (identical(other.videos, videos) || other.videos == videos) &&
+            (identical(other.reviews, reviews) || other.reviews == reviews) &&
+            (identical(other.similar, similar) || other.similar == similar));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      const DeepCollectionEquality().hash(_genres),
+      overview,
+      runtime,
+      voteAverage,
+      originalLanguage,
+      releaseDate,
+      numberOfEpisodes,
+      numberOfSeasons,
+      credits,
+      videos,
+      reviews,
+      similar);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TvDetailCopyWith<_$_TvDetail> get copyWith =>
+      __$$_TvDetailCopyWithImpl<_$_TvDetail>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TvDetailToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TvDetail extends TvDetail {
+  const factory _TvDetail(
+      {required final int id,
+      required final String name,
+      required final List<Genre> genres,
+      required final String overview,
+      required final int runtime,
+      @JsonKey(name: "vote_average") final double? voteAverage,
+      @JsonKey(name: "original_language") final String? originalLanguage,
+      @JsonKey(name: "first_air_date") final String? releaseDate,
+      @JsonKey(name: "number_of_episodes") final int? numberOfEpisodes,
+      @JsonKey(name: "number_of_seasons") final int? numberOfSeasons,
+      @JsonKey(name: "aggregate_credits") final Credit? credits,
+      required final Video videos,
+      required final ReviewList reviews,
+      required final TMDBTvList similar}) = _$_TvDetail;
+  const _TvDetail._() : super._();
+
+  factory _TvDetail.fromJson(Map<String, dynamic> json) = _$_TvDetail.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  List<Genre> get genres;
+  @override
+  String get overview;
+  @override
+  int get runtime;
+  @override
+  @JsonKey(name: "vote_average")
+  double? get voteAverage;
+  @override
+  @JsonKey(name: "original_language")
+  String? get originalLanguage;
+  @override
+  @JsonKey(name: "first_air_date")
+  String? get releaseDate;
+  @override
+  @JsonKey(name: "number_of_episodes")
+  int? get numberOfEpisodes;
+  @override
+  @JsonKey(name: "number_of_seasons")
+  int? get numberOfSeasons;
+  @override
+  @JsonKey(name: "aggregate_credits")
+  Credit? get credits;
+  @override
+  Video get videos;
+  @override
+  ReviewList get reviews;
+  @override
+  TMDBTvList get similar;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TvDetailCopyWith<_$_TvDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TMDBTvList _$TMDBTvListFromJson(Map<String, dynamic> json) {
+  return _TMDBTvList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TMDBTvList {
+  @JsonKey(name: "results")
+  List<TMDBTv> get tvList => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TMDBTvListCopyWith<TMDBTvList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TMDBTvListCopyWith<$Res> {
+  factory $TMDBTvListCopyWith(
+          TMDBTvList value, $Res Function(TMDBTvList) then) =
+      _$TMDBTvListCopyWithImpl<$Res, TMDBTvList>;
+  @useResult
+  $Res call({@JsonKey(name: "results") List<TMDBTv> tvList});
+}
+
+/// @nodoc
+class _$TMDBTvListCopyWithImpl<$Res, $Val extends TMDBTvList>
+    implements $TMDBTvListCopyWith<$Res> {
+  _$TMDBTvListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tvList = null,
+  }) {
+    return _then(_value.copyWith(
+      tvList: null == tvList
+          ? _value.tvList
+          : tvList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBTv>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TMDBTvListCopyWith<$Res>
+    implements $TMDBTvListCopyWith<$Res> {
+  factory _$$_TMDBTvListCopyWith(
+          _$_TMDBTvList value, $Res Function(_$_TMDBTvList) then) =
+      __$$_TMDBTvListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: "results") List<TMDBTv> tvList});
+}
+
+/// @nodoc
+class __$$_TMDBTvListCopyWithImpl<$Res>
+    extends _$TMDBTvListCopyWithImpl<$Res, _$_TMDBTvList>
+    implements _$$_TMDBTvListCopyWith<$Res> {
+  __$$_TMDBTvListCopyWithImpl(
+      _$_TMDBTvList _value, $Res Function(_$_TMDBTvList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tvList = null,
+  }) {
+    return _then(_$_TMDBTvList(
+      tvList: null == tvList
+          ? _value._tvList
+          : tvList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBTv>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TMDBTvList implements _TMDBTvList {
+  const _$_TMDBTvList(
+      {@JsonKey(name: "results") required final List<TMDBTv> tvList})
+      : _tvList = tvList;
+
+  factory _$_TMDBTvList.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBTvListFromJson(json);
+
+  final List<TMDBTv> _tvList;
+  @override
+  @JsonKey(name: "results")
+  List<TMDBTv> get tvList {
+    if (_tvList is EqualUnmodifiableListView) return _tvList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tvList);
+  }
+
+  @override
+  String toString() {
+    return 'TMDBTvList(tvList: $tvList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TMDBTvList &&
+            const DeepCollectionEquality().equals(other._tvList, _tvList));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tvList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TMDBTvListCopyWith<_$_TMDBTvList> get copyWith =>
+      __$$_TMDBTvListCopyWithImpl<_$_TMDBTvList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TMDBTvListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TMDBTvList implements TMDBTvList {
+  const factory _TMDBTvList(
+          {@JsonKey(name: "results") required final List<TMDBTv> tvList}) =
+      _$_TMDBTvList;
+
+  factory _TMDBTvList.fromJson(Map<String, dynamic> json) =
+      _$_TMDBTvList.fromJson;
+
+  @override
+  @JsonKey(name: "results")
+  List<TMDBTv> get tvList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TMDBTvListCopyWith<_$_TMDBTvList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TMDBMovieList _$TMDBMovieListFromJson(Map<String, dynamic> json) {
+  return _TMDBMovieList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TMDBMovieList {
+  @JsonKey(name: "results")
+  List<TMDBMovie> get movieList => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TMDBMovieListCopyWith<TMDBMovieList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TMDBMovieListCopyWith<$Res> {
+  factory $TMDBMovieListCopyWith(
+          TMDBMovieList value, $Res Function(TMDBMovieList) then) =
+      _$TMDBMovieListCopyWithImpl<$Res, TMDBMovieList>;
+  @useResult
+  $Res call({@JsonKey(name: "results") List<TMDBMovie> movieList});
+}
+
+/// @nodoc
+class _$TMDBMovieListCopyWithImpl<$Res, $Val extends TMDBMovieList>
+    implements $TMDBMovieListCopyWith<$Res> {
+  _$TMDBMovieListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movieList = null,
+  }) {
+    return _then(_value.copyWith(
+      movieList: null == movieList
+          ? _value.movieList
+          : movieList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBMovie>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TMDBMovieListCopyWith<$Res>
+    implements $TMDBMovieListCopyWith<$Res> {
+  factory _$$_TMDBMovieListCopyWith(
+          _$_TMDBMovieList value, $Res Function(_$_TMDBMovieList) then) =
+      __$$_TMDBMovieListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: "results") List<TMDBMovie> movieList});
+}
+
+/// @nodoc
+class __$$_TMDBMovieListCopyWithImpl<$Res>
+    extends _$TMDBMovieListCopyWithImpl<$Res, _$_TMDBMovieList>
+    implements _$$_TMDBMovieListCopyWith<$Res> {
+  __$$_TMDBMovieListCopyWithImpl(
+      _$_TMDBMovieList _value, $Res Function(_$_TMDBMovieList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movieList = null,
+  }) {
+    return _then(_$_TMDBMovieList(
+      movieList: null == movieList
+          ? _value._movieList
+          : movieList // ignore: cast_nullable_to_non_nullable
+              as List<TMDBMovie>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TMDBMovieList implements _TMDBMovieList {
+  const _$_TMDBMovieList(
+      {@JsonKey(name: "results") required final List<TMDBMovie> movieList})
+      : _movieList = movieList;
+
+  factory _$_TMDBMovieList.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBMovieListFromJson(json);
+
+  final List<TMDBMovie> _movieList;
+  @override
+  @JsonKey(name: "results")
+  List<TMDBMovie> get movieList {
+    if (_movieList is EqualUnmodifiableListView) return _movieList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_movieList);
+  }
+
+  @override
+  String toString() {
+    return 'TMDBMovieList(movieList: $movieList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TMDBMovieList &&
+            const DeepCollectionEquality()
+                .equals(other._movieList, _movieList));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_movieList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TMDBMovieListCopyWith<_$_TMDBMovieList> get copyWith =>
+      __$$_TMDBMovieListCopyWithImpl<_$_TMDBMovieList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TMDBMovieListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TMDBMovieList implements TMDBMovieList {
+  const factory _TMDBMovieList(
+      {@JsonKey(name: "results")
+          required final List<TMDBMovie> movieList}) = _$_TMDBMovieList;
+
+  factory _TMDBMovieList.fromJson(Map<String, dynamic> json) =
+      _$_TMDBMovieList.fromJson;
+
+  @override
+  @JsonKey(name: "results")
+  List<TMDBMovie> get movieList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TMDBMovieListCopyWith<_$_TMDBMovieList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ReviewList _$ReviewListFromJson(Map<String, dynamic> json) {
+  return _ReviewList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ReviewList {
+  @JsonKey(name: "results")
+  List<Review> get reviewList => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ReviewListCopyWith<ReviewList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReviewListCopyWith<$Res> {
+  factory $ReviewListCopyWith(
+          ReviewList value, $Res Function(ReviewList) then) =
+      _$ReviewListCopyWithImpl<$Res, ReviewList>;
+  @useResult
+  $Res call({@JsonKey(name: "results") List<Review> reviewList});
+}
+
+/// @nodoc
+class _$ReviewListCopyWithImpl<$Res, $Val extends ReviewList>
+    implements $ReviewListCopyWith<$Res> {
+  _$ReviewListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reviewList = null,
+  }) {
+    return _then(_value.copyWith(
+      reviewList: null == reviewList
+          ? _value.reviewList
+          : reviewList // ignore: cast_nullable_to_non_nullable
+              as List<Review>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ReviewListCopyWith<$Res>
+    implements $ReviewListCopyWith<$Res> {
+  factory _$$_ReviewListCopyWith(
+          _$_ReviewList value, $Res Function(_$_ReviewList) then) =
+      __$$_ReviewListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: "results") List<Review> reviewList});
+}
+
+/// @nodoc
+class __$$_ReviewListCopyWithImpl<$Res>
+    extends _$ReviewListCopyWithImpl<$Res, _$_ReviewList>
+    implements _$$_ReviewListCopyWith<$Res> {
+  __$$_ReviewListCopyWithImpl(
+      _$_ReviewList _value, $Res Function(_$_ReviewList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reviewList = null,
+  }) {
+    return _then(_$_ReviewList(
+      reviewList: null == reviewList
+          ? _value._reviewList
+          : reviewList // ignore: cast_nullable_to_non_nullable
+              as List<Review>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ReviewList implements _ReviewList {
+  const _$_ReviewList(
+      {@JsonKey(name: "results") required final List<Review> reviewList})
+      : _reviewList = reviewList;
+
+  factory _$_ReviewList.fromJson(Map<String, dynamic> json) =>
+      _$$_ReviewListFromJson(json);
+
+  final List<Review> _reviewList;
+  @override
+  @JsonKey(name: "results")
+  List<Review> get reviewList {
+    if (_reviewList is EqualUnmodifiableListView) return _reviewList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reviewList);
+  }
+
+  @override
+  String toString() {
+    return 'ReviewList(reviewList: $reviewList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ReviewList &&
+            const DeepCollectionEquality()
+                .equals(other._reviewList, _reviewList));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_reviewList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ReviewListCopyWith<_$_ReviewList> get copyWith =>
+      __$$_ReviewListCopyWithImpl<_$_ReviewList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReviewListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ReviewList implements ReviewList {
+  const factory _ReviewList(
+          {@JsonKey(name: "results") required final List<Review> reviewList}) =
+      _$_ReviewList;
+
+  factory _ReviewList.fromJson(Map<String, dynamic> json) =
+      _$_ReviewList.fromJson;
+
+  @override
+  @JsonKey(name: "results")
+  List<Review> get reviewList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ReviewListCopyWith<_$_ReviewList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Review _$ReviewFromJson(Map<String, dynamic> json) {
+  return _Review.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Review {
+  String get author => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ReviewCopyWith<Review> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReviewCopyWith<$Res> {
+  factory $ReviewCopyWith(Review value, $Res Function(Review) then) =
+      _$ReviewCopyWithImpl<$Res, Review>;
+  @useResult
+  $Res call({String author, String content});
+}
+
+/// @nodoc
+class _$ReviewCopyWithImpl<$Res, $Val extends Review>
+    implements $ReviewCopyWith<$Res> {
+  _$ReviewCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? author = null,
+    Object? content = null,
+  }) {
+    return _then(_value.copyWith(
+      author: null == author
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
+  factory _$$_ReviewCopyWith(_$_Review value, $Res Function(_$_Review) then) =
+      __$$_ReviewCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String author, String content});
+}
+
+/// @nodoc
+class __$$_ReviewCopyWithImpl<$Res>
+    extends _$ReviewCopyWithImpl<$Res, _$_Review>
+    implements _$$_ReviewCopyWith<$Res> {
+  __$$_ReviewCopyWithImpl(_$_Review _value, $Res Function(_$_Review) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? author = null,
+    Object? content = null,
+  }) {
+    return _then(_$_Review(
+      author: null == author
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Review implements _Review {
+  const _$_Review({required this.author, required this.content});
+
+  factory _$_Review.fromJson(Map<String, dynamic> json) =>
+      _$$_ReviewFromJson(json);
+
+  @override
+  final String author;
+  @override
+  final String content;
+
+  @override
+  String toString() {
+    return 'Review(author: $author, content: $content)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Review &&
+            (identical(other.author, author) || other.author == author) &&
+            (identical(other.content, content) || other.content == content));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, author, content);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ReviewCopyWith<_$_Review> get copyWith =>
+      __$$_ReviewCopyWithImpl<_$_Review>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReviewToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Review implements Review {
+  const factory _Review(
+      {required final String author,
+      required final String content}) = _$_Review;
+
+  factory _Review.fromJson(Map<String, dynamic> json) = _$_Review.fromJson;
+
+  @override
+  String get author;
+  @override
+  String get content;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ReviewCopyWith<_$_Review> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -574,6 +1918,481 @@ abstract class _Genre implements Genre {
   @override
   @JsonKey(ignore: true)
   _$$_GenreCopyWith<_$_Genre> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Video _$VideoFromJson(Map<String, dynamic> json) {
+  return _Video.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Video {
+  @JsonKey(name: "results")
+  List<Trailer> get trailers => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VideoCopyWith<Video> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VideoCopyWith<$Res> {
+  factory $VideoCopyWith(Video value, $Res Function(Video) then) =
+      _$VideoCopyWithImpl<$Res, Video>;
+  @useResult
+  $Res call({@JsonKey(name: "results") List<Trailer> trailers});
+}
+
+/// @nodoc
+class _$VideoCopyWithImpl<$Res, $Val extends Video>
+    implements $VideoCopyWith<$Res> {
+  _$VideoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trailers = null,
+  }) {
+    return _then(_value.copyWith(
+      trailers: null == trailers
+          ? _value.trailers
+          : trailers // ignore: cast_nullable_to_non_nullable
+              as List<Trailer>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_VideoCopyWith<$Res> implements $VideoCopyWith<$Res> {
+  factory _$$_VideoCopyWith(_$_Video value, $Res Function(_$_Video) then) =
+      __$$_VideoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: "results") List<Trailer> trailers});
+}
+
+/// @nodoc
+class __$$_VideoCopyWithImpl<$Res> extends _$VideoCopyWithImpl<$Res, _$_Video>
+    implements _$$_VideoCopyWith<$Res> {
+  __$$_VideoCopyWithImpl(_$_Video _value, $Res Function(_$_Video) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trailers = null,
+  }) {
+    return _then(_$_Video(
+      trailers: null == trailers
+          ? _value._trailers
+          : trailers // ignore: cast_nullable_to_non_nullable
+              as List<Trailer>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Video implements _Video {
+  const _$_Video(
+      {@JsonKey(name: "results") final List<Trailer> trailers = const []})
+      : _trailers = trailers;
+
+  factory _$_Video.fromJson(Map<String, dynamic> json) =>
+      _$$_VideoFromJson(json);
+
+  final List<Trailer> _trailers;
+  @override
+  @JsonKey(name: "results")
+  List<Trailer> get trailers {
+    if (_trailers is EqualUnmodifiableListView) return _trailers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trailers);
+  }
+
+  @override
+  String toString() {
+    return 'Video(trailers: $trailers)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Video &&
+            const DeepCollectionEquality().equals(other._trailers, _trailers));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_trailers));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_VideoCopyWith<_$_Video> get copyWith =>
+      __$$_VideoCopyWithImpl<_$_Video>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_VideoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Video implements Video {
+  const factory _Video(
+      {@JsonKey(name: "results") final List<Trailer> trailers}) = _$_Video;
+
+  factory _Video.fromJson(Map<String, dynamic> json) = _$_Video.fromJson;
+
+  @override
+  @JsonKey(name: "results")
+  List<Trailer> get trailers;
+  @override
+  @JsonKey(ignore: true)
+  _$$_VideoCopyWith<_$_Video> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Trailer _$TrailerFromJson(Map<String, dynamic> json) {
+  return _Trailer.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Trailer {
+  String get name => throw _privateConstructorUsedError;
+  String get key => throw _privateConstructorUsedError;
+  String get site => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TrailerCopyWith<Trailer> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TrailerCopyWith<$Res> {
+  factory $TrailerCopyWith(Trailer value, $Res Function(Trailer) then) =
+      _$TrailerCopyWithImpl<$Res, Trailer>;
+  @useResult
+  $Res call({String name, String key, String site});
+}
+
+/// @nodoc
+class _$TrailerCopyWithImpl<$Res, $Val extends Trailer>
+    implements $TrailerCopyWith<$Res> {
+  _$TrailerCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? key = null,
+    Object? site = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      site: null == site
+          ? _value.site
+          : site // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TrailerCopyWith<$Res> implements $TrailerCopyWith<$Res> {
+  factory _$$_TrailerCopyWith(
+          _$_Trailer value, $Res Function(_$_Trailer) then) =
+      __$$_TrailerCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, String key, String site});
+}
+
+/// @nodoc
+class __$$_TrailerCopyWithImpl<$Res>
+    extends _$TrailerCopyWithImpl<$Res, _$_Trailer>
+    implements _$$_TrailerCopyWith<$Res> {
+  __$$_TrailerCopyWithImpl(_$_Trailer _value, $Res Function(_$_Trailer) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? key = null,
+    Object? site = null,
+  }) {
+    return _then(_$_Trailer(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      site: null == site
+          ? _value.site
+          : site // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Trailer implements _Trailer {
+  const _$_Trailer({required this.name, required this.key, required this.site});
+
+  factory _$_Trailer.fromJson(Map<String, dynamic> json) =>
+      _$$_TrailerFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String key;
+  @override
+  final String site;
+
+  @override
+  String toString() {
+    return 'Trailer(name: $name, key: $key, site: $site)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Trailer &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.site, site) || other.site == site));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, key, site);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TrailerCopyWith<_$_Trailer> get copyWith =>
+      __$$_TrailerCopyWithImpl<_$_Trailer>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TrailerToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Trailer implements Trailer {
+  const factory _Trailer(
+      {required final String name,
+      required final String key,
+      required final String site}) = _$_Trailer;
+
+  factory _Trailer.fromJson(Map<String, dynamic> json) = _$_Trailer.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get key;
+  @override
+  String get site;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TrailerCopyWith<_$_Trailer> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Credit _$CreditFromJson(Map<String, dynamic> json) {
+  return _Credit.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Credit {
+  List<Cast> get cast => throw _privateConstructorUsedError;
+  List<Crew> get crew => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CreditCopyWith<Credit> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CreditCopyWith<$Res> {
+  factory $CreditCopyWith(Credit value, $Res Function(Credit) then) =
+      _$CreditCopyWithImpl<$Res, Credit>;
+  @useResult
+  $Res call({List<Cast> cast, List<Crew> crew});
+}
+
+/// @nodoc
+class _$CreditCopyWithImpl<$Res, $Val extends Credit>
+    implements $CreditCopyWith<$Res> {
+  _$CreditCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cast = null,
+    Object? crew = null,
+  }) {
+    return _then(_value.copyWith(
+      cast: null == cast
+          ? _value.cast
+          : cast // ignore: cast_nullable_to_non_nullable
+              as List<Cast>,
+      crew: null == crew
+          ? _value.crew
+          : crew // ignore: cast_nullable_to_non_nullable
+              as List<Crew>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_CreditCopyWith<$Res> implements $CreditCopyWith<$Res> {
+  factory _$$_CreditCopyWith(_$_Credit value, $Res Function(_$_Credit) then) =
+      __$$_CreditCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Cast> cast, List<Crew> crew});
+}
+
+/// @nodoc
+class __$$_CreditCopyWithImpl<$Res>
+    extends _$CreditCopyWithImpl<$Res, _$_Credit>
+    implements _$$_CreditCopyWith<$Res> {
+  __$$_CreditCopyWithImpl(_$_Credit _value, $Res Function(_$_Credit) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cast = null,
+    Object? crew = null,
+  }) {
+    return _then(_$_Credit(
+      cast: null == cast
+          ? _value._cast
+          : cast // ignore: cast_nullable_to_non_nullable
+              as List<Cast>,
+      crew: null == crew
+          ? _value._crew
+          : crew // ignore: cast_nullable_to_non_nullable
+              as List<Crew>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Credit extends _Credit {
+  const _$_Credit(
+      {final List<Cast> cast = const [], final List<Crew> crew = const []})
+      : _cast = cast,
+        _crew = crew,
+        super._();
+
+  factory _$_Credit.fromJson(Map<String, dynamic> json) =>
+      _$$_CreditFromJson(json);
+
+  final List<Cast> _cast;
+  @override
+  @JsonKey()
+  List<Cast> get cast {
+    if (_cast is EqualUnmodifiableListView) return _cast;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cast);
+  }
+
+  final List<Crew> _crew;
+  @override
+  @JsonKey()
+  List<Crew> get crew {
+    if (_crew is EqualUnmodifiableListView) return _crew;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_crew);
+  }
+
+  @override
+  String toString() {
+    return 'Credit(cast: $cast, crew: $crew)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Credit &&
+            const DeepCollectionEquality().equals(other._cast, _cast) &&
+            const DeepCollectionEquality().equals(other._crew, _crew));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_cast),
+      const DeepCollectionEquality().hash(_crew));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CreditCopyWith<_$_Credit> get copyWith =>
+      __$$_CreditCopyWithImpl<_$_Credit>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CreditToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Credit extends Credit {
+  const factory _Credit({final List<Cast> cast, final List<Crew> crew}) =
+      _$_Credit;
+  const _Credit._() : super._();
+
+  factory _Credit.fromJson(Map<String, dynamic> json) = _$_Credit.fromJson;
+
+  @override
+  List<Cast> get cast;
+  @override
+  List<Crew> get crew;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CreditCopyWith<_$_Credit> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -773,6 +2592,204 @@ abstract class _Cast extends Cast {
   @override
   @JsonKey(ignore: true)
   _$$_CastCopyWith<_$_Cast> get copyWith => throw _privateConstructorUsedError;
+}
+
+Crew _$CrewFromJson(Map<String, dynamic> json) {
+  return _Crew.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Crew {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get character => throw _privateConstructorUsedError;
+  @JsonKey(name: "profile_path")
+  String? get profileUrl => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CrewCopyWith<Crew> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CrewCopyWith<$Res> {
+  factory $CrewCopyWith(Crew value, $Res Function(Crew) then) =
+      _$CrewCopyWithImpl<$Res, Crew>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String? character,
+      @JsonKey(name: "profile_path") String? profileUrl});
+}
+
+/// @nodoc
+class _$CrewCopyWithImpl<$Res, $Val extends Crew>
+    implements $CrewCopyWith<$Res> {
+  _$CrewCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? character = freezed,
+    Object? profileUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      character: freezed == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileUrl: freezed == profileUrl
+          ? _value.profileUrl
+          : profileUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_CrewCopyWith<$Res> implements $CrewCopyWith<$Res> {
+  factory _$$_CrewCopyWith(_$_Crew value, $Res Function(_$_Crew) then) =
+      __$$_CrewCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String? character,
+      @JsonKey(name: "profile_path") String? profileUrl});
+}
+
+/// @nodoc
+class __$$_CrewCopyWithImpl<$Res> extends _$CrewCopyWithImpl<$Res, _$_Crew>
+    implements _$$_CrewCopyWith<$Res> {
+  __$$_CrewCopyWithImpl(_$_Crew _value, $Res Function(_$_Crew) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? character = freezed,
+    Object? profileUrl = freezed,
+  }) {
+    return _then(_$_Crew(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      character: freezed == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileUrl: freezed == profileUrl
+          ? _value.profileUrl
+          : profileUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Crew extends _Crew {
+  const _$_Crew(
+      {required this.id,
+      required this.name,
+      this.character,
+      @JsonKey(name: "profile_path") this.profileUrl})
+      : super._();
+
+  factory _$_Crew.fromJson(Map<String, dynamic> json) => _$$_CrewFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final String? character;
+  @override
+  @JsonKey(name: "profile_path")
+  final String? profileUrl;
+
+  @override
+  String toString() {
+    return 'Crew(id: $id, name: $name, character: $character, profileUrl: $profileUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Crew &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.character, character) ||
+                other.character == character) &&
+            (identical(other.profileUrl, profileUrl) ||
+                other.profileUrl == profileUrl));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, character, profileUrl);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CrewCopyWith<_$_Crew> get copyWith =>
+      __$$_CrewCopyWithImpl<_$_Crew>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CrewToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Crew extends Crew {
+  const factory _Crew(
+      {required final int id,
+      required final String name,
+      final String? character,
+      @JsonKey(name: "profile_path") final String? profileUrl}) = _$_Crew;
+  const _Crew._() : super._();
+
+  factory _Crew.fromJson(Map<String, dynamic> json) = _$_Crew.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  String? get character;
+  @override
+  @JsonKey(name: "profile_path")
+  String? get profileUrl;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CrewCopyWith<_$_Crew> get copyWith => throw _privateConstructorUsedError;
 }
 
 TMDBSearchResult _$TMDBSearchResultFromJson(Map<String, dynamic> json) {

@@ -203,7 +203,7 @@ class TabDetail extends StatelessWidget {
                             height: 75,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
-                              children: (result.value.casts)!
+                              children: (result.value.credits.cast)
                                   .map((e) => ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
                                         child: Card(
