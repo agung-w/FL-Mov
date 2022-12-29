@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/search_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
+import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
+import 'package:movie_app/presentations/pages/movie_detail_page.dart';
+import 'package:movie_app/presentations/pages/person_detail_page.dart';
+import 'package:movie_app/presentations/pages/tv_detail_page.dart';
 
 import 'package:movie_app/presentations/widgets/search_box.dart';
 
@@ -86,7 +90,10 @@ class SearchView extends StatelessWidget {
                         top: tabBar.preferredSize.height.toDouble() - 20),
                     child: SearchBox(
                       readOnly: false,
-                      autoFocus: true,
+                      autoFocus: state.mapOrNull(
+                            loaded: (value) => false,
+                          ) ??
+                          true,
                       controller: query,
                     ),
                   ),
@@ -112,29 +119,51 @@ class SearchView extends StatelessWidget {
                                     child: Text(
                                       "In Theater Now",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600),
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16),
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 110,
+                                    height: 145,
                                     child: ListView(
                                       scrollDirection: Axis.horizontal,
                                       children: result.inTheaterList.map((e) {
-                                        return Container(
-                                          margin:
-                                              const EdgeInsets.only(left: 16),
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: DecorationImage(
-                                                  image: e
-                                                      .moviePosterUrl(
-                                                          e.posterUrl)
-                                                      .image,
-                                                  fit: BoxFit.fill)),
+                                        return InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      InTheaterDetailPage(
+                                                        movie: e,
+                                                      )),
+                                            );
+                                          },
+                                          child: Container(
+                                            margin:
+                                                const EdgeInsets.only(left: 16),
+                                            width: 100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                image: DecorationImage(
+                                                    image: e
+                                                        .moviePosterUrl(
+                                                            e.posterUrl)
+                                                        .image,
+                                                    fit: BoxFit.fill)),
+                                          ),
                                         );
                                       }).toList(),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
+                                    child: Text(
+                                      "Other Result",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16),
                                     ),
                                   ),
                                 ],
@@ -194,47 +223,58 @@ class _MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: [
-          Container(
-            width: 110,
-            height: 65,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: e
-                        .moviePosterUrl(e.backdropPath ?? e.posterPath)
-                        .image)),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    e.title,
-                    maxLines: 2,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 15),
-                  ),
-                  if (e.mediaType != null) ...{
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MovieDetailPage(
+                    e: e,
+                  )),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Row(
+          children: [
+            Container(
+              width: 110,
+              height: 65,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: e
+                          .moviePosterUrl(e.backdropPath ?? e.posterPath)
+                          .image)),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      "${e.mediaType}",
-                      maxLines: 1,
+                      e.title,
+                      maxLines: 2,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  },
-                ],
+                          fontWeight: FontWeight.w600, fontSize: 15),
+                    ),
+                    if (e.mediaType != null) ...{
+                      Text(
+                        "${e.mediaType}",
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    },
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -247,47 +287,58 @@ class _TvShowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: [
-          Container(
-            width: 110,
-            height: 65,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: e
-                        .moviePosterUrl(e.backdropPath ?? e.posterPath)
-                        .image)),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    e.name,
-                    maxLines: 2,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 15),
-                  ),
-                  if (e.mediaType != null) ...{
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => TvDetailPage(
+                    e: e,
+                  )),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Row(
+          children: [
+            Container(
+              width: 110,
+              height: 65,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: e
+                          .moviePosterUrl(e.backdropPath ?? e.posterPath)
+                          .image)),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      "${e.mediaType}",
-                      maxLines: 1,
+                      e.name,
+                      maxLines: 2,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  },
-                ],
+                          fontWeight: FontWeight.w600, fontSize: 15),
+                    ),
+                    if (e.mediaType != null) ...{
+                      Text(
+                        "${e.mediaType}",
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    },
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -300,44 +351,55 @@ class _PersonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: [
-          Container(
-            width: 65,
-            height: 65,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black12),
-                borderRadius: BorderRadius.circular(1000),
-                image: DecorationImage(
-                    fit: BoxFit.fitHeight,
-                    image: e.castPictureUrl(e.profilePath).image)),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    e.name,
-                    maxLines: 2,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 15),
-                  ),
-                  Text(
-                    "${e.knownForDepartment}",
-                    maxLines: 1,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => PersonDetailPage(
+                    person: e,
+                  )),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Row(
+          children: [
+            Container(
+              width: 65,
+              height: 65,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(1000),
+                  image: DecorationImage(
+                      fit: BoxFit.fitHeight,
+                      image: e.castPictureUrl(e.profilePath).image)),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      e.name,
+                      maxLines: 2,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 15),
                     ),
-                  )
-                ],
+                    Text(
+                      "${e.knownForDepartment}",
+                      maxLines: 1,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

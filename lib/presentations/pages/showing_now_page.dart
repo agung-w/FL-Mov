@@ -9,42 +9,35 @@ import 'package:movie_app/presentations/widgets/vertical_person_card.dart';
 import 'package:movie_app/presentations/widgets/youtube_video_card.dart';
 import 'package:movie_app/services/movie_services.dart';
 
-class MovieDetailPage extends StatelessWidget {
-  final TMDBMovie e;
+class ShowingNowPage extends StatelessWidget {
+  final Movie e;
 
   final String? genre;
 
-  const MovieDetailPage({super.key, required this.e, this.genre});
+  const ShowingNowPage({super.key, required this.e, this.genre});
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: MovieServices().getMovieDetail(e.id),
+        future: MovieServices().getMovieDetail(int.parse(e.tmdbId)),
         builder: (context, snapshot) {
           if (snapshot.data != null) {
             return snapshot.data!.map(
                 success: (value) => Scaffold(
-                      appBar: AppBar(),
                       backgroundColor: const Color(0xFFf2f1f6),
                       body: SingleChildScrollView(
                         child: Column(children: [
-                          ColoredBox(
-                            color: Colors.white,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: value.value
+                                        .moviePosterUrl(value.value.posterPath)
+                                        .image)),
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height * 0.6,
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: value.value
-                                              .moviePosterUrl(
-                                                  value.value.backdropPath)
-                                              .image)),
-                                  height: 215,
-                                  width: double.infinity,
-                                  margin:
-                                      const EdgeInsets.fromLTRB(16, 16, 16, 10),
-                                ),
                                 Text(
                                   value.value.title,
                                   style: mediumTitle,
@@ -56,16 +49,9 @@ class MovieDetailPage extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      if (genre != null) ...{
-                                        Text("$genre · ",
-                                            style: shadeSmallText),
-                                      } else ...{
-                                        (value.value.genres.isNotEmpty)
-                                            ? Text(
-                                                "${genre ?? value.value.genres.elementAt(0).name} · ",
-                                                style: shadeSmallText)
-                                            : const Text("")
-                                      },
+                                      Text(
+                                          "${genre ?? value.value.genres.elementAt(0).name} · ",
+                                          style: shadeSmallText),
                                       if (value.value.releaseDate != null) ...{
                                         Text(
                                           DateFormat("yyyy").format(
@@ -134,6 +120,13 @@ class MovieDetailPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                              ],
+                            ),
+                          ),
+                          ColoredBox(
+                            color: Colors.white,
+                            child: Column(
+                              children: [
                                 if (value.value.credits.cast.isNotEmpty) ...{
                                   Align(
                                     alignment: Alignment.centerLeft,

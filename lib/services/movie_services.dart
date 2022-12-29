@@ -36,10 +36,47 @@ class MovieServices {
   Future<ApiResult<TvDetail>> getTvDetail(int id) async {
     try {
       Response result = await _dio.get(
-        "${dotenv.env['tmdb_api_url']}/tv/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=credits,videos,reviews,similar",
+        "${dotenv.env['tmdb_api_url']}/tv/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=aggregate_credits,videos,reviews,similar",
       );
       TvDetail tv = TvDetail.fromJson(result.data);
       return ApiResult.success(tv);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<List<TvEpisode>>> getSeasonEpisode(
+      {required int seriesId, required seasonId}) async {
+    try {
+      Response result = await _dio.get(
+        "${dotenv.env['tmdb_api_url']}/tv/$seriesId/season/$seasonId?api_key=${dotenv.env['tmdb_api_key']}&language=en-US",
+      );
+      List<TvEpisode> tv = (result.data["episodes"] as List)
+          .map((e) => TvEpisode.fromJson(e))
+          .toList();
+      return ApiResult.success(tv);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<PersonCredits>> getPersonCredits(int id) async {
+    try {
+      Response result = await _dio.get(
+        "${dotenv.env['tmdb_api_url']}/person/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=movie_credits,tv_credits",
+      );
+      PersonCredits personCredits = PersonCredits(
+          movieCredits: (result.data['movie_credits']['cast'] as List)
+              .map((e) => TMDBMovie.fromJson(e))
+              .toList(),
+          tvCredits: (result.data['tv_credits']['cast'] as List)
+              .map((e) => TMDBTv.fromJson(e))
+              .toList());
+      return ApiResult.success(personCredits);
     } on DioError catch (e) {
       return ApiResult.failed(e.response != null
           ? e.response!.data['error']['message'].toString()

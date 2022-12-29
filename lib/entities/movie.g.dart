@@ -29,7 +29,8 @@ _$_MovieDetail _$$_MovieDetailFromJson(Map<String, dynamic> json) =>
           .toList(),
       overview: json['overview'] as String,
       runtime: json['runtime'] as int,
-      backDropPath: json['backdrop_path'] as String?,
+      adult: json['adult'] as bool,
+      backdropPath: json['backdrop_path'] as String?,
       posterPath: json['poster_path'] as String?,
       originalLanguage: json['original_language'] as String?,
       releaseDate: json['release_date'] as String?,
@@ -46,7 +47,8 @@ Map<String, dynamic> _$$_MovieDetailToJson(_$_MovieDetail instance) =>
       'genres': instance.genres,
       'overview': instance.overview,
       'runtime': instance.runtime,
-      'backdrop_path': instance.backDropPath,
+      'adult': instance.adult,
+      'backdrop_path': instance.backdropPath,
       'poster_path': instance.posterPath,
       'original_language': instance.originalLanguage,
       'release_date': instance.releaseDate,
@@ -63,18 +65,23 @@ _$_TvDetail _$$_TvDetailFromJson(Map<String, dynamic> json) => _$_TvDetail(
           .map((e) => Genre.fromJson(e as Map<String, dynamic>))
           .toList(),
       overview: json['overview'] as String,
-      runtime: json['runtime'] as int,
+      adult: json['adult'] as bool,
+      backdropPath: json['backdrop_path'] as String?,
+      posterPath: json['poster_path'] as String?,
       voteAverage: (json['vote_average'] as num?)?.toDouble(),
       originalLanguage: json['original_language'] as String?,
       releaseDate: json['first_air_date'] as String?,
       numberOfEpisodes: json['number_of_episodes'] as int?,
       numberOfSeasons: json['number_of_seasons'] as int?,
-      credits: json['aggregate_credits'] == null
-          ? null
-          : Credit.fromJson(json['aggregate_credits'] as Map<String, dynamic>),
       videos: Video.fromJson(json['videos'] as Map<String, dynamic>),
+      credits:
+          Credit.fromJson(json['aggregate_credits'] as Map<String, dynamic>),
       reviews: ReviewList.fromJson(json['reviews'] as Map<String, dynamic>),
       similar: TMDBTvList.fromJson(json['similar'] as Map<String, dynamic>),
+      seasons: (json['seasons'] as List<dynamic>?)
+              ?.map((e) => TvSeason.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_TvDetailToJson(_$_TvDetail instance) =>
@@ -83,16 +90,47 @@ Map<String, dynamic> _$$_TvDetailToJson(_$_TvDetail instance) =>
       'name': instance.name,
       'genres': instance.genres,
       'overview': instance.overview,
-      'runtime': instance.runtime,
+      'adult': instance.adult,
+      'backdrop_path': instance.backdropPath,
+      'poster_path': instance.posterPath,
       'vote_average': instance.voteAverage,
       'original_language': instance.originalLanguage,
       'first_air_date': instance.releaseDate,
       'number_of_episodes': instance.numberOfEpisodes,
       'number_of_seasons': instance.numberOfSeasons,
-      'aggregate_credits': instance.credits,
       'videos': instance.videos,
+      'aggregate_credits': instance.credits,
       'reviews': instance.reviews,
       'similar': instance.similar,
+      'seasons': instance.seasons,
+    };
+
+_$_TvSeason _$$_TvSeasonFromJson(Map<String, dynamic> json) => _$_TvSeason(
+      name: json['name'] as String,
+      seasonNumber: json['season_number'] as int,
+    );
+
+Map<String, dynamic> _$$_TvSeasonToJson(_$_TvSeason instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'season_number': instance.seasonNumber,
+    };
+
+_$_TvEpisode _$$_TvEpisodeFromJson(Map<String, dynamic> json) => _$_TvEpisode(
+      name: json['name'] as String,
+      overview: json['overview'] as String,
+      episodeNumber: json['episode_number'] as int?,
+      stillPath: json['still_path'] as String?,
+      seasonNumber: json['season_number'] as int,
+    );
+
+Map<String, dynamic> _$$_TvEpisodeToJson(_$_TvEpisode instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'overview': instance.overview,
+      'episode_number': instance.episodeNumber,
+      'still_path': instance.stillPath,
+      'season_number': instance.seasonNumber,
     };
 
 _$_TMDBTvList _$$_TMDBTvListFromJson(Map<String, dynamic> json) =>
@@ -177,11 +215,11 @@ Map<String, dynamic> _$$_TrailerToJson(_$_Trailer instance) =>
 
 _$_Credit _$$_CreditFromJson(Map<String, dynamic> json) => _$_Credit(
       cast: (json['cast'] as List<dynamic>?)
-              ?.map((e) => Cast.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => TMDBPerson.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       crew: (json['crew'] as List<dynamic>?)
-              ?.map((e) => Crew.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => TMDBPerson.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
@@ -189,34 +227,6 @@ _$_Credit _$$_CreditFromJson(Map<String, dynamic> json) => _$_Credit(
 Map<String, dynamic> _$$_CreditToJson(_$_Credit instance) => <String, dynamic>{
       'cast': instance.cast,
       'crew': instance.crew,
-    };
-
-_$_Cast _$$_CastFromJson(Map<String, dynamic> json) => _$_Cast(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      character: json['character'] as String?,
-      profileUrl: json['profile_path'] as String?,
-    );
-
-Map<String, dynamic> _$$_CastToJson(_$_Cast instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'character': instance.character,
-      'profile_path': instance.profileUrl,
-    };
-
-_$_Crew _$$_CrewFromJson(Map<String, dynamic> json) => _$_Crew(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      character: json['character'] as String?,
-      profileUrl: json['profile_path'] as String?,
-    );
-
-Map<String, dynamic> _$$_CrewToJson(_$_Crew instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'character': instance.character,
-      'profile_path': instance.profileUrl,
     };
 
 _$_TMDBSearchResult _$$_TMDBSearchResultFromJson(Map<String, dynamic> json) =>
@@ -285,6 +295,7 @@ _$_TMDBPerson _$$_TMDBPersonFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       profilePath: json['profile_path'] as String?,
       knownForDepartment: json['known_for_department'] as String? ?? "Person",
+      character: json['character'] as String?,
       name: json['name'] as String,
     );
 
@@ -293,5 +304,22 @@ Map<String, dynamic> _$$_TMDBPersonToJson(_$_TMDBPerson instance) =>
       'id': instance.id,
       'profile_path': instance.profilePath,
       'known_for_department': instance.knownForDepartment,
+      'character': instance.character,
       'name': instance.name,
+    };
+
+_$_PersonCredits _$$_PersonCreditsFromJson(Map<String, dynamic> json) =>
+    _$_PersonCredits(
+      movieCredits: (json['movie_credits'] as List<dynamic>)
+          .map((e) => TMDBMovie.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tvCredits: (json['tv_credits'] as List<dynamic>)
+          .map((e) => TMDBTv.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_PersonCreditsToJson(_$_PersonCredits instance) =>
+    <String, dynamic>{
+      'movie_credits': instance.movieCredits,
+      'tv_credits': instance.tvCredits,
     };

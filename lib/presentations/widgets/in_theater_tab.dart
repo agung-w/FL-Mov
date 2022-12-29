@@ -215,7 +215,7 @@ class TabDetail extends StatelessWidget {
                                                 fit: BoxFit.fill,
                                                 image: e
                                                     .castPictureUrl(
-                                                        e.profileUrl)
+                                                        e.profilePath)
                                                     .image,
                                                 height: 75,
                                                 width: 60,

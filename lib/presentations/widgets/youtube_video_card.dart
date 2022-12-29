@@ -4,8 +4,10 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeVideoCard extends StatefulWidget {
   final String videoKey;
-
-  const YoutubeVideoCard({super.key, required this.videoKey});
+  final bool? isFirst;
+  final bool? isLast;
+  const YoutubeVideoCard(
+      {super.key, required this.videoKey, this.isFirst, this.isLast});
 
   @override
   State<YoutubeVideoCard> createState() => _YoutubeVideoCardState();
@@ -51,12 +53,13 @@ class _YoutubeVideoCardState extends State<YoutubeVideoCard> {
               )),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.4,
-        margin: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+        margin: EdgeInsets.only(
+            left: widget.isFirst == true ? 16 : 8,
+            right: widget.isLast == true ? 16 : 0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: YoutubePlayer(
             controller: _youtubeController,
-            aspectRatio: 1.8,
           ),
         ),
       ),

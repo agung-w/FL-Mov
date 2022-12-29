@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/bloc/movie_detail_bloc.dart';
+import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/bloc/search_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
+import 'package:movie_app/presentations/helper/text_style.dart';
+import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
 import 'package:movie_app/presentations/pages/movie_detail_page.dart';
 import 'package:movie_app/presentations/widgets/image_loading_effect.dart';
+
+import 'tv_detail_page.dart';
 
 class SearchedPage extends StatelessWidget {
   final DiscoverCategory content;
@@ -35,38 +41,64 @@ class SearchedPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (content.bgColor == null) ...{
-                                _PosterHeader(content: content)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: _PosterHeader(content: content),
+                                )
                               } else ...{
-                                _CenteredTextHeader(
-                                  genre: content,
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: _CenteredTextHeader(
+                                    genre: content,
+                                  ),
                                 )
                               },
                               if (value.results.inTheaterList.isNotEmpty) ...{
-                                const Padding(
-                                  padding: EdgeInsets.fromLTRB(16, 5, 16, 5),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(16, 0, 16, 5),
                                   child: Text(
                                     "In Theater Now",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
+                                    style: mediumTitle,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 110,
+                                Container(
+                                  height: 300,
+                                  margin: const EdgeInsets.only(bottom: 16),
                                   child: ListView(
                                     scrollDirection: Axis.horizontal,
                                     children:
                                         value.results.inTheaterList.map((e) {
-                                      return Container(
-                                        margin: const EdgeInsets.only(left: 16),
-                                        width: 80,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            image: DecorationImage(
-                                                image: e
-                                                    .moviePosterUrl(e.posterUrl)
-                                                    .image,
-                                                fit: BoxFit.fill)),
+                                      return GestureDetector(
+                                        onTap: () {
+                                          context.read<MovieDetailBloc>().add(
+                                              MovieDetailEvent.getDetail(
+                                                  int.parse(e.tmdbId)));
+                                          context.read<OrderBloc>().add(
+                                              OrderEvent.selectMovie(movie: e));
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    InTheaterDetailPage(
+                                                      movie: e,
+                                                    )),
+                                          );
+                                        },
+                                        child: Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 16),
+                                          width: 200,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                  image: e
+                                                      .moviePosterUrl(
+                                                          e.posterUrl)
+                                                      .image,
+                                                  fit: BoxFit.fill)),
+                                        ),
                                       );
                                     }).toList(),
                                   ),
@@ -77,16 +109,17 @@ class SearchedPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
                                     "${content.name} Movies",
-                                    style: const TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700),
+                                    style: mediumTitle,
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(16),
                                   child: _PosterGridView(
                                     children: value.results.movieList
-                                        .map((e) => _GridPosterCard(e: e))
+                                        .map((e) => _GridPosterCard(
+                                              e: e,
+                                              genre: content.name,
+                                            ))
                                         .toList(),
                                   ),
                                 )
@@ -96,16 +129,17 @@ class SearchedPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
                                     "${content.name} TV Shows",
-                                    style: const TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700),
+                                    style: mediumTitle,
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(16),
                                   child: _PosterGridView(
                                     children: value.results.tvList
-                                        .map((e) => _GridPosterCard(e: e))
+                                        .map((e) => _GridPosterCard(
+                                              e: e,
+                                              genre: content.name,
+                                            ))
                                         .toList(),
                                   ),
                                 )
@@ -123,8 +157,9 @@ class SearchedPage extends StatelessWidget {
 
 class _GridPosterCard extends StatelessWidget {
   final dynamic e;
+  final String genre;
 
-  const _GridPosterCard({required this.e});
+  const _GridPosterCard({required this.e, required this.genre});
 
   @override
   Widget build(BuildContext context) {
@@ -132,11 +167,17 @@ class _GridPosterCard extends StatelessWidget {
       onTap: () {
         if (e is TMDBMovie) {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => MovieDetailPage(e: e),
+            builder: (_) => MovieDetailPage(
+              e: e,
+              genre: genre,
+            ),
           ));
         } else if (e is TMDBTv) {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => MovieDetailPage(e: e),
+            builder: (_) => TvDetailPage(
+              e: e,
+              genre: genre,
+            ),
           ));
         }
       },

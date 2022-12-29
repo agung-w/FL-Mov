@@ -9,16 +9,16 @@ import 'package:movie_app/presentations/widgets/vertical_person_card.dart';
 import 'package:movie_app/presentations/widgets/youtube_video_card.dart';
 import 'package:movie_app/services/movie_services.dart';
 
-class MovieDetailPage extends StatelessWidget {
-  final TMDBMovie e;
+class TvDetailPage extends StatelessWidget {
+  final dynamic e;
 
   final String? genre;
 
-  const MovieDetailPage({super.key, required this.e, this.genre});
+  const TvDetailPage({super.key, required this.e, this.genre});
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: MovieServices().getMovieDetail(e.id),
+        future: MovieServices().getTvDetail(e.id),
         builder: (context, snapshot) {
           if (snapshot.data != null) {
             return snapshot.data!.map(
@@ -46,7 +46,7 @@ class MovieDetailPage extends StatelessWidget {
                                       const EdgeInsets.fromLTRB(16, 16, 16, 10),
                                 ),
                                 Text(
-                                  value.value.title,
+                                  value.value.name,
                                   style: mediumTitle,
                                   textAlign: TextAlign.center,
                                 ),
@@ -56,19 +56,12 @@ class MovieDetailPage extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      if (genre != null) ...{
-                                        Text("$genre · ",
-                                            style: shadeSmallText),
-                                      } else ...{
-                                        (value.value.genres.isNotEmpty)
-                                            ? Text(
-                                                "${genre ?? value.value.genres.elementAt(0).name} · ",
-                                                style: shadeSmallText)
-                                            : const Text("")
-                                      },
+                                      Text(
+                                          "${genre ?? value.value.genres.elementAt(0).name} · ",
+                                          style: shadeSmallText),
                                       if (value.value.releaseDate != null) ...{
                                         Text(
-                                          DateFormat("yyyy").format(
+                                          DateFormat("dd MMM yyyy").format(
                                               DateTime.parse(
                                                   value.value.releaseDate!)),
                                           style: shadeSmallText,
@@ -76,7 +69,9 @@ class MovieDetailPage extends StatelessWidget {
                                         const Text(" · ")
                                       },
                                       Text(
-                                        "${value.value.runtime} minutes",
+                                        value.value.seasons.length > 1
+                                            ? "${value.value.numberOfSeasons} Seasons"
+                                            : "1 Season",
                                         style: shadeSmallText,
                                       ),
                                     ],
@@ -107,7 +102,7 @@ class MovieDetailPage extends StatelessWidget {
                                                               bottom: 16),
                                                       child: Center(
                                                         child: Text(
-                                                          value.value.title,
+                                                          value.value.name,
                                                           style: smallTitle,
                                                         ),
                                                       ),
@@ -134,6 +129,12 @@ class MovieDetailPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                if (value.value.seasons.isNotEmpty) ...{
+                                  _TvSeasonEpisodeList(
+                                    seasons: value.value.seasons,
+                                    seriesId: value.value.id,
+                                  )
+                                },
                                 if (value.value.credits.cast.isNotEmpty) ...{
                                   Align(
                                     alignment: Alignment.centerLeft,
@@ -177,14 +178,13 @@ class MovieDetailPage extends StatelessWidget {
                                     ),
                                   )
                                 },
-                                if (value
-                                    .value.similar.movieList.isNotEmpty) ...{
+                                if (value.value.similar.tvList.isNotEmpty) ...{
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           16, 0, 16, 16),
-                                      child: Text("Another Movies Like This",
+                                      child: Text("Another TV Shows Like This",
                                           style: mediumTitle),
                                     ),
                                   ),
@@ -192,8 +192,7 @@ class MovieDetailPage extends StatelessWidget {
                                     height: 100,
                                     margin: const EdgeInsets.only(bottom: 24),
                                     child: _SimilarList(
-                                        e: value.value.similar.movieList,
-                                        genre: genre),
+                                        e: value.value.similar.tvList),
                                   ),
                                 },
                               ],
@@ -301,8 +300,14 @@ class MovieDetailPage extends StatelessWidget {
                         ),
                         centerTitle: true,
                       ),
-                      body: Center(child: Text(value.message)),
+                      body:
+                          const Center(child: Text("No content detail found")),
                     ));
+          } else if (snapshot.hasError) {
+            return Scaffold(
+              appBar: AppBar(),
+              body: const Center(child: Text("No content detail found")),
+            );
           } else {
             return Scaffold(
               appBar: AppBar(),
@@ -404,7 +409,7 @@ class _ReviewList extends StatelessWidget {
 }
 
 class _SimilarList extends StatelessWidget {
-  final List<TMDBMovie> e;
+  final List<TMDBTv> e;
   final String? genre;
 
   const _SimilarList({
@@ -439,5 +444,223 @@ class _SimilarList extends StatelessWidget {
             }
           }
         ]);
+  }
+}
+
+class _EpisodeList extends StatelessWidget {
+  final List<TvEpisode> e;
+
+  const _EpisodeList({
+    required this.e,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+        physics: const ScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        children: [
+          for (int i = 0; i < e.length; i++) ...{
+            if (i == 0) ...{
+              _EpisodeCard(
+                episode: e.elementAt(i),
+                isFirst: true,
+              )
+            } else if (i == e.length - 1) ...{
+              _EpisodeCard(
+                episode: e.elementAt(i),
+                isLast: true,
+              )
+            } else ...{
+              _EpisodeCard(
+                episode: e.elementAt(i),
+              )
+            }
+          }
+        ]);
+  }
+}
+
+class _EpisodeCard extends StatelessWidget {
+  final TvEpisode episode;
+
+  final bool? isFirst;
+  final bool? isLast;
+
+  const _EpisodeCard({required this.episode, this.isFirst, this.isLast});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => showModalBottomSheet(
+          isScrollControlled: true,
+          useRootNavigator: true,
+          elevation: 2,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          context: context,
+          builder: (builder) => DraggableSheet(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: episode
+                                  .moviePosterUrl(episode.stillPath)
+                                  .image)),
+                      height: 215,
+                      width: double.infinity,
+                      margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            text:
+                                'S${episode.seasonNumber}:E${episode.episodeNumber} ',
+                            style: smallTitle.merge(const TextStyle(color: Colors.black87)),
+                            children: [
+                          TextSpan(text: '"${episode.name}"', style: smallTitle)
+                        ])),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 16),
+                      child: Text(
+                        episode.overview,
+                        style: overviewText,
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+      child: Container(
+        margin: EdgeInsets.only(
+            left: isFirst == true ? 16 : 8,
+            right: isLast == true ? 16 : 0,
+            bottom: 22),
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 120,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: episode.moviePosterUrl(episode.stillPath).image,
+                      fit: BoxFit.cover)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 3),
+              child: Text(
+                "EPISODE ${episode.episodeNumber}",
+                style: shadeExtraSmallText
+                    .merge(const TextStyle(fontWeight: FontWeight.w700)),
+              ),
+            ),
+            Text(
+              episode.name,
+              style: extraSmallTitle,
+              maxLines: 1,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 3),
+              child: Text(
+                episode.overview,
+                style: shadeExtraSmallText,
+                maxLines: 3,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TvSeasonEpisodeList extends StatefulWidget {
+  final List<TvSeason> seasons;
+  final int seriesId;
+
+  const _TvSeasonEpisodeList({required this.seasons, required this.seriesId});
+
+  @override
+  State<_TvSeasonEpisodeList> createState() => __TvSeasonEpisodeListState();
+}
+
+class __TvSeasonEpisodeListState extends State<_TvSeasonEpisodeList> {
+  late String dropdownValue = widget.seasons.first.seasonNumber.toString();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 6),
+              child: DropdownButton<String>(
+                style: const TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 22),
+                value: dropdownValue,
+                icon: const Icon(
+                  Icons.expand_more_sharp,
+                  color: Colors.black87,
+                  size: 30,
+                ),
+                elevation: 2,
+                underline: Container(
+                  height: 2,
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    dropdownValue = value!;
+                  });
+                },
+                items: widget.seasons
+                    .map<DropdownMenuItem<String>>((TvSeason value) {
+                  return DropdownMenuItem<String>(
+                    value: value.seasonNumber.toString(),
+                    child: Text(value.name),
+                  );
+                }).toList(),
+              )),
+        ),
+        FutureBuilder(
+            future: MovieServices().getSeasonEpisode(
+                seriesId: widget.seriesId, seasonId: dropdownValue),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data!.map(
+                    success: (value) => Container(
+                          height: 235,
+                          decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [Colors.white, Color(0xFFf1f0f5)])),
+                          child: _EpisodeList(e: value.value),
+                        ),
+                    failed: (value) => const Center(
+                          child: Text("Failed to load data"),
+                        ));
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text("Failed to load data"),
+                );
+              } else {
+                return const Center(
+                  child: Text("Loading"),
+                );
+              }
+            }),
+      ],
+    );
   }
 }

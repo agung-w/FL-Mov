@@ -228,8 +228,9 @@ mixin _$MovieDetail {
   List<Genre> get genres => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   int get runtime => throw _privateConstructorUsedError;
+  bool get adult => throw _privateConstructorUsedError;
   @JsonKey(name: "backdrop_path")
-  String? get backDropPath => throw _privateConstructorUsedError;
+  String? get backdropPath => throw _privateConstructorUsedError;
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: "original_language")
@@ -259,7 +260,8 @@ abstract class $MovieDetailCopyWith<$Res> {
       List<Genre> genres,
       String overview,
       int runtime,
-      @JsonKey(name: "backdrop_path") String? backDropPath,
+      bool adult,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
       @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "original_language") String? originalLanguage,
       @JsonKey(name: "release_date") String? releaseDate,
@@ -292,7 +294,8 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
     Object? genres = null,
     Object? overview = null,
     Object? runtime = null,
-    Object? backDropPath = freezed,
+    Object? adult = null,
+    Object? backdropPath = freezed,
     Object? posterPath = freezed,
     Object? originalLanguage = freezed,
     Object? releaseDate = freezed,
@@ -322,9 +325,13 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
               as int,
-      backDropPath: freezed == backDropPath
-          ? _value.backDropPath
-          : backDropPath // ignore: cast_nullable_to_non_nullable
+      adult: null == adult
+          ? _value.adult
+          : adult // ignore: cast_nullable_to_non_nullable
+              as bool,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
       posterPath: freezed == posterPath
           ? _value.posterPath
@@ -404,7 +411,8 @@ abstract class _$$_MovieDetailCopyWith<$Res>
       List<Genre> genres,
       String overview,
       int runtime,
-      @JsonKey(name: "backdrop_path") String? backDropPath,
+      bool adult,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
       @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "original_language") String? originalLanguage,
       @JsonKey(name: "release_date") String? releaseDate,
@@ -439,7 +447,8 @@ class __$$_MovieDetailCopyWithImpl<$Res>
     Object? genres = null,
     Object? overview = null,
     Object? runtime = null,
-    Object? backDropPath = freezed,
+    Object? adult = null,
+    Object? backdropPath = freezed,
     Object? posterPath = freezed,
     Object? originalLanguage = freezed,
     Object? releaseDate = freezed,
@@ -469,9 +478,13 @@ class __$$_MovieDetailCopyWithImpl<$Res>
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
               as int,
-      backDropPath: freezed == backDropPath
-          ? _value.backDropPath
-          : backDropPath // ignore: cast_nullable_to_non_nullable
+      adult: null == adult
+          ? _value.adult
+          : adult // ignore: cast_nullable_to_non_nullable
+              as bool,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
       posterPath: freezed == posterPath
           ? _value.posterPath
@@ -514,7 +527,8 @@ class _$_MovieDetail extends _MovieDetail {
       required final List<Genre> genres,
       required this.overview,
       required this.runtime,
-      @JsonKey(name: "backdrop_path") this.backDropPath,
+      required this.adult,
+      @JsonKey(name: "backdrop_path") this.backdropPath,
       @JsonKey(name: "poster_path") this.posterPath,
       @JsonKey(name: "original_language") this.originalLanguage,
       @JsonKey(name: "release_date") this.releaseDate,
@@ -545,8 +559,10 @@ class _$_MovieDetail extends _MovieDetail {
   @override
   final int runtime;
   @override
+  final bool adult;
+  @override
   @JsonKey(name: "backdrop_path")
-  final String? backDropPath;
+  final String? backdropPath;
   @override
   @JsonKey(name: "poster_path")
   final String? posterPath;
@@ -567,7 +583,7 @@ class _$_MovieDetail extends _MovieDetail {
 
   @override
   String toString() {
-    return 'MovieDetail(id: $id, title: $title, genres: $genres, overview: $overview, runtime: $runtime, backDropPath: $backDropPath, posterPath: $posterPath, originalLanguage: $originalLanguage, releaseDate: $releaseDate, credits: $credits, videos: $videos, reviews: $reviews, similar: $similar)';
+    return 'MovieDetail(id: $id, title: $title, genres: $genres, overview: $overview, runtime: $runtime, adult: $adult, backdropPath: $backdropPath, posterPath: $posterPath, originalLanguage: $originalLanguage, releaseDate: $releaseDate, credits: $credits, videos: $videos, reviews: $reviews, similar: $similar)';
   }
 
   @override
@@ -581,8 +597,9 @@ class _$_MovieDetail extends _MovieDetail {
             (identical(other.overview, overview) ||
                 other.overview == overview) &&
             (identical(other.runtime, runtime) || other.runtime == runtime) &&
-            (identical(other.backDropPath, backDropPath) ||
-                other.backDropPath == backDropPath) &&
+            (identical(other.adult, adult) || other.adult == adult) &&
+            (identical(other.backdropPath, backdropPath) ||
+                other.backdropPath == backdropPath) &&
             (identical(other.posterPath, posterPath) ||
                 other.posterPath == posterPath) &&
             (identical(other.originalLanguage, originalLanguage) ||
@@ -604,7 +621,8 @@ class _$_MovieDetail extends _MovieDetail {
       const DeepCollectionEquality().hash(_genres),
       overview,
       runtime,
-      backDropPath,
+      adult,
+      backdropPath,
       posterPath,
       originalLanguage,
       releaseDate,
@@ -634,7 +652,8 @@ abstract class _MovieDetail extends MovieDetail {
       required final List<Genre> genres,
       required final String overview,
       required final int runtime,
-      @JsonKey(name: "backdrop_path") final String? backDropPath,
+      required final bool adult,
+      @JsonKey(name: "backdrop_path") final String? backdropPath,
       @JsonKey(name: "poster_path") final String? posterPath,
       @JsonKey(name: "original_language") final String? originalLanguage,
       @JsonKey(name: "release_date") final String? releaseDate,
@@ -658,8 +677,10 @@ abstract class _MovieDetail extends MovieDetail {
   @override
   int get runtime;
   @override
+  bool get adult;
+  @override
   @JsonKey(name: "backdrop_path")
-  String? get backDropPath;
+  String? get backdropPath;
   @override
   @JsonKey(name: "poster_path")
   String? get posterPath;
@@ -690,25 +711,55 @@ TvDetail _$TvDetailFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TvDetail {
   int get id => throw _privateConstructorUsedError;
+  set id(int value) => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   List<Genre> get genres => throw _privateConstructorUsedError;
+  set genres(List<Genre> value) => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
-  int get runtime => throw _privateConstructorUsedError;
+  set overview(String value) => throw _privateConstructorUsedError;
+  bool get adult => throw _privateConstructorUsedError;
+  set adult(bool value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  set backdropPath(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  String? get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "poster_path")
+  set posterPath(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "vote_average")
   double? get voteAverage => throw _privateConstructorUsedError;
+  @JsonKey(name: "vote_average")
+  set voteAverage(double? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "original_language")
   String? get originalLanguage => throw _privateConstructorUsedError;
+  @JsonKey(name: "original_language")
+  set originalLanguage(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "first_air_date")
   String? get releaseDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "first_air_date")
+  set releaseDate(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "number_of_episodes")
   int? get numberOfEpisodes => throw _privateConstructorUsedError;
+  @JsonKey(name: "number_of_episodes")
+  set numberOfEpisodes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "number_of_seasons")
   int? get numberOfSeasons => throw _privateConstructorUsedError;
-  @JsonKey(name: "aggregate_credits")
-  Credit? get credits => throw _privateConstructorUsedError;
+  @JsonKey(name: "number_of_seasons")
+  set numberOfSeasons(int? value) => throw _privateConstructorUsedError;
   Video get videos => throw _privateConstructorUsedError;
+  set videos(Video value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "aggregate_credits")
+  Credit get credits => throw _privateConstructorUsedError;
+  @JsonKey(name: "aggregate_credits")
+  set credits(Credit value) => throw _privateConstructorUsedError;
   ReviewList get reviews => throw _privateConstructorUsedError;
+  set reviews(ReviewList value) => throw _privateConstructorUsedError;
   TMDBTvList get similar => throw _privateConstructorUsedError;
+  set similar(TMDBTvList value) => throw _privateConstructorUsedError;
+  List<TvSeason> get seasons => throw _privateConstructorUsedError;
+  set seasons(List<TvSeason> value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -726,19 +777,22 @@ abstract class $TvDetailCopyWith<$Res> {
       String name,
       List<Genre> genres,
       String overview,
-      int runtime,
+      bool adult,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "vote_average") double? voteAverage,
       @JsonKey(name: "original_language") String? originalLanguage,
       @JsonKey(name: "first_air_date") String? releaseDate,
       @JsonKey(name: "number_of_episodes") int? numberOfEpisodes,
       @JsonKey(name: "number_of_seasons") int? numberOfSeasons,
-      @JsonKey(name: "aggregate_credits") Credit? credits,
       Video videos,
+      @JsonKey(name: "aggregate_credits") Credit credits,
       ReviewList reviews,
-      TMDBTvList similar});
+      TMDBTvList similar,
+      List<TvSeason> seasons});
 
-  $CreditCopyWith<$Res>? get credits;
   $VideoCopyWith<$Res> get videos;
+  $CreditCopyWith<$Res> get credits;
   $ReviewListCopyWith<$Res> get reviews;
   $TMDBTvListCopyWith<$Res> get similar;
 }
@@ -760,16 +814,19 @@ class _$TvDetailCopyWithImpl<$Res, $Val extends TvDetail>
     Object? name = null,
     Object? genres = null,
     Object? overview = null,
-    Object? runtime = null,
+    Object? adult = null,
+    Object? backdropPath = freezed,
+    Object? posterPath = freezed,
     Object? voteAverage = freezed,
     Object? originalLanguage = freezed,
     Object? releaseDate = freezed,
     Object? numberOfEpisodes = freezed,
     Object? numberOfSeasons = freezed,
-    Object? credits = freezed,
     Object? videos = null,
+    Object? credits = null,
     Object? reviews = null,
     Object? similar = null,
+    Object? seasons = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -788,10 +845,18 @@ class _$TvDetailCopyWithImpl<$Res, $Val extends TvDetail>
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
               as String,
-      runtime: null == runtime
-          ? _value.runtime
-          : runtime // ignore: cast_nullable_to_non_nullable
-              as int,
+      adult: null == adult
+          ? _value.adult
+          : adult // ignore: cast_nullable_to_non_nullable
+              as bool,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       voteAverage: freezed == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -812,14 +877,14 @@ class _$TvDetailCopyWithImpl<$Res, $Val extends TvDetail>
           ? _value.numberOfSeasons
           : numberOfSeasons // ignore: cast_nullable_to_non_nullable
               as int?,
-      credits: freezed == credits
-          ? _value.credits
-          : credits // ignore: cast_nullable_to_non_nullable
-              as Credit?,
       videos: null == videos
           ? _value.videos
           : videos // ignore: cast_nullable_to_non_nullable
               as Video,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credit,
       reviews: null == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
@@ -828,19 +893,11 @@ class _$TvDetailCopyWithImpl<$Res, $Val extends TvDetail>
           ? _value.similar
           : similar // ignore: cast_nullable_to_non_nullable
               as TMDBTvList,
+      seasons: null == seasons
+          ? _value.seasons
+          : seasons // ignore: cast_nullable_to_non_nullable
+              as List<TvSeason>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CreditCopyWith<$Res>? get credits {
-    if (_value.credits == null) {
-      return null;
-    }
-
-    return $CreditCopyWith<$Res>(_value.credits!, (value) {
-      return _then(_value.copyWith(credits: value) as $Val);
-    });
   }
 
   @override
@@ -848,6 +905,14 @@ class _$TvDetailCopyWithImpl<$Res, $Val extends TvDetail>
   $VideoCopyWith<$Res> get videos {
     return $VideoCopyWith<$Res>(_value.videos, (value) {
       return _then(_value.copyWith(videos: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreditCopyWith<$Res> get credits {
+    return $CreditCopyWith<$Res>(_value.credits, (value) {
+      return _then(_value.copyWith(credits: value) as $Val);
     });
   }
 
@@ -880,21 +945,24 @@ abstract class _$$_TvDetailCopyWith<$Res> implements $TvDetailCopyWith<$Res> {
       String name,
       List<Genre> genres,
       String overview,
-      int runtime,
+      bool adult,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "vote_average") double? voteAverage,
       @JsonKey(name: "original_language") String? originalLanguage,
       @JsonKey(name: "first_air_date") String? releaseDate,
       @JsonKey(name: "number_of_episodes") int? numberOfEpisodes,
       @JsonKey(name: "number_of_seasons") int? numberOfSeasons,
-      @JsonKey(name: "aggregate_credits") Credit? credits,
       Video videos,
+      @JsonKey(name: "aggregate_credits") Credit credits,
       ReviewList reviews,
-      TMDBTvList similar});
+      TMDBTvList similar,
+      List<TvSeason> seasons});
 
   @override
-  $CreditCopyWith<$Res>? get credits;
-  @override
   $VideoCopyWith<$Res> get videos;
+  @override
+  $CreditCopyWith<$Res> get credits;
   @override
   $ReviewListCopyWith<$Res> get reviews;
   @override
@@ -916,16 +984,19 @@ class __$$_TvDetailCopyWithImpl<$Res>
     Object? name = null,
     Object? genres = null,
     Object? overview = null,
-    Object? runtime = null,
+    Object? adult = null,
+    Object? backdropPath = freezed,
+    Object? posterPath = freezed,
     Object? voteAverage = freezed,
     Object? originalLanguage = freezed,
     Object? releaseDate = freezed,
     Object? numberOfEpisodes = freezed,
     Object? numberOfSeasons = freezed,
-    Object? credits = freezed,
     Object? videos = null,
+    Object? credits = null,
     Object? reviews = null,
     Object? similar = null,
+    Object? seasons = null,
   }) {
     return _then(_$_TvDetail(
       id: null == id
@@ -937,17 +1008,25 @@ class __$$_TvDetailCopyWithImpl<$Res>
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       genres: null == genres
-          ? _value._genres
+          ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<Genre>,
       overview: null == overview
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
               as String,
-      runtime: null == runtime
-          ? _value.runtime
-          : runtime // ignore: cast_nullable_to_non_nullable
-              as int,
+      adult: null == adult
+          ? _value.adult
+          : adult // ignore: cast_nullable_to_non_nullable
+              as bool,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      posterPath: freezed == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       voteAverage: freezed == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -968,14 +1047,14 @@ class __$$_TvDetailCopyWithImpl<$Res>
           ? _value.numberOfSeasons
           : numberOfSeasons // ignore: cast_nullable_to_non_nullable
               as int?,
-      credits: freezed == credits
-          ? _value.credits
-          : credits // ignore: cast_nullable_to_non_nullable
-              as Credit?,
       videos: null == videos
           ? _value.videos
           : videos // ignore: cast_nullable_to_non_nullable
               as Video,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credit,
       reviews: null == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
@@ -984,6 +1063,10 @@ class __$$_TvDetailCopyWithImpl<$Res>
           ? _value.similar
           : similar // ignore: cast_nullable_to_non_nullable
               as TMDBTvList,
+      seasons: null == seasons
+          ? _value.seasons
+          : seasons // ignore: cast_nullable_to_non_nullable
+              as List<TvSeason>,
     ));
   }
 }
@@ -991,118 +1074,77 @@ class __$$_TvDetailCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TvDetail extends _TvDetail {
-  const _$_TvDetail(
+  _$_TvDetail(
       {required this.id,
       required this.name,
-      required final List<Genre> genres,
+      required this.genres,
       required this.overview,
-      required this.runtime,
+      required this.adult,
+      @JsonKey(name: "backdrop_path") this.backdropPath,
+      @JsonKey(name: "poster_path") this.posterPath,
       @JsonKey(name: "vote_average") this.voteAverage,
       @JsonKey(name: "original_language") this.originalLanguage,
       @JsonKey(name: "first_air_date") this.releaseDate,
       @JsonKey(name: "number_of_episodes") this.numberOfEpisodes,
       @JsonKey(name: "number_of_seasons") this.numberOfSeasons,
-      @JsonKey(name: "aggregate_credits") this.credits,
       required this.videos,
+      @JsonKey(name: "aggregate_credits") required this.credits,
       required this.reviews,
-      required this.similar})
-      : _genres = genres,
-        super._();
+      required this.similar,
+      this.seasons = const []})
+      : super._();
 
   factory _$_TvDetail.fromJson(Map<String, dynamic> json) =>
       _$$_TvDetailFromJson(json);
 
   @override
-  final int id;
+  int id;
   @override
-  final String name;
-  final List<Genre> _genres;
+  String name;
   @override
-  List<Genre> get genres {
-    if (_genres is EqualUnmodifiableListView) return _genres;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genres);
-  }
-
+  List<Genre> genres;
   @override
-  final String overview;
+  String overview;
   @override
-  final int runtime;
+  bool adult;
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? backdropPath;
+  @override
+  @JsonKey(name: "poster_path")
+  String? posterPath;
   @override
   @JsonKey(name: "vote_average")
-  final double? voteAverage;
+  double? voteAverage;
   @override
   @JsonKey(name: "original_language")
-  final String? originalLanguage;
+  String? originalLanguage;
   @override
   @JsonKey(name: "first_air_date")
-  final String? releaseDate;
+  String? releaseDate;
   @override
   @JsonKey(name: "number_of_episodes")
-  final int? numberOfEpisodes;
+  int? numberOfEpisodes;
   @override
   @JsonKey(name: "number_of_seasons")
-  final int? numberOfSeasons;
+  int? numberOfSeasons;
+  @override
+  Video videos;
   @override
   @JsonKey(name: "aggregate_credits")
-  final Credit? credits;
+  Credit credits;
   @override
-  final Video videos;
+  ReviewList reviews;
   @override
-  final ReviewList reviews;
+  TMDBTvList similar;
   @override
-  final TMDBTvList similar;
+  @JsonKey()
+  List<TvSeason> seasons;
 
   @override
   String toString() {
-    return 'TvDetail(id: $id, name: $name, genres: $genres, overview: $overview, runtime: $runtime, voteAverage: $voteAverage, originalLanguage: $originalLanguage, releaseDate: $releaseDate, numberOfEpisodes: $numberOfEpisodes, numberOfSeasons: $numberOfSeasons, credits: $credits, videos: $videos, reviews: $reviews, similar: $similar)';
+    return 'TvDetail(id: $id, name: $name, genres: $genres, overview: $overview, adult: $adult, backdropPath: $backdropPath, posterPath: $posterPath, voteAverage: $voteAverage, originalLanguage: $originalLanguage, releaseDate: $releaseDate, numberOfEpisodes: $numberOfEpisodes, numberOfSeasons: $numberOfSeasons, videos: $videos, credits: $credits, reviews: $reviews, similar: $similar, seasons: $seasons)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TvDetail &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other._genres, _genres) &&
-            (identical(other.overview, overview) ||
-                other.overview == overview) &&
-            (identical(other.runtime, runtime) || other.runtime == runtime) &&
-            (identical(other.voteAverage, voteAverage) ||
-                other.voteAverage == voteAverage) &&
-            (identical(other.originalLanguage, originalLanguage) ||
-                other.originalLanguage == originalLanguage) &&
-            (identical(other.releaseDate, releaseDate) ||
-                other.releaseDate == releaseDate) &&
-            (identical(other.numberOfEpisodes, numberOfEpisodes) ||
-                other.numberOfEpisodes == numberOfEpisodes) &&
-            (identical(other.numberOfSeasons, numberOfSeasons) ||
-                other.numberOfSeasons == numberOfSeasons) &&
-            (identical(other.credits, credits) || other.credits == credits) &&
-            (identical(other.videos, videos) || other.videos == videos) &&
-            (identical(other.reviews, reviews) || other.reviews == reviews) &&
-            (identical(other.similar, similar) || other.similar == similar));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      const DeepCollectionEquality().hash(_genres),
-      overview,
-      runtime,
-      voteAverage,
-      originalLanguage,
-      releaseDate,
-      numberOfEpisodes,
-      numberOfSeasons,
-      credits,
-      videos,
-      reviews,
-      similar);
 
   @JsonKey(ignore: true)
   @override
@@ -1119,62 +1161,493 @@ class _$_TvDetail extends _TvDetail {
 }
 
 abstract class _TvDetail extends TvDetail {
-  const factory _TvDetail(
-      {required final int id,
-      required final String name,
-      required final List<Genre> genres,
-      required final String overview,
-      required final int runtime,
-      @JsonKey(name: "vote_average") final double? voteAverage,
-      @JsonKey(name: "original_language") final String? originalLanguage,
-      @JsonKey(name: "first_air_date") final String? releaseDate,
-      @JsonKey(name: "number_of_episodes") final int? numberOfEpisodes,
-      @JsonKey(name: "number_of_seasons") final int? numberOfSeasons,
-      @JsonKey(name: "aggregate_credits") final Credit? credits,
-      required final Video videos,
-      required final ReviewList reviews,
-      required final TMDBTvList similar}) = _$_TvDetail;
-  const _TvDetail._() : super._();
+  factory _TvDetail(
+      {required int id,
+      required String name,
+      required List<Genre> genres,
+      required String overview,
+      required bool adult,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "vote_average") double? voteAverage,
+      @JsonKey(name: "original_language") String? originalLanguage,
+      @JsonKey(name: "first_air_date") String? releaseDate,
+      @JsonKey(name: "number_of_episodes") int? numberOfEpisodes,
+      @JsonKey(name: "number_of_seasons") int? numberOfSeasons,
+      required Video videos,
+      @JsonKey(name: "aggregate_credits") required Credit credits,
+      required ReviewList reviews,
+      required TMDBTvList similar,
+      List<TvSeason> seasons}) = _$_TvDetail;
+  _TvDetail._() : super._();
 
   factory _TvDetail.fromJson(Map<String, dynamic> json) = _$_TvDetail.fromJson;
 
   @override
   int get id;
+  set id(int value);
   @override
   String get name;
+  set name(String value);
   @override
   List<Genre> get genres;
+  set genres(List<Genre> value);
   @override
   String get overview;
+  set overview(String value);
   @override
-  int get runtime;
+  bool get adult;
+  set adult(bool value);
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath;
+  @JsonKey(name: "backdrop_path")
+  set backdropPath(String? value);
+  @override
+  @JsonKey(name: "poster_path")
+  String? get posterPath;
+  @JsonKey(name: "poster_path")
+  set posterPath(String? value);
   @override
   @JsonKey(name: "vote_average")
   double? get voteAverage;
+  @JsonKey(name: "vote_average")
+  set voteAverage(double? value);
   @override
   @JsonKey(name: "original_language")
   String? get originalLanguage;
+  @JsonKey(name: "original_language")
+  set originalLanguage(String? value);
   @override
   @JsonKey(name: "first_air_date")
   String? get releaseDate;
+  @JsonKey(name: "first_air_date")
+  set releaseDate(String? value);
   @override
   @JsonKey(name: "number_of_episodes")
   int? get numberOfEpisodes;
+  @JsonKey(name: "number_of_episodes")
+  set numberOfEpisodes(int? value);
   @override
   @JsonKey(name: "number_of_seasons")
   int? get numberOfSeasons;
-  @override
-  @JsonKey(name: "aggregate_credits")
-  Credit? get credits;
+  @JsonKey(name: "number_of_seasons")
+  set numberOfSeasons(int? value);
   @override
   Video get videos;
+  set videos(Video value);
+  @override
+  @JsonKey(name: "aggregate_credits")
+  Credit get credits;
+  @JsonKey(name: "aggregate_credits")
+  set credits(Credit value);
   @override
   ReviewList get reviews;
+  set reviews(ReviewList value);
   @override
   TMDBTvList get similar;
+  set similar(TMDBTvList value);
+  @override
+  List<TvSeason> get seasons;
+  set seasons(List<TvSeason> value);
   @override
   @JsonKey(ignore: true)
   _$$_TvDetailCopyWith<_$_TvDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TvSeason _$TvSeasonFromJson(Map<String, dynamic> json) {
+  return _TvSeason.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TvSeason {
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "season_number")
+  int get seasonNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TvSeasonCopyWith<TvSeason> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TvSeasonCopyWith<$Res> {
+  factory $TvSeasonCopyWith(TvSeason value, $Res Function(TvSeason) then) =
+      _$TvSeasonCopyWithImpl<$Res, TvSeason>;
+  @useResult
+  $Res call({String name, @JsonKey(name: "season_number") int seasonNumber});
+}
+
+/// @nodoc
+class _$TvSeasonCopyWithImpl<$Res, $Val extends TvSeason>
+    implements $TvSeasonCopyWith<$Res> {
+  _$TvSeasonCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? seasonNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      seasonNumber: null == seasonNumber
+          ? _value.seasonNumber
+          : seasonNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TvSeasonCopyWith<$Res> implements $TvSeasonCopyWith<$Res> {
+  factory _$$_TvSeasonCopyWith(
+          _$_TvSeason value, $Res Function(_$_TvSeason) then) =
+      __$$_TvSeasonCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, @JsonKey(name: "season_number") int seasonNumber});
+}
+
+/// @nodoc
+class __$$_TvSeasonCopyWithImpl<$Res>
+    extends _$TvSeasonCopyWithImpl<$Res, _$_TvSeason>
+    implements _$$_TvSeasonCopyWith<$Res> {
+  __$$_TvSeasonCopyWithImpl(
+      _$_TvSeason _value, $Res Function(_$_TvSeason) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? seasonNumber = null,
+  }) {
+    return _then(_$_TvSeason(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      seasonNumber: null == seasonNumber
+          ? _value.seasonNumber
+          : seasonNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TvSeason extends _TvSeason {
+  const _$_TvSeason(
+      {required this.name,
+      @JsonKey(name: "season_number") required this.seasonNumber})
+      : super._();
+
+  factory _$_TvSeason.fromJson(Map<String, dynamic> json) =>
+      _$$_TvSeasonFromJson(json);
+
+  @override
+  final String name;
+  @override
+  @JsonKey(name: "season_number")
+  final int seasonNumber;
+
+  @override
+  String toString() {
+    return 'TvSeason(name: $name, seasonNumber: $seasonNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TvSeason &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.seasonNumber, seasonNumber) ||
+                other.seasonNumber == seasonNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, seasonNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TvSeasonCopyWith<_$_TvSeason> get copyWith =>
+      __$$_TvSeasonCopyWithImpl<_$_TvSeason>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TvSeasonToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TvSeason extends TvSeason {
+  const factory _TvSeason(
+          {required final String name,
+          @JsonKey(name: "season_number") required final int seasonNumber}) =
+      _$_TvSeason;
+  const _TvSeason._() : super._();
+
+  factory _TvSeason.fromJson(Map<String, dynamic> json) = _$_TvSeason.fromJson;
+
+  @override
+  String get name;
+  @override
+  @JsonKey(name: "season_number")
+  int get seasonNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TvSeasonCopyWith<_$_TvSeason> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TvEpisode _$TvEpisodeFromJson(Map<String, dynamic> json) {
+  return _TvEpisode.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TvEpisode {
+  String get name => throw _privateConstructorUsedError;
+  String get overview => throw _privateConstructorUsedError;
+  @JsonKey(name: "episode_number")
+  int? get episodeNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: "still_path")
+  String? get stillPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "season_number")
+  int get seasonNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TvEpisodeCopyWith<TvEpisode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TvEpisodeCopyWith<$Res> {
+  factory $TvEpisodeCopyWith(TvEpisode value, $Res Function(TvEpisode) then) =
+      _$TvEpisodeCopyWithImpl<$Res, TvEpisode>;
+  @useResult
+  $Res call(
+      {String name,
+      String overview,
+      @JsonKey(name: "episode_number") int? episodeNumber,
+      @JsonKey(name: "still_path") String? stillPath,
+      @JsonKey(name: "season_number") int seasonNumber});
+}
+
+/// @nodoc
+class _$TvEpisodeCopyWithImpl<$Res, $Val extends TvEpisode>
+    implements $TvEpisodeCopyWith<$Res> {
+  _$TvEpisodeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? overview = null,
+    Object? episodeNumber = freezed,
+    Object? stillPath = freezed,
+    Object? seasonNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
+      episodeNumber: freezed == episodeNumber
+          ? _value.episodeNumber
+          : episodeNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stillPath: freezed == stillPath
+          ? _value.stillPath
+          : stillPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seasonNumber: null == seasonNumber
+          ? _value.seasonNumber
+          : seasonNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TvEpisodeCopyWith<$Res> implements $TvEpisodeCopyWith<$Res> {
+  factory _$$_TvEpisodeCopyWith(
+          _$_TvEpisode value, $Res Function(_$_TvEpisode) then) =
+      __$$_TvEpisodeCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String name,
+      String overview,
+      @JsonKey(name: "episode_number") int? episodeNumber,
+      @JsonKey(name: "still_path") String? stillPath,
+      @JsonKey(name: "season_number") int seasonNumber});
+}
+
+/// @nodoc
+class __$$_TvEpisodeCopyWithImpl<$Res>
+    extends _$TvEpisodeCopyWithImpl<$Res, _$_TvEpisode>
+    implements _$$_TvEpisodeCopyWith<$Res> {
+  __$$_TvEpisodeCopyWithImpl(
+      _$_TvEpisode _value, $Res Function(_$_TvEpisode) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? overview = null,
+    Object? episodeNumber = freezed,
+    Object? stillPath = freezed,
+    Object? seasonNumber = null,
+  }) {
+    return _then(_$_TvEpisode(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
+      episodeNumber: freezed == episodeNumber
+          ? _value.episodeNumber
+          : episodeNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stillPath: freezed == stillPath
+          ? _value.stillPath
+          : stillPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seasonNumber: null == seasonNumber
+          ? _value.seasonNumber
+          : seasonNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TvEpisode extends _TvEpisode {
+  const _$_TvEpisode(
+      {required this.name,
+      required this.overview,
+      @JsonKey(name: "episode_number") this.episodeNumber,
+      @JsonKey(name: "still_path") this.stillPath,
+      @JsonKey(name: "season_number") required this.seasonNumber})
+      : super._();
+
+  factory _$_TvEpisode.fromJson(Map<String, dynamic> json) =>
+      _$$_TvEpisodeFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String overview;
+  @override
+  @JsonKey(name: "episode_number")
+  final int? episodeNumber;
+  @override
+  @JsonKey(name: "still_path")
+  final String? stillPath;
+  @override
+  @JsonKey(name: "season_number")
+  final int seasonNumber;
+
+  @override
+  String toString() {
+    return 'TvEpisode(name: $name, overview: $overview, episodeNumber: $episodeNumber, stillPath: $stillPath, seasonNumber: $seasonNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TvEpisode &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.overview, overview) ||
+                other.overview == overview) &&
+            (identical(other.episodeNumber, episodeNumber) ||
+                other.episodeNumber == episodeNumber) &&
+            (identical(other.stillPath, stillPath) ||
+                other.stillPath == stillPath) &&
+            (identical(other.seasonNumber, seasonNumber) ||
+                other.seasonNumber == seasonNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, name, overview, episodeNumber, stillPath, seasonNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TvEpisodeCopyWith<_$_TvEpisode> get copyWith =>
+      __$$_TvEpisodeCopyWithImpl<_$_TvEpisode>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TvEpisodeToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TvEpisode extends TvEpisode {
+  const factory _TvEpisode(
+          {required final String name,
+          required final String overview,
+          @JsonKey(name: "episode_number") final int? episodeNumber,
+          @JsonKey(name: "still_path") final String? stillPath,
+          @JsonKey(name: "season_number") required final int seasonNumber}) =
+      _$_TvEpisode;
+  const _TvEpisode._() : super._();
+
+  factory _TvEpisode.fromJson(Map<String, dynamic> json) =
+      _$_TvEpisode.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get overview;
+  @override
+  @JsonKey(name: "episode_number")
+  int? get episodeNumber;
+  @override
+  @JsonKey(name: "still_path")
+  String? get stillPath;
+  @override
+  @JsonKey(name: "season_number")
+  int get seasonNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TvEpisodeCopyWith<_$_TvEpisode> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2234,8 +2707,8 @@ Credit _$CreditFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Credit {
-  List<Cast> get cast => throw _privateConstructorUsedError;
-  List<Crew> get crew => throw _privateConstructorUsedError;
+  List<TMDBPerson> get cast => throw _privateConstructorUsedError;
+  List<TMDBPerson> get crew => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2247,7 +2720,7 @@ abstract class $CreditCopyWith<$Res> {
   factory $CreditCopyWith(Credit value, $Res Function(Credit) then) =
       _$CreditCopyWithImpl<$Res, Credit>;
   @useResult
-  $Res call({List<Cast> cast, List<Crew> crew});
+  $Res call({List<TMDBPerson> cast, List<TMDBPerson> crew});
 }
 
 /// @nodoc
@@ -2270,11 +2743,11 @@ class _$CreditCopyWithImpl<$Res, $Val extends Credit>
       cast: null == cast
           ? _value.cast
           : cast // ignore: cast_nullable_to_non_nullable
-              as List<Cast>,
+              as List<TMDBPerson>,
       crew: null == crew
           ? _value.crew
           : crew // ignore: cast_nullable_to_non_nullable
-              as List<Crew>,
+              as List<TMDBPerson>,
     ) as $Val);
   }
 }
@@ -2285,7 +2758,7 @@ abstract class _$$_CreditCopyWith<$Res> implements $CreditCopyWith<$Res> {
       __$$_CreditCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Cast> cast, List<Crew> crew});
+  $Res call({List<TMDBPerson> cast, List<TMDBPerson> crew});
 }
 
 /// @nodoc
@@ -2305,11 +2778,11 @@ class __$$_CreditCopyWithImpl<$Res>
       cast: null == cast
           ? _value._cast
           : cast // ignore: cast_nullable_to_non_nullable
-              as List<Cast>,
+              as List<TMDBPerson>,
       crew: null == crew
           ? _value._crew
           : crew // ignore: cast_nullable_to_non_nullable
-              as List<Crew>,
+              as List<TMDBPerson>,
     ));
   }
 }
@@ -2318,7 +2791,8 @@ class __$$_CreditCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Credit extends _Credit {
   const _$_Credit(
-      {final List<Cast> cast = const [], final List<Crew> crew = const []})
+      {final List<TMDBPerson> cast = const [],
+      final List<TMDBPerson> crew = const []})
       : _cast = cast,
         _crew = crew,
         super._();
@@ -2326,19 +2800,19 @@ class _$_Credit extends _Credit {
   factory _$_Credit.fromJson(Map<String, dynamic> json) =>
       _$$_CreditFromJson(json);
 
-  final List<Cast> _cast;
+  final List<TMDBPerson> _cast;
   @override
   @JsonKey()
-  List<Cast> get cast {
+  List<TMDBPerson> get cast {
     if (_cast is EqualUnmodifiableListView) return _cast;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cast);
   }
 
-  final List<Crew> _crew;
+  final List<TMDBPerson> _crew;
   @override
   @JsonKey()
-  List<Crew> get crew {
+  List<TMDBPerson> get crew {
     if (_crew is EqualUnmodifiableListView) return _crew;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_crew);
@@ -2380,416 +2854,20 @@ class _$_Credit extends _Credit {
 }
 
 abstract class _Credit extends Credit {
-  const factory _Credit({final List<Cast> cast, final List<Crew> crew}) =
-      _$_Credit;
+  const factory _Credit(
+      {final List<TMDBPerson> cast, final List<TMDBPerson> crew}) = _$_Credit;
   const _Credit._() : super._();
 
   factory _Credit.fromJson(Map<String, dynamic> json) = _$_Credit.fromJson;
 
   @override
-  List<Cast> get cast;
+  List<TMDBPerson> get cast;
   @override
-  List<Crew> get crew;
+  List<TMDBPerson> get crew;
   @override
   @JsonKey(ignore: true)
   _$$_CreditCopyWith<_$_Credit> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-Cast _$CastFromJson(Map<String, dynamic> json) {
-  return _Cast.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Cast {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get character => throw _privateConstructorUsedError;
-  @JsonKey(name: "profile_path")
-  String? get profileUrl => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CastCopyWith<Cast> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CastCopyWith<$Res> {
-  factory $CastCopyWith(Cast value, $Res Function(Cast) then) =
-      _$CastCopyWithImpl<$Res, Cast>;
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String? character,
-      @JsonKey(name: "profile_path") String? profileUrl});
-}
-
-/// @nodoc
-class _$CastCopyWithImpl<$Res, $Val extends Cast>
-    implements $CastCopyWith<$Res> {
-  _$CastCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? character = freezed,
-    Object? profileUrl = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      character: freezed == character
-          ? _value.character
-          : character // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileUrl: freezed == profileUrl
-          ? _value.profileUrl
-          : profileUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_CastCopyWith<$Res> implements $CastCopyWith<$Res> {
-  factory _$$_CastCopyWith(_$_Cast value, $Res Function(_$_Cast) then) =
-      __$$_CastCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String? character,
-      @JsonKey(name: "profile_path") String? profileUrl});
-}
-
-/// @nodoc
-class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res, _$_Cast>
-    implements _$$_CastCopyWith<$Res> {
-  __$$_CastCopyWithImpl(_$_Cast _value, $Res Function(_$_Cast) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? character = freezed,
-    Object? profileUrl = freezed,
-  }) {
-    return _then(_$_Cast(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      character: freezed == character
-          ? _value.character
-          : character // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileUrl: freezed == profileUrl
-          ? _value.profileUrl
-          : profileUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Cast extends _Cast {
-  const _$_Cast(
-      {required this.id,
-      required this.name,
-      this.character,
-      @JsonKey(name: "profile_path") this.profileUrl})
-      : super._();
-
-  factory _$_Cast.fromJson(Map<String, dynamic> json) => _$$_CastFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final String? character;
-  @override
-  @JsonKey(name: "profile_path")
-  final String? profileUrl;
-
-  @override
-  String toString() {
-    return 'Cast(id: $id, name: $name, character: $character, profileUrl: $profileUrl)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Cast &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.character, character) ||
-                other.character == character) &&
-            (identical(other.profileUrl, profileUrl) ||
-                other.profileUrl == profileUrl));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, character, profileUrl);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CastCopyWith<_$_Cast> get copyWith =>
-      __$$_CastCopyWithImpl<_$_Cast>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CastToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Cast extends Cast {
-  const factory _Cast(
-      {required final int id,
-      required final String name,
-      final String? character,
-      @JsonKey(name: "profile_path") final String? profileUrl}) = _$_Cast;
-  const _Cast._() : super._();
-
-  factory _Cast.fromJson(Map<String, dynamic> json) = _$_Cast.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get name;
-  @override
-  String? get character;
-  @override
-  @JsonKey(name: "profile_path")
-  String? get profileUrl;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CastCopyWith<_$_Cast> get copyWith => throw _privateConstructorUsedError;
-}
-
-Crew _$CrewFromJson(Map<String, dynamic> json) {
-  return _Crew.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Crew {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get character => throw _privateConstructorUsedError;
-  @JsonKey(name: "profile_path")
-  String? get profileUrl => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CrewCopyWith<Crew> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CrewCopyWith<$Res> {
-  factory $CrewCopyWith(Crew value, $Res Function(Crew) then) =
-      _$CrewCopyWithImpl<$Res, Crew>;
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String? character,
-      @JsonKey(name: "profile_path") String? profileUrl});
-}
-
-/// @nodoc
-class _$CrewCopyWithImpl<$Res, $Val extends Crew>
-    implements $CrewCopyWith<$Res> {
-  _$CrewCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? character = freezed,
-    Object? profileUrl = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      character: freezed == character
-          ? _value.character
-          : character // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileUrl: freezed == profileUrl
-          ? _value.profileUrl
-          : profileUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_CrewCopyWith<$Res> implements $CrewCopyWith<$Res> {
-  factory _$$_CrewCopyWith(_$_Crew value, $Res Function(_$_Crew) then) =
-      __$$_CrewCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String? character,
-      @JsonKey(name: "profile_path") String? profileUrl});
-}
-
-/// @nodoc
-class __$$_CrewCopyWithImpl<$Res> extends _$CrewCopyWithImpl<$Res, _$_Crew>
-    implements _$$_CrewCopyWith<$Res> {
-  __$$_CrewCopyWithImpl(_$_Crew _value, $Res Function(_$_Crew) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? character = freezed,
-    Object? profileUrl = freezed,
-  }) {
-    return _then(_$_Crew(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      character: freezed == character
-          ? _value.character
-          : character // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileUrl: freezed == profileUrl
-          ? _value.profileUrl
-          : profileUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Crew extends _Crew {
-  const _$_Crew(
-      {required this.id,
-      required this.name,
-      this.character,
-      @JsonKey(name: "profile_path") this.profileUrl})
-      : super._();
-
-  factory _$_Crew.fromJson(Map<String, dynamic> json) => _$$_CrewFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final String? character;
-  @override
-  @JsonKey(name: "profile_path")
-  final String? profileUrl;
-
-  @override
-  String toString() {
-    return 'Crew(id: $id, name: $name, character: $character, profileUrl: $profileUrl)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Crew &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.character, character) ||
-                other.character == character) &&
-            (identical(other.profileUrl, profileUrl) ||
-                other.profileUrl == profileUrl));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, character, profileUrl);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CrewCopyWith<_$_Crew> get copyWith =>
-      __$$_CrewCopyWithImpl<_$_Crew>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CrewToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Crew extends Crew {
-  const factory _Crew(
-      {required final int id,
-      required final String name,
-      final String? character,
-      @JsonKey(name: "profile_path") final String? profileUrl}) = _$_Crew;
-  const _Crew._() : super._();
-
-  factory _Crew.fromJson(Map<String, dynamic> json) = _$_Crew.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get name;
-  @override
-  String? get character;
-  @override
-  @JsonKey(name: "profile_path")
-  String? get profileUrl;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CrewCopyWith<_$_Crew> get copyWith => throw _privateConstructorUsedError;
 }
 
 TMDBSearchResult _$TMDBSearchResultFromJson(Map<String, dynamic> json) {
@@ -3452,12 +3530,10 @@ mixin _$TMDBPerson {
   @JsonKey(name: "known_for_department")
   String? get knownForDepartment => throw _privateConstructorUsedError;
   @JsonKey(name: "known_for_department")
-  set knownForDepartment(String? value) =>
-      throw _privateConstructorUsedError; // @JsonKey(name: "known_for")
-//     List<TMDBMovie>? knownFor,
-  String get name =>
-      throw _privateConstructorUsedError; // @JsonKey(name: "known_for")
-//     List<TMDBMovie>? knownFor,
+  set knownForDepartment(String? value) => throw _privateConstructorUsedError;
+  String? get character => throw _privateConstructorUsedError;
+  set character(String? value) => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   set name(String value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -3476,6 +3552,7 @@ abstract class $TMDBPersonCopyWith<$Res> {
       {int id,
       @JsonKey(name: "profile_path") String? profilePath,
       @JsonKey(name: "known_for_department") String? knownForDepartment,
+      String? character,
       String name});
 }
 
@@ -3495,6 +3572,7 @@ class _$TMDBPersonCopyWithImpl<$Res, $Val extends TMDBPerson>
     Object? id = null,
     Object? profilePath = freezed,
     Object? knownForDepartment = freezed,
+    Object? character = freezed,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
@@ -3509,6 +3587,10 @@ class _$TMDBPersonCopyWithImpl<$Res, $Val extends TMDBPerson>
       knownForDepartment: freezed == knownForDepartment
           ? _value.knownForDepartment
           : knownForDepartment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      character: freezed == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
               as String?,
       name: null == name
           ? _value.name
@@ -3530,6 +3612,7 @@ abstract class _$$_TMDBPersonCopyWith<$Res>
       {int id,
       @JsonKey(name: "profile_path") String? profilePath,
       @JsonKey(name: "known_for_department") String? knownForDepartment,
+      String? character,
       String name});
 }
 
@@ -3547,6 +3630,7 @@ class __$$_TMDBPersonCopyWithImpl<$Res>
     Object? id = null,
     Object? profilePath = freezed,
     Object? knownForDepartment = freezed,
+    Object? character = freezed,
     Object? name = null,
   }) {
     return _then(_$_TMDBPerson(
@@ -3561,6 +3645,10 @@ class __$$_TMDBPersonCopyWithImpl<$Res>
       knownForDepartment: freezed == knownForDepartment
           ? _value.knownForDepartment
           : knownForDepartment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      character: freezed == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
               as String?,
       name: null == name
           ? _value.name
@@ -3577,6 +3665,7 @@ class _$_TMDBPerson extends _TMDBPerson {
       {required this.id,
       @JsonKey(name: "profile_path") this.profilePath,
       @JsonKey(name: "known_for_department") this.knownForDepartment = "Person",
+      this.character,
       required this.name})
       : super._();
 
@@ -3591,14 +3680,14 @@ class _$_TMDBPerson extends _TMDBPerson {
   @override
   @JsonKey(name: "known_for_department")
   String? knownForDepartment;
-// @JsonKey(name: "known_for")
-//     List<TMDBMovie>? knownFor,
+  @override
+  String? character;
   @override
   String name;
 
   @override
   String toString() {
-    return 'TMDBPerson(id: $id, profilePath: $profilePath, knownForDepartment: $knownForDepartment, name: $name)';
+    return 'TMDBPerson(id: $id, profilePath: $profilePath, knownForDepartment: $knownForDepartment, character: $character, name: $name)';
   }
 
   @JsonKey(ignore: true)
@@ -3620,6 +3709,7 @@ abstract class _TMDBPerson extends TMDBPerson {
       {required int id,
       @JsonKey(name: "profile_path") String? profilePath,
       @JsonKey(name: "known_for_department") String? knownForDepartment,
+      String? character,
       required String name}) = _$_TMDBPerson;
   _TMDBPerson._() : super._();
 
@@ -3639,13 +3729,179 @@ abstract class _TMDBPerson extends TMDBPerson {
   String? get knownForDepartment;
   @JsonKey(name: "known_for_department")
   set knownForDepartment(String? value);
-  @override // @JsonKey(name: "known_for")
-//     List<TMDBMovie>? knownFor,
-  String get name; // @JsonKey(name: "known_for")
-//     List<TMDBMovie>? knownFor,
+  @override
+  String? get character;
+  set character(String? value);
+  @override
+  String get name;
   set name(String value);
   @override
   @JsonKey(ignore: true)
   _$$_TMDBPersonCopyWith<_$_TMDBPerson> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PersonCredits _$PersonCreditsFromJson(Map<String, dynamic> json) {
+  return _PersonCredits.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PersonCredits {
+  @JsonKey(name: "movie_credits")
+  List<TMDBMovie> get movieCredits => throw _privateConstructorUsedError;
+  @JsonKey(name: "movie_credits")
+  set movieCredits(List<TMDBMovie> value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "tv_credits")
+  List<TMDBTv> get tvCredits => throw _privateConstructorUsedError;
+  @JsonKey(name: "tv_credits")
+  set tvCredits(List<TMDBTv> value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PersonCreditsCopyWith<PersonCredits> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PersonCreditsCopyWith<$Res> {
+  factory $PersonCreditsCopyWith(
+          PersonCredits value, $Res Function(PersonCredits) then) =
+      _$PersonCreditsCopyWithImpl<$Res, PersonCredits>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "movie_credits") List<TMDBMovie> movieCredits,
+      @JsonKey(name: "tv_credits") List<TMDBTv> tvCredits});
+}
+
+/// @nodoc
+class _$PersonCreditsCopyWithImpl<$Res, $Val extends PersonCredits>
+    implements $PersonCreditsCopyWith<$Res> {
+  _$PersonCreditsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movieCredits = null,
+    Object? tvCredits = null,
+  }) {
+    return _then(_value.copyWith(
+      movieCredits: null == movieCredits
+          ? _value.movieCredits
+          : movieCredits // ignore: cast_nullable_to_non_nullable
+              as List<TMDBMovie>,
+      tvCredits: null == tvCredits
+          ? _value.tvCredits
+          : tvCredits // ignore: cast_nullable_to_non_nullable
+              as List<TMDBTv>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PersonCreditsCopyWith<$Res>
+    implements $PersonCreditsCopyWith<$Res> {
+  factory _$$_PersonCreditsCopyWith(
+          _$_PersonCredits value, $Res Function(_$_PersonCredits) then) =
+      __$$_PersonCreditsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "movie_credits") List<TMDBMovie> movieCredits,
+      @JsonKey(name: "tv_credits") List<TMDBTv> tvCredits});
+}
+
+/// @nodoc
+class __$$_PersonCreditsCopyWithImpl<$Res>
+    extends _$PersonCreditsCopyWithImpl<$Res, _$_PersonCredits>
+    implements _$$_PersonCreditsCopyWith<$Res> {
+  __$$_PersonCreditsCopyWithImpl(
+      _$_PersonCredits _value, $Res Function(_$_PersonCredits) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movieCredits = null,
+    Object? tvCredits = null,
+  }) {
+    return _then(_$_PersonCredits(
+      movieCredits: null == movieCredits
+          ? _value.movieCredits
+          : movieCredits // ignore: cast_nullable_to_non_nullable
+              as List<TMDBMovie>,
+      tvCredits: null == tvCredits
+          ? _value.tvCredits
+          : tvCredits // ignore: cast_nullable_to_non_nullable
+              as List<TMDBTv>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PersonCredits extends _PersonCredits {
+  _$_PersonCredits(
+      {@JsonKey(name: "movie_credits") required this.movieCredits,
+      @JsonKey(name: "tv_credits") required this.tvCredits})
+      : super._();
+
+  factory _$_PersonCredits.fromJson(Map<String, dynamic> json) =>
+      _$$_PersonCreditsFromJson(json);
+
+  @override
+  @JsonKey(name: "movie_credits")
+  List<TMDBMovie> movieCredits;
+  @override
+  @JsonKey(name: "tv_credits")
+  List<TMDBTv> tvCredits;
+
+  @override
+  String toString() {
+    return 'PersonCredits(movieCredits: $movieCredits, tvCredits: $tvCredits)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PersonCreditsCopyWith<_$_PersonCredits> get copyWith =>
+      __$$_PersonCreditsCopyWithImpl<_$_PersonCredits>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PersonCreditsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PersonCredits extends PersonCredits {
+  factory _PersonCredits(
+      {@JsonKey(name: "movie_credits")
+          required List<TMDBMovie> movieCredits,
+      @JsonKey(name: "tv_credits")
+          required List<TMDBTv> tvCredits}) = _$_PersonCredits;
+  _PersonCredits._() : super._();
+
+  factory _PersonCredits.fromJson(Map<String, dynamic> json) =
+      _$_PersonCredits.fromJson;
+
+  @override
+  @JsonKey(name: "movie_credits")
+  List<TMDBMovie> get movieCredits;
+  @JsonKey(name: "movie_credits")
+  set movieCredits(List<TMDBMovie> value);
+  @override
+  @JsonKey(name: "tv_credits")
+  List<TMDBTv> get tvCredits;
+  @JsonKey(name: "tv_credits")
+  set tvCredits(List<TMDBTv> value);
+  @override
+  @JsonKey(ignore: true)
+  _$$_PersonCreditsCopyWith<_$_PersonCredits> get copyWith =>
       throw _privateConstructorUsedError;
 }
