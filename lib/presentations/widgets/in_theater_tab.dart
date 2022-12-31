@@ -43,92 +43,98 @@ class _InTheaterTabState extends State<InTheaterTab>
     context.read<OrderBloc>().add(OrderEvent.selectDate(
         date: DateFormat("yyyy-MM-dd").format(dates[selected])));
     double dateCardWidth = 50;
-    return Scaffold(
-      appBar: PreferredSize(
+    return Column(children: [
+      PreferredSize(
           preferredSize: tabBar.preferredSize,
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: tabBar,
           )),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          const TabDetail(),
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
-                  child: Text(
-                    "Select Date",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+      SizedBox(
+        height: 1000,
+        child: TabBarView(
+          controller: _tabController,
+          children: [
+            const TabDetail(),
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
+                    child: Text(
+                      "Select Date",
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                    ),
                   ),
-                ),
-                Center(
-                  child: Card(
-                    child: SizedBox(
-                      height: 60,
-                      width: dateCardWidth * dates.length,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: dates.length,
-                        itemBuilder: (_, index) => GestureDetector(
-                          onTap: () {
-                            context.read<OrderBloc>().add(OrderEvent.selectDate(
-                                date: DateFormat("yyyy-mm-dd")
-                                    .format(dates[selected])));
-                            setState(() {
-                              selected = index;
-                            });
-                          },
-                          child: Container(
-                              width: dateCardWidth,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: selected == index
-                                    ? Colors.blue
-                                    : Colors.transparent,
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    DateFormat('EEE').format(dates[index]),
-                                    style: TextStyle(
-                                        color: selected == index
-                                            ? Colors.white
-                                            : Colors.black45,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  Text("${dates[index].day}",
+                  Center(
+                    child: Card(
+                      child: SizedBox(
+                        height: 60,
+                        width: dateCardWidth * dates.length,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: dates.length,
+                          itemBuilder: (_, index) => GestureDetector(
+                            onTap: () {
+                              context.read<OrderBloc>().add(
+                                  OrderEvent.selectDate(
+                                      date: DateFormat("yyyy-mm-dd")
+                                          .format(dates[selected])));
+                              setState(() {
+                                selected = index;
+                              });
+                            },
+                            child: Container(
+                                width: dateCardWidth,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: selected == index
+                                      ? Colors.blue
+                                      : Colors.transparent,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      DateFormat('EEE').format(dates[index]),
                                       style: TextStyle(
                                           color: selected == index
                                               ? Colors.white
                                               : Colors.black45,
-                                          fontSize: 16))
-                                ],
-                              )),
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    Text("${dates[index].day}",
+                                        style: TextStyle(
+                                            color: selected == index
+                                                ? Colors.white
+                                                : Colors.black45,
+                                            fontSize: 16))
+                                  ],
+                                )),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(16, 16, 0, 16),
-                  child: Text(
-                    "Cinema",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 16, 0, 16),
+                    child: Text(
+                      "Cinema",
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                    ),
                   ),
-                ),
-                const CinemaSchedule(),
-              ],
-            ),
-          )
-        ],
+                  const CinemaSchedule(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
-    );
+    ]);
   }
 }
 

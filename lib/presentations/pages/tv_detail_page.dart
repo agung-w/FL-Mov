@@ -56,9 +56,16 @@ class TvDetailPage extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                          "${genre ?? value.value.genres.elementAt(0).name} · ",
-                                          style: shadeSmallText),
+                                      if (genre != null) ...{
+                                        Text("$genre · ",
+                                            style: shadeSmallText),
+                                      } else ...{
+                                        (value.value.genres.isNotEmpty)
+                                            ? Text(
+                                                "${genre ?? value.value.genres.elementAt(0).name} · ",
+                                                style: shadeSmallText)
+                                            : const Text("")
+                                      },
                                       if (value.value.releaseDate != null) ...{
                                         Text(
                                           DateFormat("dd MMM yyyy").format(

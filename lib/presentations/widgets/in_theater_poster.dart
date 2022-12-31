@@ -6,6 +6,7 @@ import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
+import 'package:movie_app/presentations/widgets/rating_box.dart';
 import 'package:shimmer/shimmer.dart';
 
 class InTheaterPoster extends StatelessWidget {
@@ -26,8 +27,7 @@ class InTheaterPoster extends StatelessWidget {
                 .read<MovieDetailBloc>()
                 .add(MovieDetailEvent.getDetail(int.parse(movie.tmdbId)));
             context.read<OrderBloc>().add(OrderEvent.selectMovie(movie: movie));
-            Navigator.push(
-              context,
+            Navigator.of(context, rootNavigator: true).push(
               MaterialPageRoute(
                   builder: (context) => InTheaterDetailPage(
                         movie: movie,
@@ -119,15 +119,9 @@ class InTheaterPoster extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-            child: Row(
-              children: [
-                Image.asset(
-                  'assets/tmdb.png',
-                  width: 65,
-                  height: 35,
-                ),
-                Text(movie.rating.toString())
-              ],
+            child: RatingBox(
+              rating: movie.rating,
+              size: 18,
             ),
           )
         ]

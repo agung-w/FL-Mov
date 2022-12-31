@@ -56,7 +56,7 @@ class SearchedPage extends StatelessWidget {
                               if (value.results.inTheaterList.isNotEmpty) ...{
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(16, 0, 16, 5),
+                                      const EdgeInsets.fromLTRB(16, 0, 16, 16),
                                   child: Text(
                                     "In Theater Now",
                                     style: mediumTitle,
@@ -76,8 +76,9 @@ class SearchedPage extends StatelessWidget {
                                                   int.parse(e.tmdbId)));
                                           context.read<OrderBloc>().add(
                                               OrderEvent.selectMovie(movie: e));
-                                          Navigator.push(
-                                            context,
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     InTheaterDetailPage(

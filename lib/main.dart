@@ -9,6 +9,7 @@ import 'package:movie_app/bloc/ticket_bloc.dart';
 import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
+import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/pages/main_page.dart';
 
 Future<void> main() async {
@@ -52,10 +53,15 @@ class MyApp extends StatelessWidget {
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                  side: const BorderSide(color: Colors.black, width: 0.5),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
                   foregroundColor: Colors.black,
                   backgroundColor: Colors.white,
-                  textStyle: const TextStyle(fontWeight: FontWeight.w600)),
+                  padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                  textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black87)),
             )),
         home: const MainPage(),
       ),

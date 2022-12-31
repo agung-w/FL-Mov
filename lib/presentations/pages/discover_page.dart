@@ -21,9 +21,9 @@ class DiscoverPage extends StatelessWidget {
             automaticallyImplyLeading: false,
             backgroundColor: Colors.grey.withOpacity(0.3),
             pinned: true,
-            expandedHeight: 160.0,
+            expandedHeight: 145.0,
             bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(60),
+                preferredSize: const Size.fromHeight(45),
                 child: InkWell(
                   onTap: () {
                     showDialog(
