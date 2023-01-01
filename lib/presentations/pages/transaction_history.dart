@@ -4,6 +4,7 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/entities/transaction.dart';
+import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/widgets/transaction_history_card.dart';
 
 class TransactionHistory extends StatelessWidget {
@@ -32,7 +33,11 @@ class TransactionHistory extends StatelessWidget {
                                 element.getDate().day.toString().length == 1
                                     ? "0${element.getDate().day}"
                                     : element.getDate().day.toString();
-                            return '${element.getDate().year}${element.getDate().month}$day';
+                            String month =
+                                element.getDate().month.toString().length == 1
+                                    ? "0${element.getDate().month}"
+                                    : element.getDate().month.toString();
+                            return '${element.getDate().year}$month$day';
                           },
                           order: GroupedListOrder.DESC,
                           sort: false,
@@ -42,8 +47,7 @@ class TransactionHistory extends StatelessWidget {
                               child: Text(
                                 DateFormat.yMMMEd()
                                     .format(DateTime.parse(value)),
-                                style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
+                                style: mediumTitle,
                               ),
                             );
                           },

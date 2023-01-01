@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/entities/transaction.dart';
+import 'package:movie_app/presentations/helper/text_style.dart';
 
 class TransactionHistoryCard extends StatelessWidget {
   final Transaction transaction;
@@ -55,7 +56,7 @@ class TransactionHistoryCard extends StatelessWidget {
                   child: Text(
                     "${transaction.transactionType}",
                     style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                        fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Text("${transaction.transactionMethod}")
@@ -82,7 +83,21 @@ class TransactionHistoryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(transaction.toCurrencyID(transaction.total)),
+                  if (transaction.transactionType == "BUY TICKET" &&
+                      transaction.transactionMethod == "Wallet") ...{
+                    Text(transaction.toCurrencyID(transaction.total),
+                        style: normalText
+                            .merge(const TextStyle(color: Colors.red))),
+                  } else if (transaction.transactionType == "TOP UP") ...{
+                    Text(transaction.toCurrencyID(transaction.total),
+                        style: normalText
+                            .merge(const TextStyle(color: Colors.green))),
+                  } else ...{
+                    Text(
+                      transaction.toCurrencyID(transaction.total),
+                      style: normalText,
+                    )
+                  },
                   if (transaction.transactionType == "BUY TICKET" &&
                       transaction.transactionMethod != "Wallet") ...{
                     Padding(
