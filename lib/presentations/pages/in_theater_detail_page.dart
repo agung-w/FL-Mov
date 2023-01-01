@@ -7,6 +7,7 @@ import 'package:movie_app/bloc/movie_detail_bloc.dart';
 import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/helper/text_style.dart';
+import 'package:movie_app/presentations/pages/login_page.dart';
 import 'package:movie_app/presentations/pages/select_ticket_schedule_page.dart';
 import 'package:movie_app/presentations/widgets/clickable_poster_card.dart';
 import 'package:movie_app/presentations/widgets/draggable_sheet.dart';
@@ -14,6 +15,7 @@ import 'package:movie_app/presentations/widgets/rating_box.dart';
 import 'package:movie_app/presentations/widgets/review_card.dart';
 import 'package:movie_app/presentations/widgets/vertical_person_card.dart';
 import 'package:movie_app/presentations/widgets/youtube_video_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class InTheaterDetailPage extends StatelessWidget {
   final Movie movie;
@@ -99,7 +101,7 @@ class InTheaterDetailPage extends StatelessWidget {
                                                                         context)
                                                                     .size
                                                                     .height *
-                                                                0.2,
+                                                                0.185,
                                                             decoration:
                                                                 BoxDecoration(
                                                                     gradient: LinearGradient(
@@ -167,11 +169,7 @@ class InTheaterDetailPage extends StatelessWidget {
                                                                         .releaseDate !=
                                                                     null) ...{
                                                                   Text(
-                                                                    DateFormat(
-                                                                            "dd MMM yyyy")
-                                                                        .format(DateTime.parse(value
-                                                                            .value
-                                                                            .releaseDate!)),
+                                                                    "${DateFormat("dd MMM yyyy").format(DateTime.parse(value.value.releaseDate!))} · ",
                                                                     style: shadeSmallText
                                                                         .merge(
                                                                             const TextStyle(
@@ -179,8 +177,6 @@ class InTheaterDetailPage extends StatelessWidget {
                                                                           .white60,
                                                                     )),
                                                                   ),
-                                                                  const Text(
-                                                                      " · ")
                                                                 },
                                                                 Text(
                                                                   "${value.value.runtime} minutes",
@@ -193,28 +189,7 @@ class InTheaterDetailPage extends StatelessWidget {
                                                                 ),
                                                               },
                                                             ]),
-                                                        Container(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 5,
-                                                                  bottom: 16),
-                                                          width:
-                                                              double.infinity,
-                                                          child: ElevatedButton(
-                                                              onPressed: () {
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .push(
-                                                                  MaterialPageRoute(
-                                                                    builder: (_) =>
-                                                                        const SelectTicketSchedulePage(),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: const Text(
-                                                                  "Buy Ticket Now")),
-                                                        ),
+                                                        const _BuyTicketButton(),
                                                         GestureDetector(
                                                           onTap: () {
                                                             showModalBottomSheet(
@@ -493,6 +468,40 @@ class InTheaterDetailPage extends StatelessWidget {
                           ))))),
         );
       },
+    );
+  }
+}
+
+class _BuyTicketButton extends StatelessWidget {
+  const _BuyTicketButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(top: 5, bottom: 16),
+      width: double.infinity,
+      child: FutureBuilder(
+          future: SharedPreferences.getInstance()
+              .then((value) => value.getString('token')),
+          builder: (context, snapshot) {
+            return ElevatedButton(
+                onPressed: snapshot.hasData
+                    ? () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const SelectTicketSchedulePage(),
+                          ),
+                        );
+                      }
+                    : () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const LoginPage(),
+                          ),
+                        );
+                      },
+                child: const Text("Buy Ticket Now"));
+          }),
     );
   }
 }
