@@ -1049,7 +1049,8 @@ mixin _$SearchState {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)
+            String query,
+            int index)
         loaded,
     required TResult Function(String message) loadFailed,
   }) =>
@@ -1063,7 +1064,8 @@ mixin _$SearchState {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult? Function(String message)? loadFailed,
   }) =>
@@ -1077,7 +1079,8 @@ mixin _$SearchState {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),
@@ -1169,7 +1172,8 @@ class _$_Initial implements _Initial {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)
+            String query,
+            int index)
         loaded,
     required TResult Function(String message) loadFailed,
   }) {
@@ -1186,7 +1190,8 @@ class _$_Initial implements _Initial {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult? Function(String message)? loadFailed,
   }) {
@@ -1203,7 +1208,8 @@ class _$_Initial implements _Initial {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),
@@ -1264,7 +1270,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
       List<TMDBTv> tvShowList,
       List<TMDBPerson> personList,
       List<Movie> inTheaterList,
-      String query});
+      String query,
+      int index});
 
   $TMDBSearchResultCopyWith<$Res> get results;
 }
@@ -1285,6 +1292,7 @@ class __$$_LoadedCopyWithImpl<$Res>
     Object? personList = null,
     Object? inTheaterList = null,
     Object? query = null,
+    Object? index = null,
   }) {
     return _then(_$_Loaded(
       results: null == results
@@ -1311,6 +1319,10 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -1332,7 +1344,8 @@ class _$_Loaded implements _Loaded {
       final List<TMDBTv> tvShowList = const [],
       final List<TMDBPerson> personList = const [],
       final List<Movie> inTheaterList = const [],
-      required this.query})
+      required this.query,
+      required this.index})
       : _movieList = movieList,
         _tvShowList = tvShowList,
         _personList = personList,
@@ -1378,10 +1391,12 @@ class _$_Loaded implements _Loaded {
 
   @override
   final String query;
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'SearchState.loaded(results: $results, movieList: $movieList, tvShowList: $tvShowList, personList: $personList, inTheaterList: $inTheaterList, query: $query)';
+    return 'SearchState.loaded(results: $results, movieList: $movieList, tvShowList: $tvShowList, personList: $personList, inTheaterList: $inTheaterList, query: $query, index: $index)';
   }
 
   @override
@@ -1398,7 +1413,8 @@ class _$_Loaded implements _Loaded {
                 .equals(other._personList, _personList) &&
             const DeepCollectionEquality()
                 .equals(other._inTheaterList, _inTheaterList) &&
-            (identical(other.query, query) || other.query == query));
+            (identical(other.query, query) || other.query == query) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
@@ -1409,7 +1425,8 @@ class _$_Loaded implements _Loaded {
       const DeepCollectionEquality().hash(_tvShowList),
       const DeepCollectionEquality().hash(_personList),
       const DeepCollectionEquality().hash(_inTheaterList),
-      query);
+      query,
+      index);
 
   @JsonKey(ignore: true)
   @override
@@ -1427,12 +1444,13 @@ class _$_Loaded implements _Loaded {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)
+            String query,
+            int index)
         loaded,
     required TResult Function(String message) loadFailed,
   }) {
-    return loaded(
-        results, movieList, tvShowList, personList, inTheaterList, query);
+    return loaded(results, movieList, tvShowList, personList, inTheaterList,
+        query, index);
   }
 
   @override
@@ -1445,12 +1463,13 @@ class _$_Loaded implements _Loaded {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult? Function(String message)? loadFailed,
   }) {
-    return loaded?.call(
-        results, movieList, tvShowList, personList, inTheaterList, query);
+    return loaded?.call(results, movieList, tvShowList, personList,
+        inTheaterList, query, index);
   }
 
   @override
@@ -1463,14 +1482,15 @@ class _$_Loaded implements _Loaded {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(
-          results, movieList, tvShowList, personList, inTheaterList, query);
+      return loaded(results, movieList, tvShowList, personList, inTheaterList,
+          query, index);
     }
     return orElse();
   }
@@ -1517,7 +1537,8 @@ abstract class _Loaded implements SearchState {
       final List<TMDBTv> tvShowList,
       final List<TMDBPerson> personList,
       final List<Movie> inTheaterList,
-      required final String query}) = _$_Loaded;
+      required final String query,
+      required final int index}) = _$_Loaded;
 
   TMDBSearchResult get results;
   List<TMDBMovie> get movieList;
@@ -1525,6 +1546,7 @@ abstract class _Loaded implements SearchState {
   List<TMDBPerson> get personList;
   List<Movie> get inTheaterList;
   String get query;
+  int get index;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1601,7 +1623,8 @@ class _$_LoadFailed implements _LoadFailed {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)
+            String query,
+            int index)
         loaded,
     required TResult Function(String message) loadFailed,
   }) {
@@ -1618,7 +1641,8 @@ class _$_LoadFailed implements _LoadFailed {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult? Function(String message)? loadFailed,
   }) {
@@ -1635,7 +1659,8 @@ class _$_LoadFailed implements _LoadFailed {
             List<TMDBTv> tvShowList,
             List<TMDBPerson> personList,
             List<Movie> inTheaterList,
-            String query)?
+            String query,
+            int index)?
         loaded,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),

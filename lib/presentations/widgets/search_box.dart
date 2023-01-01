@@ -9,8 +9,14 @@ class SearchBox extends StatelessWidget {
 
   final TextEditingController? controller;
 
+  final int? index;
+
   const SearchBox(
-      {super.key, required this.readOnly, this.autoFocus, this.controller});
+      {super.key,
+      required this.readOnly,
+      this.autoFocus,
+      this.controller,
+      this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +44,39 @@ class SearchBox extends StatelessWidget {
               hintStyle: TextStyle(color: Colors.black38),
               hintText: "Show, Movie, etc."),
           onSubmitted: (!readOnly)
-              ? (value) async => value.isNotEmpty
-                  ? context.read<SearchBloc>().add(SearchEvent.topSearch(value))
-                  : null
+              ? (value) async {
+                  if (value.isNotEmpty) {
+                    switch (index) {
+                      case 0:
+                        context
+                            .read<SearchBloc>()
+                            .add(SearchEvent.topSearch(value));
+                        break;
+                      case 1:
+                        context
+                            .read<SearchBloc>()
+                            .add(SearchEvent.movieSearch(value));
+                        break;
+                      case 2:
+                        context
+                            .read<SearchBloc>()
+                            .add(SearchEvent.tvSearch(value));
+                        break;
+                      case 3:
+                        context
+                            .read<SearchBloc>()
+                            .add(SearchEvent.personSearch(value));
+                        break;
+                      default:
+                        context
+                            .read<SearchBloc>()
+                            .add(SearchEvent.topSearch(value));
+                        break;
+                    }
+                  } else {
+                    null;
+                  }
+                }
               : null),
     );
   }

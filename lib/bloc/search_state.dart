@@ -9,6 +9,7 @@ class SearchState with _$SearchState {
       @Default([]) List<TMDBTv> tvShowList,
       @Default([]) List<TMDBPerson> personList,
       @Default([]) List<Movie> inTheaterList,
-      required String query}) = _Loaded;
+      required String query,
+      required int index}) = _Loaded;
   const factory SearchState.loadFailed({required String message}) = _LoadFailed;
 }

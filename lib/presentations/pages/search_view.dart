@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/bloc/movie_detail_bloc.dart';
+import 'package:movie_app/bloc/order_bloc.dart';
 import 'package:movie_app/bloc/search_bloc.dart';
 import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/pages/in_theater_detail_page.dart';
@@ -95,6 +97,9 @@ class SearchView extends StatelessWidget {
                           ) ??
                           true,
                       controller: query,
+                      index: state.mapOrNull(
+                        loaded: (value) => value.index,
+                      ),
                     ),
                   ),
                 ),
@@ -130,6 +135,12 @@ class SearchView extends StatelessWidget {
                                       children: result.inTheaterList.map((e) {
                                         return InkWell(
                                           onTap: () {
+                                            context.read<MovieDetailBloc>().add(
+                                                MovieDetailEvent.getDetail(
+                                                    int.parse(e.tmdbId)));
+                                            context.read<OrderBloc>().add(
+                                                OrderEvent.selectMovie(
+                                                    movie: e));
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(

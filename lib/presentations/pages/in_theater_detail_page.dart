@@ -14,7 +14,6 @@ import 'package:movie_app/presentations/widgets/rating_box.dart';
 import 'package:movie_app/presentations/widgets/review_card.dart';
 import 'package:movie_app/presentations/widgets/vertical_person_card.dart';
 import 'package:movie_app/presentations/widgets/youtube_video_card.dart';
-import 'package:movie_app/services/cinema_services.dart';
 
 class InTheaterDetailPage extends StatelessWidget {
   final Movie movie;

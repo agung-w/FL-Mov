@@ -30,7 +30,10 @@ class DiscoverPage extends StatelessWidget {
                         context: context,
                         builder: (builder) => const SearchView());
                   },
-                  child: const IgnorePointer(child: SearchBox(readOnly: true)),
+                  child: const IgnorePointer(
+                      child: SearchBox(
+                    readOnly: true,
+                  )),
                 )),
             flexibleSpace: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
