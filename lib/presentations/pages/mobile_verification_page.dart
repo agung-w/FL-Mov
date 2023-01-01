@@ -1,10 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/widgets/filled_otp_input.dart';
 
 class MobileVerificationPage extends StatefulWidget {
   final String phoneNumber;
 
-  const MobileVerificationPage({Key? key, required this.phoneNumber})
+  final String name;
+
+  const MobileVerificationPage(
+      {Key? key, required this.phoneNumber, required this.name})
       : super(key: key);
 
   @override
@@ -13,6 +20,39 @@ class MobileVerificationPage extends StatefulWidget {
 
 class _MobileVerificationPageState extends State<MobileVerificationPage>
     with AutomaticKeepAliveClientMixin {
+  late Timer _timer;
+  int _start = 30;
+
+  void startTimer() {
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    startTimer();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -66,13 +106,27 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
               ),
             ),
             GestureDetector(
-              onTap: () {},
-              child: const Text(
-                'Resend',
+              onTap: _start == 0
+                  ? () {
+                      setState(() {
+                        _start = 30;
+                        startTimer();
+                      });
+                      context.read<UserBloc>().add(
+                          UserEvent.resendVerificationCode(
+                              int.parse(widget.phoneNumber).toString(),
+                              widget.name,
+                              context));
+                    }
+                  : null,
+              child: Text(
+                _start == 0 ? 'Resend' : '$_start s Resend',
                 style: TextStyle(
                   fontSize: 16,
                   decoration: TextDecoration.underline,
-                  color: Color.fromRGBO(62, 116, 165, 1),
+                  color: _start == 0
+                      ? const Color.fromRGBO(62, 116, 165, 1)
+                      : Colors.grey,
                 ),
               ),
             ),

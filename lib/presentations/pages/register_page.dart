@@ -33,27 +33,20 @@ class _RegisterPageState extends State<RegisterPage> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Column(children: [
-            TextInputForm(
-              hint: "Name",
-              controller: name,
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: TextInputForm(
+                hint: "Name",
+                controller: name,
+              ),
             ),
-            PhoneInputForm(
-              controller: phone,
+            Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 32),
+              child: PhoneInputForm(
+                controller: phone,
+              ),
             ),
 
-            SizedBox(
-              height: 40,
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: Row(children: [
-                const Text("Forgot password?"),
-                GestureDetector(
-                    onTap: () {},
-                    child: const Text(
-                      " reset",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
-              ]),
-            ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

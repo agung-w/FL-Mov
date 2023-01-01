@@ -10,6 +10,9 @@ class UserEvent with _$UserEvent {
   const factory UserEvent.checkSignInStatus() = _CheckSignInStatus;
   const factory UserEvent.registerInit(
       String phone, String name, BuildContext context) = _RegisterInit;
+  const factory UserEvent.resendVerificationCode(
+          String phone, String name, BuildContext context) =
+      _ResendVerificationCode;
   const factory UserEvent.registerVerif(
       String phone, String code, BuildContext context) = _RegisterVerif;
   const factory UserEvent.registerConfirm(String phone, String password,

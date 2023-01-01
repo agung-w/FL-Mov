@@ -25,6 +25,8 @@ mixin _$UserEvent {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -40,6 +42,8 @@ mixin _$UserEvent {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -55,6 +59,8 @@ mixin _$UserEvent {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -69,6 +75,8 @@ mixin _$UserEvent {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) =>
@@ -79,6 +87,7 @@ mixin _$UserEvent {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) =>
@@ -89,6 +98,7 @@ mixin _$UserEvent {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
@@ -200,6 +210,8 @@ class _$_SignIn implements _SignIn {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -218,6 +230,8 @@ class _$_SignIn implements _SignIn {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -236,6 +250,8 @@ class _$_SignIn implements _SignIn {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -256,6 +272,8 @@ class _$_SignIn implements _SignIn {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
@@ -269,6 +287,7 @@ class _$_SignIn implements _SignIn {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
@@ -282,6 +301,7 @@ class _$_SignIn implements _SignIn {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
@@ -351,6 +371,8 @@ class _$_SignOut implements _SignOut {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -369,6 +391,8 @@ class _$_SignOut implements _SignOut {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -387,6 +411,8 @@ class _$_SignOut implements _SignOut {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -407,6 +433,8 @@ class _$_SignOut implements _SignOut {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
@@ -420,6 +448,7 @@ class _$_SignOut implements _SignOut {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
@@ -433,6 +462,7 @@ class _$_SignOut implements _SignOut {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
@@ -493,6 +523,8 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -511,6 +543,8 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -529,6 +563,8 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -549,6 +585,8 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
@@ -562,6 +600,7 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
@@ -575,6 +614,7 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
@@ -677,6 +717,8 @@ class _$_RegisterInit implements _RegisterInit {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -695,6 +737,8 @@ class _$_RegisterInit implements _RegisterInit {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -713,6 +757,8 @@ class _$_RegisterInit implements _RegisterInit {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -733,6 +779,8 @@ class _$_RegisterInit implements _RegisterInit {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
@@ -746,6 +794,7 @@ class _$_RegisterInit implements _RegisterInit {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
@@ -759,6 +808,7 @@ class _$_RegisterInit implements _RegisterInit {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
@@ -780,6 +830,210 @@ abstract class _RegisterInit implements UserEvent {
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$_RegisterInitCopyWith<_$_RegisterInit> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ResendVerificationCodeCopyWith<$Res> {
+  factory _$$_ResendVerificationCodeCopyWith(_$_ResendVerificationCode value,
+          $Res Function(_$_ResendVerificationCode) then) =
+      __$$_ResendVerificationCodeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, String name, BuildContext context});
+}
+
+/// @nodoc
+class __$$_ResendVerificationCodeCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_ResendVerificationCode>
+    implements _$$_ResendVerificationCodeCopyWith<$Res> {
+  __$$_ResendVerificationCodeCopyWithImpl(_$_ResendVerificationCode _value,
+      $Res Function(_$_ResendVerificationCode) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? name = null,
+    Object? context = null,
+  }) {
+    return _then(_$_ResendVerificationCode(
+      null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ResendVerificationCode implements _ResendVerificationCode {
+  const _$_ResendVerificationCode(this.phone, this.name, this.context);
+
+  @override
+  final String phone;
+  @override
+  final String name;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.resendVerificationCode(phone: $phone, name: $name, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ResendVerificationCode &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, name, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ResendVerificationCodeCopyWith<_$_ResendVerificationCode> get copyWith =>
+      __$$_ResendVerificationCodeCopyWithImpl<_$_ResendVerificationCode>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+  }) {
+    return resendVerificationCode(phone, name, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+  }) {
+    return resendVerificationCode?.call(phone, name, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (resendVerificationCode != null) {
+      return resendVerificationCode(phone, name, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+  }) {
+    return resendVerificationCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+  }) {
+    return resendVerificationCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    required TResult orElse(),
+  }) {
+    if (resendVerificationCode != null) {
+      return resendVerificationCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResendVerificationCode implements UserEvent {
+  const factory _ResendVerificationCode(
+          final String phone, final String name, final BuildContext context) =
+      _$_ResendVerificationCode;
+
+  String get phone;
+  String get name;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_ResendVerificationCodeCopyWith<_$_ResendVerificationCode> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -870,6 +1124,8 @@ class _$_RegisterVerif implements _RegisterVerif {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -888,6 +1144,8 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -906,6 +1164,8 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -926,6 +1186,8 @@ class _$_RegisterVerif implements _RegisterVerif {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
@@ -939,6 +1201,7 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
@@ -952,6 +1215,7 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),
@@ -1079,6 +1343,8 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     required TResult Function() checkSignInStatus,
     required TResult Function(String phone, String name, BuildContext context)
         registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
     required TResult Function(String phone, String code, BuildContext context)
         registerVerif,
     required TResult Function(String phone, String password,
@@ -1097,6 +1363,8 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult? Function()? checkSignInStatus,
     TResult? Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult? Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult? Function(String phone, String password,
@@ -1116,6 +1384,8 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult Function()? checkSignInStatus,
     TResult Function(String phone, String name, BuildContext context)?
         registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
     TResult Function(String phone, String code, BuildContext context)?
         registerVerif,
     TResult Function(String phone, String password, String passwordConfirmation,
@@ -1136,6 +1406,8 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_CheckSignInStatus value) checkSignInStatus,
     required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
   }) {
@@ -1149,6 +1421,7 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
   }) {
@@ -1162,6 +1435,7 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_CheckSignInStatus value)? checkSignInStatus,
     TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
     required TResult orElse(),

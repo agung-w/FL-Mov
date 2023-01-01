@@ -12,6 +12,7 @@ part 'ticket_bloc.freezed.dart';
 class TicketBloc extends Bloc<TicketEvent, TicketState> {
   TicketBloc() : super(const _Initial()) {
     on<_GetAllTicket>((event, emit) async {
+      emit(const _Loading());
       SharedPreferences pref = await SharedPreferences.getInstance();
       String? token = pref.getString('token');
       if (token != null) {
@@ -21,6 +22,8 @@ class TicketBloc extends Bloc<TicketEvent, TicketState> {
       }
     });
     on<_GetActiveTicket>((event, emit) async {
+      emit(const _Loading());
+
       SharedPreferences pref = await SharedPreferences.getInstance();
       String? token = pref.getString('token');
       if (token != null) {

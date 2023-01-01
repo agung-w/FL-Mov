@@ -29,33 +29,32 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Column(children: [
-            SecretInputForm(
-              hint: "Password",
-              controller: password,
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: SecretInputForm(
+                hint: "Password",
+                controller: password,
+              ),
             ),
-            SecretInputForm(
-              hint: "Re-type Password",
-              controller: passwordConfirmation,
+            Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 32),
+              child: SecretInputForm(
+                hint: "Re-type Password",
+                controller: passwordConfirmation,
+              ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  context.read<UserBloc>().add(UserEvent.registerConfirm(
-                      widget.phoneNumber,
-                      password.text,
-                      passwordConfirmation.text,
-                      context));
-                },
-                style: ElevatedButton.styleFrom(
-                    side: const BorderSide(color: Colors.black, width: 0.5),
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    textStyle: const TextStyle(fontWeight: FontWeight.normal)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("Register"),
-                  ],
-                )),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    context.read<UserBloc>().add(UserEvent.registerConfirm(
+                        widget.phoneNumber,
+                        password.text,
+                        passwordConfirmation.text,
+                        context));
+                  },
+                  child: const Text("Register")),
+            ),
           ]),
         ),
       ),

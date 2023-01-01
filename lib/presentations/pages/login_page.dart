@@ -32,15 +32,21 @@ class _LoginPageState extends State<LoginPage> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Column(children: [
-            PhoneInputForm(
-              controller: phone,
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: PhoneInputForm(
+                controller: phone,
+              ),
             ),
-            SecretInputForm(
-              hint: "Password",
-              controller: password,
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: SecretInputForm(
+                hint: "Password",
+                controller: password,
+              ),
             ),
             SizedBox(
-              height: 40,
+              height: 50,
               child: Row(children: [
                 const Text("Forgot password?"),
                 GestureDetector(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/bloc/ticket_bloc.dart';
 import 'package:movie_app/entities/order.dart';
+import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/widgets/dashed_divider.dart';
 import 'package:movie_app/presentations/widgets/vertical_dashed_divider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -14,21 +14,15 @@ class TicketPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<TicketBloc>().add(const TicketEvent.getActiveTicket());
-    TabBar tabBar = TabBar(
+    TabBar tabBar = const TabBar(
       unselectedLabelColor: Colors.grey,
       labelColor: Colors.black,
-      indicator: const BoxDecoration(
+      indicator: BoxDecoration(
           border: Border(bottom: BorderSide(color: Colors.blue, width: 2))),
-      tabs: const [
-        Tab(
-          icon: Text(
-            "Active",
-            style: TextStyle(),
-          ),
-        ),
+      tabs: [
+        Tab(icon: Text("Active")),
         Tab(icon: Text("All")),
       ],
-      onTap: (index) {},
     );
     return DefaultTabController(
       length: 2,
@@ -126,13 +120,69 @@ class _TicketList extends StatelessWidget {
                         return Center(child: Text(value.message));
                       });
                 }) ??
-                const Text("data");
+                const Text("");
           },
         ),
       ],
     );
   }
 }
+
+// class _TicketCard extends StatelessWidget {
+//   final Order ticket;
+
+//   const _TicketCard({required this.ticket});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () => showDialog(
+//           context: context,
+//           builder: (context) => _TicketDetail(ticket: ticket)),
+//       child: Container(
+//           margin: const EdgeInsets.all(8),
+//           height: 150,
+//           width: double.infinity,
+//           child: Row(children: [
+//             Expanded(
+//               child: Container(
+//                 padding: const EdgeInsets.all(8),
+//                 decoration: BoxDecoration(
+//                     borderRadius: BorderRadius.circular(10),
+//                     color: const Color(0xFF0080E9)),
+//                 child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       Text(
+//                         ticket.movie.title,
+//                         style: smallTitle
+//                             .merge(const TextStyle(color: Colors.white)),
+//                         maxLines: 1,
+//                       ),
+//                       Text(
+//                         "${ticket.cinema.brand} ${ticket.cinema.name}"
+//                             .toUpperCase(),
+//                         style: normalText
+//                             .merge(const TextStyle(color: Colors.white)),
+//                         maxLines: 1,
+//                       )
+//                     ]),
+//               ),
+//             ),
+//             Container(
+//               width: 100,
+//               decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(10),
+//                   image: DecorationImage(
+//                       image: ticket.movie
+//                           .moviePosterUrl(ticket.movie.posterUrl)
+//                           .image,
+//                       fit: BoxFit.fill)),
+//             )
+//           ])),
+//     );
+//   }
+// }
 
 class _TicketCard extends StatelessWidget {
   final Order ticket;
@@ -176,7 +226,7 @@ class _TicketCard extends StatelessWidget {
                           gradient: LinearGradient(
                             colors: [
                               Colors.white.withOpacity(0),
-                              Colors.blue.withOpacity(0.7),
+                              const Color(0xFF0080E9).withOpacity(0.5),
                             ],
                           ),
                         ),
@@ -184,8 +234,8 @@ class _TicketCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                   child: VerticalDashedDivider(
                     width: 2,
                   ),
@@ -194,7 +244,7 @@ class _TicketCard extends StatelessWidget {
                   child: ClipPath(
                     clipper: TicketRightClipper(),
                     child: Container(
-                      decoration: BoxDecoration(color: Colors.amberAccent),
+                      decoration: const BoxDecoration(color: Colors.amber),
                       padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -202,23 +252,30 @@ class _TicketCard extends StatelessWidget {
                           Text(
                             ticket.movie.title,
                             // ignore: prefer_const_constructors
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.blue),
+                            style: smallTitle.merge(TextStyle(
+                                color: Colors.white.withOpacity(0.95))),
                           ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                "${ticket.cinema.name} ${ticket.studio.code}",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w600, fontSize: 16),
-                              ),
-                            ],
+                          Expanded(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "${ticket.cinema.name} - ${ticket.studio.code}",
+                                  style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16)
+                                      .merge(const TextStyle(
+                                          color: Color(0xFF0080E9))),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(DateFormat('EEEE, d MMM yyyy HH:mm')
-                              .format(ticket.getDate()))
+                          Text(
+                            DateFormat('EEEE, d MMM yyyy HH:mm')
+                                .format(ticket.getDate()),
+                            style: shadeNormalText
+                                .merge(const TextStyle(color: Colors.white)),
+                          )
                         ],
                       ),
                     ),
@@ -259,25 +316,28 @@ class _TicketDetail extends StatelessWidget {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: 65,
-                                height: 40,
+                                height: ticket.cinema.brand == "cgv" ? 35 : 25,
                                 child: Image.asset(
-                                    'assets/${ticket.cinema.brand}.png'),
-                              ),
-                              Text(
-                                ticket.cinema.name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 22,
+                                  'assets/${ticket.cinema.brand}.png',
+                                  fit: BoxFit.fitHeight,
                                 ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(ticket.cinema.name,
+                                    style: largeTitle
+                                        .merge(const TextStyle(height: 1.6))),
                               ),
                             ],
                           ),
-                          const Text(
-                            "Scan to print ticket",
+                          const Padding(
+                            padding: EdgeInsets.only(top: 2),
+                            child: Text(
+                              "Scan to print ticket",
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 8, 0, 16),
@@ -285,8 +345,8 @@ class _TicketDetail extends StatelessWidget {
                               blendMode: BlendMode.srcIn,
                               shaderCallback: (Rect bounds) =>
                                   const LinearGradient(colors: [
-                                Colors.blue,
-                                Color(0XFFd43ff3)
+                                Color(0xFF0080E9),
+                                Color(0xFFB100D4)
                               ]).createShader(
                                 Rect.fromLTWH(
                                     0, 0, bounds.width, bounds.height),

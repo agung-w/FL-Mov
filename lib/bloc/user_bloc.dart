@@ -71,6 +71,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           success: (result) => Navigator.of(event.context).push(
             MaterialPageRoute(
               builder: (_) => MobileVerificationPage(
+                name: event.name,
                 phoneNumber: event.phone,
               ),
             ),
@@ -92,6 +93,23 @@ class UserBloc extends Bloc<UserEvent, UserState> {
               builder: (_) => CreatePasswordPage(phoneNumber: event.phone),
             ),
           ),
+          failed: (result) => ScaffoldMessenger.of(event.context)
+              .showSnackBar(SnackBar(content: Text(result.message))),
+        );
+      }
+    });
+    on<_ResendVerificationCode>((event, emit) async {
+      if (state is _SignedOut) {
+        emit(const _SignedOut(""));
+
+        ApiResult<String> result = await UserServices()
+            .phoneRegistration(phone: event.phone, name: event.name);
+        result.map(
+          success: (result) =>
+              ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+            content: Text("New Code Has Been Sent"),
+            backgroundColor: Colors.green,
+          )),
           failed: (result) => ScaffoldMessenger.of(event.context)
               .showSnackBar(SnackBar(content: Text(result.message))),
         );

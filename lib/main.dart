@@ -59,9 +59,12 @@ class MyApp extends StatelessWidget {
                   backgroundColor: Colors.white,
                   padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
                   textStyle: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 19,
                       fontWeight: FontWeight.w700,
                       color: Colors.black87)),
+            ),
+            snackBarTheme: const SnackBarThemeData(
+              backgroundColor: Colors.red,
             )),
         home: const MainPage(),
       ),

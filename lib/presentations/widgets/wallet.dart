@@ -140,7 +140,7 @@ class _WalletBalanceBox extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.all(6),
+        padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
         width: 150,
         height: 80,
         decoration: BoxDecoration(
