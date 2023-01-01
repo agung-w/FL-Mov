@@ -27,6 +27,7 @@ class MovieDetail with _$MovieDetail, Picture {
     required int runtime,
     required bool adult,
     @JsonKey(name: "backdrop_path") String? backdropPath,
+    @JsonKey(name: "vote_average") double? voteAverage,
     @JsonKey(name: "poster_path") String? posterPath,
     @JsonKey(name: "original_language") String? originalLanguage,
     @JsonKey(name: "release_date") String? releaseDate,

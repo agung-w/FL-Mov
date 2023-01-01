@@ -118,7 +118,7 @@ class InTheaterPoster extends StatelessWidget {
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(16, 5, 0, 0),
             child: RatingBox(
               rating: movie.rating,
               size: 18,

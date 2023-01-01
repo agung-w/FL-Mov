@@ -23,6 +23,7 @@ class _YoutubeVideoCardState extends State<YoutubeVideoCard> {
           hideControls: true,
           disableDragSeek: true,
           autoPlay: false,
+          enableCaption: false,
           mute: true),
     );
     super.initState();

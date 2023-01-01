@@ -4,6 +4,7 @@ import 'package:movie_app/entities/movie.dart';
 import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/widgets/clickable_poster_card.dart';
 import 'package:movie_app/presentations/widgets/draggable_sheet.dart';
+import 'package:movie_app/presentations/widgets/rating_box.dart';
 import 'package:movie_app/presentations/widgets/review_card.dart';
 import 'package:movie_app/presentations/widgets/vertical_person_card.dart';
 import 'package:movie_app/presentations/widgets/youtube_video_card.dart';
@@ -295,6 +296,16 @@ class TvDetailPage extends StatelessWidget {
                               ),
                             ),
                           ),
+                          if (value.value.voteAverage != null) ...{
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                              child: RatingBox(
+                                  rating: value.value.voteAverage!
+                                      .roundToDouble()
+                                      .toString(),
+                                  size: 14),
+                            ),
+                          }
                         ]),
                       ),
                     ),

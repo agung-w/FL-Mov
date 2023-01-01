@@ -483,6 +483,12 @@ class InTheaterDetailPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                                child: RatingBox(
+                                    rating: movie.rating.toString(), size: 14),
+                              ),
                             ],
                           ))))),
         );
