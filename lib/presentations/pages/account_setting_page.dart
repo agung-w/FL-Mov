@@ -4,6 +4,7 @@ import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/pages/add_email_page.dart';
 import 'package:movie_app/presentations/pages/change_password_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountSettingPage extends StatelessWidget {
   const AccountSettingPage({super.key});
@@ -129,7 +130,20 @@ class _ContentFilter extends StatefulWidget {
 }
 
 class __ContentFilterState extends State<_ContentFilter> {
-  bool val = false;
+  late bool val;
+  late SharedPreferences pref;
+  @override
+  void initState() {
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      pref = sp;
+      val = pref.getBool("adult") ?? false;
+      // will be null if never previously saved
+      setState(() {
+        val = pref.getBool("adult") ?? false;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +157,7 @@ class __ContentFilterState extends State<_ContentFilter> {
       onChanged: (bool value) {
         setState(() {
           val = value;
+          pref.setBool("adult", value);
         });
       },
       value: val,

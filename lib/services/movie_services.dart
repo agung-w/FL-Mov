@@ -4,9 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/entities/api_result.dart';
 import 'package:movie_app/entities/movie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MovieServices {
   final Dio _dio = Dio(BaseOptions(connectTimeout: 5000));
+
   Future<ApiResult<List<Movie>>> getInTheater() async {
     try {
       Response result = await _dio.get("${dotenv.env['local_api_url']}/movies");
@@ -85,13 +87,15 @@ class MovieServices {
   }
 
   Future<ApiResult<TMDBSearchResult>> search({required String query}) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool adult = pref.getBool("adult") ?? false;
     try {
       Response movieResult = await _dio.get(
-          "${dotenv.env['tmdb_api_url']}/search/movie?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&query=$query&include_adult=true");
+          "${dotenv.env['tmdb_api_url']}/search/movie?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&query=$query&include_adult=$adult");
       Response tvResult = await _dio.get(
-          "${dotenv.env['tmdb_api_url']}/search/tv?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&query=$query&include_adult=true");
+          "${dotenv.env['tmdb_api_url']}/search/tv?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&query=$query&include_adult=$adult");
       Response personResult = await _dio.get(
-          "${dotenv.env['tmdb_api_url']}/search/person?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&query=$query&include_adult=true");
+          "${dotenv.env['tmdb_api_url']}/search/person?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&query=$query&include_adult=$adult");
 
       List<TMDBMovie> movieList = (movieResult.data['results'] as List)
           .map((e) => TMDBMovie.fromJson(e))
@@ -134,15 +138,17 @@ class MovieServices {
 
   Future<ApiResult<TMDBSearchResult>> searchByGenre(
       {required DiscoverCategory id}) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool adult = pref.getBool("adult") ?? false;
     try {
       TMDBSearchResult resultList = TMDBSearchResult();
       Response movieResult = await _dio.get(
-          "${dotenv.env['tmdb_api_url']}/discover/movie?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&with_genres=${id.movieId}&include_adult=true");
+          "${dotenv.env['tmdb_api_url']}/discover/movie?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&with_genres=${id.movieId}&include_adult=$adult");
       List<TMDBMovie> movieList = (movieResult.data['results'] as List)
           .map((e) => TMDBMovie.fromJson(e))
           .toList();
       Response tvResult = await _dio.get(
-          "${dotenv.env['tmdb_api_url']}/discover/tv?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&with_genres=${id.tvId}&include_adult=true");
+          "${dotenv.env['tmdb_api_url']}/discover/tv?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&with_genres=${id.tvId}&include_adult=$adult");
       List<TMDBTv> tvList = (tvResult.data['results'] as List)
           .map((e) => TMDBTv.fromJson(e))
           .toList();
