@@ -219,22 +219,25 @@ class ProfilePage extends StatelessWidget {
                       Expanded(
                         child: Align(
                           alignment: FractionalOffset.bottomCenter,
-                          child: ElevatedButton(
-                              onPressed: () {
-                                context
-                                    .read<UserBloc>()
-                                    .add(const UserEvent.signOut());
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue,
-                                  foregroundColor: Colors.white),
-                              child: SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  child: const Text(
-                                    "Log out",
-                                    textAlign: TextAlign.center,
-                                  ))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  context
+                                      .read<UserBloc>()
+                                      .add(const UserEvent.signOut());
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                    foregroundColor: Colors.white),
+                                child: SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    child: const Text(
+                                      "Log out",
+                                      textAlign: TextAlign.center,
+                                    ))),
+                          ),
                         ),
                       )
                     ],
