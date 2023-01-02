@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeVideoCard extends StatelessWidget {
@@ -40,6 +41,16 @@ class YoutubeVideoCard extends StatelessWidget {
             child: Image.network(
               "https://img.youtube.com/vi/$videoKey/0.jpg",
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => Container(
+                color: Colors.black,
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                    child: Text(
+                  "Failed To Load Thumbnail",
+                  textAlign: TextAlign.center,
+                  style: normalText.merge(const TextStyle(color: Colors.white)),
+                )),
+              ),
             )),
       ),
     );
