@@ -22,9 +22,11 @@ class MovieServices {
   }
 
   Future<ApiResult<MovieDetail>> getMovieDetail(int id) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool adult = pref.getBool("adult") ?? false;
     try {
       Response result = await _dio.get(
-        "${dotenv.env['tmdb_api_url']}/movie/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=credits,videos,reviews,similar",
+        "${dotenv.env['tmdb_api_url']}/movie/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=credits,videos,reviews,similar&include_adult=$adult",
       );
       MovieDetail movie = MovieDetail.fromJson(result.data);
       return ApiResult.success(movie);
@@ -36,9 +38,11 @@ class MovieServices {
   }
 
   Future<ApiResult<TvDetail>> getTvDetail(int id) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool adult = pref.getBool("adult") ?? false;
     try {
       Response result = await _dio.get(
-        "${dotenv.env['tmdb_api_url']}/tv/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=aggregate_credits,videos,reviews,similar",
+        "${dotenv.env['tmdb_api_url']}/tv/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=aggregate_credits,videos,reviews,similar&include_adult=$adult",
       );
       TvDetail tv = TvDetail.fromJson(result.data);
       return ApiResult.success(tv);
@@ -67,9 +71,11 @@ class MovieServices {
   }
 
   Future<ApiResult<PersonCredits>> getPersonCredits(int id) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool adult = pref.getBool("adult") ?? false;
     try {
       Response result = await _dio.get(
-        "${dotenv.env['tmdb_api_url']}/person/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=movie_credits,tv_credits",
+        "${dotenv.env['tmdb_api_url']}/person/$id?api_key=${dotenv.env['tmdb_api_key']}&language=en-US&append_to_response=movie_credits,tv_credits&include_adult=$adult",
       );
       PersonCredits personCredits = PersonCredits(
           movieCredits: (result.data['movie_credits']['cast'] as List)
