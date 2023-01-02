@@ -2,32 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class YoutubeVideoCard extends StatefulWidget {
+class YoutubeVideoCard extends StatelessWidget {
   final String videoKey;
   final bool? isFirst;
   final bool? isLast;
   const YoutubeVideoCard(
       {super.key, required this.videoKey, this.isFirst, this.isLast});
-
-  @override
-  State<YoutubeVideoCard> createState() => _YoutubeVideoCardState();
-}
-
-class _YoutubeVideoCardState extends State<YoutubeVideoCard> {
-  late YoutubePlayerController _youtubeController;
-  @override
-  void initState() {
-    _youtubeController = YoutubePlayerController(
-      initialVideoId: widget.videoKey,
-      flags: const YoutubePlayerFlags(
-          hideControls: true,
-          disableDragSeek: true,
-          autoPlay: false,
-          enableCaption: false,
-          mute: true),
-    );
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,21 +28,19 @@ class _YoutubeVideoCardState extends State<YoutubeVideoCard> {
                           Navigator.pop(builder);
                         },
                       )),
-                  YoutubeVideoPlayer(
-                      videoKey: widget.videoKey, context: builder),
+                  YoutubeVideoPlayer(videoKey: videoKey, context: builder),
                 ],
               )),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.4,
         margin: EdgeInsets.only(
-            left: widget.isFirst == true ? 16 : 8,
-            right: widget.isLast == true ? 16 : 0),
+            left: isFirst == true ? 16 : 8, right: isLast == true ? 16 : 0),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: YoutubePlayer(
-            controller: _youtubeController,
-          ),
-        ),
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              "https://img.youtube.com/vi/$videoKey/0.jpg",
+              fit: BoxFit.cover,
+            )),
       ),
     );
   }
