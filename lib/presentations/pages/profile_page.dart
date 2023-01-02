@@ -4,8 +4,9 @@ import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/pages/account_setting_page.dart';
+import 'package:movie_app/presentations/pages/all_transaction_history_page.dart';
 import 'package:movie_app/presentations/pages/login_page.dart';
-import 'package:movie_app/presentations/pages/transaction_history.dart';
+import 'package:movie_app/presentations/pages/wallet_history_page.dart';
 import 'package:movie_app/presentations/widgets/wallet.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -118,7 +119,8 @@ class ProfilePage extends StatelessWidget {
 
                               Navigator.of(context, rootNavigator: true).push(
                                 MaterialPageRoute(
-                                  builder: (_) => const TransactionHistory(),
+                                  builder: (_) =>
+                                      const AllTransactionHistoryPage(),
                                 ),
                               );
                             },
@@ -150,7 +152,7 @@ class ProfilePage extends StatelessWidget {
 
                               Navigator.of(context, rootNavigator: true).push(
                                 MaterialPageRoute(
-                                  builder: (_) => const TransactionHistory(),
+                                  builder: (_) => const WalletHistoryPage(),
                                 ),
                               );
                             },

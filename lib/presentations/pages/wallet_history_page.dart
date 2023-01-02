@@ -7,14 +7,14 @@ import 'package:movie_app/entities/transaction.dart';
 import 'package:movie_app/presentations/helper/text_style.dart';
 import 'package:movie_app/presentations/widgets/transaction_history_card.dart';
 
-class TransactionHistory extends StatelessWidget {
-  const TransactionHistory({super.key});
+class WalletHistoryPage extends StatelessWidget {
+  const WalletHistoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Transaction History"),
+          title: const Text("Wallet History"),
         ),
         body: BlocBuilder<TransactionBloc, TransactionState>(
           builder: (context, state) {
@@ -27,7 +27,11 @@ class TransactionHistory extends StatelessWidget {
                               .add(const TransactionEvent.get());
                         },
                         child: GroupedListView<Transaction, String>(
-                          elements: result.value,
+                          elements: result.value
+                              .where((element) =>
+                                  element.transactionMethod == "Wallet" ||
+                                  element.transactionType == "TOP UP")
+                              .toList(),
                           groupBy: (element) {
                             String day =
                                 element.getDate().day.toString().length == 1

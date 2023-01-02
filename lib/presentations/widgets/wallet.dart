@@ -4,7 +4,7 @@ import 'package:movie_app/bloc/transaction_bloc.dart';
 import 'package:movie_app/bloc/wallet_bloc.dart';
 import 'package:movie_app/entities/currency.dart';
 import 'package:movie_app/presentations/pages/top_up_page.dart';
-import 'package:movie_app/presentations/pages/transaction_history.dart';
+import 'package:movie_app/presentations/pages/wallet_history_page.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
@@ -112,7 +112,7 @@ class _HistoryButton extends StatelessWidget {
 
             Navigator.of(context, rootNavigator: true).push(
               MaterialPageRoute(
-                builder: (_) => const TransactionHistory(),
+                builder: (_) => const WalletHistoryPage(),
               ),
             );
           },
