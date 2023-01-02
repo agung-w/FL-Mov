@@ -11,25 +11,18 @@ part 'ticket_bloc.freezed.dart';
 
 class TicketBloc extends Bloc<TicketEvent, TicketState> {
   TicketBloc() : super(const _Initial()) {
-    on<_GetAllTicket>((event, emit) async {
+    on<_GetTicket>((event, emit) async {
       emit(const _Loading());
       SharedPreferences pref = await SharedPreferences.getInstance();
       String? token = pref.getString('token');
       if (token != null) {
-        await OrderServices()
-            .getAllTicket(token: token)
-            .then((value) => emit(_Loaded(value)));
-      }
-    });
-    on<_GetActiveTicket>((event, emit) async {
-      emit(const _Loading());
-
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      String? token = pref.getString('token');
-      if (token != null) {
-        await OrderServices()
-            .getActiveTicket(token: token)
-            .then((value) => emit(_Loaded(value)));
+        ApiResult<List<Order>> allTicketList =
+            await OrderServices().getAllTicket(token: token);
+        ApiResult<List<Order>> activeTicketList =
+            await OrderServices().getActiveTicket(token: token);
+        emit(_Loaded(activeTicketList, allTicketList));
+      } else {
+        emit(_Initial());
       }
     });
   }

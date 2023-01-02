@@ -13,7 +13,7 @@ class TicketPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<TicketBloc>().add(const TicketEvent.getActiveTicket());
+    context.read<TicketBloc>().add(const TicketEvent.getTicket());
     TabBar tabBar = const TabBar(
       unselectedLabelColor: Colors.grey,
       labelColor: Colors.black,
@@ -54,14 +54,10 @@ class TicketPage extends StatelessWidget {
               onRefresh: () async {
                 return context
                     .read<TicketBloc>()
-                    .add(const TicketEvent.getActiveTicket());
+                    .add(const TicketEvent.getTicket());
               },
               child: Builder(builder: (context) {
-                context
-                    .read<TicketBloc>()
-                    .add(const TicketEvent.getActiveTicket());
-
-                return const _TicketList(
+                return const _ActiveTicketList(
                     onNullNotes:
                         "You currently don't have an active ticket yet");
               }),
@@ -72,14 +68,10 @@ class TicketPage extends StatelessWidget {
               onRefresh: () async {
                 return context
                     .read<TicketBloc>()
-                    .add(const TicketEvent.getAllTicket());
+                    .add(const TicketEvent.getTicket());
               },
               child: Builder(builder: (context) {
-                context
-                    .read<TicketBloc>()
-                    .add(const TicketEvent.getAllTicket());
-
-                return const _TicketList(
+                return const _AllTicketList(
                     onNullNotes: "You've never bought a ticket");
               }),
             ),
@@ -90,99 +82,75 @@ class TicketPage extends StatelessWidget {
   }
 }
 
-class _TicketList extends StatelessWidget {
+class _ActiveTicketList extends StatelessWidget {
   final String onNullNotes;
 
-  const _TicketList({required this.onNullNotes});
+  const _ActiveTicketList({required this.onNullNotes});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        BlocBuilder<TicketBloc, TicketState>(
-          builder: (context, state) {
-            return state.mapOrNull(loaded: (value) {
-                  return value.list.map(
-                      success: (result) => result.value.isEmpty
-                          ? SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.75,
-                              child: Align(
-                                  alignment: FractionalOffset.center,
-                                  child: Text(onNullNotes)),
-                            )
-                          : Column(
-                              children: result.value
-                                  .map((e) => _TicketCard(
-                                        ticket: e,
-                                      ))
-                                  .toList()),
-                      failed: (value) {
-                        return Center(child: Text(value.message));
-                      });
-                }) ??
-                const Text("");
-          },
-        ),
-      ],
+    return BlocBuilder<TicketBloc, TicketState>(
+      builder: (context, state) {
+        return state.map(
+            loaded: (value) {
+              return value.activeList.map(
+                  success: (result) => result.value.isEmpty
+                      ? Center(
+                          child: Text(onNullNotes),
+                        )
+                      : ListView(
+                          children: result.value
+                              .map((e) => _TicketCard(
+                                    ticket: e,
+                                  ))
+                              .toList()),
+                  failed: (value) {
+                    return Center(child: Text(value.message));
+                  });
+            },
+            loading: (value) => const Center(
+                  child: Text("Loading"),
+                ),
+            initial: (value) => const Center(child: Text("Loading")));
+      },
     );
   }
 }
 
-// class _TicketCard extends StatelessWidget {
-//   final Order ticket;
+class _AllTicketList extends StatelessWidget {
+  final String onNullNotes;
 
-//   const _TicketCard({required this.ticket});
+  const _AllTicketList({required this.onNullNotes});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: () => showDialog(
-//           context: context,
-//           builder: (context) => _TicketDetail(ticket: ticket)),
-//       child: Container(
-//           margin: const EdgeInsets.all(8),
-//           height: 150,
-//           width: double.infinity,
-//           child: Row(children: [
-//             Expanded(
-//               child: Container(
-//                 padding: const EdgeInsets.all(8),
-//                 decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(10),
-//                     color: const Color(0xFF0080E9)),
-//                 child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Text(
-//                         ticket.movie.title,
-//                         style: smallTitle
-//                             .merge(const TextStyle(color: Colors.white)),
-//                         maxLines: 1,
-//                       ),
-//                       Text(
-//                         "${ticket.cinema.brand} ${ticket.cinema.name}"
-//                             .toUpperCase(),
-//                         style: normalText
-//                             .merge(const TextStyle(color: Colors.white)),
-//                         maxLines: 1,
-//                       )
-//                     ]),
-//               ),
-//             ),
-//             Container(
-//               width: 100,
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(10),
-//                   image: DecorationImage(
-//                       image: ticket.movie
-//                           .moviePosterUrl(ticket.movie.posterUrl)
-//                           .image,
-//                       fit: BoxFit.fill)),
-//             )
-//           ])),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TicketBloc, TicketState>(
+      builder: (context, state) {
+        return state.map(
+            loaded: (value) {
+              return value.allList.map(
+                  success: (result) => result.value.isEmpty
+                      ? Center(
+                          child: Text(onNullNotes),
+                        )
+                      : ListView(
+                          children: result.value
+                              .map((e) => _TicketCard(
+                                    ticket: e,
+                                  ))
+                              .toList()),
+                  failed: (value) {
+                    return Center(child: Text(value.message));
+                  });
+            },
+            loading: (value) => const Center(
+                  child: Text("Loading"),
+                ),
+            initial: (value) => const Center(child: Text("Loading")));
+      },
+    );
+  }
+}
 
 class _TicketCard extends StatelessWidget {
   final Order ticket;

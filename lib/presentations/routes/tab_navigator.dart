@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentations/helper/tab_item.dart';
 import 'package:movie_app/presentations/pages/discover_page.dart';
 import 'package:movie_app/presentations/pages/in_theater_page.dart';
 import 'package:movie_app/presentations/pages/not_found_page.dart';
 import 'package:movie_app/presentations/pages/profile_page.dart';
 import 'package:movie_app/presentations/pages/ticket_page.dart';
-
-import '../helper/tab_item.dart';
 
 class TabNavigatorRoutes {
   static const String root = '/';

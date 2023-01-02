@@ -18,39 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TicketEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllTicket,
-    required TResult Function() getActiveTicket,
+    required TResult Function() getTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllTicket,
-    TResult? Function()? getActiveTicket,
+    TResult? Function()? getTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllTicket,
-    TResult Function()? getActiveTicket,
+    TResult Function()? getTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllTicket value) getAllTicket,
-    required TResult Function(_GetActiveTicket value) getActiveTicket,
+    required TResult Function(_GetTicket value) getTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetAllTicket value)? getAllTicket,
-    TResult? Function(_GetActiveTicket value)? getActiveTicket,
+    TResult? Function(_GetTicket value)? getTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllTicket value)? getAllTicket,
-    TResult Function(_GetActiveTicket value)? getActiveTicket,
+    TResult Function(_GetTicket value)? getTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,35 +69,35 @@ class _$TicketEventCopyWithImpl<$Res, $Val extends TicketEvent>
 }
 
 /// @nodoc
-abstract class _$$_GetAllTicketCopyWith<$Res> {
-  factory _$$_GetAllTicketCopyWith(
-          _$_GetAllTicket value, $Res Function(_$_GetAllTicket) then) =
-      __$$_GetAllTicketCopyWithImpl<$Res>;
+abstract class _$$_GetTicketCopyWith<$Res> {
+  factory _$$_GetTicketCopyWith(
+          _$_GetTicket value, $Res Function(_$_GetTicket) then) =
+      __$$_GetTicketCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetAllTicketCopyWithImpl<$Res>
-    extends _$TicketEventCopyWithImpl<$Res, _$_GetAllTicket>
-    implements _$$_GetAllTicketCopyWith<$Res> {
-  __$$_GetAllTicketCopyWithImpl(
-      _$_GetAllTicket _value, $Res Function(_$_GetAllTicket) _then)
+class __$$_GetTicketCopyWithImpl<$Res>
+    extends _$TicketEventCopyWithImpl<$Res, _$_GetTicket>
+    implements _$$_GetTicketCopyWith<$Res> {
+  __$$_GetTicketCopyWithImpl(
+      _$_GetTicket _value, $Res Function(_$_GetTicket) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetAllTicket implements _GetAllTicket {
-  const _$_GetAllTicket();
+class _$_GetTicket implements _GetTicket {
+  const _$_GetTicket();
 
   @override
   String toString() {
-    return 'TicketEvent.getAllTicket()';
+    return 'TicketEvent.getTicket()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetAllTicket);
+        (other.runtimeType == runtimeType && other is _$_GetTicket);
   }
 
   @override
@@ -112,30 +106,27 @@ class _$_GetAllTicket implements _GetAllTicket {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllTicket,
-    required TResult Function() getActiveTicket,
+    required TResult Function() getTicket,
   }) {
-    return getAllTicket();
+    return getTicket();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllTicket,
-    TResult? Function()? getActiveTicket,
+    TResult? Function()? getTicket,
   }) {
-    return getAllTicket?.call();
+    return getTicket?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllTicket,
-    TResult Function()? getActiveTicket,
+    TResult Function()? getTicket,
     required TResult orElse(),
   }) {
-    if (getAllTicket != null) {
-      return getAllTicket();
+    if (getTicket != null) {
+      return getTicket();
     }
     return orElse();
   }
@@ -143,139 +134,34 @@ class _$_GetAllTicket implements _GetAllTicket {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllTicket value) getAllTicket,
-    required TResult Function(_GetActiveTicket value) getActiveTicket,
+    required TResult Function(_GetTicket value) getTicket,
   }) {
-    return getAllTicket(this);
+    return getTicket(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetAllTicket value)? getAllTicket,
-    TResult? Function(_GetActiveTicket value)? getActiveTicket,
+    TResult? Function(_GetTicket value)? getTicket,
   }) {
-    return getAllTicket?.call(this);
+    return getTicket?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllTicket value)? getAllTicket,
-    TResult Function(_GetActiveTicket value)? getActiveTicket,
+    TResult Function(_GetTicket value)? getTicket,
     required TResult orElse(),
   }) {
-    if (getAllTicket != null) {
-      return getAllTicket(this);
+    if (getTicket != null) {
+      return getTicket(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetAllTicket implements TicketEvent {
-  const factory _GetAllTicket() = _$_GetAllTicket;
-}
-
-/// @nodoc
-abstract class _$$_GetActiveTicketCopyWith<$Res> {
-  factory _$$_GetActiveTicketCopyWith(
-          _$_GetActiveTicket value, $Res Function(_$_GetActiveTicket) then) =
-      __$$_GetActiveTicketCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_GetActiveTicketCopyWithImpl<$Res>
-    extends _$TicketEventCopyWithImpl<$Res, _$_GetActiveTicket>
-    implements _$$_GetActiveTicketCopyWith<$Res> {
-  __$$_GetActiveTicketCopyWithImpl(
-      _$_GetActiveTicket _value, $Res Function(_$_GetActiveTicket) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_GetActiveTicket implements _GetActiveTicket {
-  const _$_GetActiveTicket();
-
-  @override
-  String toString() {
-    return 'TicketEvent.getActiveTicket()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetActiveTicket);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllTicket,
-    required TResult Function() getActiveTicket,
-  }) {
-    return getActiveTicket();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllTicket,
-    TResult? Function()? getActiveTicket,
-  }) {
-    return getActiveTicket?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllTicket,
-    TResult Function()? getActiveTicket,
-    required TResult orElse(),
-  }) {
-    if (getActiveTicket != null) {
-      return getActiveTicket();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllTicket value) getAllTicket,
-    required TResult Function(_GetActiveTicket value) getActiveTicket,
-  }) {
-    return getActiveTicket(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetAllTicket value)? getAllTicket,
-    TResult? Function(_GetActiveTicket value)? getActiveTicket,
-  }) {
-    return getActiveTicket?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllTicket value)? getAllTicket,
-    TResult Function(_GetActiveTicket value)? getActiveTicket,
-    required TResult orElse(),
-  }) {
-    if (getActiveTicket != null) {
-      return getActiveTicket(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetActiveTicket implements TicketEvent {
-  const factory _GetActiveTicket() = _$_GetActiveTicket;
+abstract class _GetTicket implements TicketEvent {
+  const factory _GetTicket() = _$_GetTicket;
 }
 
 /// @nodoc
@@ -283,21 +169,27 @@ mixin _$TicketState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ApiResult<List<Order>> list) loaded,
+    required TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)
+        loaded,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ApiResult<List<Order>> list)? loaded,
+    TResult? Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ApiResult<List<Order>> list)? loaded,
+    TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) =>
@@ -382,7 +274,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ApiResult<List<Order>> list) loaded,
+    required TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)
+        loaded,
     required TResult Function() loading,
   }) {
     return initial();
@@ -392,7 +286,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ApiResult<List<Order>> list)? loaded,
+    TResult? Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult? Function()? loading,
   }) {
     return initial?.call();
@@ -402,7 +298,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ApiResult<List<Order>> list)? loaded,
+    TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -456,9 +354,11 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({ApiResult<List<Order>> list});
+  $Res call(
+      {ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList});
 
-  $ApiResultCopyWith<List<Order>, $Res> get list;
+  $ApiResultCopyWith<List<Order>, $Res> get activeList;
+  $ApiResultCopyWith<List<Order>, $Res> get allList;
 }
 
 /// @nodoc
@@ -471,21 +371,34 @@ class __$$_LoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = null,
+    Object? activeList = null,
+    Object? allList = null,
   }) {
     return _then(_$_Loaded(
-      null == list
-          ? _value.list
-          : list // ignore: cast_nullable_to_non_nullable
+      null == activeList
+          ? _value.activeList
+          : activeList // ignore: cast_nullable_to_non_nullable
+              as ApiResult<List<Order>>,
+      null == allList
+          ? _value.allList
+          : allList // ignore: cast_nullable_to_non_nullable
               as ApiResult<List<Order>>,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ApiResultCopyWith<List<Order>, $Res> get list {
-    return $ApiResultCopyWith<List<Order>, $Res>(_value.list, (value) {
-      return _then(_value.copyWith(list: value));
+  $ApiResultCopyWith<List<Order>, $Res> get activeList {
+    return $ApiResultCopyWith<List<Order>, $Res>(_value.activeList, (value) {
+      return _then(_value.copyWith(activeList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ApiResultCopyWith<List<Order>, $Res> get allList {
+    return $ApiResultCopyWith<List<Order>, $Res>(_value.allList, (value) {
+      return _then(_value.copyWith(allList: value));
     });
   }
 }
@@ -493,14 +406,16 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.list);
+  const _$_Loaded(this.activeList, this.allList);
 
   @override
-  final ApiResult<List<Order>> list;
+  final ApiResult<List<Order>> activeList;
+  @override
+  final ApiResult<List<Order>> allList;
 
   @override
   String toString() {
-    return 'TicketState.loaded(list: $list)';
+    return 'TicketState.loaded(activeList: $activeList, allList: $allList)';
   }
 
   @override
@@ -508,11 +423,13 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            (identical(other.list, list) || other.list == list));
+            (identical(other.activeList, activeList) ||
+                other.activeList == activeList) &&
+            (identical(other.allList, allList) || other.allList == allList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, list);
+  int get hashCode => Object.hash(runtimeType, activeList, allList);
 
   @JsonKey(ignore: true)
   @override
@@ -524,32 +441,38 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ApiResult<List<Order>> list) loaded,
+    required TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)
+        loaded,
     required TResult Function() loading,
   }) {
-    return loaded(list);
+    return loaded(activeList, allList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ApiResult<List<Order>> list)? loaded,
+    TResult? Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult? Function()? loading,
   }) {
-    return loaded?.call(list);
+    return loaded?.call(activeList, allList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ApiResult<List<Order>> list)? loaded,
+    TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(list);
+      return loaded(activeList, allList);
     }
     return orElse();
   }
@@ -590,9 +513,11 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements TicketState {
-  const factory _Loaded(final ApiResult<List<Order>> list) = _$_Loaded;
+  const factory _Loaded(final ApiResult<List<Order>> activeList,
+      final ApiResult<List<Order>> allList) = _$_Loaded;
 
-  ApiResult<List<Order>> get list;
+  ApiResult<List<Order>> get activeList;
+  ApiResult<List<Order>> get allList;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -636,7 +561,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ApiResult<List<Order>> list) loaded,
+    required TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)
+        loaded,
     required TResult Function() loading,
   }) {
     return loading();
@@ -646,7 +573,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ApiResult<List<Order>> list)? loaded,
+    TResult? Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult? Function()? loading,
   }) {
     return loading?.call();
@@ -656,7 +585,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ApiResult<List<Order>> list)? loaded,
+    TResult Function(
+            ApiResult<List<Order>> activeList, ApiResult<List<Order>> allList)?
+        loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
