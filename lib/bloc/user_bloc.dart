@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movie_app/entities/api_result.dart';
+import 'package:movie_app/presentations/pages/change_password_page.dart';
+import 'package:movie_app/presentations/pages/change_password_token_verification_page.dart';
 import 'package:movie_app/presentations/pages/create_password_page.dart';
 import 'package:movie_app/presentations/pages/mobile_verification_page.dart';
 import 'package:movie_app/services/auth_services.dart';
@@ -145,6 +147,109 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
                 content: Text("Password not match please check again")));
           }
+        }
+      }
+    });
+
+    on<_AddEmail>((event, emit) async {
+      if (state is _SignedIn) {
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        String? token = pref.getString("token");
+        if (token != null) {
+          await UserServices()
+              .addEmail(token: token, email: event.email)
+              .then((value) => value.map(
+                  success: (value) =>
+                      ScaffoldMessenger.of(event.context).showSnackBar(SnackBar(
+                        content: Text(value.value),
+                        backgroundColor: Colors.green,
+                      )),
+                  failed: (value) => ScaffoldMessenger.of(event.context)
+                          .showSnackBar(const SnackBar(
+                        content:
+                            Text("Failed to add email please try again later"),
+                      ))))
+              .then((value) => UserServices().getUserDetail(token: token).then(
+                  (value) => value.mapOrNull(
+                      success: (value) => emit(_SignedIn(value.value)))))
+              .then((value) => Navigator.pop(event.context));
+        }
+      }
+    });
+    on<_VerifyChangePasswordToken>((event, emit) async {
+      ApiResult<String> result = await UserServices()
+          .verifyPhoneRegistration(phone: event.phone, code: event.token);
+      result.map(
+        success: (result) => Navigator.of(event.context).push(
+          MaterialPageRoute(
+            builder: (_) => ChangePasswordPage(
+              phoneNumber: event.phone,
+            ),
+          ),
+        ),
+        failed: (result) => ScaffoldMessenger.of(event.context)
+            .showSnackBar(SnackBar(content: Text(result.message))),
+      );
+    });
+    on<_GetChangePasswordToken>((event, emit) async {
+      await UserServices().getChangePasswordToken(phone: event.phone).then(
+          (value) => value.map(
+              success: (value) {
+                ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+                  content: Text("Reset password token send to your phone"),
+                  backgroundColor: Colors.green,
+                ));
+                Navigator.of(event.context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ChangePasswordVerificationPage(
+                        phoneNumber: event.phone),
+                  ),
+                );
+              },
+              failed: (value) =>
+                  ScaffoldMessenger.of(event.context).showSnackBar(SnackBar(
+                    content: Text(value.message),
+                  ))));
+    });
+    on<_ResendChangePasswordToken>((event, emit) async {
+      await UserServices().getChangePasswordToken(phone: event.phone).then(
+          (value) => value.map(
+              success: (value) {
+                ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+                  content: Text("Reset password token send to your phone"),
+                  backgroundColor: Colors.green,
+                ));
+              },
+              failed: (value) =>
+                  ScaffoldMessenger.of(event.context).showSnackBar(SnackBar(
+                    content: Text(value.message),
+                  ))));
+    });
+    on<_ChangePassword>((event, emit) async {
+      if (event.password == event.passwordConfirmation &&
+          event.password.length >= 8) {
+        await UserServices()
+            .changePassword(phone: event.phone, password: event.password)
+            .then(
+              (value) => value.map(
+                  success: (value) {
+                    Navigator.popUntil(event.context, (route) => route.isFirst);
+                    ScaffoldMessenger.of(event.context)
+                        .showSnackBar(const SnackBar(
+                      content: Text("Password Change Successfully"),
+                      backgroundColor: Colors.green,
+                    ));
+                  },
+                  failed: (result) => ScaffoldMessenger.of(event.context)
+                      .showSnackBar(SnackBar(content: Text(result.message)))),
+            );
+      } else {
+        if (event.password.length < 8) {
+          ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+              content: Text("password must be at least 8 characters")));
+        } else {
+          ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+              content: Text("Password not match please check again")));
         }
       }
     });

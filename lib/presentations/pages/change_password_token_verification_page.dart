@@ -5,21 +5,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
 import 'package:pinput/pinput.dart';
 
-class MobileVerificationPage extends StatefulWidget {
+class ChangePasswordVerificationPage extends StatefulWidget {
   final String phoneNumber;
 
-  final String name;
-
-  const MobileVerificationPage(
-      {Key? key, required this.phoneNumber, required this.name})
-      : super(key: key);
+  const ChangePasswordVerificationPage({super.key, required this.phoneNumber});
 
   @override
-  State<MobileVerificationPage> createState() => _MobileVerificationPageState();
+  State<ChangePasswordVerificationPage> createState() =>
+      _ChangePasswordVerificationPageState();
 }
 
-class _MobileVerificationPageState extends State<MobileVerificationPage>
-    with AutomaticKeepAliveClientMixin {
+class _ChangePasswordVerificationPageState
+    extends State<ChangePasswordVerificationPage> {
   late Timer _timer;
   int _start = 30;
 
@@ -55,10 +52,9 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Phone Number Verification"),
+        title: const Text("Change Password"),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
@@ -68,32 +64,26 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
           children: [
             Column(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'Verification',
+              children: const [
+                Text(
+                  'Change Password Token Verification',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
                     color: Color.fromRGBO(30, 60, 87, 1),
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 24),
-                const Text(
-                  'Enter the code sent to the number',
+                SizedBox(height: 24),
+                Text(
+                  'Enter the token that has been sent to your phone to continue the process.',
                   style: TextStyle(
                     fontSize: 16,
                     color: Color.fromRGBO(133, 153, 170, 1),
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 16),
-                Text(
-                  '+62 ${widget.phoneNumber}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Color.fromRGBO(30, 60, 87, 1),
-                  ),
-                ),
-                const SizedBox(height: 64)
+                SizedBox(height: 64)
               ],
             ),
             SizedBox(
@@ -117,10 +107,8 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
                         startTimer();
                       });
                       context.read<UserBloc>().add(
-                          UserEvent.resendVerificationCode(
-                              int.parse(widget.phoneNumber).toString(),
-                              widget.name,
-                              context));
+                          UserEvent.resendChangePasswordToken(
+                              context: context, phone: widget.phoneNumber));
                     }
                   : null,
               child: Text(
@@ -139,9 +127,6 @@ class _MobileVerificationPageState extends State<MobileVerificationPage>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
 
 class _FilledOtpInput extends StatefulWidget {
@@ -191,9 +176,9 @@ class _FilledState extends State<_FilledOtpInput> {
         controller: controller,
         focusNode: focusNode,
         defaultPinTheme: defaultPinTheme,
-        onCompleted: (value) => context
-            .read<UserBloc>()
-            .add(UserEvent.registerVerif(widget.phoneNumber, value, context)),
+        onCompleted: (value) => context.read<UserBloc>().add(
+            UserEvent.verifyChangePasswordToken(
+                phone: widget.phoneNumber, token: value, context: context)),
         errorPinTheme: defaultPinTheme.copyWith(
           decoration: BoxDecoration(
             color: errorColor,

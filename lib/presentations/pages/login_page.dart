@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/user_bloc.dart';
+import 'package:movie_app/presentations/pages/forgot_password_page.dart';
 import 'package:movie_app/presentations/pages/register_page.dart';
 import 'package:movie_app/presentations/widgets/phone_input_form.dart';
 import 'package:movie_app/presentations/widgets/secret_input_form.dart';
@@ -50,7 +51,13 @@ class _LoginPageState extends State<LoginPage> {
               child: Row(children: [
                 const Text("Forgot password?"),
                 GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const ForgotPasswordPage(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       " reset",
                       style: TextStyle(fontWeight: FontWeight.bold),

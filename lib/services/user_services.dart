@@ -90,4 +90,68 @@ class UserServices {
           : "Connection timeout");
     }
   }
+
+  Future<ApiResult<String>> addEmail(
+      {required String token, required String email}) async {
+    var data = {
+      "user": {"email": email}
+    };
+    try {
+      Response result =
+          await _dio.put("${dotenv.env['local_api_url']}/user/add_email",
+              options: Options(headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer $token",
+              }),
+              data: jsonEncode(data));
+
+      return ApiResult.success(result.data['data']['message']);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<String>> getChangePasswordToken(
+      {required String phone}) async {
+    var data = {
+      "user": {"phone_number": phone}
+    };
+    try {
+      Response result = await _dio.post(
+          "${dotenv.env['local_api_url']}/user/get_change_password_token",
+          options: Options(headers: {
+            "Content-Type": "application/json",
+          }),
+          data: jsonEncode(data));
+
+      return ApiResult.success(result.data['data']['message']);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
+
+  Future<ApiResult<String>> changePassword(
+      {required String phone, required String password}) async {
+    var data = {
+      "user": {"phone_number": phone, "password": password}
+    };
+    try {
+      Response result =
+          await _dio.put("${dotenv.env['local_api_url']}/user/change_password",
+              options: Options(headers: {
+                "Content-Type": "application/json",
+              }),
+              data: jsonEncode(data));
+
+      return ApiResult.success(result.data['data']['message']);
+    } on DioError catch (e) {
+      return ApiResult.failed(e.response != null
+          ? e.response!.data['error']['message'].toString()
+          : "Connection timeout");
+    }
+  }
 }

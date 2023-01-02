@@ -9,6 +9,7 @@ class User with _$User {
   const factory User({
     @JsonKey(name: "phone_number") required String phone,
     required String name,
+    required String? email,
     String? photoUrl,
   }) = _User;
   String phoneCC() {

@@ -23,6 +23,7 @@ mixin _$User {
   @JsonKey(name: "phone_number")
   String get phone => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "phone_number") String phone,
       String name,
+      String? email,
       String? photoUrl});
 }
 
@@ -56,6 +58,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? phone = null,
     Object? name = null,
+    Object? email = freezed,
     Object? photoUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +70,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -84,6 +91,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "phone_number") String phone,
       String name,
+      String? email,
       String? photoUrl});
 }
 
@@ -98,6 +106,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   $Res call({
     Object? phone = null,
     Object? name = null,
+    Object? email = freezed,
     Object? photoUrl = freezed,
   }) {
     return _then(_$_User(
@@ -109,6 +118,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -123,6 +136,7 @@ class _$_User extends _User {
   const _$_User(
       {@JsonKey(name: "phone_number") required this.phone,
       required this.name,
+      required this.email,
       this.photoUrl})
       : super._();
 
@@ -134,11 +148,13 @@ class _$_User extends _User {
   @override
   final String name;
   @override
+  final String? email;
+  @override
   final String? photoUrl;
 
   @override
   String toString() {
-    return 'User(phone: $phone, name: $name, photoUrl: $photoUrl)';
+    return 'User(phone: $phone, name: $name, email: $email, photoUrl: $photoUrl)';
   }
 
   @override
@@ -148,13 +164,14 @@ class _$_User extends _User {
             other is _$_User &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.photoUrl, photoUrl) ||
                 other.photoUrl == photoUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, phone, name, photoUrl);
+  int get hashCode => Object.hash(runtimeType, phone, name, email, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -174,6 +191,7 @@ abstract class _User extends User {
   const factory _User(
       {@JsonKey(name: "phone_number") required final String phone,
       required final String name,
+      required final String? email,
       final String? photoUrl}) = _$_User;
   const _User._() : super._();
 
@@ -184,6 +202,8 @@ abstract class _User extends User {
   String get phone;
   @override
   String get name;
+  @override
+  String? get email;
   @override
   String? get photoUrl;
   @override

@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 UserBloc()..add(const UserEvent.checkSignInStatus())),
-        BlocProvider(create: (context) => WalletBloc()),
+        BlocProvider(
+            create: (context) =>
+                WalletBloc()..add(const WalletEvent.getBalance())),
         BlocProvider(create: (context) => MovieDetailBloc()),
         BlocProvider(create: (context) => TransactionBloc()),
         BlocProvider(create: (context) => OrderBloc()),

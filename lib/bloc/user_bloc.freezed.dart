@@ -32,6 +32,16 @@ mixin _$UserEvent {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +59,16 @@ mixin _$UserEvent {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +86,16 @@ mixin _$UserEvent {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +109,14 @@ mixin _$UserEvent {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +128,13 @@ mixin _$UserEvent {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -101,6 +146,13 @@ mixin _$UserEvent {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -217,6 +269,16 @@ class _$_SignIn implements _SignIn {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return signIn(phone, password, context);
   }
@@ -237,6 +299,16 @@ class _$_SignIn implements _SignIn {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return signIn?.call(phone, password, context);
   }
@@ -257,6 +329,16 @@ class _$_SignIn implements _SignIn {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -276,6 +358,14 @@ class _$_SignIn implements _SignIn {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return signIn(this);
   }
@@ -290,6 +380,13 @@ class _$_SignIn implements _SignIn {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return signIn?.call(this);
   }
@@ -304,6 +401,13 @@ class _$_SignIn implements _SignIn {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -378,6 +482,16 @@ class _$_SignOut implements _SignOut {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return signOut();
   }
@@ -398,6 +512,16 @@ class _$_SignOut implements _SignOut {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return signOut?.call();
   }
@@ -418,6 +542,16 @@ class _$_SignOut implements _SignOut {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -437,6 +571,14 @@ class _$_SignOut implements _SignOut {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return signOut(this);
   }
@@ -451,6 +593,13 @@ class _$_SignOut implements _SignOut {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return signOut?.call(this);
   }
@@ -465,6 +614,13 @@ class _$_SignOut implements _SignOut {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -530,6 +686,16 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return checkSignInStatus();
   }
@@ -550,6 +716,16 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return checkSignInStatus?.call();
   }
@@ -570,6 +746,16 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (checkSignInStatus != null) {
@@ -589,6 +775,14 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return checkSignInStatus(this);
   }
@@ -603,6 +797,13 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return checkSignInStatus?.call(this);
   }
@@ -617,6 +818,13 @@ class _$_CheckSignInStatus implements _CheckSignInStatus {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (checkSignInStatus != null) {
@@ -724,6 +932,16 @@ class _$_RegisterInit implements _RegisterInit {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return registerInit(phone, name, context);
   }
@@ -744,6 +962,16 @@ class _$_RegisterInit implements _RegisterInit {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return registerInit?.call(phone, name, context);
   }
@@ -764,6 +992,16 @@ class _$_RegisterInit implements _RegisterInit {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (registerInit != null) {
@@ -783,6 +1021,14 @@ class _$_RegisterInit implements _RegisterInit {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return registerInit(this);
   }
@@ -797,6 +1043,13 @@ class _$_RegisterInit implements _RegisterInit {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return registerInit?.call(this);
   }
@@ -811,6 +1064,13 @@ class _$_RegisterInit implements _RegisterInit {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (registerInit != null) {
@@ -928,6 +1188,16 @@ class _$_ResendVerificationCode implements _ResendVerificationCode {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return resendVerificationCode(phone, name, context);
   }
@@ -948,6 +1218,16 @@ class _$_ResendVerificationCode implements _ResendVerificationCode {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return resendVerificationCode?.call(phone, name, context);
   }
@@ -968,6 +1248,16 @@ class _$_ResendVerificationCode implements _ResendVerificationCode {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (resendVerificationCode != null) {
@@ -987,6 +1277,14 @@ class _$_ResendVerificationCode implements _ResendVerificationCode {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return resendVerificationCode(this);
   }
@@ -1001,6 +1299,13 @@ class _$_ResendVerificationCode implements _ResendVerificationCode {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return resendVerificationCode?.call(this);
   }
@@ -1015,6 +1320,13 @@ class _$_ResendVerificationCode implements _ResendVerificationCode {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (resendVerificationCode != null) {
@@ -1131,6 +1443,16 @@ class _$_RegisterVerif implements _RegisterVerif {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return registerVerif(phone, code, context);
   }
@@ -1151,6 +1473,16 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return registerVerif?.call(phone, code, context);
   }
@@ -1171,6 +1503,16 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (registerVerif != null) {
@@ -1190,6 +1532,14 @@ class _$_RegisterVerif implements _RegisterVerif {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return registerVerif(this);
   }
@@ -1204,6 +1554,13 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return registerVerif?.call(this);
   }
@@ -1218,6 +1575,13 @@ class _$_RegisterVerif implements _RegisterVerif {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (registerVerif != null) {
@@ -1350,6 +1714,16 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     required TResult Function(String phone, String password,
             String passwordConfirmation, BuildContext context)
         registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
   }) {
     return registerConfirm(phone, password, passwordConfirmation, context);
   }
@@ -1370,6 +1744,16 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult? Function(String phone, String password,
             String passwordConfirmation, BuildContext context)?
         registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
   }) {
     return registerConfirm?.call(
         phone, password, passwordConfirmation, context);
@@ -1391,6 +1775,16 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult Function(String phone, String password, String passwordConfirmation,
             BuildContext context)?
         registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
     required TResult orElse(),
   }) {
     if (registerConfirm != null) {
@@ -1410,6 +1804,14 @@ class _$_RegisterConfirm implements _RegisterConfirm {
         resendVerificationCode,
     required TResult Function(_RegisterVerif value) registerVerif,
     required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
   }) {
     return registerConfirm(this);
   }
@@ -1424,6 +1826,13 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult? Function(_RegisterVerif value)? registerVerif,
     TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
   }) {
     return registerConfirm?.call(this);
   }
@@ -1438,6 +1847,13 @@ class _$_RegisterConfirm implements _RegisterConfirm {
     TResult Function(_ResendVerificationCode value)? resendVerificationCode,
     TResult Function(_RegisterVerif value)? registerVerif,
     TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
     required TResult orElse(),
   }) {
     if (registerConfirm != null) {
@@ -1460,6 +1876,1285 @@ abstract class _RegisterConfirm implements UserEvent {
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$_RegisterConfirmCopyWith<_$_RegisterConfirm> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AddEmailCopyWith<$Res> {
+  factory _$$_AddEmailCopyWith(
+          _$_AddEmail value, $Res Function(_$_AddEmail) then) =
+      __$$_AddEmailCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email, BuildContext context});
+}
+
+/// @nodoc
+class __$$_AddEmailCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_AddEmail>
+    implements _$$_AddEmailCopyWith<$Res> {
+  __$$_AddEmailCopyWithImpl(
+      _$_AddEmail _value, $Res Function(_$_AddEmail) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? context = null,
+  }) {
+    return _then(_$_AddEmail(
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddEmail implements _AddEmail {
+  const _$_AddEmail(this.email, this.context);
+
+  @override
+  final String email;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.addEmail(email: $email, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddEmail &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddEmailCopyWith<_$_AddEmail> get copyWith =>
+      __$$_AddEmailCopyWithImpl<_$_AddEmail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
+  }) {
+    return addEmail(email, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
+  }) {
+    return addEmail?.call(email, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
+    required TResult orElse(),
+  }) {
+    if (addEmail != null) {
+      return addEmail(email, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
+  }) {
+    return addEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
+  }) {
+    return addEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
+    required TResult orElse(),
+  }) {
+    if (addEmail != null) {
+      return addEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddEmail implements UserEvent {
+  const factory _AddEmail(final String email, final BuildContext context) =
+      _$_AddEmail;
+
+  String get email;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_AddEmailCopyWith<_$_AddEmail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetChangePasswordTokenCopyWith<$Res> {
+  factory _$$_GetChangePasswordTokenCopyWith(_$_GetChangePasswordToken value,
+          $Res Function(_$_GetChangePasswordToken) then) =
+      __$$_GetChangePasswordTokenCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, BuildContext context});
+}
+
+/// @nodoc
+class __$$_GetChangePasswordTokenCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_GetChangePasswordToken>
+    implements _$$_GetChangePasswordTokenCopyWith<$Res> {
+  __$$_GetChangePasswordTokenCopyWithImpl(_$_GetChangePasswordToken _value,
+      $Res Function(_$_GetChangePasswordToken) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? context = null,
+  }) {
+    return _then(_$_GetChangePasswordToken(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetChangePasswordToken implements _GetChangePasswordToken {
+  const _$_GetChangePasswordToken({required this.phone, required this.context});
+
+  @override
+  final String phone;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.getChangePasswordToken(phone: $phone, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetChangePasswordToken &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GetChangePasswordTokenCopyWith<_$_GetChangePasswordToken> get copyWith =>
+      __$$_GetChangePasswordTokenCopyWithImpl<_$_GetChangePasswordToken>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
+  }) {
+    return getChangePasswordToken(phone, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
+  }) {
+    return getChangePasswordToken?.call(phone, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
+    required TResult orElse(),
+  }) {
+    if (getChangePasswordToken != null) {
+      return getChangePasswordToken(phone, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
+  }) {
+    return getChangePasswordToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
+  }) {
+    return getChangePasswordToken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
+    required TResult orElse(),
+  }) {
+    if (getChangePasswordToken != null) {
+      return getChangePasswordToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetChangePasswordToken implements UserEvent {
+  const factory _GetChangePasswordToken(
+      {required final String phone,
+      required final BuildContext context}) = _$_GetChangePasswordToken;
+
+  String get phone;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_GetChangePasswordTokenCopyWith<_$_GetChangePasswordToken> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ResendChangePasswordTokenCopyWith<$Res> {
+  factory _$$_ResendChangePasswordTokenCopyWith(
+          _$_ResendChangePasswordToken value,
+          $Res Function(_$_ResendChangePasswordToken) then) =
+      __$$_ResendChangePasswordTokenCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, BuildContext context});
+}
+
+/// @nodoc
+class __$$_ResendChangePasswordTokenCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_ResendChangePasswordToken>
+    implements _$$_ResendChangePasswordTokenCopyWith<$Res> {
+  __$$_ResendChangePasswordTokenCopyWithImpl(
+      _$_ResendChangePasswordToken _value,
+      $Res Function(_$_ResendChangePasswordToken) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? context = null,
+  }) {
+    return _then(_$_ResendChangePasswordToken(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ResendChangePasswordToken implements _ResendChangePasswordToken {
+  const _$_ResendChangePasswordToken(
+      {required this.phone, required this.context});
+
+  @override
+  final String phone;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.resendChangePasswordToken(phone: $phone, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ResendChangePasswordToken &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ResendChangePasswordTokenCopyWith<_$_ResendChangePasswordToken>
+      get copyWith => __$$_ResendChangePasswordTokenCopyWithImpl<
+          _$_ResendChangePasswordToken>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
+  }) {
+    return resendChangePasswordToken(phone, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
+  }) {
+    return resendChangePasswordToken?.call(phone, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
+    required TResult orElse(),
+  }) {
+    if (resendChangePasswordToken != null) {
+      return resendChangePasswordToken(phone, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
+  }) {
+    return resendChangePasswordToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
+  }) {
+    return resendChangePasswordToken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
+    required TResult orElse(),
+  }) {
+    if (resendChangePasswordToken != null) {
+      return resendChangePasswordToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResendChangePasswordToken implements UserEvent {
+  const factory _ResendChangePasswordToken(
+      {required final String phone,
+      required final BuildContext context}) = _$_ResendChangePasswordToken;
+
+  String get phone;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_ResendChangePasswordTokenCopyWith<_$_ResendChangePasswordToken>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_VerifyChangePasswordTokenCopyWith<$Res> {
+  factory _$$_VerifyChangePasswordTokenCopyWith(
+          _$_VerifyChangePasswordToken value,
+          $Res Function(_$_VerifyChangePasswordToken) then) =
+      __$$_VerifyChangePasswordTokenCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, String token, BuildContext context});
+}
+
+/// @nodoc
+class __$$_VerifyChangePasswordTokenCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_VerifyChangePasswordToken>
+    implements _$$_VerifyChangePasswordTokenCopyWith<$Res> {
+  __$$_VerifyChangePasswordTokenCopyWithImpl(
+      _$_VerifyChangePasswordToken _value,
+      $Res Function(_$_VerifyChangePasswordToken) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? token = null,
+    Object? context = null,
+  }) {
+    return _then(_$_VerifyChangePasswordToken(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_VerifyChangePasswordToken implements _VerifyChangePasswordToken {
+  const _$_VerifyChangePasswordToken(
+      {required this.phone, required this.token, required this.context});
+
+  @override
+  final String phone;
+  @override
+  final String token;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.verifyChangePasswordToken(phone: $phone, token: $token, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_VerifyChangePasswordToken &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, token, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_VerifyChangePasswordTokenCopyWith<_$_VerifyChangePasswordToken>
+      get copyWith => __$$_VerifyChangePasswordTokenCopyWithImpl<
+          _$_VerifyChangePasswordToken>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
+  }) {
+    return verifyChangePasswordToken(phone, token, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
+  }) {
+    return verifyChangePasswordToken?.call(phone, token, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
+    required TResult orElse(),
+  }) {
+    if (verifyChangePasswordToken != null) {
+      return verifyChangePasswordToken(phone, token, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
+  }) {
+    return verifyChangePasswordToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
+  }) {
+    return verifyChangePasswordToken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
+    required TResult orElse(),
+  }) {
+    if (verifyChangePasswordToken != null) {
+      return verifyChangePasswordToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VerifyChangePasswordToken implements UserEvent {
+  const factory _VerifyChangePasswordToken(
+      {required final String phone,
+      required final String token,
+      required final BuildContext context}) = _$_VerifyChangePasswordToken;
+
+  String get phone;
+  String get token;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_VerifyChangePasswordTokenCopyWith<_$_VerifyChangePasswordToken>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ChangePasswordCopyWith<$Res> {
+  factory _$$_ChangePasswordCopyWith(
+          _$_ChangePassword value, $Res Function(_$_ChangePassword) then) =
+      __$$_ChangePasswordCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String phone,
+      String password,
+      String passwordConfirmation,
+      BuildContext context});
+}
+
+/// @nodoc
+class __$$_ChangePasswordCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_ChangePassword>
+    implements _$$_ChangePasswordCopyWith<$Res> {
+  __$$_ChangePasswordCopyWithImpl(
+      _$_ChangePassword _value, $Res Function(_$_ChangePassword) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
+    Object? context = null,
+  }) {
+    return _then(_$_ChangePassword(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _value.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangePassword implements _ChangePassword {
+  const _$_ChangePassword(
+      {required this.phone,
+      required this.password,
+      required this.passwordConfirmation,
+      required this.context});
+
+  @override
+  final String phone;
+  @override
+  final String password;
+  @override
+  final String passwordConfirmation;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'UserEvent.changePassword(phone: $phone, password: $password, passwordConfirmation: $passwordConfirmation, context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ChangePassword &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, phone, password, passwordConfirmation, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ChangePasswordCopyWith<_$_ChangePassword> get copyWith =>
+      __$$_ChangePasswordCopyWithImpl<_$_ChangePassword>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, String password, BuildContext context)
+        signIn,
+    required TResult Function() signOut,
+    required TResult Function() checkSignInStatus,
+    required TResult Function(String phone, String name, BuildContext context)
+        registerInit,
+    required TResult Function(String phone, String name, BuildContext context)
+        resendVerificationCode,
+    required TResult Function(String phone, String code, BuildContext context)
+        registerVerif,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        registerConfirm,
+    required TResult Function(String email, BuildContext context) addEmail,
+    required TResult Function(String phone, BuildContext context)
+        getChangePasswordToken,
+    required TResult Function(String phone, BuildContext context)
+        resendChangePasswordToken,
+    required TResult Function(String phone, String token, BuildContext context)
+        verifyChangePasswordToken,
+    required TResult Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)
+        changePassword,
+  }) {
+    return changePassword(phone, password, passwordConfirmation, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult? Function()? signOut,
+    TResult? Function()? checkSignInStatus,
+    TResult? Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult? Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult? Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        registerConfirm,
+    TResult? Function(String email, BuildContext context)? addEmail,
+    TResult? Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult? Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult? Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult? Function(String phone, String password,
+            String passwordConfirmation, BuildContext context)?
+        changePassword,
+  }) {
+    return changePassword?.call(phone, password, passwordConfirmation, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone, String password, BuildContext context)?
+        signIn,
+    TResult Function()? signOut,
+    TResult Function()? checkSignInStatus,
+    TResult Function(String phone, String name, BuildContext context)?
+        registerInit,
+    TResult Function(String phone, String name, BuildContext context)?
+        resendVerificationCode,
+    TResult Function(String phone, String code, BuildContext context)?
+        registerVerif,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        registerConfirm,
+    TResult Function(String email, BuildContext context)? addEmail,
+    TResult Function(String phone, BuildContext context)?
+        getChangePasswordToken,
+    TResult Function(String phone, BuildContext context)?
+        resendChangePasswordToken,
+    TResult Function(String phone, String token, BuildContext context)?
+        verifyChangePasswordToken,
+    TResult Function(String phone, String password, String passwordConfirmation,
+            BuildContext context)?
+        changePassword,
+    required TResult orElse(),
+  }) {
+    if (changePassword != null) {
+      return changePassword(phone, password, passwordConfirmation, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignIn value) signIn,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_CheckSignInStatus value) checkSignInStatus,
+    required TResult Function(_RegisterInit value) registerInit,
+    required TResult Function(_ResendVerificationCode value)
+        resendVerificationCode,
+    required TResult Function(_RegisterVerif value) registerVerif,
+    required TResult Function(_RegisterConfirm value) registerConfirm,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_GetChangePasswordToken value)
+        getChangePasswordToken,
+    required TResult Function(_ResendChangePasswordToken value)
+        resendChangePasswordToken,
+    required TResult Function(_VerifyChangePasswordToken value)
+        verifyChangePasswordToken,
+    required TResult Function(_ChangePassword value) changePassword,
+  }) {
+    return changePassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignIn value)? signIn,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult? Function(_RegisterInit value)? registerInit,
+    TResult? Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult? Function(_RegisterVerif value)? registerVerif,
+    TResult? Function(_RegisterConfirm value)? registerConfirm,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult? Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult? Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult? Function(_ChangePassword value)? changePassword,
+  }) {
+    return changePassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignIn value)? signIn,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_CheckSignInStatus value)? checkSignInStatus,
+    TResult Function(_RegisterInit value)? registerInit,
+    TResult Function(_ResendVerificationCode value)? resendVerificationCode,
+    TResult Function(_RegisterVerif value)? registerVerif,
+    TResult Function(_RegisterConfirm value)? registerConfirm,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_GetChangePasswordToken value)? getChangePasswordToken,
+    TResult Function(_ResendChangePasswordToken value)?
+        resendChangePasswordToken,
+    TResult Function(_VerifyChangePasswordToken value)?
+        verifyChangePasswordToken,
+    TResult Function(_ChangePassword value)? changePassword,
+    required TResult orElse(),
+  }) {
+    if (changePassword != null) {
+      return changePassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePassword implements UserEvent {
+  const factory _ChangePassword(
+      {required final String phone,
+      required final String password,
+      required final String passwordConfirmation,
+      required final BuildContext context}) = _$_ChangePassword;
+
+  String get phone;
+  String get password;
+  String get passwordConfirmation;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_ChangePasswordCopyWith<_$_ChangePassword> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
