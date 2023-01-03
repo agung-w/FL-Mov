@@ -177,10 +177,36 @@ class ProfilePage extends StatelessWidget {
                               minLeadingWidth: 0,
                               contentPadding:
                                   const EdgeInsets.only(left: 16, right: 8),
-                              trailing: const Icon(
-                                Icons.navigate_next_outlined,
-                                size: 32,
-                                color: Colors.black26,
+                              trailing: SizedBox(
+                                width: 80,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        height: 25,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: Colors.red.shade200,
+                                        ),
+                                        child: Center(
+                                            child: Text(
+                                          "soon",
+                                          style: shadeNormalText.merge(
+                                              const TextStyle(
+                                                  height: 1.1,
+                                                  color: Colors.white)),
+                                        )),
+                                      ),
+                                    ),
+                                    const Icon(
+                                      Icons.navigate_next_outlined,
+                                      size: 32,
+                                      color: Colors.black26,
+                                    ),
+                                  ],
+                                ),
                               ),
                               onTap: null),
                         ],
