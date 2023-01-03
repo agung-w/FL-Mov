@@ -34,78 +34,69 @@ class InTheaterPoster extends StatelessWidget {
                       )),
             );
           },
-          child: Column(
-            children: [
-              ClipRRect(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 0, 30),
-                  child: Stack(children: [
-                    Transform.translate(
-                      offset: const Offset(10, 5),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Opacity(
-                            opacity: 1,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image(
-                                  fit: BoxFit.fill,
-                                  image: movie
-                                      .moviePosterUrl(movie.posterUrl)
-                                      .image,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.75,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.81,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    return loadingProgress == null
-                                        ? child
-                                        : Shimmer.fromColors(
-                                            baseColor: const Color(0xFFBDBDBD),
-                                            highlightColor:
-                                                const Color(0xFFFFFFFF),
-                                            child: Container(
-                                                color: const Color(0xFF9E9E9E),
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.75));
-                                  }),
-                            )),
-                      ),
-                    ),
-                    Positioned.fill(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 0, sigmaY: 12),
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 0, 25),
+              child: Stack(children: [
+                Transform.translate(
+                  offset: const Offset(10, 5),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Opacity(
+                        opacity: 1,
                         child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Container(color: Colors.transparent)),
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image(
-                          fit: BoxFit.fill,
-                          image: movie.moviePosterUrl(movie.posterUrl).image,
-                          height: MediaQuery.of(context).size.height * 0.75,
-                          loadingBuilder: (context, child, loadingProgress) {
-                            return loadingProgress == null
-                                ? child
-                                : Shimmer.fromColors(
-                                    baseColor: Colors.grey.shade400,
-                                    highlightColor: Colors.white,
-                                    child: Container(
-                                        color: Colors.grey,
-                                        height:
-                                            MediaQuery.of(context).size.height *
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image:
+                                  movie.moviePosterUrl(movie.posterUrl).image,
+                              height: MediaQuery.of(context).size.height * 0.75,
+                              width: MediaQuery.of(context).size.width * 0.81,
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                return loadingProgress == null
+                                    ? child
+                                    : Shimmer.fromColors(
+                                        baseColor: const Color(0xFFBDBDBD),
+                                        highlightColor: const Color(0xFFFFFFFF),
+                                        child: Container(
+                                            color: const Color(0xFF9E9E9E),
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
                                                 0.75));
-                          }),
-                    )
-                  ]),
+                              }),
+                        )),
+                  ),
                 ),
-              ),
-            ],
+                Positioned.fill(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 0, sigmaY: 12),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(color: Colors.transparent)),
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                      fit: BoxFit.fill,
+                      image: movie.moviePosterUrl(movie.posterUrl).image,
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        return loadingProgress == null
+                            ? child
+                            : Shimmer.fromColors(
+                                baseColor: Colors.grey.shade400,
+                                highlightColor: Colors.white,
+                                child: Container(
+                                    color: Colors.grey,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.75));
+                      }),
+                )
+              ]),
+            ),
           ),
         ),
         if (isActive == true) ...[

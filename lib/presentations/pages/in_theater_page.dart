@@ -15,81 +15,66 @@ class InTheaterPage extends StatefulWidget {
 
 class _InTheaterPageState extends State<InTheaterPage> {
   int _current = 0;
-  // late Timer _timer;
-  final PageController _pageController = PageController(
-    viewportFraction: 0.9,
-    initialPage: 0,
-  );
-  // @override
-  // void initState() {
-  //   super.initState();
 
-  //   _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-  //     _current++;
-
-  //     _pageController.animateToPage(
-  //       _current,
-  //       duration: const Duration(milliseconds: 350),
-  //       curve: Curves.easeIn,
-  //     );
-  //   });
-  // }
-
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   _timer.cancel();
-  // }
-
+  final PageController _pageController =
+      PageController(initialPage: 0, viewportFraction: 0.9);
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-            child: const Text(
-              "Now In Theater",
-              textAlign: TextAlign.start,
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
-            ),
-          ),
-          BlocBuilder<MovieBloc, MovieState>(
-            builder: (context, state) =>
-                state.whenOrNull(
-                    loaded: (movies) {
-                      return movies.map(
-                          success: (result) => Expanded(
-                                child: PageView.builder(
-                                  itemBuilder: (context, int index) {
-                                    return Transform.scale(
-                                      alignment: Alignment.centerLeft,
-                                      scale: index == _current ? 1 : 0.9,
-                                      child: InTheaterPoster(
-                                        movie: result.value.elementAt(
-                                            index % result.value.length),
-                                        isActive:
-                                            index == _current ? true : false,
-                                      ),
-                                    );
-                                  },
-                                  onPageChanged: (value) {
-                                    setState(() {
-                                      _current = value;
-                                    });
-                                  },
-                                  padEnds: false,
-                                  controller: _pageController,
-                                ),
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          context.read<MovieBloc>().add(const MovieEvent.getInTheater());
+          setState(() {
+            _current = 0;
+          });
+        },
+        child: BlocBuilder<MovieBloc, MovieState>(
+          builder: (context, state) => state.when(
+              loaded: (movies) {
+                return movies.map(
+                    success: (result) => ListView(
+                          children: [
+                            Container(
+                                padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                                child: const Text(
+                                  "Now In Theater",
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 28),
+                                )),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.84,
+                              child: PageView.builder(
+                                itemBuilder: (context, int index) {
+                                  return Transform.scale(
+                                    alignment: Alignment.centerLeft,
+                                    scale: index == _current ? 1 : 0.9,
+                                    child: InTheaterPoster(
+                                      movie: result.value.elementAt(
+                                          index % result.value.length),
+                                      isActive:
+                                          index == _current ? true : false,
+                                    ),
+                                  );
+                                },
+                                onPageChanged: (value) {
+                                  setState(() {
+                                    _current = value;
+                                  });
+                                },
+                                padEnds: false,
+                                controller: _pageController,
                               ),
-                          failed: (result) => Text(result.message));
-                      // return Text(movies.toString());
-                    },
-                    loading: () => const Text("loading"),
-                    initial: () => const Text("init")) ??
-                const Text("Cant Fetch Movies Right Now"),
-          ),
-        ]);
+                            ),
+                          ],
+                        ),
+                    failed: (result) => Text(result.message));
+              },
+              loading: () => const Center(child: Text("Loading")),
+              initial: () => const Center(child: Text(""))),
+        ),
+      ),
+    );
   }
 }
