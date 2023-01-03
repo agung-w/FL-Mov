@@ -69,7 +69,17 @@ class _InTheaterPageState extends State<InTheaterPage> {
                             ),
                           ],
                         ),
-                    failed: (result) => Text(result.message));
+                    failed: (result) => ListView(
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.9,
+                              child: const Center(
+                                child: Text(
+                                    "Cant fetch data please check your internet connections"),
+                              ),
+                            ),
+                          ],
+                        ));
               },
               loading: () => const Center(child: Text("Loading")),
               initial: () => const Center(child: Text(""))),

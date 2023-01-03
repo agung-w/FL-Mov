@@ -34,8 +34,12 @@ class InTheaterDetailPage extends StatelessWidget {
           },
           child: Scaffold(
               backgroundColor: const Color(0xFFf2f1f6),
+              appBar: state.mapOrNull(
+                  loading: (value) => AppBar(),
+                  loaded: (value) =>
+                      value.movie.mapOrNull(failed: (value) => AppBar())),
               body: state.map(
-                  initial: (value) => const Text("error"),
+                  initial: (value) => const Center(child: Text("error")),
                   loading: (value) => const Center(
                         child: Text("Loading"),
                       ),

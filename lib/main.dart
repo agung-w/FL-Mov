@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SearchBloc()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             dividerColor: Colors.transparent,
             fontFamily: 'OpenSans',

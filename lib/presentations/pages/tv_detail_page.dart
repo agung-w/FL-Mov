@@ -11,7 +11,7 @@ import 'package:movie_app/presentations/widgets/youtube_video_card.dart';
 import 'package:movie_app/services/movie_services.dart';
 
 class TvDetailPage extends StatelessWidget {
-  final dynamic e;
+  final TMDBTv e;
 
   final String? genre;
 
@@ -312,14 +312,13 @@ class TvDetailPage extends StatelessWidget {
                 failed: (value) => Scaffold(
                       appBar: AppBar(
                         title: Text(
-                          e.toString(),
+                          e.name,
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                         centerTitle: true,
                       ),
-                      body:
-                          const Center(child: Text("No content detail found")),
+                      body: Center(child: Text(value.message)),
                     ));
           } else if (snapshot.hasError) {
             return Scaffold(

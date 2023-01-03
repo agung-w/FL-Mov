@@ -306,7 +306,7 @@ class MovieDetailPage extends StatelessWidget {
                 failed: (value) => Scaffold(
                       appBar: AppBar(
                         title: Text(
-                          e.toString(),
+                          e.title,
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600),
                         ),
