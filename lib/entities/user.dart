@@ -13,7 +13,7 @@ class User with _$User {
     String? photoUrl,
   }) = _User;
   String phoneCC() {
-    return "+62 $phone";
+    return "+62 ${phone.replaceRange(3, 8, "*****")}";
   }
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
