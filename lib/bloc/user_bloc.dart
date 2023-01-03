@@ -233,7 +233,13 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             .then(
               (value) => value.map(
                   success: (value) {
-                    Navigator.popUntil(event.context, (route) => route.isFirst);
+                    if (state is _SignedOut) {
+                      Navigator.popUntil(
+                          event.context, (route) => route.isFirst);
+                    } else {
+                      Navigator.pop(event.context);
+                      Navigator.pop(event.context);
+                    }
                     ScaffoldMessenger.of(event.context)
                         .showSnackBar(const SnackBar(
                       content: Text("Password Change Successfully"),
