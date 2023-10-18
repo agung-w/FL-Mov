@@ -13,7 +13,7 @@ FL-Mov stands as the ultimate movie app, seamlessly combine the convenience of e
 <img src = "assets/app-screenshots/9.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/10.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/11.png" width = "184" height = "408"/> 
 
 ### And more
-<img src = "assets/app-screenshots/14.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/15.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/16.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/17.png" width = "184" height = "408"/>
+<img src = "assets/app-screenshots/14.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/15.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/16.png" width = "184" height = "408"/> &nbsp; <img src = "assets/app-screenshots/18.png" width = "184" height = "408"/>
 
 ## Project Overview
 The app development is divided into two primary components. [Server-sided/backend application](https://github.com/agung-w/multiplatform_ticket_api), which utilizes the Ruby on Rails framework, and the [client application](https://github.com/agung-w/FL-Mov), which is built using the Flutter framework. As mentioned earlier, the movie exploration results are provided by [TMDB](https://www.themoviedb.org/) (The Movie Database), ensuring a comprehensive and reliable source for all your cinematic queries.
