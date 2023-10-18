@@ -29,4 +29,3 @@ The app development is divided into two primary components. [Server-sided/backen
 - [Whatsapp SDK](https://www.rubydoc.info/gems/whatsapp_sdk/0.7.0) for sending OTP to verify phone number.
 - [Kimurai](https://github.com/vifreefly/kimuraframework) for scraping anohter website to get an actual theater movie & schedule.
 
-
